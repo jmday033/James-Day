@@ -11,9 +11,8 @@ I am currently pursuing an Executive MBA at the University of Hawaiʻi at Mānoa
 
 Drafted with help from ChatGPT (OpenAI, 2026); reviewed and edited by me.
 
-#RESUME
-# James M. Day, MD
-
+# RESUME
+James M Day
 Honolulu, Hawaii · Internal Medicine Physician · U.S. Navy Medical Officer
 
 ---
