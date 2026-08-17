@@ -1,11 +1,7 @@
 # James-Day
 UH EMBA 
-# Office lock and temporary files
-~$*
-*.tmp
-*.temp
-*.asd
-*.wbk
+#BIO
+
 
 # macOS metadata files
 .DS_Store
