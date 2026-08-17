@@ -1,9 +1,8 @@
 # James-Day
 UH EMBA 
-#BIO
 
 
-# macOS metadata files
+# BIO
 .DS_Store
 .AppleDouble
 .LSOverride
