@@ -14,7 +14,8 @@ Drafted with help from ChatGPT (OpenAI, 2026); reviewed and edited by me.
 # RESUME
 # James M. Day, MD
 
-**Email:** [jmday033@gmail.com](mailto:jmday033@gmail.com) · **Location:** Honolulu, Hawaii
+**Email:** [jmday033@gmail.com](mailto:jmday033@gmail.com) 
+**Location:** Marine Corps Base Hawaii
 
 ---
 
@@ -91,11 +92,10 @@ Drafted with help from ChatGPT (OpenAI, 2026); reviewed and edited by me.
 ---
 
 ## SKILLS AND INTERESTS
-
-**Clinical:** Internal Medicine | Aviation Medicine | Operational Medicine
-**Technical:** Microsoft Excel | PowerPoint | Clinical Informatics | Electronic Health Records
-**Professional:** Lean Six Sigma | Quality Improvement | Medical Education | Global Health
-**Interests:** Healthcare Strategy | Technology | Organizational Leadership
+*Clinical:* Internal Medicine | Aviation Medicine | Operational Medicine
+*Technical:* Microsoft Excel | PowerPoint | Clinical Informatics | Electronic Health Records
+*Professional:* Lean Six Sigma | Quality Improvement | Medical Education | Global Health
+*Interests:* Healthcare Strategy | Technology | Organizational Leadership
 
 ---
 
