@@ -101,10 +101,4 @@ Drafted with help from ChatGPT (OpenAI, 2026); reviewed and edited by me.
 
 *Drafted with help from ChatGPT (OpenAI, 2026); reviewed and edited by me.*
 
-# Temporary/export working directories
-tmp/
-temp/
-.cache/
-
-# IMPORTANT: Repository deliverables are intentionally tracked.
-# Do NOT ignore: *.xlsx, *.md, *.png, or *.csv
+git push origin update-readme
