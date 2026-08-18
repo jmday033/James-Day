@@ -1,0 +1,29 @@
+# Office lock and temporary files
+~$*.xlsx
+~$*.xlsm
+~$*.docx
+~$*.pptx
+
+# Operating-system metadata
+.DS_Store
+Thumbs.db
+
+# Editor backups and temporary files
+*.tmp
+*.bak
+*~
+
+# Credentials and environment configuration
+.env
+.env.*
+*.key
+*.pem
+secrets/
+private/
+
+# Python-generated files
+__pycache__/
+*.py[cod]
+
+# Local analysis caches and notebooks
+.ipynb_checkpoints/
