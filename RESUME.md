@@ -19,11 +19,11 @@
 
 **Loyola University Chicago, Stritch School of Medicine** — Maywood, IL
 
-* Doctor of Medicine
+* Doctor of Medicine — 2012-2017
 
 **University of Notre Dame** — Notre Dame, IN
 
-* Undergraduate Education
+* Undergraduate Education — 2009-2012
 
 **Additional Training:** Uniformed Services University Global Health Graduate Certificate (2018–2020) · U.S. Naval War College Joint Professional Military Education Phase I (2023–2024) · OHSU AMIA 10x10 Certificate (2025)
 
