@@ -66,5 +66,4 @@ I would know I was wrong under any of these outcomes:
 - Carrots finish below 20 beds. Their diminishing-return rate is a fixed number in the case, so this wouldn't mean the rate is wrong. It would mean I misjudged its effect, or that another real constraint (total beds or the temporary-labor limit) ran out first.
 - Mesclun finishes below 30 beds, for the same reason: something other than the rate itself would have to explain it—either my read on its effect was off, or another constraint bound first.
 - Tomatoes reach their 20-bed cap, or land far from 14 in either direction. This wouldn't mean the 10% rate is wrong—it's also a fixed number. It would mean I misjudged how fast that rate pushes marginal cost up to price.
-- Total beds planted come in below 64. That would mean some bed wasn't worth planting—its revenue didn't cover its marginal cost. That would disprove my 14/20/30 prediction, which uses all 64 beds.
 
