@@ -16,31 +16,30 @@ hypothesis: "I expect 14 tomato beds, 20 carrot beds, and 30 mesclun beds becaus
 - **What is fixed?** 720 hours of farm labor time and $20k in fixed costs. The number of temporary workers is variable, up to four.
 - **What could go wrong if the mix is poorly chosen?** Opportunity cost: assigning scarce beds and labor to a lower-value crop means giving up the profit those beds and hours could have earned in a better mix.
 
-### Constraints
+### Model constraints
 
-1. Total beds ≤ 64
+The model maximizes total profit by selecting the number of tomato, carrot, and mesclun beds. The number of temporary workers is then calculated from the labor required by the selected crop mix.
+
+The model is subject to these constraints:
+
+1. Tomato beds + carrot beds + mesclun beds ≤ 64
 2. Tomato beds ≤ 20
 3. Carrot beds ≤ 20
 4. Mesclun beds ≤ 30
-5. Total labor ≤ 6,480 hours
+5. Total labor required ≤ 720 + (1,440 × temporary workers)
 6. Temporary workers ≤ 4
-7. Bed quantities must be nonnegative whole numbers
+7. Crop-bed quantities must be nonnegative whole numbers
+8. Temporary workers must be nonnegative but may be fractional to represent partial-season employment
 
-### Cost and profit inputs—not constraints
+With four temporary workers, the maximum labor available is:
 
-- Market price per bed
-- Fertilizer cost per bed
-- Wage rates
-- $20,000 fixed cost
-- Diminishing-return percentages
-- The 36-week season
+`720 + (1,440 × 4) = 6,480 hours`
+
+Profit is calculated using market prices, fertilizer costs, wage rates, the $20,000 fixed cost, diminishing-return percentages, and the 36-week growing season. These values affect the objective function but are not constraints.
 
 ## What I am assuming
 
-- I am assuming good weather, no pests, that planted crops will yield a harvestable crop, and stable labor wages.
-- I am assuming all 64 beds will be planted.
-
-Of these, the weather and pest assumptions are the ones I would most want to test with better information—a bad weather season or a pest outbreak would change realized yields in ways the model doesn't capture, and I have no data ruling that out for this case. The wage assumption is lower-risk since the case treats it as a fixed input rather than a forecast. The assumption that all 64 beds get planted is really a hypothesis I'm testing through the model itself, not something I'd need outside information to check—the model's own output on idle beds will confirm or disprove it.
+The model assumes stable prices and wages, good weather, no significant pest losses, and that each planted bed produces a harvestable crop. It does not assume that all 64 beds will be planted; Solver determines whether using every bed or leaving some beds idle maximizes profit.
 
 ## Hypothesis
 
@@ -67,5 +66,5 @@ I would know I was wrong under any of these outcomes:
 - Carrots finish below 20 beds. Their diminishing-return rate is a fixed number in the case, so this wouldn't mean the rate is wrong. It would mean I misjudged its effect, or that another real constraint (total beds or the temporary-labor limit) ran out first.
 - Mesclun finishes below 30 beds, for the same reason: something other than the rate itself would have to explain it—either my read on its effect was off, or another constraint bound first.
 - Tomatoes reach their 20-bed cap, or land far from 14 in either direction. This wouldn't mean the 10% rate is wrong—it's also a fixed number. It would mean I misjudged how fast that rate pushes marginal cost up to price.
-- Total beds planted come in below 64. That would mean some bed wasn't worth planting—its revenue didn't cover its marginal cost. That would disprove my assumption that all 64 beds get used.
+- Total beds planted come in below 64. That would mean some bed wasn't worth planting—its revenue didn't cover its marginal cost. That would disprove my 14/20/30 prediction, which uses all 64 beds.
 
