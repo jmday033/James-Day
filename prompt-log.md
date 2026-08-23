@@ -14,6 +14,18 @@ This log records meaningful AI-assisted work, including what was requested, what
 
 **Correction or limitation:** The repository name in the original link did not match the connected repository. Work was completed in `jmday033/James-Day`. Résumé bullets were not given invented metrics; future revisions should add only outcomes that I can personally verify.
 
+## 2026-08-22 — Perfect-competition engagement brief
+
+**Tool:** ChatGPT / Codex (OpenAI)
+
+**Goal:** Develop and test a falsifiable pre-model hypothesis for the perfect-competition farm case, then add the completed brief to the portfolio repository.
+
+**AI contribution:** Explained the economics of diminishing returns, identified implicit assumptions and unsupported claims, checked whether the hypothesis could be disproved, and mechanically added the student-authored brief to the repository.
+
+**My review:** Chose and defended the predicted mix of 14 tomato beds, 20 carrot beds, and 30 mesclun beds before using Solver or building the workbook. Confirmed that the mix uses 64 beds and respects all crop caps.
+
+**Correction or limitation:** Early drafts treated every crop as stopping at `P = MC` and treated fixed diminishing-return rates as uncertain. The final brief distinguishes interior solutions from binding land, labor, and crop-cap constraints. The hypothesis remains an untested prediction until the model is built.
+
 ## Template for Future Entries
 
 ### YYYY-MM-DD — Short title
@@ -23,3 +35,4 @@ This log records meaningful AI-assisted work, including what was requested, what
 **AI contribution:**  
 **My review:**  
 **Correction or limitation:**  
+
