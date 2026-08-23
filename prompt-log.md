@@ -26,6 +26,18 @@ This log records meaningful AI-assisted work, including what was requested, what
 
 **Correction or limitation:** Early drafts treated every crop as stopping at `P = MC` and treated fixed diminishing-return rates as uncertain. The final brief distinguishes interior solutions from binding land, labor, and crop-cap constraints. The hypothesis remains an untested prediction until the model is built.
 
+## 2026-08-22 — Formal critique of perfect-competition brief
+
+**Tool:** ChatGPT / Codex (OpenAI)
+
+**Goal:** Critique the committed engagement brief without rewriting it or suggesting replacement wording.
+
+**AI contribution:** Listed implicit assumptions, identified claims not yet supported by calculations or evidence, asked three client-style questions, and tested whether the 14/20/30 hypothesis and its proposed economic mechanism could be falsified by the model.
+
+**My review:** Kept the student-authored brief unchanged and requested that the critique session be documented in the prompt log.
+
+**Correction or limitation:** The critique found that the overall hypothesis is falsifiable, but “far from 14” does not define a numerical threshold. It also distinguished given case inputs from assumptions and noted that binding land or labor constraints could affect the result independently of crop-level marginal cost.
+
 ## Template for Future Entries
 
 ### YYYY-MM-DD — Short title
