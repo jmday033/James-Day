@@ -14,8 +14,26 @@ hypothesis: "I expect 14 tomato beds, 20 carrot beds, and 30 mesclun beds becaus
 - **What decision must be made?** Maximize profit.
 - **What quantities can the farmer choose?** The farm has 64 total beds. Max tomatoes is 20, carrots is 20, mesclun is 30.
 - **What is fixed?** 720 hours of farm labor time and $20k in fixed costs. The number of temporary workers is variable, up to four.
-- **What limits the choice?** Total beds, crop caps, and labor availability are hard constraints on what can be planted. Rising marginal labor costs and fertilizer costs don't limit the choice directly, but they affect which mix is profitable.
 - **What could go wrong if the mix is poorly chosen?** Opportunity cost: assigning scarce beds and labor to a lower-value crop means giving up the profit those beds and hours could have earned in a better mix.
+
+### Constraints
+
+1. Total beds ≤ 64
+2. Tomato beds ≤ 20
+3. Carrot beds ≤ 20
+4. Mesclun beds ≤ 30
+5. Total labor ≤ 6,480 hours
+6. Temporary workers ≤ 4
+7. Bed quantities must be nonnegative whole numbers
+
+### Cost and profit inputs—not constraints
+
+- Market price per bed
+- Fertilizer cost per bed
+- Wage rates
+- $20,000 fixed cost
+- Diminishing-return percentages
+- The 36-week season
 
 ## What I am assuming
 
