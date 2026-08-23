@@ -1,50 +1,23 @@
-# Prompt Log
+---
+type: prompt-log
+owner: james-day
+started: 2026-08-17
+---
+
+# Prompt log
 
 This log records meaningful AI-assisted work, including what was requested, what required correction, and how the final result was verified.
 
-## 2026-08-17 — Portfolio biography and repository structure
+| Date | Tool | What I asked | What I got | What I did with it |
+|---|---|---|---|---|
+| 2026-08-17 | ChatGPT / Codex (OpenAI) | Compare my portfolio with a peer example and the course onboarding requirements, then create the recommended public repository structure. | A revised repository introduction, stub README files, and identification of missing Stage 0 foundation files. | Confirmed that the biography reflects my actual background, checked the structure against the course requirements, and verified that no protected or operationally sensitive information was included. |
+| 2026-08-22 | ChatGPT / Codex (OpenAI) | Help me develop and test a falsifiable pre-model hypothesis for the perfect-competition farm case, then add my completed brief to the repository. | Explanations of diminishing returns, critiques of implicit assumptions and unsupported claims, a falsifiability check, and mechanical GitHub updates. | Chose and defended the 14/20/30 mix before modeling, verified that it uses 64 beds and respects the crop caps, revised the reasoning in my own words, and committed the brief. |
+| 2026-08-22 | ChatGPT / Codex (OpenAI) | Critique my committed brief without rewriting it or suggesting replacement wording. | A list of implicit assumptions and unsupported claims, three client-style questions, and an assessment of whether the quantities and mechanism could be disproved. | Kept the brief unchanged, reviewed the identified limitations, and recorded the critique session here. |
+| 2026-08-22 | ChatGPT / Codex (OpenAI) | Check whether my prompt log follows the required template and make the structural adjustments. | A comparison against the required YAML frontmatter, table, and errors section, followed by a format conversion. | Preserved the contemporaneous session history, verified the converted entries, and adopted the required format for future additions. |
 
-**Tool:** ChatGPT / Codex (OpenAI)
+## Errors caught
 
-**Goal:** Compare this portfolio with a peer example and the course onboarding requirements, then create the recommended public repository structure.
-
-**AI contribution:** Helped revise the repository introduction, created stub README files for the portfolio folders, and identified missing Stage 0 foundation files.
-
-**My review:** Confirmed that the biography reflects my actual professional background. The repository structure was checked against the professor’s onboarding and Stage 0 pages. No protected health information or operationally sensitive information was included.
-
-**Correction or limitation:** The repository name in the original link did not match the connected repository. Work was completed in `jmday033/James-Day`. Résumé bullets were not given invented metrics; future revisions should add only outcomes that I can personally verify.
-
-## 2026-08-22 — Perfect-competition engagement brief
-
-**Tool:** ChatGPT / Codex (OpenAI)
-
-**Goal:** Develop and test a falsifiable pre-model hypothesis for the perfect-competition farm case, then add the completed brief to the portfolio repository.
-
-**AI contribution:** Explained the economics of diminishing returns, identified implicit assumptions and unsupported claims, checked whether the hypothesis could be disproved, and mechanically added the student-authored brief to the repository.
-
-**My review:** Chose and defended the predicted mix of 14 tomato beds, 20 carrot beds, and 30 mesclun beds before using Solver or building the workbook. Confirmed that the mix uses 64 beds and respects all crop caps.
-
-**Correction or limitation:** Early drafts treated every crop as stopping at `P = MC` and treated fixed diminishing-return rates as uncertain. The final brief distinguishes interior solutions from binding land, labor, and crop-cap constraints. The hypothesis remains an untested prediction until the model is built.
-
-## 2026-08-22 — Formal critique of perfect-competition brief
-
-**Tool:** ChatGPT / Codex (OpenAI)
-
-**Goal:** Critique the committed engagement brief without rewriting it or suggesting replacement wording.
-
-**AI contribution:** Listed implicit assumptions, identified claims not yet supported by calculations or evidence, asked three client-style questions, and tested whether the 14/20/30 hypothesis and its proposed economic mechanism could be falsified by the model.
-
-**My review:** Kept the student-authored brief unchanged and requested that the critique session be documented in the prompt log.
-
-**Correction or limitation:** The critique found that the overall hypothesis is falsifiable, but “far from 14” does not define a numerical threshold. It also distinguished given case inputs from assumptions and noted that binding land or labor constraints could affect the result independently of crop-level marginal cost.
-
-## Template for Future Entries
-
-### YYYY-MM-DD — Short title
-
-**Tool:**  
-**Goal:**  
-**AI contribution:**  
-**My review:**  
-**Correction or limitation:**  
-
+- 2026-08-17 — The original repository link did not match the connected repository. Work was verified in `jmday033/James-Day`.
+- 2026-08-22 — Early reasoning treated every crop as stopping at `P = MC`. The brief was corrected to distinguish an interior solution from binding land, labor, and crop-cap constraints.
+- 2026-08-22 — Early reasoning treated the case's fixed diminishing-return rates as though the rates themselves might be wrong. The final brief treats those rates as given inputs and makes the predicted economic effects falsifiable.
+- 2026-08-22 — The phrase “far from 14” does not define a numerical threshold. The overall 14/20/30 hypothesis remains falsifiable, but this part requires judgment when comparing the prediction with the model.
