@@ -15,6 +15,8 @@ This log records meaningful AI-assisted work, including what was requested, what
 | 2026-08-22 | ChatGPT / Codex (OpenAI) | Critique my committed brief without rewriting it or suggesting replacement wording. | A list of implicit assumptions and unsupported claims, three client-style questions, and an assessment of whether the quantities and mechanism could be disproved. | Kept the brief unchanged, reviewed the identified limitations, and recorded the critique session here. |
 | 2026-08-22 | ChatGPT / Codex (OpenAI) | Check whether my prompt log follows the required template and make the structural adjustments. | A comparison against the required YAML frontmatter, table, and errors section, followed by a format conversion. | Preserved the contemporaneous session history, verified the converted entries, and adopted the required format for future additions. |
 
+| 2026-08-22 | ChatGPT / Codex (OpenAI) | Explain marginal cost, average variable cost, and the shutdown rule before I begin modeling. | A conceptual explanation connecting the cost of the next bed, variable cost per bed, the `P = MC` production rule, and the `P < AVC` shutdown condition. | Used the explanation as a pre-model knowledge review and kept the hypothesis and brief unchanged; this records the learning attempt rather than claiming mastery. |
+
 ## Errors caught
 
 - 2026-08-17 — The original repository link did not match the connected repository. Work was verified in `jmday033/James-Day`.
