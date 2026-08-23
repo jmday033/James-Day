@@ -34,7 +34,7 @@ Carrots reach 20 and mesclun reaches 30 because it is worthwhile to keep plantin
 
 ### Decision rule: P = MC
 
-Not every crop's optimum will land at P = MC. A crop can stop short of that point if it hits its bed cap first, or if the farm runs out of land or labor before marginal cost ever catches up to price. Which of these binds depends on the crop: for tomatoes, I expect marginal cost to rise fast enough to reach price before the cap does; for carrots and mesclun, I expect the cap to bind first.
+Not every crop stops at P = MC. A crop can also stop early because it hits its bed cap, or because the farm runs out of land or labor. Which one applies depends on the crop: for tomatoes, I think rising marginal cost will hit the price first. For carrots and mesclun, I think they'll hit their bed caps first.
 
 ### Labor relationship
 
@@ -44,10 +44,10 @@ Labor(q) = q × weekly hours per bed × 36 × (1 + diminishing-return rate)^q
 
 ## How I would know I was wrong
 
-I would know I was wrong under any of the following outcomes:
+I would know I was wrong under any of these outcomes:
 
-- Carrots finish below 20 beds. Since their diminishing-return rate is a fixed input to the case, a below-cap result wouldn't mean the rate itself is wrong—it would mean I misjudged how that rate translates into economic effects, or that another actual constraint (total bed availability or the temporary-labor limit) became binding before the cap did.
-- Mesclun finishes below 30 beds, for the same reason: a fixed input producing an outcome I didn't predict means my read on its effects was wrong, or another actual constraint bound first.
-- Tomatoes reach their 20-bed cap, or finish substantially far from 14 in either direction. This wouldn't mean the stated 10% rate is wrong—it's a fixed input—it would mean I misjudged how quickly that rate drives marginal cost up against price.
-- Total beds planted come in below 64. Idle beds would normally mean that no permitted additional bed earns enough revenue to cover its marginal cost. That outcome would disprove my assumption that all 64 beds should be planted.
+- Carrots finish below 20 beds. Their diminishing-return rate is a fixed number in the case, so this wouldn't mean the rate is wrong. It would mean I misjudged its effect, or that another real constraint (total beds or the temporary-labor limit) ran out first.
+- Mesclun finishes below 30 beds, for the same reason: something other than the rate itself would have to explain it—either my read on its effect was off, or another constraint bound first.
+- Tomatoes reach their 20-bed cap, or land far from 14 in either direction. This wouldn't mean the 10% rate is wrong—it's also a fixed number. It would mean I misjudged how fast that rate pushes marginal cost up to price.
+- Total beds planted come in below 64. That would mean some bed wasn't worth planting—its revenue didn't cover its marginal cost. That would disprove my assumption that all 64 beds get used.
 
