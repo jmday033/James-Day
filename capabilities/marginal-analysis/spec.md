@@ -39,7 +39,7 @@ Every planted bed earns its full stated revenue per bed.
 | `TOMATO_DIM` | 10% | per additional bed | Case scenario |
 | `TOMATO_CAP` | 20 | beds | Case scenario |
 | `CARROT_PRICE` | $2,094 | dollars/bed | Case scenario |
-| `CARROT_HOURS` | 0.833 | hours/week/bed | Case scenario |
+| `CARROT_HOURS` | `TOMATO_HOURS ÷ 3` (displayed as 0.833) | hours/week/bed | Case scenario |
 | `CARROT_FERTILIZER` | $440 | dollars/bed | Case scenario |
 | `CARROT_DIM` | 2.5% | per additional bed | Case scenario |
 | `CARROT_CAP` | 20 | beds | Case scenario |
@@ -49,7 +49,7 @@ Every planted bed earns its full stated revenue per bed.
 | `MESCLUN_DIM` | 1.25% | per additional bed | Case scenario |
 | `MESCLUN_CAP` | 30 | beds | Case scenario |
 
-Use the published underlying inputs exactly as shown. The displayed $34.72 farmer rate and $17.36 temporary rate are rounded descriptions, not calculation inputs. Preserve full precision by deriving both rates from salary and paid hours.
+Use the published underlying relationships exactly. The displayed $34.72 farmer rate, $17.36 temporary rate, and 0.833 carrot labor figure are rounded descriptions, not calculation inputs. Preserve full precision by deriving both wage rates from salary and paid hours and deriving `CARROT_HOURS` as `TOMATO_HOURS / 3`.
 
 Create workbook-level Excel named ranges for all inputs, decision cells, and major outputs. Name the decision cells `TOMATO_BEDS`, `CARROT_BEDS`, and `MESCLUN_BEDS`.
 
@@ -81,6 +81,9 @@ FARMER_SALARY / FARMER_TOTAL_HOURS
 
 TEMP_RATE =
 TEMP_WORKER_SALARY / TEMP_HOURS_PER_WORKER
+
+CARROT_HOURS =
+TOMATO_HOURS / 3
 
 CROP_LABOR(q) =
 q × CROP_HOURS × WEEKS × (1 + CROP_DIM)^q
@@ -195,7 +198,7 @@ Validation failures display `FAIL` but do not prevent Solver from running.
 The finished workbook must satisfy all of the following acceptance criteria:
 
 - At `q = 1`, tomato labor equals 99 hours.
-- At `q = 1`, carrot labor is approximately 30.74 hours.
+- At `q = 1`, carrot labor is approximately 30.75 hours.
 - At `q = 1`, mesclun labor is approximately 45.56 hours.
 - The optimized result is 10 tomato beds, 20 carrot beds, and 30 mesclun beds.
 - Optimized profit is approximately $42,762.
@@ -243,4 +246,16 @@ The model must report:
 ## Audit findings
 
 - **Optimization defect corrected:** The first workbook displayed the published 10/20/30 result in the Solver decision cells but did not independently derive it. The revised workbook includes a formula-driven exhaustive search of all 13,671 permitted whole-number crop combinations, applies the land and temporary-worker constraints to every row, and reports the highest-profit feasible mix on the `Optimization` sheet. The editable Solver cells remain available for the required GRG Nonlinear test and are reconciled to the independent formula result.
-- **Wage-rate defect corrected:** The first build treated the displayed $34.72 and $17.36 wage rates as exact inputs. The case actually defines $50,000 and $25,000 seasonal salaries and describes the hourly rates as implied values. Deriving the rates at full precision produces approximately $104,118 in labor cost and $42,762 in profit at 10/20/30. The earlier carrot-price adjustment theory was rejected because it only compensated for understated labor cost.
+- **Rounded-input defects corrected:** The first build treated the displayed $34.72 and $17.36 wage rates as exact inputs. A second build correctly derived the wage rates but still treated displayed carrot labor of 0.833 as exact, even though the case defines it as tomato labor divided by three. The final specification derives all three values at full precision. At 10/20/30, the model calculates 5,277.22 labor hours, $104,118.34 labor cost, and $42,761.66 profit, which pass the published rounded check figures. The earlier carrot-price adjustment theory was rejected because it only compensated for understated labor cost.
+
+### Required audit checks
+
+| Check | What I checked | What I found | What I did |
+|---|---|---|---|
+| `q = 1` by hand | `1 × 2.5 × 36 × 1.10` | Tomato labor equals 99.00 hours; the workbook agrees. | Kept the exponent-based labor formula. |
+| Farm Profit Lab cross-check | Tomato marginal cost at beds 10 and 11 | Workbook values are $8,248.59 and $9,390.72; these agree with the lab/published checks of about $8,249 and $9,391 within ±$1. | Kept the standalone MC formulas. |
+| Two starting points | 0/0/0 and 20/0/0 | Both return the feasible 10/20/30 mix and approximately $42,762 profit. | Recorded both runs on `Checks`; no local-optimum conflict was found. |
+| Published check figures | Mix, profit, temporary workers, and standalone crossings | 10/20/30, $42,761.66, 3.1647 workers, and crossings 10/10/6 all pass the stated tolerances. | Corrected the rounded-input definitions in this spec and regenerated the workbook. |
+| Formulas, not pasted values | Derived wages, carrot hours, crop labor, costs, profit, optimizer results, and validation statuses | Spot-checked cells reference named inputs and formulas; the error scan found no formula-error cells. | Preserved formula-driven calculations and named ranges throughout. |
+
+The standalone schedule shows a tomato marginal-cost dip around six beds. This Stage 2 audit records the observation only; its economic explanation belongs in Stage 3.
