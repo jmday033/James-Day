@@ -31,7 +31,11 @@ This log records meaningful AI-assisted work, including what was requested, what
 
 | 2026-08-23 | ChatGPT / Codex (OpenAI) | Add a tab with graphs showing the crop quantities that maximize profit. | A formula-linked `Optimum Charts` tab with tomato, carrot, and mesclun profit curves plus a bar chart of the recommended crop mix. | Verified visually that tomato profit peaks at 10 beds and that carrot and mesclun profit rises to their 20- and 30-bed caps. |
 
+| 2026-08-23 | ChatGPT / Codex (OpenAI) | Trace why the exact model missed the published $42,762 profit check and fix the specification before rebuilding. | The wage rates were rounded display values derived from $50,000 and $25,000 salaries, not exact raw inputs. | Replaced the rounded wage inputs with salary and paid-hour inputs, derived both rates at full precision, rejected the earlier carrot-price theory, and authorized workbook regeneration. |
+
 ## Errors caught
+
+- 2026-08-23 — The specification incorrectly treated $34.72 and $17.36 as exact wage inputs. The case defines $50,000 and $25,000 seasonal salaries; deriving rates without rounding restores the published $104,118 labor cost and $42,762 profit. The earlier proposed carrot-price adjustment was a compensating error and was removed.
 
 - 2026-08-23 — The first workbook hardcoded the published 10/20/30 mix into the editable Solver cells and validated it, but did not independently derive the optimum. The revised workbook evaluates every permitted whole-number mix with formulas and returns the highest-profit feasible result.
 
