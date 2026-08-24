@@ -27,7 +27,11 @@ This log records meaningful AI-assisted work, including what was requested, what
 
 | 2026-08-23 | ChatGPT / Codex (OpenAI) | Add the Farm Profit Lab costs to my committed engagement brief. | A mechanical update listing fixed cost, farmer and temporary wage rates, and fertilizer cost per bed for all three crops. | Verified the amounts against the committed model specification and added the cost table without changing my hypothesis. |
 
+| 2026-08-23 | ChatGPT / Codex (OpenAI) | Fix the workbook because it displayed the optimum but did not help solve for it. | A formula-driven exhaustive search of all 13,671 crop combinations, a visible recommended-optimum panel, and reconciliation against the editable Solver cells. | Verified that the search independently returns 10 tomato, 20 carrot, and 30 mesclun beds with $42,775.16 profit and retained the documented published-profit discrepancy. |
+
 ## Errors caught
+
+- 2026-08-23 — The first workbook hardcoded the published 10/20/30 mix into the editable Solver cells and validated it, but did not independently derive the optimum. The revised workbook evaluates every permitted whole-number mix with formulas and returns the highest-profit feasible result.
 
 - 2026-08-23 — Exact published inputs produce profit of $42,775.16, which misses the $42,762 check figure by $13.16 and exceeds the ±$1 tolerance. A carrot price near $2,093.34 reproduces the check, suggesting the published figure may use an unrounded input; the model retains the stated $2,094 input and displays `FAIL` honestly.
 
