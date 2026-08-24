@@ -21,7 +21,11 @@ This log records meaningful AI-assisted work, including what was requested, what
 | 2026-08-23 | ChatGPT / Codex (OpenAI) | Resolve the draft spec's zero-labor blended-rate formula and define independent crop marginal-cost schedules. | Two precise conventions: return a zero blended rate when total labor is zero, and calculate each crop's marginal cost independently using fertilizer and allocated labor while excluding fixed cost. | Added my formulas and explanations to the committed draft spec before generating the workbook. |
 | 2026-08-23 | ChatGPT / Codex (OpenAI) | Critique my model specification without rewriting it, identify genuine builder ambiguities, and ask what was missing. | A diagnostic list separating material model questions from presentation choices. | Supplied the economic, Solver, worksheet, schedule, validation, and output decisions myself, then authorized their mechanical incorporation into the draft specification. |
 
+| 2026-08-23 | ChatGPT / Codex (OpenAI) | Build the workbook from my specification and ask about any remaining ambiguity first. | Three questions about the crossing rule, crop-level labor-cost allocation, and validation tolerances. | Defined the missing rules myself and added them to the specification before authorizing workbook construction. |
+
 ## Errors caught
+
+- 2026-08-23 — The specification’s crossing rule, mixed-model labor allocation, and acceptance-test tolerances were not precise enough to implement consistently. I supplied exact definitions before workbook construction.
 
 - 2026-08-23 — The draft specification left material implementation choices unresolved, including standalone labor allocation, schedule bounds, Solver starts, decision-cell behavior, constraint reporting, and fixed-cost treatment. I supplied the missing decisions and incorporated them before workbook construction.
 - 2026-08-23 — The first draft divided labor cost by zero at the 0/0/0 starting point and did not define the scope of crop marginal-cost schedules. The revised spec uses a conditional blended-rate formula and independent crop schedules that exclude fixed cost.
