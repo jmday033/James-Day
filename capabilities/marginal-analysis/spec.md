@@ -233,4 +233,5 @@ The model must report:
 
 ## Audit findings
 
+- **Optimization defect corrected:** The first workbook displayed the published 10/20/30 result in the Solver decision cells but did not independently derive it. The revised workbook includes a formula-driven exhaustive search of all 13,671 permitted whole-number crop combinations, applies the land and temporary-worker constraints to every row, and reports the highest-profit feasible mix on the `Optimization` sheet. The editable Solver cells remain available for the required GRG Nonlinear test and are reconciled to the independent formula result.
 - **Published profit check:** Using the published inputs exactly, the model calculates profit of $42,775.16, which differs from the published check figure of $42,762 by $13.16. A carrot price of approximately $2,093.34 reproduces the check figure, suggesting the published result may use an unrounded underlying input. The published inputs remain unchanged, and the workbook reports the acceptance test as `FAIL` under the specified ±$1 tolerance.
