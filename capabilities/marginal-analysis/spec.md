@@ -132,7 +132,21 @@ Use schedule ranges of 0–20 for tomatoes, 0–20 for carrots, and 0–30 for m
 
 Standalone crop cost includes that crop's fertilizer and labor cost. `FIXED_COST` is separate from farmer labor compensation. Include it once in total farm profit, but exclude it from marginal-cost calculations because it does not change with production.
 
-Define the price–marginal-cost crossing as the largest integer quantity for which the next bed's marginal cost would exceed price.
+Define the price–marginal-cost crossing as the integer quantity `q` satisfying both conditions:
+
+```text
+MC(q) ≤ PRICE
+MC(q + 1) > PRICE
+```
+
+Allocate mixed-model labor cost using the farm-wide blended labor rate:
+
+```text
+CROP_LABOR_COST =
+CROP_LABOR_HOURS × BLENDED_LABOR_RATE
+```
+
+This ensures that the sum of crop-level labor costs equals total farm labor cost.
 
 ## Optimization
 
@@ -183,6 +197,15 @@ The finished workbook must satisfy all of the following acceptance criteria:
 - Every calculated cell contains a formula.
 - The workbook contains no error cells.
 - Every constraint has a visible status check.
+
+Use these validation tolerances:
+
+- Labor hours: ±0.01 hour
+- Temporary workers: ±0.01 worker
+- Dollar figures: ±$1
+- Marginal-cost figures: ±$1
+- Crossing quantities: exact stated integer
+- Bed quantities: exact stated integer
 
 Show every constraint in a table with its actual value, limit, slack, and `PASS` or `FAIL` status. Record this table and all acceptance-criteria checks on the `Checks` sheet.
 
