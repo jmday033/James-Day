@@ -28,8 +28,9 @@ Every planted bed earns its full stated revenue per bed.
 | `FIXED_COST` | $20,000 | dollars/season | Case scenario |
 | `TOTAL_BED_CAP` | 64 | beds | Case scenario |
 | `FARMER_HOURS` | 720 | hours | Case scenario |
-| `FARMER_RATE` | $34.72 | dollars/hour | Case scenario |
-| `TEMP_RATE` | $17.36 | dollars/hour | Case scenario |
+| `FARMER_SALARY` | $50,000 | dollars/season | Case scenario |
+| `FARMER_TOTAL_HOURS` | 1,440 | paid hours/season | Case scenario |
+| `TEMP_WORKER_SALARY` | $25,000 | dollars/worker/season | Case scenario |
 | `TEMP_HOURS_PER_WORKER` | 1,440 | hours/worker | Case scenario |
 | `TEMP_WORKER_CAP` | 4 | workers | Case scenario |
 | `TOMATO_PRICE` | $8,800 | dollars/bed | Case scenario |
@@ -48,7 +49,7 @@ Every planted bed earns its full stated revenue per bed.
 | `MESCLUN_DIM` | 1.25% | per additional bed | Case scenario |
 | `MESCLUN_CAP` | 30 | beds | Case scenario |
 
-Use the published inputs exactly as shown, including 0.833 carrot labor hours, $34.72 farmer labor, and $17.36 temporary labor.
+Use the published underlying inputs exactly as shown. The displayed $34.72 farmer rate and $17.36 temporary rate are rounded descriptions, not calculation inputs. Preserve full precision by deriving both rates from salary and paid hours.
 
 Create workbook-level Excel named ranges for all inputs, decision cells, and major outputs. Name the decision cells `TOMATO_BEDS`, `CARROT_BEDS`, and `MESCLUN_BEDS`.
 
@@ -75,6 +76,12 @@ The `Optimum Charts` tab and its formula-linked source tables are required. Colo
 ## Calculation logic
 
 ```text
+FARMER_RATE =
+FARMER_SALARY / FARMER_TOTAL_HOURS
+
+TEMP_RATE =
+TEMP_WORKER_SALARY / TEMP_HOURS_PER_WORKER
+
 CROP_LABOR(q) =
 q × CROP_HOURS × WEEKS × (1 + CROP_DIM)^q
 
@@ -236,4 +243,4 @@ The model must report:
 ## Audit findings
 
 - **Optimization defect corrected:** The first workbook displayed the published 10/20/30 result in the Solver decision cells but did not independently derive it. The revised workbook includes a formula-driven exhaustive search of all 13,671 permitted whole-number crop combinations, applies the land and temporary-worker constraints to every row, and reports the highest-profit feasible mix on the `Optimization` sheet. The editable Solver cells remain available for the required GRG Nonlinear test and are reconciled to the independent formula result.
-- **Published profit check:** Using the published inputs exactly, the model calculates profit of $42,775.16, which differs from the published check figure of $42,762 by $13.16. A carrot price of approximately $2,093.34 reproduces the check figure, suggesting the published result may use an unrounded underlying input. The published inputs remain unchanged, and the workbook reports the acceptance test as `FAIL` under the specified ±$1 tolerance.
+- **Wage-rate defect corrected:** The first build treated the displayed $34.72 and $17.36 wage rates as exact inputs. The case actually defines $50,000 and $25,000 seasonal salaries and describes the hourly rates as implied values. Deriving the rates at full precision produces approximately $104,118 in labor cost and $42,762 in profit at 10/20/30. The earlier carrot-price adjustment theory was rejected because it only compensated for understated labor cost.
