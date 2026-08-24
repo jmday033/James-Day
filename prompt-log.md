@@ -33,13 +33,19 @@ This log records meaningful AI-assisted work, including what was requested, what
 
 | 2026-08-23 | ChatGPT / Codex (OpenAI) | Trace why the exact model missed the published $42,762 profit check and fix the specification before rebuilding. | The wage rates were rounded display values derived from $50,000 and $25,000 salaries, not exact raw inputs. | Replaced the rounded wage inputs with salary and paid-hour inputs, derived both rates at full precision, rejected the earlier carrot-price theory, and authorized workbook regeneration. |
 
+
+| 2026-08-23 | ChatGPT / Codex (OpenAI) | Reconcile the remaining published-profit difference after correcting wage-rate precision. | Identified that carrot labor was also a rounded display value: the case defines it as tomato labor divided by three, or 0.833333…, rather than exact 0.833. | Corrected the specification first, regenerated the workbook, and verified 10/20/30 with $42,761.66 profit within the ±$1 acceptance tolerance. |
+| 2026-08-23 | ChatGPT / Codex (OpenAI) | Diagnose why desktop Excel showed zeros and `#VALUE!` even though the generated preview passed. | Found that all workbook names had been exported as relative references, so Excel shifted them based on formula location. | Changed the build to export 47 absolute workbook-level names, regenerated the workbook, and inspected the final package to confirm zero relative names. |
+| 2026-08-23 | ChatGPT / Codex (OpenAI) | Repair missing or incompatible chart objects and make the charts resemble the instructor example. | Rebuilt the MC-versus-price charts from contiguous formula-linked ranges and retained a recommended-mix chart. | Verified four chart objects, populated source tables, passing model checks, and no XML or formula-error findings before upload. |
+| 2026-08-23 | ChatGPT / Codex (OpenAI) | Fix a GitHub workbook download that Excel reported as corrupted. | Determined that the first binary upload was truncated even though GitHub accepted it. | Re-uploaded the workbook in verified chunks and compared the Git blob checksum to the local file before committing. |
+
 ## Errors caught
 
 - 2026-08-23 — The specification incorrectly treated $34.72 and $17.36 as exact wage inputs. The case defines $50,000 and $25,000 seasonal salaries; deriving rates without rounding restores the published $104,118 labor cost and $42,762 profit. The earlier proposed carrot-price adjustment was a compensating error and was removed.
 
 - 2026-08-23 — The first workbook hardcoded the published 10/20/30 mix into the editable Solver cells and validated it, but did not independently derive the optimum. The revised workbook evaluates every permitted whole-number mix with formulas and returns the highest-profit feasible result.
 
-- 2026-08-23 — Exact published inputs produce profit of $42,775.16, which misses the $42,762 check figure by $13.16 and exceeds the ±$1 tolerance. A carrot price near $2,093.34 reproduces the check, suggesting the published figure may use an unrounded input; the model retains the stated $2,094 input and displays `FAIL` honestly.
+- 2026-08-23 — **Superseded finding:** An intermediate build produced $42,775.16 and led to a proposed carrot-price adjustment. Later auditing showed that this was a compensating error: wage rates and carrot labor were rounded display values. Deriving wages from salaries and `CARROT_HOURS = TOMATO_HOURS / 3` reproduces $42,761.66, so the price-adjustment theory was rejected.
 
 - 2026-08-23 — The specification’s crossing rule, mixed-model labor allocation, and acceptance-test tolerances were not precise enough to implement consistently. I supplied exact definitions before workbook construction.
 
@@ -50,3 +56,7 @@ This log records meaningful AI-assisted work, including what was requested, what
 - 2026-08-22 — Early reasoning treated every crop as stopping at `P = MC`. The brief was corrected to distinguish an interior solution from binding land, labor, and crop-cap constraints.
 - 2026-08-22 — Early reasoning treated the case's fixed diminishing-return rates as though the rates themselves might be wrong. The final brief treats those rates as given inputs and makes the predicted economic effects falsifiable.
 - 2026-08-22 — The phrase “far from 14” does not define a numerical threshold. The overall 14/20/30 hypothesis remains falsifiable, but this part requires judgment when comparing the prediction with the model.
+
+- 2026-08-23 — The workbook generator exported named ranges as relative references. Cached previews appeared correct, but desktop Excel recalculated them as shifted references and displayed zeros and `#VALUE!`. The final build uses 47 absolute names.
+- 2026-08-23 — Manually assembled chart-series objects were not reliable in desktop Excel. The charts were regenerated from contiguous formula-linked source ranges.
+- 2026-08-23 — A GitHub binary upload was truncated. The replacement upload was accepted only after its Git blob checksum matched the local workbook.
