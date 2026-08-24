@@ -3,7 +3,7 @@ type: spec
 capability: marginal-analysis
 engagement: perfect-competition
 date: 2026-08-23
-status: draft
+status: committed
 ---
 
 # Marginal Analysis — model specification
@@ -252,12 +252,12 @@ The model must report:
 
 ### Required audit checks
 
-| Check | What I checked | What I found | What I did |
-|---|---|---|---|
-| `q = 1` by hand | `1 × 2.5 × 36 × 1.10` | Tomato labor equals 99.00 hours; the workbook agrees. | Kept the exponent-based labor formula. |
-| Farm Profit Lab cross-check | Tomato marginal cost at beds 10 and 11 | Workbook values are $8,248.59 and $9,390.72; these agree with the lab/published checks of about $8,249 and $9,391 within ±$1. | Kept the standalone MC formulas. |
-| Two starting points | 0/0/0 and 20/0/0 | **Pending:** the independent exhaustive search returns 10/20/30, but the two required GRG Nonlinear Solver runs have not yet been completed in desktop Excel. | Run Solver from both starting points, record both actual results, and select the feasible result with higher profit if they differ. |
-| Published check figures | Mix, profit, temporary workers, and standalone crossings | 10/20/30, $42,761.66, 3.1647 workers, and crossings 10/10/6 all pass the stated tolerances. | Corrected the rounded-input definitions in this spec and regenerated the workbook. |
-| Formulas, not pasted values | Derived wages, carrot hours, crop labor, costs, profit, optimizer results, and validation statuses | Spot-checked cells reference named inputs and formulas; the error scan found no formula-error cells. | Preserved formula-driven calculations and named ranges throughout. |
+| Check | What I checked | What it could catch | What I found | What I did |
+|---|---|---|---|---|
+| `q = 1` by hand | `1 × 2.5 × 36 × 1.10` | A dropped or misplaced exponent in the labor formula. | Tomato labor equals 99.00 hours; the workbook agrees. | Kept the exponent-based labor formula. |
+| Farm Profit Lab cross-check | Tomato marginal cost at beds 10 and 11 | An incorrect intermediate labor-cost or marginal-cost calculation hidden by correct-looking final totals. | Workbook values are $8,248.59 and $9,390.72; these agree with the lab/published checks of about $8,249 and $9,391 within ±$1. | Kept the standalone MC formulas. |
+| Two starting points | GRG Nonlinear from 0/0/0 and 20/0/0 | A local optimum or starting-point dependence masquerading as the best solution. | Both runs returned the same feasible 10/20/30 mix and $42,761.66 profit. | Recorded both completed Solver runs on the `Checks` sheet and retained 10/20/30. |
+| Published check figures | Mix, profit, temporary workers, and standalone crossings | Aggregate errors in inputs, cost allocation, constraints, or optimization. | 10/20/30, $42,761.66, 3.1647 workers, and crossings 10/10/6 all pass the stated tolerances. | Corrected the rounded-input definitions in this spec and regenerated the workbook. |
+| Formulas, not pasted values | Derived wages, carrot hours, crop labor, costs, profit, optimizer results, and validation statuses | Hardcoded results that would fail when an input changes, plus broken references or formula errors. | Spot-checked cells reference named inputs and formulas; the error scan found no formula-error cells. | Preserved formula-driven calculations and named ranges throughout. |
 
 The standalone schedule shows a tomato marginal-cost dip around six beds. This Stage 2 audit records the observation only; its economic explanation belongs in Stage 3.
