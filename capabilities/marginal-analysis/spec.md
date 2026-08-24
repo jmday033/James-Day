@@ -261,3 +261,13 @@ The model must report:
 | Formulas, not pasted values | Derived wages, carrot hours, crop labor, costs, profit, optimizer results, and validation statuses | Hardcoded results that would fail when an input changes, plus broken references or formula errors. | Spot-checked cells reference named inputs and formulas; the error scan found no formula-error cells. | Preserved formula-driven calculations and named ranges throughout. |
 
 The standalone schedule shows a tomato marginal-cost dip around six beds. This Stage 2 audit records the observation only; its economic explanation belongs in Stage 3.
+
+## Stage 3 comparison rules
+
+The committed engagement brief is frozen at the original prediction of 14 tomato beds, 20 carrot beds, and 30 mesclun beds. It will not be revised after seeing the model result.
+
+- **Land constraint:** The hypothesis predicts that all 64 beds are used. The model selects 60 beds, leaving four unused, so the land constraint is slack. This contradicts the prediction that the 14/20/30 mix would use the farm exactly.
+- **Meaning of “far from 14”:** A tomato result within two beds of 14 (12–16 beds) counts as close to the prediction. A difference of three or more beds counts as materially far. The model result of 10 tomato beds is therefore far from the prediction.
+- **Temporary-labor convention:** The base model treats temporary workers as divisible seasonal worker-equivalents and calculates 3.1647 workers at the optimum. Requiring whole workers would make labor cost lumpy and would be a different scenario, so Stage 3 will identify this convention as a model limitation rather than silently changing it.
+
+These rules fix the interpretation before the Stage 3 comparison. They do not change the original hypothesis or explain the tomato marginal-cost dip.
