@@ -77,7 +77,7 @@ LABOR_COST =
 + (TEMP_HOURS × TEMP_RATE)
 
 BLENDED_LABOR_RATE =
-LABOR_COST / TOTAL_LABOR
+IF(TOTAL_LABOR = 0, 0, LABOR_COST / TOTAL_LABOR)
 
 FERTILIZER_COST =
 (TOMATO_BEDS × TOMATO_FERTILIZER)
@@ -98,9 +98,13 @@ FIXED_COST + VARIABLE_COST
 PROFIT =
 TOTAL_REVENUE - TOTAL_COST
 
-MARGINAL_COST(q) =
-TOTAL_COST(q) - TOTAL_COST(q - 1)
+CROP_MARGINAL_COST(q) =
+CROP_TOTAL_COST(q) - CROP_TOTAL_COST(q - 1)
 ```
+
+The conditional blended-rate formula prevents division by zero at the 0/0/0 Solver starting point.
+
+Each crop's marginal-cost schedule is calculated independently, with the other two crop quantities set to zero. The schedule includes the crop's fertilizer and allocated labor costs but excludes fixed cost because fixed cost does not change when another bed is planted.
 
 The optimization must enforce:
 
@@ -121,6 +125,8 @@ TOMATO_BEDS, CARROT_BEDS, and MESCLUN_BEDS are nonnegative integers
 - Crop-bed decision quantities are nonnegative whole numbers.
 - Labor cost uses the farmer/temporary split above, and `BLENDED_LABOR_RATE` is calculated from total farm labor cost divided by total farm labor hours.
 - Fixed cost is included once in total farm cost and profit.
+- Each standalone crop marginal-cost schedule sets the other two crop quantities to zero.
+- Fixed cost is excluded from standalone crop marginal cost because it does not change with an additional bed.
 
 ## Validation rules
 
