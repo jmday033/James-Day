@@ -37,6 +37,19 @@ With four temporary workers, the maximum labor available is:
 
 Profit is calculated using market prices, fertilizer costs, wage rates, the $20,000 fixed cost, diminishing-return percentages, and the 36-week growing season. These values affect the objective function but are not constraints.
 
+### Farm Profit Lab cost inputs
+
+| Cost input | Amount |
+|---|---:|
+| Fixed cost | $20,000 per season |
+| Farmer labor | $34.72 per hour |
+| Temporary labor | $17.36 per hour |
+| Tomato fertilizer | $880 per bed |
+| Carrot fertilizer | $440 per bed |
+| Mesclun fertilizer | $880 per bed |
+
+Labor cost rises with the hours required by the selected crop mix. The first 720 hours are farmer labor; additional hours are supplied by temporary workers, up to the four-worker limit.
+
 ## What I am assuming
 
 The model assumes stable prices and wages, good weather, no significant pest losses, and that each planted bed produces a harvestable crop. It does not assume that all 64 beds will be planted; Solver determines whether using every bed or leaving some beds idle maximizes profit.
@@ -66,4 +79,3 @@ I would know I was wrong under any of these outcomes:
 - Carrots finish below 20 beds. Their diminishing-return rate is a fixed number in the case, so this wouldn't mean the rate is wrong. It would mean I misjudged its effect, or that another real constraint (total beds or the temporary-labor limit) ran out first.
 - Mesclun finishes below 30 beds, for the same reason: something other than the rate itself would have to explain it—either my read on its effect was off, or another constraint bound first.
 - Tomatoes reach their 20-bed cap, or land far from 14 in either direction. This wouldn't mean the 10% rate is wrong—it's also a fixed number. It would mean I misjudged how fast that rate pushes marginal cost up to price.
-
