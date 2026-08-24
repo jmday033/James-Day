@@ -23,7 +23,11 @@ This log records meaningful AI-assisted work, including what was requested, what
 
 | 2026-08-23 | ChatGPT / Codex (OpenAI) | Build the workbook from my specification and ask about any remaining ambiguity first. | Three questions about the crossing rule, crop-level labor-cost allocation, and validation tolerances. | Defined the missing rules myself and added them to the specification before authorizing workbook construction. |
 
+| 2026-08-23 | ChatGPT / Codex (OpenAI) | Build and verify the formula-driven workbook against the published check figures. | The calculation reproduced every stated numerical check except profit: exact published inputs produced $42,775.16 rather than $42,762. | Kept the published inputs unchanged, identified that a carrot price near $2,093.34 reproduces the check figure, and recorded the discrepancy as an audit finding instead of forcing the workbook to pass. |
+
 ## Errors caught
+
+- 2026-08-23 — Exact published inputs produce profit of $42,775.16, which misses the $42,762 check figure by $13.16 and exceeds the ±$1 tolerance. A carrot price near $2,093.34 reproduces the check, suggesting the published figure may use an unrounded input; the model retains the stated $2,094 input and displays `FAIL` honestly.
 
 - 2026-08-23 — The specification’s crossing rule, mixed-model labor allocation, and acceptance-test tolerances were not precise enough to implement consistently. I supplied exact definitions before workbook construction.
 
