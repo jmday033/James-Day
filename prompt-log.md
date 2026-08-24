@@ -39,6 +39,8 @@ This log records meaningful AI-assisted work, including what was requested, what
 | 2026-08-23 | ChatGPT / Codex (OpenAI) | Repair missing or incompatible chart objects and make the charts resemble the instructor example. | Rebuilt the MC-versus-price charts from contiguous formula-linked ranges and retained a recommended-mix chart. | Verified four chart objects, populated source tables, passing model checks, and no XML or formula-error findings before upload. |
 | 2026-08-23 | ChatGPT / Codex (OpenAI) | Fix a GitHub workbook download that Excel reported as corrupted. | Determined that the first binary upload was truncated even though GitHub accepted it. | Re-uploaded the workbook in verified chunks and compared the Git blob checksum to the local file before committing. |
 
+| 2026-08-24 | ChatGPT / Codex (OpenAI) | Incorporate instructor feedback about the land constraint, fractional temporary labor, and the undefined phrase “far from 14” without changing the frozen engagement brief. | Identified that the 60-bed optimum leaves four beds idle, confirmed the model’s fractional-worker convention, and proposed a concrete pre-Stage 3 comparison threshold. | Kept the 14/20/30 brief unchanged; recorded that 12–16 tomato beds count as close and a difference of three or more beds counts as materially far; carried the land slack and fractional-worker convention into the Stage 3 comparison rules. |
+
 ## Errors caught
 
 - 2026-08-23 — The specification incorrectly treated $34.72 and $17.36 as exact wage inputs. The case defines $50,000 and $25,000 seasonal salaries; deriving rates without rounding restores the published $104,118 labor cost and $42,762 profit. The earlier proposed carrot-price adjustment was a compensating error and was removed.
