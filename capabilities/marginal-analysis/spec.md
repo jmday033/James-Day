@@ -54,21 +54,23 @@ Create workbook-level Excel named ranges for all inputs, decision cells, and maj
 
 ## Structure
 
-Use five worksheets with these exact names:
+Use six worksheets with these exact names:
 
 1. `Inputs`
 2. `Cost Structure`
 3. `Marginal Cost`
 4. `Optimization`
 5. `Checks`
+6. `Optimum Charts`
 
 - **Inputs** contains all named assumptions and case data.
 - **Cost Structure** calculates crop-level and farm-level labor, fertilizer, variable costs, fixed costs, revenue, marginal cost, price comparisons, and profit.
 - **Marginal Cost** shows each crop's standalone cost and marginal cost at every required bed quantity.
 - **Optimization** contains the three bed-count decisions, objective function, and constraints.
 - **Checks** records both Solver starting-point results, every constraint check, and all acceptance-criteria checks.
+- **Optimum Charts** shows formula-linked profit curves for each crop while holding the other two at their calculated optimal quantities, plus a comparison of the recommended bed counts.
 
-Charts are optional. Tables are required. Colors, column widths, and currency presentation are left to the builder because they do not change the model's economic logic.
+The `Optimum Charts` tab and its formula-linked source tables are required. Colors, column widths, and currency presentation are left to the builder because they do not change the model's economic logic.
 
 ## Calculation logic
 
