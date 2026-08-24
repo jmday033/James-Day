@@ -233,4 +233,4 @@ The model must report:
 
 ## Audit findings
 
-_To be completed after the workbook is built. For each validation check, record what was checked, what was found, what defect the check would have caught, and what was changed._
+- **Published profit check:** Using the published inputs exactly, the model calculates profit of $42,775.16, which differs from the published check figure of $42,762 by $13.16. A carrot price of approximately $2,093.34 reproduces the check figure, suggesting the published result may use an unrounded underlying input. The published inputs remain unchanged, and the workbook reports the acceptance test as `FAIL` under the specified ±$1 tolerance.
