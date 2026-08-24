@@ -25,6 +25,8 @@ This log records meaningful AI-assisted work, including what was requested, what
 
 | 2026-08-23 | ChatGPT / Codex (OpenAI) | Build and verify the formula-driven workbook against the published check figures. | The calculation reproduced every stated numerical check except profit: exact published inputs produced $42,775.16 rather than $42,762. | Kept the published inputs unchanged, identified that a carrot price near $2,093.34 reproduces the check figure, and recorded the discrepancy as an audit finding instead of forcing the workbook to pass. |
 
+| 2026-08-23 | ChatGPT / Codex (OpenAI) | Add the Farm Profit Lab costs to my committed engagement brief. | A mechanical update listing fixed cost, farmer and temporary wage rates, and fertilizer cost per bed for all three crops. | Verified the amounts against the committed model specification and added the cost table without changing my hypothesis. |
+
 ## Errors caught
 
 - 2026-08-23 — Exact published inputs produce profit of $42,775.16, which misses the $42,762 check figure by $13.16 and exceeds the ±$1 tolerance. A carrot price near $2,093.34 reproduces the check, suggesting the published figure may use an unrounded input; the model retains the stated $2,094 input and displays `FAIL` honestly.
