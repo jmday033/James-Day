@@ -40,6 +40,7 @@ This log records meaningful AI-assisted work, including what was requested, what
 | 2026-08-23 | ChatGPT / Codex (OpenAI) | Fix a GitHub workbook download that Excel reported as corrupted. | Determined that the first binary upload was truncated even though GitHub accepted it. | Re-uploaded the workbook in verified chunks and compared the Git blob checksum to the local file before committing. |
 
 | 2026-08-24 | ChatGPT / Codex (OpenAI) | Incorporate instructor feedback about the land constraint, fractional temporary labor, and the undefined phrase “far from 14” without changing the frozen engagement brief. | Identified that the 60-bed optimum leaves four beds idle, confirmed the model’s fractional-worker convention, and proposed a concrete pre-Stage 3 comparison threshold. | Kept the 14/20/30 brief unchanged; recorded that 12–16 tomato beds count as close and a difference of three or more beds counts as materially far; carried the land slack and fractional-worker convention into the Stage 3 comparison rules. |
+| 2026-08-27 | ChatGPT / Codex (OpenAI) | Implement instructor feedback on input provenance and the exhaustive-search panel. | Distinguished given case assumptions from formula-derived values and documented the auditability-versus-size trade-off. | Updated the specification source column for `FARMER_TOTAL_HOURS`, `FARMER_RATE`, `TEMP_RATE`, and `CARROT_HOURS`; retained the frozen Stage 3 comparison rules unchanged; noted that the 13,671-row audit panel increases file size and recalculation time. |
 
 ## Errors caught
 
