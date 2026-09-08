@@ -64,3 +64,13 @@ This log records meaningful AI-assisted work, including what was requested, what
 - 2026-08-23 — The workbook generator exported named ranges as relative references. Cached previews appeared correct, but desktop Excel recalculated them as shifted references and displayed zeros and `#VALUE!`. The final build uses 47 absolute names.
 - 2026-08-23 — Manually assembled chart-series objects were not reliable in desktop Excel. The charts were regenerated from contiguous formula-linked source ranges.
 - 2026-08-23 — A GitHub binary upload was truncated. The replacement upload was accepted only after its Git blob checksum matched the local workbook.
+
+## Stage 3 reflection
+
+AI helped me turn the assignment requirements into decision cells, formulas, and constraints. It also helped organize the workbook, create marginal-cost charts, and explain the results. AI helped me understand that tomato production stopped because the next bed would cost more than it earned. Carrots and mesclun stopped because they reached their crop limits. AI also helped identify the temporary-labor wage change that caused tomato marginal cost to briefly fall.
+
+However, I did not assume that AI's work was correct. My first model estimated a profit of about $42,775, while the professor's answer key reported about $42,762. This difference showed that I needed to review my assumptions, formulas, and rounding. I compared the two workbooks and checked the 64-bed limit, each crop's maximum, the labor calculations, and the four-worker limit. I also chose several production quantities and recalculated revenue, labor cost, and profit by hand.
+
+AI sometimes gave answers that sounded convincing but were not supported by the workbook. One early explanation said that every crop lost money when grown alone. After checking both workbooks, I found that carrots and mesclun never covered the full fixed cost alone, but tomatoes earned a positive standalone profit from 7 through 13 beds. AI also occasionally gave incorrect cell references, confused units, or suggested calculations that still needed to be verified.
+
+Finally, I checked that each marginal-cost value measured the cost of adding one more bed, not an average or cumulative cost. I confirmed that the Solver result followed every constraint and that only the carrot and mesclun crop limits were binding. Overall, AI saved time and helped me understand the model, but it did not prove that the model was valid. Confidence came from checking formulas, units, cells, and constraints myself and comparing the result with an independent answer key.
