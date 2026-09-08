@@ -18,23 +18,23 @@ Figure 1 makes the stopping rule visible: the flat $8,800 price line lies above 
 
 ![Tomato marginal cost versus price](figures/tomato-mc-vs-price.png)
 
-*Figure 1. Tomato marginal cost versus the $8,800 market price. Source: `Marginal Cost!A7:F26`.*
+*Figure 1. Workbook export of tomato marginal cost versus the $8,800 market price. Source: `Optimum Charts!E50:N70`; chart data: `Optimum Charts!A50:C70`.*
 
 ## Crop caps bind before land or labor
 
 The carrot and mesclun caps bind at 20 and 30 beds, respectively. Both have zero slack, while the farm has four beds and 0.8353 temporary-worker equivalents remaining (`Optimization!B14:D18`). The tomato cap is also slack by 10 beds, so relaxing total land, tomato capacity, or temporary labor would not improve the current solution.
 
-Carrot marginal cost at bed 20 is $1,688.95, still $405.05 below its $2,094 price (`Marginal Cost!L26:M26`). Extending the same marginal-cost formula one bed beyond the cap gives an estimated cost of $1,741.51 for bed 21, so one additional permitted carrot bed would add about $352.49 to profit. Mesclun marginal cost at bed 30 is $2,420.10, still $279.90 below its $2,700 price (`Marginal Cost!S36:T36`). The corresponding estimate for bed 31 is $2,453.53, making one more permitted mesclun bed worth about $246.47. Those incremental values are the shadow values of the two binding crop-cap constraints. If additional crop-specific ground can be acquired at comparable cost, carrot capacity should be expanded first because its next bed has the larger expected contribution.
+Carrot marginal cost at bed 20 is $1,688.95, still $405.05 below its $2,094 price (`Marginal Cost!L26:M26`). Extending the same marginal-cost formula one bed beyond the cap gives a cost of $1,741.51 for bed 21, so one additional permitted carrot bed would add $352.49 to profit (`Checks!B44:D44`). Mesclun marginal cost at bed 30 is $2,420.10, still $279.90 below its $2,700 price (`Marginal Cost!S36:T36`). The corresponding calculation for bed 31 gives a cost of $2,453.53 and incremental profit of $246.47 (`Checks!B45:D45`). Those incremental values are the shadow values of the two binding crop-cap constraints. If additional crop-specific ground can be acquired at comparable cost, carrot capacity should be expanded first because its next bed has the larger expected contribution.
 
 Figures 2 and 3 show why the model stops these crops for a different reason than tomatoes: at the selected quantities, both marginal-cost curves remain below their price lines.
 
 ![Carrot marginal cost versus price](figures/carrot-mc-vs-price.png)
 
-*Figure 2. Carrot marginal cost versus the $2,094 market price. Source: `Marginal Cost!H7:M26`.*
+*Figure 2. Workbook export of carrot marginal cost versus the $2,094 market price. Source: `Optimum Charts!E74:N94`; chart data: `Optimum Charts!A74:C94`.*
 
 ![Mesclun marginal cost versus price](figures/mesclun-mc-vs-price.png)
 
-*Figure 3. Mesclun marginal cost versus the $2,700 market price. Source: `Marginal Cost!O7:T36`.*
+*Figure 3. Workbook export of mesclun marginal cost versus the $2,700 market price. Source: `Optimum Charts!E98:N128`; chart data: `Optimum Charts!A98:C128`.*
 
 ## The tomato marginal-cost dip comes from the wage switch
 

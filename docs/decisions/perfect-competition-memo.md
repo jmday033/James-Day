@@ -22,4 +22,4 @@ If crop-specific ground can be added without changing other assumptions, expand 
 
 ## What would change my answer
 
-I would revisit the mix if prices, wage rates, crop-specific caps, or the labor function changed. Tomato price is the most immediate trigger: a fall below the tenth bed's $8,248.59 marginal cost would reduce the tomato allocation, while additional carrot capacity costing less than roughly $352 per bed would justify expansion.
+I would reduce the tomato allocation if tomato price fell below the tenth bed's $8,248.59 marginal cost.

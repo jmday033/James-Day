@@ -41,6 +41,8 @@ This log records meaningful AI-assisted work, including what was requested, what
 
 | 2026-08-24 | ChatGPT / Codex (OpenAI) | Incorporate instructor feedback about the land constraint, fractional temporary labor, and the undefined phrase “far from 14” without changing the frozen engagement brief. | Identified that the 60-bed optimum leaves four beds idle, confirmed the model’s fractional-worker convention, and proposed a concrete pre-Stage 3 comparison threshold. | Kept the 14/20/30 brief unchanged; recorded that 12–16 tomato beds count as close and a difference of three or more beds counts as materially far; carried the land slack and fractional-worker convention into the Stage 3 comparison rules. |
 
+| 2026-09-07 | ChatGPT / Codex (OpenAI) | Review my human-written Stage 3 draft against the professor's requirements and make the permitted structural and mechanical fixes. | Identified missing workbook-exported figures, uncited shadow-price calculations, a diffuse memo sensitivity section, missing capability links, and incomplete Stage 3 documentation. | Replaced the figures with direct workbook chart exports, added formula-driven shadow-price cells, tightened the memo trigger, linked the capability evidence, and kept the graded reflection for my own completion. |
+
 ## Errors caught
 
 - 2026-08-23 — The specification incorrectly treated $34.72 and $17.36 as exact wage inputs. The case defines $50,000 and $25,000 seasonal salaries; deriving rates without rounding restores the published $104,118 labor cost and $42,762 profit. The earlier proposed carrot-price adjustment was a compensating error and was removed.
