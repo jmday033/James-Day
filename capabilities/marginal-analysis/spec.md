@@ -24,30 +24,32 @@ Every planted bed earns its full stated revenue per bed.
 
 | Name | Value | Unit | Source |
 |---|---:|---|---|
-| `WEEKS` | 36 | weeks | Case scenario |
-| `FIXED_COST` | $20,000 | dollars/season | Case scenario |
-| `TOTAL_BED_CAP` | 64 | beds | Case scenario |
-| `FARMER_HOURS` | 720 | hours | Case scenario |
-| `FARMER_SALARY` | $50,000 | dollars/season | Case scenario |
-| `FARMER_TOTAL_HOURS` | 1,440 | paid hours/season | Case scenario |
-| `TEMP_WORKER_SALARY` | $25,000 | dollars/worker/season | Case scenario |
-| `TEMP_HOURS_PER_WORKER` | 1,440 | hours/worker | Case scenario |
-| `TEMP_WORKER_CAP` | 4 | workers | Case scenario |
-| `TOMATO_PRICE` | $8,800 | dollars/bed | Case scenario |
-| `TOMATO_HOURS` | 2.5 | hours/week/bed | Case scenario |
-| `TOMATO_FERTILIZER` | $880 | dollars/bed | Case scenario |
-| `TOMATO_DIM` | 10% | per additional bed | Case scenario |
-| `TOMATO_CAP` | 20 | beds | Case scenario |
-| `CARROT_PRICE` | $2,094 | dollars/bed | Case scenario |
-| `CARROT_HOURS` | `TOMATO_HOURS ÷ 3` (displayed as 0.833) | hours/week/bed | Case scenario |
-| `CARROT_FERTILIZER` | $440 | dollars/bed | Case scenario |
-| `CARROT_DIM` | 2.5% | per additional bed | Case scenario |
-| `CARROT_CAP` | 20 | beds | Case scenario |
-| `MESCLUN_PRICE` | $2,700 | dollars/bed | Case scenario |
-| `MESCLUN_HOURS` | 1.25 | hours/week/bed | Case scenario |
-| `MESCLUN_FERTILIZER` | $880 | dollars/bed | Case scenario |
-| `MESCLUN_DIM` | 1.25% | per additional bed | Case scenario |
-| `MESCLUN_CAP` | 30 | beds | Case scenario |
+| `WEEKS` | 36 | weeks | Case scenario (given) |
+| `FIXED_COST` | $20,000 | dollars/season | Case scenario (given) |
+| `TOTAL_BED_CAP` | 64 | beds | Case scenario (given) |
+| `FARMER_HOURS` | 720 | hours | Case scenario (given) |
+| `FARMER_SALARY` | $50,000 | dollars/season | Case scenario (given) |
+| `FARMER_RATE` | `FARMER_SALARY ÷ FARMER_TOTAL_HOURS` | dollars/hour | Derived: `FARMER_SALARY / FARMER_TOTAL_HOURS` |
+| `FARMER_TOTAL_HOURS` | `WEEKS × 40` (1,440) | paid hours/season | Derived: `WEEKS × 40` paid hours/week |
+| `TEMP_WORKER_SALARY` | $25,000 | dollars/worker/season | Case scenario (given) |
+| `TEMP_HOURS_PER_WORKER` | 1,440 | hours/worker | Case scenario (given) |
+| `TEMP_RATE` | `TEMP_WORKER_SALARY ÷ TEMP_HOURS_PER_WORKER` | dollars/hour | Derived: `TEMP_WORKER_SALARY / TEMP_HOURS_PER_WORKER` |
+| `TEMP_WORKER_CAP` | 4 | workers | Case scenario (given) |
+| `TOMATO_PRICE` | $8,800 | dollars/bed | Case scenario (given) |
+| `TOMATO_HOURS` | 2.5 | hours/week/bed | Case scenario (given) |
+| `TOMATO_FERTILIZER` | $880 | dollars/bed | Case scenario (given) |
+| `TOMATO_DIM` | 10% | per additional bed | Case scenario (given) |
+| `TOMATO_CAP` | 20 | beds | Case scenario (given) |
+| `CARROT_PRICE` | $2,094 | dollars/bed | Case scenario (given) |
+| `CARROT_HOURS` | `TOMATO_HOURS ÷ 3` (displayed as 0.833) | hours/week/bed | Derived: `TOMATO_HOURS / 3` |
+| `CARROT_FERTILIZER` | $440 | dollars/bed | Case scenario (given) |
+| `CARROT_DIM` | 2.5% | per additional bed | Case scenario (given) |
+| `CARROT_CAP` | 20 | beds | Case scenario (given) |
+| `MESCLUN_PRICE` | $2,700 | dollars/bed | Case scenario (given) |
+| `MESCLUN_HOURS` | 1.25 | hours/week/bed | Case scenario (given) |
+| `MESCLUN_FERTILIZER` | $880 | dollars/bed | Case scenario (given) |
+| `MESCLUN_DIM` | 1.25% | per additional bed | Case scenario (given) |
+| `MESCLUN_CAP` | 30 | beds | Case scenario (given) |
 
 Use the published underlying relationships exactly. The displayed $34.72 farmer rate, $17.36 temporary rate, and 0.833 carrot labor figure are rounded descriptions, not calculation inputs. Preserve full precision by deriving both wage rates from salary and paid hours and deriving `CARROT_HOURS` as `TOMATO_HOURS / 3`.
 
@@ -72,6 +74,8 @@ Use six worksheets with these exact names:
 - **Optimum Charts** contains formula-linked profit-curve source tables for each crop, standalone marginal-cost-versus-price source tables and charts for tomatoes, carrots, and mesclun, and a chart comparing the recommended bed counts.
 
 The `Optimum Charts` tab, its formula-linked source tables, three marginal-cost-versus-price charts, and recommended-mix chart are required. Chart series must be created from contiguous source ranges so desktop Excel preserves and recalculates them reliably. Colors, column widths, and currency presentation are left to the builder because they do not change the model's economic logic.
+
+The exhaustive-search panel deliberately uses 13,671 formula rows—one for every permitted whole-number crop combination—to provide an independent, auditable check on the Solver result. This increases the workbook to roughly 2.8 MB and may slow recalculation on modest hardware; the transparency and independent verification are accepted trade-offs.
 
 ## Calculation logic
 
