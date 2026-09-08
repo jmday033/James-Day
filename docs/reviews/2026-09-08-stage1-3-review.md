@@ -1,7 +1,7 @@
 <!-- PR TARGET: https://github.com/jmday033/James-Day | Stage 1.3 -->
 # Stage 1.3 review — analysis, memo, prompt log
 
-> **Hurricane Lowell comes first.** If you are preparing, sheltering, travelling, or helping somebody else do one of those, put this review down — it will keep, and nothing in it needs your attention while that does. Look after your people first; we will sort the coursework out afterwards.
+> **Hurricane Lowell.** If you are boarding up, packing, or hauling the patio furniture indoors, put this review down — it will keep, and nothing in it needs you today. And if you are reading a review while a hurricane bears down on the islands: I am writing one in the same weather, so there is no judgement coming from this end. :) Look after your people first — the coursework will survive whatever Lowell does.
 
 **Analysis:** [`analysis/perfect-competition-analysis.md`](https://github.com/jmday033/James-Day/blob/main/analysis/perfect-competition-analysis.md)
 
