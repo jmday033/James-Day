@@ -10,7 +10,7 @@ status: draft
 
 ## Decision and scope
 
-Test whether a larger annual retention bonus is a plausible way to improve retention of eligible Navy physicians serving in the San Diego area. Compare general pediatrics, general internal medicine, and family medicine separately. The primary policy case is an illustrative four-year agreement with specialty-specific annual retention bonuses that close 50% of each specialty's current gross civilian pay gap. A flat $100,000 annual bonus remains a comparison case. The nonpay comparison is a more predictable assignment program. The finished paper should recommend whether to pursue a targeted bonus, and under what conditions.
+Test whether a larger annual retention bonus is a plausible way to improve retention of eligible Navy physicians serving in the San Diego area. Compare general pediatrics, general internal medicine, and family medicine separately. The original policy case is an illustrative four-year agreement paying a flat $100,000 annual retention bonus. A second case uses specialty-specific annual bonuses that close 50% of each specialty's current gross civilian pay gap. The nonpay comparison is a more predictable assignment program. The finished paper should recommend whether to pursue a targeted bonus, and under what conditions.
 
 The decision concerns the next retention contract for a physician who can choose between remaining in Navy service and pursuing civilian work. This is a prospective economic argument, not an estimate of how many San Diego physicians have already left.
 
