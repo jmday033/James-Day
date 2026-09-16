@@ -6,92 +6,97 @@ date: 2026-09-16
 status: draft
 ---
 
-# Economic research specification: Navy primary care physician retention in San Diego
+# Economic research — model specification
 
-## Decision and scope
+## Purpose
 
-Test whether a larger annual retention bonus is a plausible way to improve retention of eligible Navy physicians serving in the San Diego area. Compare general pediatrics, general internal medicine, and family medicine separately. The original policy case is an illustrative four-year agreement paying a flat $100,000 annual retention bonus. A second case uses specialty-specific annual bonuses that close 50% of each specialty's current gross civilian pay gap. The nonpay comparison is a more predictable assignment program. The finished paper should recommend whether to pursue a targeted bonus, and under what conditions.
+Support a decision about Navy primary care physician retention bonuses in San Diego. Compare the gross cash compensation of eligible Navy general pediatricians, general internists, and family physicians with civilian benchmarks, then assess a flat $100,000 annual bonus and a specialty-specific schedule that closes 50% of each current pay gap. The model must show what each policy costs per eligible physician and how much of the modeled pay gap remains. It cannot, without retention data, show how many physicians either policy would retain.
 
-The decision concerns the next retention contract for a physician who can choose between remaining in Navy service and pursuing civilian work. This is a prospective economic argument, not an estimate of how many San Diego physicians have already left.
+This spec implements the question and hypothesis in [the committed research brief](../../docs/briefs/research-brief.md). The four-year agreement is an eligibility and commitment assumption; the amounts below are annual.
 
-## Economic mechanism and predictions
+## Inputs — the named contract
 
-The relevant course concepts are opportunity cost, labor supply, incentives, elasticity, and marginal analysis. A civilian job offers an outside option whose value includes pay, location control, working conditions, and flexibility. A Navy retention bonus raises the reward for staying. If physicians are responsive to the pay gap, a larger bonus should increase retention. The response may differ across specialties because their civilian opportunities and current Navy bonuses differ.
+The main scenario is a board-certified O-4 physician with more than 10 years of service, with dependents, assigned to ZIP 92134 and eligible for a four-year retention bonus. Each input below has a name, value, unit, and source. Dollar amounts from different years are compared as nominal amounts; the civilian series is a benchmark, not a San Diego offer.
 
-A separate assignment policy can also raise the value of staying by reducing the expected cost of moves and uncertainty. Compare these policies on expected retention gained per dollar, including program costs, and recognize that assignment predictability may complement pay.
+| Name | Value | Unit | Source |
+| --- | ---: | --- | --- |
+| MONTHS | 12 | months/year | Annualization convention |
+| BASE_PAY_O4_10 | 9,420 | USD/month | [DFAS 2026 basic pay](https://www.dfas.mil/MilitaryMembers/payentitlements/Pay-Tables/Basic-Pay/CO/) |
+| BAH_92134_WITH | 5,082 | USD/month | [DTMO 2026 BAH lookup](https://www.travel.dod.mil/Allowances/Basic-Allowance-for-Housing/BAH-Rate-Lookup/); inputs: 2026, 92134, O-4, with dependents |
+| BAH_92134_WITHOUT | 4,440 | USD/month | Same [DTMO lookup](https://www.travel.dod.mil/Allowances/Basic-Allowance-for-Housing/BAH-Rate-Lookup/); without dependents |
+| BAS_OFFICER | 328.48 | USD/month | [DoD 2026 BAS](https://militarypay.defense.gov/Pay/Allowances/BAS/) |
+| IP_PRIMARY | 43,000 | USD/year | [Navy FY2026 Medical Corps special pay guidance](https://www.med.navy.mil/Special-Pays/) |
+| BCP | 8,000 | USD/year | [Navy FY2026 Medical Corps special pay guidance](https://www.med.navy.mil/Special-Pays/) |
+| RB_PEDS | 35,000 | USD/year | Four-year general pediatrics retention bonus, [Navy FY2026 guidance](https://www.med.navy.mil/Special-Pays/) |
+| RB_IM | 48,000 | USD/year | Four-year general internal medicine retention bonus, [Navy FY2026 guidance](https://www.med.navy.mil/Special-Pays/) |
+| RB_FM | 48,000 | USD/year | Four-year family medicine retention bonus, [Navy FY2026 guidance](https://www.med.navy.mil/Special-Pays/) |
+| CIV_PEDS | 273,665 | USD/year | National 2025 survey average, [Doximity 2026 report](https://www.doximity.com/reports/physician-compensation-report/2026) |
+| CIV_IM | 339,274 | USD/year | Same national [Doximity report](https://www.doximity.com/reports/physician-compensation-report/2026) |
+| CIV_FM | 325,040 | USD/year | Same national [Doximity report](https://www.doximity.com/reports/physician-compensation-report/2026) |
+| FLAT_RB | 100,000 | USD/year | Author's proposed test amount in [research brief](../../docs/briefs/research-brief.md); hypothetical, not currently authorized pay |
+| GAP_SHARE | 0.50 | share of current gross gap | Author's proposed policy comparison; a design assumption, not an estimated elasticity |
+| COMMITMENT | 4 | years | Four-year bonus schedule used for the comparison |
 
-Prediction: A meaningful increase in annual retention bonuses will improve retention among eligible San Diego Navy primary care physicians more than assignment predictability alone when pay is the binding reason for exit. The effect should be largest in specialties with the largest remaining civilian pay opportunity, holding other job attributes constant. An observation of little or no retention change after a substantial, well-targeted bonus increase, especially alongside better results from assignment reform, would weaken this prediction.
+Context sources: [GAO's staffing report](https://www.gao.gov/products/gao-25-106988) provides a DOD-wide personnel trend, not a San Diego Navy physician retention rate; [GAO's incentives report](https://www.gao.gov/products/gao-20-165) explains data limitations; [MCCareer.org's pay-plan account](https://mccareer.org/2024/09/28/fy25-medical-corps-pay-plan/) supplies practitioner context. Verify policy dollar amounts against official Navy guidance. Seek local specialty-specific offers or a reliable San Diego wage series for sensitivity analysis; never relabel national data as local data.
 
-## Data sources and extraction plan
+## Structure
 
-| Input | Source | Use and limitation |
-| --- | --- | --- |
-| FY2026 Navy Medical Corps incentive pay, board certification pay, and four-year retention bonus schedule | [Navy Medical Corps special pay guidance](https://www.med.navy.mil/Special-Pays/) and [DFAS health professions pay table](https://www.dfas.mil/MilitaryMembers/payentitlements/Pay-Tables/HPO4/) | Confirm eligibility and current specialty-specific amounts. General pediatrics has a $35,000 annual four-year bonus; general internal medicine and family medicine each have $48,000. All three have $43,000 incentive pay and $8,000 board certification pay. |
-| 2026 O-4 basic pay, over 10 years of service | [DFAS basic pay](https://www.dfas.mil/MilitaryMembers/payentitlements/Pay-Tables/Basic-Pay/CO/) | $9,420 per month in the illustrative profile. Verify the member's actual grade and years of service before applying the estimate to a real person. |
-| 2026 San Diego housing allowance | [Defense Travel Management Office BAH lookup](https://www.travel.dod.mil/Allowances/Basic-Allowance-for-Housing/BAH-Rate-Lookup/) | Query year 2026, ZIP 92134, O-4: $5,082 per month with dependents; $4,440 without dependents. The ZIP and dependency status are assumptions, not a single rate for all San Diego physicians. |
-| 2026 officer subsistence allowance | [DoD BAS rate](https://militarypay.defense.gov/Pay/Allowances/BAS/) | $328.48 per month. |
-| Civilian physician compensation | [Doximity 2026 Physician Compensation Report](https://www.doximity.com/reports/physician-compensation-report/2026) | National 2025 survey averages: pediatrics $273,665; internal medicine $339,274; family medicine $325,040. Use as transparent benchmarks, not San Diego-specific offers. If credible local specialty offers or wage data are found, add them as a sensitivity case rather than silently replacing the national series. |
-| Staffing context and data quality | [GAO military medical personnel report](https://www.gao.gov/products/gao-25-106988) and [GAO incentive oversight report](https://www.gao.gov/products/gao-20-165) | The reported FY2015–2023 personnel decline covers all DOD military medical occupations, not San Diego Navy primary care. GAO identifies data gaps that prevent a reliable public estimate of the retention response to bonuses. |
-| Current policy explanation | [MCCareer FY25 Medical Corps pay plan](https://mccareer.org/2024/09/28/fy25-medical-corps-pay-plan/) | Practitioner context for pay changes; verify dollar amounts against official FY2026 tables. |
+1. **Source and assumptions register.** Record each named input, source URL, publication or pay year, lookup choices, and verification date. Keep assumptions distinct from observed figures.
+2. **Compensation comparison.** One row per specialty, with current Navy cash pay, national civilian benchmark, gross pay gap, flat-bonus result, 50%-gap schedule result, and annual bonus cost above the current schedule.
+3. **Sensitivity checks.** Recalculate with BAH_92134_WITHOUT and with any credible local civilian benchmark found. Do not silently substitute a different grade, service year, or dependency status.
+4. **Figure.** A grouped bar chart in figures/ showing current Navy pay, pay under the 50%-gap schedule, and the civilian benchmark for each specialty. Show the flat $100,000 case in a companion table or figure annotation if legible. Caption the officer profile and source years.
+5. **Paper evidence.** Cite the model and figure in the author's dated draft and finished analysis/research-paper.pdf. Keep the paper's prose, recommendation, and reflection author-written.
 
-## Model and calculation checks
+## Calculation logic
 
-Use one stated illustrative profile for the main figure: board-certified O-4 with more than 10 years of service, with dependents, based at ZIP 92134, eligible for a four-year retention bonus. All amounts are annual gross cash compensation. The model does not value tax treatment, retirement benefits, insurance, hours worked, deployment, malpractice costs, or differences in clinical duties.
+Use named inputs, not spreadsheet cell positions. Apply the same baseline to all three specialties; substitute RB_s and CIV_s for each specialty s in pediatrics, internal medicine, and family medicine.
 
-    Baseline Navy cash pay before retention bonus
-      = 12 × (monthly basic pay + monthly BAH + monthly BAS)
-        + incentive pay + board certification pay
+    NAVY_BASE = MONTHS × (BASE_PAY_O4_10 + BAH_92134_WITH + BAS_OFFICER)
+                + IP_PRIMARY + BCP
+    NAVY_CURRENT_s = NAVY_BASE + RB_s
+    GAP_CURRENT_s = CIV_s − NAVY_CURRENT_s
+    NAVY_FLAT_s = NAVY_BASE + FLAT_RB
+    GAP_FLAT_s = CIV_s − NAVY_FLAT_s
+    RB_HALF_s = RB_s + GAP_SHARE × MAX(0, GAP_CURRENT_s)
+    NAVY_HALF_s = NAVY_BASE + RB_HALF_s
+    GAP_HALF_s = CIV_s − NAVY_HALF_s
+    INCREMENT_FLAT_s = FLAT_RB − RB_s
+    INCREMENT_HALF_s = RB_HALF_s − RB_s
+    RB_PARITY_s = CIV_s − NAVY_BASE
 
-    Current Navy cash pay = baseline Navy cash pay + current specialty retention bonus
-    Proposed Navy cash pay = baseline Navy cash pay + $100,000
-    Gross pay gap = national civilian benchmark − Navy cash pay
-    Bonus for gross cash parity = national civilian benchmark − baseline Navy cash pay
-    Bonus for 50% gap closure = current specialty bonus + 0.5 × max(0, current gross pay gap)
-    Navy cash after 50% gap closure = current Navy cash pay + 0.5 × max(0, current gross pay gap)
+If showing four-year nominal cost per physician, multiply the annual incremental bonus by COMMITMENT. Do not call this a present value or total program budget. Actual program spending also depends on eligibility, uptake, timing, and number of physicians.
 
-For the stated profile, baseline Navy cash pay before the retention bonus is $228,965.76. Reproduce these checks before publishing a figure:
+## Conventions
 
-| Specialty | Current Navy cash | National civilian benchmark | Current gap | Navy cash with $100,000 bonus | Gap after proposal | Bonus for gross parity |
-| --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| Pediatrics | $263,965.76 | $273,665 | $9,699.24 | $328,965.76 | −$55,300.76 | $44,699.24 |
-| Internal medicine | $276,965.76 | $339,274 | $62,308.24 | $328,965.76 | $10,308.24 | $110,308.24 |
-| Family medicine | $276,965.76 | $325,040 | $48,074.24 | $328,965.76 | −$3,925.76 | $96,074.24 |
+- Keep full precision in the calculation and round displayed dollars only at output. A policy proposal may round total annual bonuses to practical amounts, but the check figures below use unrounded values.
+- A negative gross gap means modeled Navy gross cash pay exceeds the national civilian benchmark. It is not evidence that the specialty is overcompensated.
+- “Close 50% of the gap” means add half of a positive current gap to the existing annual retention bonus. It does not mean set Navy pay to 50% of civilian pay. The model's current Navy pay already exceeds that share in all three specialties.
+- The civilian averages are survey estimates, not offers to an individual San Diego physician. The comparison excludes tax treatment, pension value, insurance, hours, malpractice costs, deployment, assignment control, and clinical duties.
+- Do not infer actual labor-supply elasticity or a causal retention effect from pay gaps. Assignment predictability changes the nonpay value of staying and may complement bonuses. Compare observed retention gains per dollar only if appropriate physician-level data become available.
+- The author decides whether the final recommendation favors a flat bonus, a specialty-specific schedule, assignment reform, or a combination. This specification sets comparison cases; it does not decide the policy.
 
-The 50% gap-closing schedule adds half of each specialty's current modeled gap to its existing bonus. These are total annual retention bonuses, not additional amounts on top of a $100,000 bonus:
+## Validation rules
 
-| Specialty | Current bonus | Additional annual bonus | Total annual bonus at 50% gap closure | Navy cash after change | Remaining gross gap |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| Pediatrics | $35,000 | $4,849.62 | $39,849.62 | $268,815.38 | $4,849.62 |
-| Internal medicine | $48,000 | $31,154.12 | $79,154.12 | $308,119.88 | $31,154.12 |
-| Family medicine | $48,000 | $24,037.12 | $72,037.12 | $301,002.88 | $24,037.12 |
+The main profile must produce NAVY_BASE = $228,965.76. Independent hand arithmetic and the implemented model should agree to the cent before a figure is published.
 
-For policy discussion, round the total annual bonuses to practical amounts such as $40,000, $79,000, and $72,000; retain unrounded values for the calculation checks. “Close 50% of the gap” is a design choice, not an estimate of the bonus needed to change retention. All three modeled current Navy pay figures already exceed 50% of their national civilian benchmarks, so “pay 50% of civilian salary” would not be a meaningful target here.
+| Specialty | NAVY_CURRENT | CIV | GAP_CURRENT | NAVY_FLAT | GAP_FLAT | RB_HALF | NAVY_HALF | GAP_HALF |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Pediatrics | $263,965.76 | $273,665 | $9,699.24 | $328,965.76 | −$55,300.76 | $39,849.62 | $268,815.38 | $4,849.62 |
+| Internal medicine | $276,965.76 | $339,274 | $62,308.24 | $328,965.76 | $10,308.24 | $79,154.12 | $308,119.88 | $31,154.12 |
+| Family medicine | $276,965.76 | $325,040 | $48,074.24 | $328,965.76 | −$3,925.76 | $72,037.12 | $301,002.88 | $24,037.12 |
 
-A flat $100,000 bonus nearly reaches the national internal medicine benchmark, roughly reaches the family medicine benchmark, and exceeds the national pediatrics benchmark in gross cash terms. That result supports analyzing specialty-specific bonus levels. It does not establish the bonus needed to induce an individual to stay. Repeat the arithmetic using the without-dependents BAH rate and, if obtained, local civilian pay estimates.
+For the without-dependents case, lower BAH must lower each Navy cash-pay figure by $7,704 annually and raise each corresponding gross gap by $7,704, holding the bonus fixed. Every figure bar must reconcile to the model table. The chart needs labeled dollars, a zero baseline, a readable legend, source years, and the national-versus-local caveat. No caption may claim measured retention or elasticity.
 
-## Figures to build
+A finished paper passes the assignment checks when it: identifies why retention is a current problem and who is affected; uses the course concepts of opportunity cost, incentives, labor supply, elasticity, and marginal policy cost correctly; analyzes present implications and conditional future outcomes; makes a recommendation and answers the strongest objection; uses at least one substantive figure; verifies every AI-supplied number; and follows the [research-paper requirements](https://adamwstauffer.github.io/ai-lms/research-paper.html) for length, formatting, citations, anonymity, and submission. The four-page limit excludes title page, graphs, bibliography, and appendix.
 
-1. A grouped bar chart by specialty with three bars: current Navy gross cash pay, Navy gross cash pay under the 50% gap-closing bonus schedule, and the national civilian benchmark. Show the flat $100,000 scenario as a reference line or in a small companion table if space permits. State the O-4 profile, 2026 military pay year, civilian survey year, and national-versus-local caveat in the caption. Label dollars clearly and include a zero baseline.
-2. If space permits, a small sensitivity table showing how the pay gap changes under without-dependents BAH and under the flat $100,000 bonus. Do not imply that these scenarios measure actual retention elasticity.
+## Outputs
 
-## Evidence needed for a causal retention claim
+- A transparent specialty-level compensation table and sensitivity results supporting the author's analysis.
+- A labeled figure saved in figures/ and used as evidence in the paper.
+- A dated draft chain in drafts/YYYY-MM-DD-draft.md, created by the author as the argument develops.
+- The finished paper at analysis/research-paper.pdf, with a separate bibliography and no repository URL or identifying information on body pages.
+- An updated prompt-log.md recording AI-assisted research, checks, errors, and the author's final reflection.
 
-If the Navy provides de-identified eligible-physician records, define retention as remaining through the next contract decision or another stated horizon. For each specialty, compare retention rates before and after a bonus change, ideally against a suitable group facing a different bonus change, while checking assignment policy, location, service obligation, rank, and career stage. Report group sizes, time windows, and uncertainty. If such data are unavailable, label the work a compensation-gap and incentive analysis, and make the retention effect a testable hypothesis rather than a measured result.
+## Audit findings
 
-## Policy comparison and objection
-
-Evaluate the 50% gap-closing schedule against the flat $100,000 bonus rather than assuming the same dollar level is efficient for all three specialties. Compare its expected cost and retention effect with assignment predictability. The obvious objection is that higher bonuses may pay physicians who would have stayed anyway and leave nonpay reasons for departure untouched. Respond by making eligibility and amounts specialty-sensitive, measuring retention among those at an actual decision point, and revising the schedule if the observed effect is small. The paper should also acknowledge that civilian pay is only one part of the outside option.
-
-## Success criteria for the finished paper
-
-- The challenge is specific to Navy primary care retention in San Diego, with pediatrics, internal medicine, and family medicine treated separately.
-- At least one course concept explains the choice mechanism correctly; the paper distinguishes pay gaps from an estimated elasticity.
-- Every numeric claim has an attributable source, year, unit, and stated assumption. GAO's DOD-wide staffing measure is not presented as a San Diego Navy physician retention rate.
-- At least one substantive figure passes the arithmetic checks above and has a readable caption.
-- A policy recommendation states when targeted bonuses should work, addresses the cost and assignment-program objection, and names an observation that would overturn the prediction.
-- The submitted paper follows the assignment's four-page body limit, double-spaced 12-point Times New Roman, one-inch margins, title page, anonymous body, and consistent citations and bibliography.
-- The author writes and reviews the final paper prose; the research workflow and AI assistance are recorded in the prompt log.
-
-## Open items
-
-Confirm the applicable rank, service years, dependent status, and special-pay eligibility for the intended physician population. Find local civilian offers or a defensible San Diego wage series if available. Request Navy retention data if the argument needs an observed effect instead of a prediction.
+Pending build. After the table and figure exist, record each check performed, the result, and any correction. Retain unresolved source or comparability limits here rather than treating a passed arithmetic check as proof of a retention effect.
