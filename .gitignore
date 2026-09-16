@@ -27,3 +27,6 @@ __pycache__/
 
 # Local analysis caches and notebooks
 .ipynb_checkpoints/
+
+# Uncommitted research scratch work
+scratch/
