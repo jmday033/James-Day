@@ -85,6 +85,6 @@ Finally, I checked that each marginal-cost value measured the cost of adding one
 ## Research paper specification — 2026-09-16
 
 | Date | Tool | What I asked | What I got | What I did with it |
-|---|---|---|---|
+|---|---|---|---|---|
 | 2026-09-16 | Codex | Scope the pay and retention analysis to Navy pediatrics, internal medicine, and family medicine in San Diego; identify data sources, a model, figures, and paper success criteria | A draft specification using public FY2026 military pay tables, a San Diego BAH lookup, national civilian physician compensation benchmarks, and arithmetic checks by specialty | Kept the $100,000 bonus as a testable proposal; marked the officer profile and civilian benchmark as assumptions; left actual retention effects unestimated pending eligible-physician data |
 | 2026-09-16 | Codex | Test a percentage-based bonus for pediatrics, internal medicine, and family medicine in San Diego | Calculated specialty-specific total bonuses that close 50% of each modeled gross civilian pay gap, and added the scenario beside the original flat $100,000 case | Kept the original brief hypothesis intact while treating the percentage schedule as a policy comparison, pending my decision about the final recommendation |
