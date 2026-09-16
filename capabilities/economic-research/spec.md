@@ -3,7 +3,8 @@ type: spec
 capability: economic-research
 engagement: research-paper
 date: 2026-09-16
-status: draft
+status: built
+built_with: "Python reproducible comparison script and interactive HTML lab"
 ---
 
 # Economic research — model specification
@@ -190,4 +191,17 @@ A finished paper passes the assignment checks when it: identifies why retention 
 
 ## Audit findings
 
-Pending build. After the table and figure exist, record each check performed, the result, and any correction. Retain unresolved source or comparability limits here rather than treating a passed arithmetic check as proof of a retention effect.
+The fixed cash model was built from this specification as [build_comparison.py](build_comparison.py). It generated the [12-row data table](../../data/physician-retention-12-row-comparison.csv), [technical analysis](../../analysis/physician-retention-analysis.md), and [cumulative-gap figure](../../figures/physician-retention-cumulative-gap.svg). The [interactive lab](physician-pay-lab.html) remains a separate sensitivity tool with user-entered benefit adjustments; it is not the static evidence figure.
+
+| Check | Result | Follow-up |
+| --- | --- | --- |
+| Year 1–2 O-4 base cash: $228,965.76 | Passed to the cent | 2026 pay and allowance inputs held fixed |
+| Year 3–4 O-4 base cash: $234,585.36 | Passed to the cent | Only the 2026 over-12 basic-pay step changes |
+| Three cumulative four-year gap triplets in Validation rules | All passed to the cent | Values reconcile to the 12-row CSV and figure |
+| Exactly three specialties × four years | Passed: 12 rows | Each policy uses the same baseline and benchmark within specialty |
+| Without-dependents BAH sensitivity | Passed: Navy cash falls $7,704/year | The published figure uses with-dependents BAH |
+| Source definitions | DFAS, DoD BAS, Navy special-pays guidance, Marit, and Doximity values are named and linked | Verify individual eligibility and any actual civilian offer before applying the model to a person |
+
+**Open comparability limits.** Marit publishes a San Diego citywide, self-reported, all-employer figure; its internist public preview includes a military contractor and very different career stages. It is not an observed civilian-only offer or ZIP-specific median. Doximity is a national average and is shown only as a sensitivity check. Neither source supplies a measured Navy retention response. The model therefore calculates cash gaps and marginal bonus cost, not labor-supply elasticity, causal retention, total program cost, or cost per physician retained. Pension, health, and GI Bill values remain unpriced in the fixed base table because the person-specific stay-versus-leave inputs are missing.
+
+**Correction during build.** The figure labels negative gaps as values below zero and states that each specialty panel has its own dollar scale. The first chart draft formatted negative ticks as “$-100k”; the regenerated figure uses “-$100k.” This presentation correction did not alter any calculation.
