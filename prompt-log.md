@@ -47,7 +47,7 @@ This log records meaningful AI-assisted work, including what was requested, what
 
 ## Errors caught
 
-- 2026-09-16 — The first generated research figure formatted negative axis values as `$-100k`; the corrected figure uses `-$100k`. This was a labeling defect, not a calculation change. The larger unresolved risk is that Marit's city estimates are mixed-employer and the internist result may not represent a comparable civilian offer.
+- 2026-09-16 — The first generated research figure formatted negative axis values as `$-100k`, and the first analysis table showed `$-24,991.76`; the corrected outputs place the sign before the dollar symbol. These were labeling defects, not calculation changes. The larger unresolved risk is that Marit's city estimates are mixed-employer and the internist result may not represent a comparable civilian offer.
 
 
 - 2026-08-23 — The specification incorrectly treated $34.72 and $17.36 as exact wage inputs. The case defines $50,000 and $25,000 seasonal salaries; deriving rates without rounding restores the published $104,118 labor cost and $42,762 profit. The earlier proposed carrot-price adjustment was a compensating error and was removed.
