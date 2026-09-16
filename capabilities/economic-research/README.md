@@ -13,3 +13,5 @@ This capability develops a source-checked economic argument about Navy primary c
 **Exercised in:** [research brief](../../docs/briefs/research-brief.md) · [model specification](spec.md). Dated drafts in drafts/ and the finished paper in analysis/research-paper.pdf will be linked here when they exist.
 
 The brief records the author's question and falsifiable hypothesis. The spec defines sources, named inputs, calculations, figure requirements, and acceptance checks. The paper and final recommendation remain the author's work.
+
+The [interactive Physician Pay Gap Lab](physician-pay-lab.html) is a supplemental sensitivity tool. It accepts physician and benefit assumptions and calculates a financial break-even bonus and four-year cash comparison. Its San Diego Marit benchmarks are citywide, not ZIP-specific; only ZIP 92134 has a prefilled verified BAH rate. The lab does not estimate retention effects.
