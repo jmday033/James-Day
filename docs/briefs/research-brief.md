@@ -28,7 +28,7 @@ The choice I want to study is whether Navy Medicine should raise retention bonus
 
 I expect raising annual retention bonuses toward $100,000 to increase the share of eligible San Diego-based Navy primary care physicians who remain on active duty. I predict it will improve retention more than an assignment-predictability program alone because physicians respond to the financial opportunity cost of giving up civilian practice. The effect may differ across pediatrics, internal medicine, and family medicine. The economic concept is the **elasticity of labor supply to the Navy**: how much the decision to stay changes when compensation rises.
 
-I will evaluate the prediction by comparing retention before and after a bonus change and, where feasible, against a similar group whose bonus did not change. I will also compare the cost per additional physician retained. A raw increase in the number staying would be insufficient evidence if retention rose just as much elsewhere.
+I will first measure how current and proposed bonuses change the civilian pay gap in each specialty. If credible physician-level retention data become available, I will compare retention before and after a bonus change and, where feasible, against a similar group whose bonus did not change. Without those data, the paper can test pay competitiveness and model possible retention responses, but it cannot estimate actual elasticity or cost per additional physician retained.
 
 ## How I would know I was wrong
 
