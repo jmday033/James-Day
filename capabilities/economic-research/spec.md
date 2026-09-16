@@ -10,7 +10,7 @@ status: draft
 
 ## Decision and scope
 
-Test whether a larger annual retention bonus is a plausible way to improve retention of eligible Navy physicians serving in the San Diego area. Compare general pediatrics, general internal medicine, and family medicine separately. The policy case is an illustrative four-year agreement paying a $100,000 annual retention bonus. The comparison is a more predictable assignment program. The finished paper should recommend whether to pursue a targeted bonus, and under what conditions.
+Test whether a larger annual retention bonus is a plausible way to improve retention of eligible Navy physicians serving in the San Diego area. Compare general pediatrics, general internal medicine, and family medicine separately. The primary policy case is an illustrative four-year agreement with specialty-specific annual retention bonuses that close 50% of each specialty's current gross civilian pay gap. A flat $100,000 annual bonus remains a comparison case. The nonpay comparison is a more predictable assignment program. The finished paper should recommend whether to pursue a targeted bonus, and under what conditions.
 
 The decision concerns the next retention contract for a physician who can choose between remaining in Navy service and pursuing civilian work. This is a prospective economic argument, not an estimate of how many San Diego physicians have already left.
 
@@ -46,6 +46,8 @@ Use one stated illustrative profile for the main figure: board-certified O-4 wit
     Proposed Navy cash pay = baseline Navy cash pay + $100,000
     Gross pay gap = national civilian benchmark − Navy cash pay
     Bonus for gross cash parity = national civilian benchmark − baseline Navy cash pay
+    Bonus for 50% gap closure = current specialty bonus + 0.5 × max(0, current gross pay gap)
+    Navy cash after 50% gap closure = current Navy cash pay + 0.5 × max(0, current gross pay gap)
 
 For the stated profile, baseline Navy cash pay before the retention bonus is $228,965.76. Reproduce these checks before publishing a figure:
 
@@ -55,12 +57,22 @@ For the stated profile, baseline Navy cash pay before the retention bonus is $22
 | Internal medicine | $276,965.76 | $339,274 | $62,308.24 | $328,965.76 | $10,308.24 | $110,308.24 |
 | Family medicine | $276,965.76 | $325,040 | $48,074.24 | $328,965.76 | −$3,925.76 | $96,074.24 |
 
+The 50% gap-closing schedule adds half of each specialty's current modeled gap to its existing bonus. These are total annual retention bonuses, not additional amounts on top of a $100,000 bonus:
+
+| Specialty | Current bonus | Additional annual bonus | Total annual bonus at 50% gap closure | Navy cash after change | Remaining gross gap |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Pediatrics | $35,000 | $4,849.62 | $39,849.62 | $268,815.38 | $4,849.62 |
+| Internal medicine | $48,000 | $31,154.12 | $79,154.12 | $308,119.88 | $31,154.12 |
+| Family medicine | $48,000 | $24,037.12 | $72,037.12 | $301,002.88 | $24,037.12 |
+
+For policy discussion, round the total annual bonuses to practical amounts such as $40,000, $79,000, and $72,000; retain unrounded values for the calculation checks. “Close 50% of the gap” is a design choice, not an estimate of the bonus needed to change retention. All three modeled current Navy pay figures already exceed 50% of their national civilian benchmarks, so “pay 50% of civilian salary” would not be a meaningful target here.
+
 A flat $100,000 bonus nearly reaches the national internal medicine benchmark, roughly reaches the family medicine benchmark, and exceeds the national pediatrics benchmark in gross cash terms. That result supports analyzing specialty-specific bonus levels. It does not establish the bonus needed to induce an individual to stay. Repeat the arithmetic using the without-dependents BAH rate and, if obtained, local civilian pay estimates.
 
 ## Figures to build
 
-1. A grouped bar chart by specialty with three bars: current Navy gross cash pay, Navy gross cash pay under a $100,000 annual bonus, and the national civilian benchmark. State the O-4 profile, 2026 military pay year, civilian survey year, and national-versus-local caveat in the caption. Label dollars clearly and include a zero baseline.
-2. If space permits, a small sensitivity table showing how the pay gap changes under without-dependents BAH and at plausible lower bonus levels. Do not imply that these scenarios measure actual retention elasticity.
+1. A grouped bar chart by specialty with three bars: current Navy gross cash pay, Navy gross cash pay under the 50% gap-closing bonus schedule, and the national civilian benchmark. Show the flat $100,000 scenario as a reference line or in a small companion table if space permits. State the O-4 profile, 2026 military pay year, civilian survey year, and national-versus-local caveat in the caption. Label dollars clearly and include a zero baseline.
+2. If space permits, a small sensitivity table showing how the pay gap changes under without-dependents BAH and under the flat $100,000 bonus. Do not imply that these scenarios measure actual retention elasticity.
 
 ## Evidence needed for a causal retention claim
 
@@ -68,7 +80,7 @@ If the Navy provides de-identified eligible-physician records, define retention 
 
 ## Policy comparison and objection
 
-Evaluate a targeted bonus schedule rather than assuming the same $100,000 level is efficient for all three specialties. Compare its expected cost and retention effect with assignment predictability. The obvious objection is that higher bonuses may pay physicians who would have stayed anyway and leave nonpay reasons for departure untouched. Respond by making eligibility and amounts specialty-sensitive, measuring retention among those at an actual decision point, and revising the schedule if the observed effect is small. The paper should also acknowledge that civilian pay is only one part of the outside option.
+Evaluate the 50% gap-closing schedule against the flat $100,000 bonus rather than assuming the same dollar level is efficient for all three specialties. Compare its expected cost and retention effect with assignment predictability. The obvious objection is that higher bonuses may pay physicians who would have stayed anyway and leave nonpay reasons for departure untouched. Respond by making eligibility and amounts specialty-sensitive, measuring retention among those at an actual decision point, and revising the schedule if the observed effect is small. The paper should also acknowledge that civilian pay is only one part of the outside option.
 
 ## Success criteria for the finished paper
 
