@@ -75,7 +75,7 @@ The strongest policy comparison for the paper is targeted bonus versus predictab
 
 ## Calculation logic
 
-Use named inputs, not spreadsheet cell positions. Apply the same baseline to all three specialties; substitute RB_s and CIV_s for each specialty s in pediatrics, internal medicine, and family medicine.
+Use named inputs, not spreadsheet cell positions. Apply the same baseline to all three specialties; substitute RB_s, CIV_s, and MARIT_s from the named specialty rows above. For the year-by-year table, policy means current (NAVY_CURRENT_s, RB_s), flat (NAVY_FLAT_s, FLAT_RB), or half-gap (MARIT_NAVY_HALF_s, MARIT_RB_HALF_s).
 
     NAVY_BASE = MONTHS × (BASE_PAY_O4_10 + BAH_92134_WITH + BAS_OFFICER)
                 + IP_PRIMARY + BCP
