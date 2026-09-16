@@ -1,0 +1,35 @@
+{
+  "name": "Navy primary-care physician retention — research figure and lab",
+  "tone": "Evidence-first academic analysis; clear labels and explicit source limits.",
+  "palette": {
+    "background": "#ffffff",
+    "text": "#17334b",
+    "muted": "#526878",
+    "current_bonus": "#16587a",
+    "flat_100k": "#c98227",
+    "targeted_50_percent": "#249d91",
+    "zero_line": "#7c8994"
+  },
+  "type": {
+    "heading": "Arial Bold, 25 px",
+    "panel_heading": "Arial Bold, 18 px",
+    "axes_and_caption": "Arial, 12–13 px"
+  },
+  "layout": {
+    "figure": "Three specialty panels, four annual points each",
+    "axis": "Cumulative civilian benchmark minus Navy cash; zero line in every panel",
+    "scale": "Panel-specific dollar scales, disclosed in caption",
+    "caption": "Source years, constant-dollar assumption, Marit comparability limit, and no retention effect claim"
+  },
+  "rules": [
+    "Every plotted point reconciles to the 12-row CSV.",
+    "Use the same color for each policy across all specialty panels.",
+    "Label negative cash gaps as Navy above the published benchmark.",
+    "The figure must remain legible when exported for the paper.",
+    "Do not imply that closing a pay gap measures retention or labor-supply elasticity."
+  ],
+  "audit": {
+    "status": "built-and-checked",
+    "checked_against": "capabilities/economic-research/spec.md and data/physician-retention-12-row-comparison.csv"
+  }
+}
