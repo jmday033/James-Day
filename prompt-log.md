@@ -81,3 +81,9 @@ Finally, I checked that each marginal-cost value measured the cost of adding one
 | Date | Tool | What I asked | What I got | What I did with it |
 |---|---|---|---|---|
 | 2026-09-16 | Codex | Help organize my own Navy physician retention problem, assumptions, pay-based hypothesis, and disconfirming test into the course brief | A structured brief, with GAO's department-wide staffing figure clearly separated from Navy physician retention and a proposed $100,000 annual bonus labeled as a hypothesis | Used my stated position that higher pay should improve retention; committed the brief for further research and revision |
+
+## Research paper specification — 2026-09-16
+
+| Date | Tool | What I asked | What I got | What I did with it |
+|---|---|---|---|---|
+| 2026-09-16 | Codex | Scope the pay and retention analysis to Navy pediatrics, internal medicine, and family medicine in San Diego; identify data sources, a model, figures, and paper success criteria | A draft specification using public FY2026 military pay tables, a San Diego BAH lookup, national civilian physician compensation benchmarks, and arithmetic checks by specialty | Kept the $100,000 bonus as a testable proposal; marked the officer profile and civilian benchmark as assumptions; left actual retention effects unestimated pending eligible-physician data |
