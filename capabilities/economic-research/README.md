@@ -10,7 +10,7 @@ status: in-progress
 
 This capability develops a source-checked economic argument about Navy primary care physician retention in San Diego. It compares compensation scenarios for general pediatrics, general internal medicine, and family medicine, while keeping the predicted retention response distinct from an observed effect.
 
-**Exercised in:** [research brief](../../docs/briefs/research-brief.md) · [model specification](spec.md). Dated drafts in drafts/ and the finished paper in analysis/research-paper.pdf will be linked here when they exist.
+**Exercised in:** [research brief](../../docs/briefs/research-brief.md) · [model specification](spec.md) · [12-row analysis](../../analysis/physician-retention-analysis.md) · [cumulative-gap figure](../../figures/physician-retention-cumulative-gap.svg) · [working decision memo](../../docs/decisions/physician-retention-economics-memo.md). Dated paper drafts and the finished research-paper PDF will be linked when the author completes them.
 
 The brief records the author's question and falsifiable hypothesis. The spec defines sources, named inputs, calculations, figure requirements, and acceptance checks. The paper and final recommendation remain the author's work.
 
