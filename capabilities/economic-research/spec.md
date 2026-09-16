@@ -125,6 +125,28 @@ If showing four-year nominal cost per physician, multiply the annual incremental
 
 [Gray and Grefer's military-physician study](https://www.tandfonline.com/doi/abs/10.1080/10242694.2011.562371) finds retention more responsive to compensation differences at the first unobligated decision than later in the career. A [Naval Postgraduate School thesis](https://calhoun.nps.edu/server/api/core/bitstreams/37692b4f-1ecd-4eab-a03c-72c7bcb12159/content) estimates a relationship between pay gaps and Navy Medical Corps retention using FY2002–FY2011 data. Neither establishes that closing 50% or 100% of a current San Diego primary-care cash gap is necessary or sufficient. An older [GAO physician survey](https://www.gao.gov/products/t-hrd-89-10) found many respondents said comparable civilian pay would increase their likelihood of staying, but that was a hypothetical response, not an observed parity threshold. [GAO's 2020 incentives review](https://www.gao.gov/products/gao-20-165) reports that DOD still lacked consistent bonus acceptance, replacement cost, and civilian wage data needed to set incentives empirically. Use these studies to motivate a positive pay-response hypothesis and a test across bonus amounts, not to assign an unsupported retention probability to the 50% scenario.
 
+
+## Interactive compensation lab
+
+The companion [Physician Pay Gap Lab](physician-pay-lab.html) lets a reader change specialty, duty ZIP, O-4 years of service, expected additional years, dependent status, current and proposed annual retention bonus, published civilian benchmark or actual offer, and optional retirement, health, and GI Bill assumptions. The live result is an **annual financial break-even bonus**, not an estimated retention probability. It also displays current and proposed Navy cash, the civilian benchmark, and a 2027–2030 constant-2026-dollar comparison.
+
+Calculation for the active-year cash comparison:
+
+    NAVY_CASH = 12 × (MONTHLY_BASIC_PAY + MONTHLY_BAH + BAS_OFFICER)
+                + IP_PRIMARY + BCP + CURRENT_RB
+    BENEFIT_ADJUSTMENT = HEALTH_COST_DIFFERENCE
+                         + INCREMENTAL_GI_BILL_VALUE / EXPECTED_ADDITIONAL_YEARS
+                         + CONDITIONAL_PENSION_ANNUITY
+    EXTRA_BONUS_FOR_FINANCIAL_BREAK_EVEN =
+        MAX(0, CIVILIAN_COMPENSATION − NAVY_CASH − BENEFIT_ADJUSTMENT)
+    TOTAL_RB_FOR_FINANCIAL_BREAK_EVEN = CURRENT_RB + EXTRA_BONUS_FOR_FINANCIAL_BREAK_EVEN
+
+The proposed bonus replaces the current bonus in the live comparison. The pension switch uses an intentionally simplified scenario: projected annual retirement pay is High-3 basic pay × years at retirement × 2.0% for BRS or 2.5% for legacy High-36; it then discounts a selected number of pension payments to the decision date and annualizes that present value over the expected additional service. It activates only when expected total service reaches 20 years. This conditional estimate omits the probability of reaching retirement, TSP, taxes, survivor benefits, and COLA, so it is for sensitivity analysis only. The health field compares annual household costs under a civilian plan with TRICARE. The GI Bill field counts only dependent-transfer value that would actually be lost on separation, not an already-earned personal entitlement.
+
+ZIP 92134 has a verified 2026 O-4 BAH amount with and without dependents. For any other ZIP, the user must enter an official BAH amount manually. The Marit compensation numbers are San Diego **citywide** benchmarks and do not change with ZIP; users should replace them with a comparable offer for another labor market. The public Marit samples are small and include mixed employer types. The lab fixes rank at O-4, uses 2026 basic-pay steps, and assumes board certification and eligibility for the cited special pays; individual eligibility must be checked. The four-year illustration is a fixed-dollar scenario, not a forecast or a guarantee of a future bonus contract.
+
+**Figure workflow.** Use the lab to inspect sensitivity to pay, service time, and benefits. Freeze one explicitly named scenario for the graded paper's static, labeled figure and reproduce the results in the 12-row research table. The interactive page is a supplemental repository artifact; the anonymous PDF must stand on its own and contain no repository URL. Do not claim that the break-even bonus is the amount that will cause retention. That causal claim requires observed retention by bonus level or a credible estimate of the physician labor-supply response.
+
 ## Validation rules
 
 The benefits layer must either use verified personal inputs and a transparent stay-versus-leave present-value comparison, or mark pension, health, and GI Bill values as unpriced. Check that no already-earned benefit is counted as newly created by a bonus agreement. A four-year contract starting around 10 years of service does not by itself reach the 20-year active-duty retirement threshold.
