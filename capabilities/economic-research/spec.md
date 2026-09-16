@@ -39,6 +39,7 @@ The main scenario is a board-certified O-4 physician just past 10 years of servi
 | CIV_FM | 325,040 | USD/year | Same national [Doximity report](https://www.doximity.com/reports/physician-compensation-report/2026) |
 | FLAT_RB | 100,000 | USD/year | Author's proposed test amount in [research brief](../../docs/briefs/research-brief.md); hypothetical, not currently authorized pay |
 | GAP_SHARE | 0.50 | share of current gross gap | Author's proposed policy comparison; a design assumption, not an estimated elasticity |
+| FULL_GAP_SHARE | 1.00 | share of current gross gap | Analytical full cash-gap closure benchmark, not an evidence-based retention threshold |
 | COMMITMENT | 4 | years | Four-year bonus schedule used for the comparison |
 
 Benefits inputs to collect before assigning dollar values:
@@ -94,6 +95,7 @@ Use named inputs, not spreadsheet cell positions. Apply the same baseline to all
     MARIT_RB_HALF_s = RB_s + GAP_SHARE × MAX(0, MARIT_GAP_CURRENT_s)
     MARIT_NAVY_HALF_s = NAVY_BASE + MARIT_RB_HALF_s
     MARIT_GAP_FLAT_s = MARIT_s − NAVY_FLAT_s
+    MARIT_RB_PARITY_s = RB_s + FULL_GAP_SHARE × MAX(0, MARIT_GAP_CURRENT_s)
     BASE_PAY_y = BASE_PAY_O4_10 for y = 1, 2; BASE_PAY_O4_12 for y = 3, 4
     NAVY_BASE_y = MONTHS × (BASE_PAY_y + BAH_92134_WITH + BAS_OFFICER)
                   + IP_PRIMARY + BCP
@@ -113,10 +115,15 @@ If showing four-year nominal cost per physician, multiply the annual incremental
 - For the Post-9/11 GI Bill, distinguish the member's already-earned education entitlement from the possible *incremental* value of transferring unused benefits to dependents. [VA's transfer rules](https://benefits.va.gov/gibill/post911_transfer.asp) generally require an approved transfer while serving, at least six years of service, and a four-year additional commitment; eligibility, transfer status, dependent use, and any remaining obligation must be checked. Do not count the full GI Bill value as lost upon civilian separation when it is already vested.
 - Keep full precision in the calculation and round displayed dollars only at output. A policy proposal may round total annual bonuses to practical amounts, but the check figures below use unrounded values.
 - A negative gross gap means modeled Navy gross cash pay exceeds the selected published benchmark. It is not evidence that the specialty is overcompensated.
-- “Close 50% of the gap” means add half of a positive current gap to the existing annual retention bonus. It does not mean set Navy pay to 50% of civilian pay. The model's current Navy pay already exceeds that share in all three specialties.
+- The 50% share is a scenario, not a research-derived point at which retention becomes likely. Full gross cash-gap closure is an analytical comparator, not proof of financial indifference, because pensions, healthcare, GI Bill rights, taxes, and civilian benefits may differ. Under a strict financial-only model, the relevant threshold is equality of expected present value of total financial compensation under stay and leave choices, not equality of one year's cash salary. “Close 50% of the gap” means add half of a positive current gap to the existing annual retention bonus. It does not mean set Navy pay to 50% of civilian pay. The model's current Navy pay already exceeds that share in all three specialties.
 - Marit pages call the displayed figures averages, while [Marit's methodology](https://www.marithealth.com/salary/methodology) says weighted medians and percentiles are its primary measures. Label the numbers as published Marit benchmarks until the statistic is clarified; do not recalculate a median from the limited public preview. The city cohorts are small (the public pages show seven pediatricians and 14 family physicians) and include military entries. These self-reported benchmarks are not verified civilian-only offers. The comparison excludes tax treatment, pension value, insurance, hours, malpractice costs, deployment, assignment control, and clinical duties.
 - Do not infer actual labor-supply elasticity or a causal retention effect from pay gaps. Assignment predictability and clinical practice opportunities change the nonpay value of staying and may complement bonuses. WCI personal accounts and the 1989 GAO survey are hypothesis sources, not contemporary causal estimates. Compare observed retention gains per dollar only if appropriate physician-level data become available.
 - The author decides whether the final recommendation favors a flat bonus, a specialty-specific schedule, assignment reform, or a combination. This specification sets comparison cases; it does not decide the policy.
+
+
+### Evidence on pay responsiveness, not a universal threshold
+
+[Gray and Grefer's military-physician study](https://www.tandfonline.com/doi/abs/10.1080/10242694.2011.562371) finds retention more responsive to compensation differences at the first unobligated decision than later in the career. A [Naval Postgraduate School thesis](https://calhoun.nps.edu/server/api/core/bitstreams/37692b4f-1ecd-4eab-a03c-72c7bcb12159/content) estimates a relationship between pay gaps and Navy Medical Corps retention using FY2002–FY2011 data. Neither establishes that closing 50% or 100% of a current San Diego primary-care cash gap is necessary or sufficient. An older [GAO physician survey](https://www.gao.gov/products/t-hrd-89-10) found many respondents said comparable civilian pay would increase their likelihood of staying, but that was a hypothetical response, not an observed parity threshold. [GAO's 2020 incentives review](https://www.gao.gov/products/gao-20-165) reports that DOD still lacked consistent bonus acceptance, replacement cost, and civilian wage data needed to set incentives empirically. Use these studies to motivate a positive pay-response hypothesis and a test across bonus amounts, not to assign an unsupported retention probability to the 50% scenario.
 
 ## Validation rules
 
@@ -130,6 +137,8 @@ The main profile must produce NAVY_BASE = $228,965.76 in Years 1–2 and NAVY_BA
 | Internal medicine | $276,965.76 | $339,274 | $62,308.24 | $328,965.76 | $10,308.24 | $79,154.12 | $308,119.88 | $31,154.12 |
 | Family medicine | $276,965.76 | $325,040 | $48,074.24 | $328,965.76 | −$3,925.76 | $72,037.12 | $301,002.88 | $24,037.12 |
 
+
+For a full Year 1 Marit cash-gap closure comparator, MARIT_RB_PARITY must be $75,008.24 for pediatrics, $230,091.24 for internal medicine, and $144,072.24 for family medicine. These are arithmetic amounts, not recommended or necessarily authorized bonuses.
 
 The published Marit city scenario must also reproduce these checks before a year-by-year table or figure is published:
 
