@@ -10,13 +10,13 @@ status: draft
 
 ## Purpose
 
-Support a decision about Navy primary care physician retention bonuses in San Diego. Compare the gross cash compensation of eligible Navy general pediatricians, general internists, and family physicians with civilian benchmarks, then assess a flat $100,000 annual bonus and a specialty-specific schedule that closes 50% of each current pay gap. Compare those pay policies with assignment predictability and protected specialty practice as plausible nonbonus strategies. The model must show what each policy costs per eligible physician and how much of the modeled pay gap remains. It must also assess the incremental value of pension eligibility, health coverage, and GI Bill rights in the stay-versus-leave decision. It cannot, without retention data, show how many physicians either policy would retain.
+Support a decision about Navy primary care physician retention bonuses in San Diego. Compare the gross cash compensation of eligible Navy general pediatricians, general internists, and family physicians with published San Diego city and national compensation benchmarks, then assess a flat $100,000 annual bonus and a specialty-specific schedule that closes 50% of each current pay gap. Compare those pay policies with assignment predictability and protected specialty practice as plausible nonbonus strategies. The model must show what each policy costs per eligible physician and how much of the modeled pay gap remains. It must also assess the incremental value of pension eligibility, health coverage, and GI Bill rights in the stay-versus-leave decision. It cannot, without retention data, show how many physicians either policy would retain.
 
 This spec implements the question and hypothesis in [the committed research brief](../../docs/briefs/research-brief.md). The four-year agreement is an eligibility and commitment assumption; the amounts below are annual.
 
 ## Inputs — the named contract
 
-The main scenario is a board-certified O-4 physician with more than 10 years of service, with dependents, assigned to ZIP 92134 and eligible for a four-year retention bonus. Each input below has a name, value, unit, and source. Dollar amounts from different years are compared as nominal amounts; the civilian series is a benchmark, not a San Diego offer.
+The main scenario is a board-certified O-4 physician with more than 10 years of service, with dependents, assigned to ZIP 92134 and eligible for a four-year retention bonus. Each input below has a name, value, unit, and source. The Marit series is a San Diego city benchmark, not a ZIP 92134 estimate or an individual civilian offer. The Doximity series is national. Neither is a verified civilian-only cohort.
 
 | Name | Value | Unit | Source |
 | --- | ---: | --- | --- |
@@ -30,6 +30,9 @@ The main scenario is a board-certified O-4 physician with more than 10 years of 
 | RB_PEDS | 35,000 | USD/year | Four-year general pediatrics retention bonus, [Navy FY2026 guidance](https://www.med.navy.mil/Special-Pays/) |
 | RB_IM | 48,000 | USD/year | Four-year general internal medicine retention bonus, [Navy FY2026 guidance](https://www.med.navy.mil/Special-Pays/) |
 | RB_FM | 48,000 | USD/year | Four-year family medicine retention bonus, [Navy FY2026 guidance](https://www.med.navy.mil/Special-Pays/) |
+| MARIT_PEDS_SD | 303,974 | USD/year, published San Diego benchmark | [Marit pediatrician page](https://www.marithealth.com/o/-/pediatrician/salary/san-diego-ca), updated Aug 28, 2026 |
+| MARIT_IM_SD | 459,057 | USD/year, published San Diego benchmark | [Marit internist page](https://www.marithealth.com/o/-/internist/salary/san-diego-ca), updated Apr 30, 2026 |
+| MARIT_FM_SD | 373,038 | USD/year, published San Diego benchmark | [Marit family medicine page](https://www.marithealth.com/o/-/family-medicine-physician/salary/san-diego-ca), updated Jun 5, 2026 |
 | CIV_PEDS | 273,665 | USD/year | National 2025 survey average, [Doximity 2026 report](https://www.doximity.com/reports/physician-compensation-report/2026) |
 | CIV_IM | 339,274 | USD/year | Same national [Doximity report](https://www.doximity.com/reports/physician-compensation-report/2026) |
 | CIV_FM | 325,040 | USD/year | Same national [Doximity report](https://www.doximity.com/reports/physician-compensation-report/2026) |
@@ -48,15 +51,15 @@ Benefits inputs to collect before assigning dollar values:
 | CIV_HEALTH_OFFER | Unknown | USD/year in premiums and expected out-of-pocket cost | Obtain a comparable civilian offer; do not assume no employer coverage |
 | DISCOUNT_RATE | Not yet selected | annual share | Author's stated present-value assumption, if benefits are monetized |
 
-Context sources: [GAO's staffing report](https://www.gao.gov/products/gao-25-106988) provides a DOD-wide personnel trend, not a San Diego Navy physician retention rate; [GAO's incentives report](https://www.gao.gov/products/gao-20-165) explains data limitations; [MCCareer.org's pay-plan account](https://mccareer.org/2024/09/28/fy25-medical-corps-pay-plan/) supplies practitioner context. Verify policy dollar amounts against official Navy guidance. Seek local specialty-specific offers or a reliable San Diego wage series for sensitivity analysis; never relabel national data as local data.
+Context sources: [GAO's staffing report](https://www.gao.gov/products/gao-25-106988) provides a DOD-wide personnel trend, not a San Diego Navy physician retention rate; [GAO's incentives report](https://www.gao.gov/products/gao-20-165) explains data limitations; [MCCareer.org's pay-plan account](https://mccareer.org/2024/09/28/fy25-medical-corps-pay-plan/) supplies practitioner context. Verify policy dollar amounts against official Navy guidance. Marit supplies city-level specialty figures, but the public pages do not provide a ZIP-level filter, and their all-employer cohorts include military entries. Seek civilian-only San Diego offers or a filtered cohort for validation; never relabel city data as ZIP data or mixed-employer data as civilian-only.
 
 ## Structure
 
 1. **Source and assumptions register.** Record each named input, source URL, publication or pay year, lookup choices, and verification date. Keep assumptions distinct from observed figures.
-2. **Compensation comparison.** One row per specialty, with current Navy cash pay, national civilian benchmark, gross pay gap, flat-bonus result, 50%-gap schedule result, and annual bonus cost above the current schedule.
+2. **Compensation comparison.** One row per specialty using the published Marit San Diego city figure, with current Navy cash pay, gross benchmark gap, flat-bonus result, 50%-gap schedule result, and annual bonus cost above the current schedule. Keep the Doximity national series as a separate sensitivity comparison, not a blended average.
 3. **Benefits comparison.** Identify which retirement, health, and education benefits change if an eligible physician stays for the proposed agreement rather than leaving now. Show benefit eligibility and direction first; monetize only when the required person-specific inputs are known. Evaluate a separate physician near 20 years of service if discussing the pension cliff; do not apply that value to the main O-4 over-10 profile without changing its pay and service assumptions.
-4. **Sensitivity checks.** Recalculate with BAH_92134_WITHOUT and with any credible local civilian benchmark found. Do not silently substitute a different grade, service year, or dependency status.
-5. **Figure.** A grouped bar chart in figures/ showing current Navy pay, pay under the 50%-gap schedule, and the civilian benchmark for each specialty. Show the flat $100,000 case in a companion table or figure annotation if legible. Caption the officer profile and source years.
+4. **Sensitivity checks.** Recalculate with BAH_92134_WITHOUT, the national Doximity series, and any credible civilian-only local offers. Do not silently substitute a different grade, service year, or dependency status.
+5. **Year-by-year table and figure.** Build a 12-row table: four contract years for each of the three specialties. For each year show the Marit city benchmark, Navy pay under the current bonus, flat $100,000 bonus, and 50%-gap bonus, plus cumulative gross cash gap and cumulative added Navy bonus cost. Build one figure with three specialty panels and contract year on the x-axis, plotting cumulative gross cash gap under the three bonus cases. A horizontal zero line shows modeled cash parity. Caption the frozen-2026-dollar assumption, Marit update dates, city rather than ZIP geography, and mixed-employer caveat.
 6. **Policy comparison.** Compare the pay cases with the nonbonus options below. For each, state the economic mechanism, practical constraint, observable outcome, and strength of supporting evidence. The source material identifies concerns or institutional priorities; it does not establish that the proposed interventions cause retention.
 7. **Paper evidence.** Cite the model and figure in the author's dated draft and finished analysis/research-paper.pdf. Keep the paper's prose, recommendation, and reflection author-written.
 
@@ -86,6 +89,14 @@ Use named inputs, not spreadsheet cell positions. Apply the same baseline to all
     INCREMENT_FLAT_s = FLAT_RB − RB_s
     INCREMENT_HALF_s = RB_HALF_s − RB_s
     RB_PARITY_s = CIV_s − NAVY_BASE
+    MARIT_GAP_CURRENT_s = MARIT_s − NAVY_CURRENT_s
+    MARIT_RB_HALF_s = RB_s + GAP_SHARE × MAX(0, MARIT_GAP_CURRENT_s)
+    MARIT_NAVY_HALF_s = NAVY_BASE + MARIT_RB_HALF_s
+    MARIT_GAP_FLAT_s = MARIT_s − NAVY_FLAT_s
+    CUM_GAP_s,policy,y = y × (MARIT_s − NAVY_s,policy)
+    CUM_ADDED_COST_s,policy,y = y × (RB_s,policy − RB_s), for y = 1, 2, 3, 4
+
+The year-by-year table is an illustrative constant-2026-dollar projection: repeat 2026 pay and the latest Marit benchmark in each of years 1–4. It is not a historical salary trend or a forecast of pay raises, promotion, BAH changes, civilian wage growth, or inflation. If a dynamic forecast is later built, define each year's grade, years of service, pay table, BAH, civilian growth, and discounting before replacing this convention.
 
 If showing four-year nominal cost per physician, multiply the annual incremental bonus by COMMITMENT. Do not call this a present value or total program budget. Actual program spending also depends on eligibility, uptake, timing, and number of physicians.
 
@@ -96,9 +107,9 @@ If showing four-year nominal cost per physician, multiply the annual incremental
 - For health coverage, compare household premiums and expected out-of-pocket spending under TRICARE with an actual or stated civilian employer plan; distinguish active-duty from retiree coverage. The [2026 TRICARE cost tables](https://newsroom.tricare.mil/News/TRICARE-News/Article/4328806/learn-your-2026-tricare-health-plan-costs) report different costs by status and plan.
 - For the Post-9/11 GI Bill, distinguish the member's already-earned education entitlement from the possible *incremental* value of transferring unused benefits to dependents. [VA's transfer rules](https://benefits.va.gov/gibill/post911_transfer.asp) generally require an approved transfer while serving, at least six years of service, and a four-year additional commitment; eligibility, transfer status, dependent use, and any remaining obligation must be checked. Do not count the full GI Bill value as lost upon civilian separation when it is already vested.
 - Keep full precision in the calculation and round displayed dollars only at output. A policy proposal may round total annual bonuses to practical amounts, but the check figures below use unrounded values.
-- A negative gross gap means modeled Navy gross cash pay exceeds the national civilian benchmark. It is not evidence that the specialty is overcompensated.
+- A negative gross gap means modeled Navy gross cash pay exceeds the selected published benchmark. It is not evidence that the specialty is overcompensated.
 - “Close 50% of the gap” means add half of a positive current gap to the existing annual retention bonus. It does not mean set Navy pay to 50% of civilian pay. The model's current Navy pay already exceeds that share in all three specialties.
-- The civilian averages are survey estimates, not offers to an individual San Diego physician. The comparison excludes tax treatment, pension value, insurance, hours, malpractice costs, deployment, assignment control, and clinical duties.
+- Marit pages call the displayed figures averages, while [Marit's methodology](https://www.marithealth.com/salary/methodology) says weighted medians and percentiles are its primary measures. Label the numbers as published Marit benchmarks until the statistic is clarified; do not recalculate a median from the limited public preview. The city cohorts are small (the public pages show seven pediatricians and 14 family physicians) and include military entries. These self-reported benchmarks are not verified civilian-only offers. The comparison excludes tax treatment, pension value, insurance, hours, malpractice costs, deployment, assignment control, and clinical duties.
 - Do not infer actual labor-supply elasticity or a causal retention effect from pay gaps. Assignment predictability and clinical practice opportunities change the nonpay value of staying and may complement bonuses. WCI personal accounts and the 1989 GAO survey are hypothesis sources, not contemporary causal estimates. Compare observed retention gains per dollar only if appropriate physician-level data become available.
 - The author decides whether the final recommendation favors a flat bonus, a specialty-specific schedule, assignment reform, or a combination. This specification sets comparison cases; it does not decide the policy.
 
@@ -106,7 +117,7 @@ If showing four-year nominal cost per physician, multiply the annual incremental
 
 The benefits layer must either use verified personal inputs and a transparent stay-versus-leave present-value comparison, or mark pension, health, and GI Bill values as unpriced. Check that no already-earned benefit is counted as newly created by a bonus agreement. A four-year contract starting around 10 years of service does not by itself reach the 20-year active-duty retirement threshold.
 
-The main profile must produce NAVY_BASE = $228,965.76. Independent hand arithmetic and the implemented model should agree to the cent before a figure is published.
+The main profile must produce NAVY_BASE = $228,965.76. The existing Doximity check table below remains a national sensitivity case; it is not the main local comparison. Independent hand arithmetic and the implemented model should agree to the cent before a figure is published.
 
 | Specialty | NAVY_CURRENT | CIV | GAP_CURRENT | NAVY_FLAT | GAP_FLAT | RB_HALF | NAVY_HALF | GAP_HALF |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -114,15 +125,26 @@ The main profile must produce NAVY_BASE = $228,965.76. Independent hand arithmet
 | Internal medicine | $276,965.76 | $339,274 | $62,308.24 | $328,965.76 | $10,308.24 | $79,154.12 | $308,119.88 | $31,154.12 |
 | Family medicine | $276,965.76 | $325,040 | $48,074.24 | $328,965.76 | −$3,925.76 | $72,037.12 | $301,002.88 | $24,037.12 |
 
-For the without-dependents case, lower BAH must lower each Navy cash-pay figure by $7,704 annually and raise each corresponding gross gap by $7,704, holding the bonus fixed. Every figure bar must reconcile to the model table. The chart needs labeled dollars, a zero baseline, a readable legend, source years, and the national-versus-local caveat. No caption may claim measured retention or elasticity.
+
+The published Marit city scenario must also reproduce these checks before a year-by-year table or figure is published:
+
+| Specialty | Marit city benchmark | Current Navy gap | Total bonus closing 50% of this gap | Remaining gap under flat $100,000 | Remaining gap under 50% schedule |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Pediatrics | $303,974 | $40,008.24 | $55,004.12 | −$24,991.76 | $20,004.12 |
+| Internal medicine | $459,057 | $182,091.24 | $139,045.62 | $130,091.24 | $91,045.62 |
+| Family medicine | $373,038 | $96,072.24 | $96,036.12 | $44,072.24 | $48,036.12 |
+
+The Marit internal medicine result differs sharply from the national sensitivity case. Treat it as a source-quality and comparability question, especially because the public local preview includes a military-contractor entry and does not disclose a clear local cohort count. Do not use the $459,057 figure as proof that a typical civilian internist in ZIP 92134 receives that pay.
+
+For the without-dependents case, lower BAH must lower each Navy cash-pay figure by $7,704 annually and raise each corresponding gross gap by $7,704, holding the bonus fixed. Every plotted year and line must reconcile to the 12-row table. The chart needs labeled dollars, a zero line, a readable legend, source years, and the city-versus-ZIP and mixed-employer caveats. No caption may claim measured retention or elasticity.
 
 A finished paper passes the assignment checks when it: identifies why retention is a current problem and who is affected; uses the course concepts of opportunity cost, incentives, labor supply, elasticity, and marginal policy cost correctly; analyzes present implications and conditional future outcomes; makes a recommendation and answers the strongest objection; uses at least one substantive figure; verifies every AI-supplied number; and follows the [research-paper requirements](https://adamwstauffer.github.io/ai-lms/research-paper.html) for length, formatting, citations, anonymity, and submission. The four-page limit excludes title page, graphs, bibliography, and appendix.
 
 ## Outputs
 
-- A transparent specialty-level cash-compensation table and sensitivity results supporting the author's analysis.
+- A 12-row year-by-year cash comparison and a separate specialty-level source and sensitivity table supporting the author's analysis.
 - A separate benefits table showing eligibility, whether each benefit is already earned, the incremental stay-versus-leave value if estimable, and the missing inputs when it is not.
-- A labeled figure saved in figures/ and used as evidence in the paper.
+- A labeled cumulative-gap-by-year figure saved in figures/ and used as evidence in the paper.
 - A concise policy comparison table that states the evidence limit and measurable outcome for each nonbonus option.
 - A dated draft chain in drafts/YYYY-MM-DD-draft.md, created by the author as the argument develops.
 - The finished paper at analysis/research-paper.pdf, with a separate bibliography and no repository URL or identifying information on body pages.
