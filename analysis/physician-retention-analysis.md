@@ -1,0 +1,64 @@
+# Physician retention cash comparison — audit table
+
+Four-year hypothetical agreement, 2027–2030, expressed in constant 2026 dollars. The profile is a board-certified O-4 just past 10 years of service, with dependents, assigned to ZIP 92134, eligible for the listed FY26 special pays. The current and proposed retention bonus is the **total** annual RB, not a payment added on top of another RB. The 50% bonus is fixed at its Year 1 value throughout the four-year scenario.
+
+| Specialty | Year | Marit San Diego benchmark | Current Navy cash | Navy cash with $100k RB | Navy cash with 50% gap RB | Gap: current | Gap: $100k | Gap: 50% |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Pediatrics | 2027 | $303,974.00 | $263,965.76 | $328,965.76 | $283,969.88 | $40,008.24 | $-24,991.76 | $20,004.12 |
+| Pediatrics | 2028 | $303,974.00 | $263,965.76 | $328,965.76 | $283,969.88 | $40,008.24 | $-24,991.76 | $20,004.12 |
+| Pediatrics | 2029 | $303,974.00 | $269,585.36 | $334,585.36 | $289,589.48 | $34,388.64 | $-30,611.36 | $14,384.52 |
+| Pediatrics | 2030 | $303,974.00 | $269,585.36 | $334,585.36 | $289,589.48 | $34,388.64 | $-30,611.36 | $14,384.52 |
+| Internal medicine | 2027 | $459,057.00 | $276,965.76 | $328,965.76 | $368,011.38 | $182,091.24 | $130,091.24 | $91,045.62 |
+| Internal medicine | 2028 | $459,057.00 | $276,965.76 | $328,965.76 | $368,011.38 | $182,091.24 | $130,091.24 | $91,045.62 |
+| Internal medicine | 2029 | $459,057.00 | $282,585.36 | $334,585.36 | $373,630.98 | $176,471.64 | $124,471.64 | $85,426.02 |
+| Internal medicine | 2030 | $459,057.00 | $282,585.36 | $334,585.36 | $373,630.98 | $176,471.64 | $124,471.64 | $85,426.02 |
+| Family medicine | 2027 | $373,038.00 | $276,965.76 | $328,965.76 | $325,001.88 | $96,072.24 | $44,072.24 | $48,036.12 |
+| Family medicine | 2028 | $373,038.00 | $276,965.76 | $328,965.76 | $325,001.88 | $96,072.24 | $44,072.24 | $48,036.12 |
+| Family medicine | 2029 | $373,038.00 | $282,585.36 | $334,585.36 | $330,621.48 | $90,452.64 | $38,452.64 | $42,416.52 |
+| Family medicine | 2030 | $373,038.00 | $282,585.36 | $334,585.36 | $330,621.48 | $90,452.64 | $38,452.64 | $42,416.52 |
+
+## Bonus and four-year checks
+
+| Specialty | Current total RB | 50% gap total RB | Extra annual cost of $100k RB | Extra annual cost of 50% RB | Four-year current gap | Four-year $100k gap | Four-year 50% gap |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Pediatrics | $35,000.00 | $55,004.12 | $65,000.00 | $20,004.12 | $148,793.76 | $-111,206.24 | $68,777.28 |
+| Internal medicine | $48,000.00 | $139,045.62 | $52,000.00 | $91,045.62 | $717,125.76 | $509,125.76 | $352,943.28 |
+| Family medicine | $48,000.00 | $96,036.12 | $52,000.00 | $48,036.12 | $373,049.76 | $165,049.76 | $180,905.28 |
+
+## National sensitivity check (separate comparator)
+
+Doximity's 2026 report gives national specialty averages based on 2025 compensation responses. These do not replace a San Diego civilian offer and are not blended with Marit's city benchmarks.
+
+| Specialty | Doximity national average | Year 1 current Navy cash | Year 1 gap, current RB | Year 1 gap, $100k RB |
+| --- | ---: | ---: | ---: | ---: |
+| Pediatrics | $273,665.00 | $263,965.76 | $9,699.24 | $-55,300.76 |
+| Internal medicine | $339,274.00 | $276,965.76 | $62,308.24 | $10,308.24 |
+| Family medicine | $325,040.00 | $276,965.76 | $48,074.24 | $-3,925.76 |
+
+## Verification and interpretation
+
+- The script checks the Year 1–2 Navy cash baseline of $228,965.76, the Year 3–4 baseline of $234,585.36, all three cumulative-gap triplets in the specification, exactly 12 output rows, and the $7,704 annual BAH difference when dependents are removed.
+- The Year 3 step is the 2026 DFAS O-4 over-12 rate. BAH, BAS, specialty pays, bonuses, and Marit benchmarks stay frozen at their cited 2026 amounts. This is a comparison of policies under stated assumptions, not a forecast of future salary or promotion.
+- The gap is published Marit city benchmark minus modeled Navy gross cash. A negative result means Navy modeled cash exceeds that benchmark. These are arithmetic gaps, not estimates of whether a physician would remain on active duty.
+- Marit's published San Diego figures are self-reported, use small visible local cohorts, and include multiple employer types. The internist public preview includes a military contractor. A civilian-only, similar-hours, similar-experience San Diego offer is needed to validate the market comparator before making a definitive policy-cost claim.
+- The sensitivity checks should use Doximity national benchmarks separately, BAH without dependents, and verified civilian-only offers if obtained. The paper should not blend national and city estimates into a single 'civilian salary.'
+
+## Benefits layer: deliberately unpriced in the base table
+
+| Benefit | Incremental question | Missing person-specific inputs |
+| --- | --- | --- |
+| Pension | Does staying change the probability or amount of active-duty retirement benefits? | Retirement system, exact service years, projected High-3, continuation probability, taxes, discount rate, expected payment years. A four-year commitment from just over 10 years does not reach 20. |
+| Healthcare | How much lower are expected household premiums and out-of-pocket costs under TRICARE? | Comparable civilian employer plan, dependent coverage, expected use, active-duty status. |
+| GI Bill | Does staying create or preserve dependent-transfer value beyond rights already earned? | Remaining entitlement, approved transfer status, dependents, additional-service obligation, likely use. |
+
+## Source register
+
+- [DFAS 2026 commissioned-officer basic pay](https://www.dfas.mil/MilitaryMembers/payentitlements/Pay-Tables/Basic-Pay/CO/): O-4 over 10 = $9,420/month; over 12 = $9,888.30/month.
+- [DTMO BAH rate lookup](https://www.travel.dod.mil/Allowances/Basic-Allowance-for-Housing/BAH-Rate-Lookup/): 2026, 92134, O-4, with dependents = $5,082/month; without = $4,440/month.
+- [DoD BAS](https://militarypay.defense.gov/Pay/Allowances/BAS/): 2026 officer rate = $328.48/month.
+- [Navy Medicine FY26 special pays](https://www.med.navy.mil/Special-Pays/): modeled primary-care IP = $43,000/year, BCP = $8,000/year, four-year RB = $35,000 pediatrics and $48,000 internal/family medicine; eligibility must be verified for actual physicians.
+- [Doximity 2026 Physician Compensation Report](https://www.doximity.com/reports/physician-compensation-report/2026): national averages of $273,665 pediatrics, $339,274 internal medicine, and $325,040 family medicine, from a 2025 compensation survey. This is a separate geography and method from Marit.
+- Marit San Diego published benchmarks: [pediatrics](https://www.marithealth.com/o/-/pediatrician/salary/san-diego-ca) $303,974 (Aug. 28, 2026), [internists](https://www.marithealth.com/o/-/internist/salary/san-diego-ca) $459,057 (Apr. 30, 2026), [family medicine](https://www.marithealth.com/o/-/family-medicine-physician/salary/san-diego-ca) $373,038 (June 5, 2026). These are citywide and not verified civilian-only salary figures.
+
+The companion figure is [the cumulative-gap chart](../figures/physician-retention-cumulative-gap.svg).
+
