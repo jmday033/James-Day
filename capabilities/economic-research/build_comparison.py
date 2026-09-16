@@ -26,7 +26,7 @@ SPECIALTIES = {
 DOXIMITY = {"Pediatrics": D("273665"), "Internal medicine": D("339274"), "Family medicine": D("325040")}
 
 def money(value: D) -> str:
-    return f"${value:,.2f}"
+    return f"-${abs(value):,.2f}" if value < 0 else f"${value:,.2f}"
 
 def navy_base(year: int) -> D:
     return MONTHS * (BASE[year] + BAH + BAS) + IP + BCP
