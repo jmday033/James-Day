@@ -76,6 +76,12 @@ Context sources: [GAO's staffing report](https://www.gao.gov/products/gao-25-106
 
 The strongest policy comparison for the paper is targeted bonus versus predictable assignment, with protected clinical practice as a possible complement. [GAO's physician-gap review](https://www.gao.gov/products/gao-18-77) calls for coordinated recruitment, training, and retention strategies with metrics; it does not prescribe one of these specific local interventions.
 
+## Additional public-source context and variables
+
+Public [Medical Corps community values](https://mccareer.org/wp-content/uploads/2025/01/fy26_ac_staff_community_briefs.pdf) emphasize maintaining specialty practice, clinical skill competency, operational experience, and professional growth. A [2026 GAO review of military-civilian clinical partnerships](https://www.gao.gov/products/gao-26-107677) finds that such partnerships can provide clinical-readiness opportunities, but DOD does not yet have complete activity data to assess their contributions. These sources justify measuring the clinical value of service alongside pay; they do not establish a causal retention effect.
+
+For any future physician-level test, collect the following **noncash covariates** at the decision date and during the agreement: preferred versus assigned duty location, assignment notice and moves, days practicing the primary specialty, clinical workload and partnership activity where applicable, training access, promotion timing and grade, and the physician's stated intention to stay. Match them to bonus eligibility, acceptance, actual separation, and post-obligation retention. Record promotion timing because the fixed table assumes O-4 throughout 2027–2030; a real O-5 promotion changes basic pay and may change BAH. Do not infer a promotion rate or claim that any clinical opportunity caused retention from the public sources alone.
+
 ## Calculation logic
 
 Use named inputs, not spreadsheet cell positions. Apply the same baseline to all three specialties; substitute RB_s, CIV_s, and MARIT_s from the named specialty rows above. For the year-by-year table, policy means current (NAVY_CURRENT_s, RB_s), flat (NAVY_FLAT_s, FLAT_RB), or half-gap (MARIT_NAVY_HALF_s, MARIT_RB_HALF_s).
@@ -104,7 +110,7 @@ Use named inputs, not spreadsheet cell positions. Apply the same baseline to all
     CUM_GAP_s,policy,y = SUM over t = 1...y of (MARIT_s − NAVY_s,policy,t)
     CUM_ADDED_COST_s,policy,y = y × (RB_s,policy − RB_s)
 
-The year-by-year table is an illustrative 2027–2030 comparison in constant 2026 dollars. Apply the 2026 O-4 pay-table step at over 12 years, but hold 2026 BAH, BAS, specialty pays, and the latest 2026 Marit benchmark fixed. Lock each proposed four-year bonus amount at its Year 1 value. This is not a historical salary trend or a forecast of raises, promotion, BAH changes, civilian wage growth, or inflation. If a full forecast is later built, define future annual pay tables, grade, BAH, civilian growth, and discounting before replacing this convention.
+The year-by-year table is an illustrative 2027–2030 comparison in constant 2026 dollars. It holds rank at O-4; promotion timing is a person-specific sensitivity that must be added before individual application. Apply the 2026 O-4 pay-table step at over 12 years, but hold 2026 BAH, BAS, specialty pays, and the latest 2026 Marit benchmark fixed. Lock each proposed four-year bonus amount at its Year 1 value. This is not a historical salary trend or a forecast of raises, promotion, BAH changes, civilian wage growth, or inflation. If a full forecast is later built, define future annual pay tables, grade, BAH, civilian growth, and discounting before replacing this convention.
 
 If showing four-year nominal cost per physician, multiply the annual incremental bonus by COMMITMENT. Do not call this a present value or total program budget. Actual program spending also depends on eligibility, uptake, timing, and number of physicians.
 
