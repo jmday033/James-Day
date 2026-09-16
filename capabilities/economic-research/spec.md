@@ -10,7 +10,7 @@ status: draft
 
 ## Purpose
 
-Support a decision about Navy primary care physician retention bonuses in San Diego. Compare the gross cash compensation of eligible Navy general pediatricians, general internists, and family physicians with civilian benchmarks, then assess a flat $100,000 annual bonus and a specialty-specific schedule that closes 50% of each current pay gap. The model must show what each policy costs per eligible physician and how much of the modeled pay gap remains. It cannot, without retention data, show how many physicians either policy would retain.
+Support a decision about Navy primary care physician retention bonuses in San Diego. Compare the gross cash compensation of eligible Navy general pediatricians, general internists, and family physicians with civilian benchmarks, then assess a flat $100,000 annual bonus and a specialty-specific schedule that closes 50% of each current pay gap. Compare those pay policies with assignment predictability and protected specialty practice as plausible nonbonus strategies. The model must show what each policy costs per eligible physician and how much of the modeled pay gap remains. It cannot, without retention data, show how many physicians either policy would retain.
 
 This spec implements the question and hypothesis in [the committed research brief](../../docs/briefs/research-brief.md). The four-year agreement is an eligibility and commitment assumption; the amounts below are annual.
 
@@ -45,7 +45,18 @@ Context sources: [GAO's staffing report](https://www.gao.gov/products/gao-25-106
 2. **Compensation comparison.** One row per specialty, with current Navy cash pay, national civilian benchmark, gross pay gap, flat-bonus result, 50%-gap schedule result, and annual bonus cost above the current schedule.
 3. **Sensitivity checks.** Recalculate with BAH_92134_WITHOUT and with any credible local civilian benchmark found. Do not silently substitute a different grade, service year, or dependency status.
 4. **Figure.** A grouped bar chart in figures/ showing current Navy pay, pay under the 50%-gap schedule, and the civilian benchmark for each specialty. Show the flat $100,000 case in a companion table or figure annotation if legible. Caption the officer profile and source years.
-5. **Paper evidence.** Cite the model and figure in the author's dated draft and finished analysis/research-paper.pdf. Keep the paper's prose, recommendation, and reflection author-written.
+5. **Policy comparison.** Compare the pay cases with the nonbonus options below. For each, state the economic mechanism, practical constraint, observable outcome, and strength of supporting evidence. The source material identifies concerns or institutional priorities; it does not establish that the proposed interventions cause retention.
+6. **Paper evidence.** Cite the model and figure in the author's dated draft and finished analysis/research-paper.pdf. Keep the paper's prose, recommendation, and reflection author-written.
+
+### Nonbonus policy options to examine
+
+| Option | Why it might change the decision to stay | Source and evidence limit | What to measure if piloted |
+| --- | --- | --- | --- |
+| More predictable assignments | Earlier notice and more choice over location could lower the family and career cost of remaining in service, even with unchanged pay. | A [White Coat Investor physician account](https://www.whitecoatinvestor.com/medical-school-and-hpsp/) describes limited autonomy and location stability. It is one person's experience, not an estimate of retention effects. [GAO's 2025 staffing report](https://www.gao.gov/products/gao-25-106988) describes coordination and notification for medical personnel assignments, but does not test a retention guarantee. | Assignment notice time, desired-location matches, unplanned moves, eligible-physician retention; record mission-driven exceptions. |
+| Protected specialty practice and clinical development | Reliable time practicing pediatrics, internal medicine, or family medicine may raise the professional value of staying and preserve clinical skills. | [Navy Medical Corps community values, hosted by MCCareer](https://mccareer.org/wp-content/uploads/2025/01/fy26_ac_staff_community_briefs.pdf), emphasize active specialty practice, skill maintenance, education, and balancing clinical with operational service. An older [GAO physician survey](https://www.gao.gov/products/t-hrd-89-10) reports that opportunity to practice one's specialty was an inducement to stay; its 1989 responses should not be treated as current effect sizes. | Clinical days and patient volume by specialty, training access, physician-reported clinical confidence, and retention at the next decision point. |
+| Better administrative support, if feasible | More reliable staffing or fewer avoidable administrative tasks could reduce the nonpay cost of Navy practice. | The [1989 GAO survey](https://www.gao.gov/products/t-hrd-89-10) identified inadequate health and administrative support as a concern. This is a hypothesis to retest locally, not a current measured driver. | Administrative hours, support staffing, burnout or job-satisfaction measures, and subsequent retention. |
+
+The strongest policy comparison for the paper is targeted bonus versus predictable assignment, with protected clinical practice as a possible complement. [GAO's physician-gap review](https://www.gao.gov/products/gao-18-77) calls for coordinated recruitment, training, and retention strategies with metrics; it does not prescribe one of these specific local interventions.
 
 ## Calculation logic
 
@@ -72,7 +83,7 @@ If showing four-year nominal cost per physician, multiply the annual incremental
 - A negative gross gap means modeled Navy gross cash pay exceeds the national civilian benchmark. It is not evidence that the specialty is overcompensated.
 - “Close 50% of the gap” means add half of a positive current gap to the existing annual retention bonus. It does not mean set Navy pay to 50% of civilian pay. The model's current Navy pay already exceeds that share in all three specialties.
 - The civilian averages are survey estimates, not offers to an individual San Diego physician. The comparison excludes tax treatment, pension value, insurance, hours, malpractice costs, deployment, assignment control, and clinical duties.
-- Do not infer actual labor-supply elasticity or a causal retention effect from pay gaps. Assignment predictability changes the nonpay value of staying and may complement bonuses. Compare observed retention gains per dollar only if appropriate physician-level data become available.
+- Do not infer actual labor-supply elasticity or a causal retention effect from pay gaps. Assignment predictability and clinical practice opportunities change the nonpay value of staying and may complement bonuses. WCI personal accounts and the 1989 GAO survey are hypothesis sources, not contemporary causal estimates. Compare observed retention gains per dollar only if appropriate physician-level data become available.
 - The author decides whether the final recommendation favors a flat bonus, a specialty-specific schedule, assignment reform, or a combination. This specification sets comparison cases; it does not decide the policy.
 
 ## Validation rules
@@ -93,6 +104,7 @@ A finished paper passes the assignment checks when it: identifies why retention 
 
 - A transparent specialty-level compensation table and sensitivity results supporting the author's analysis.
 - A labeled figure saved in figures/ and used as evidence in the paper.
+- A concise policy comparison table that states the evidence limit and measurable outcome for each nonbonus option.
 - A dated draft chain in drafts/YYYY-MM-DD-draft.md, created by the author as the argument develops.
 - The finished paper at analysis/research-paper.pdf, with a separate bibliography and no repository URL or identifying information on body pages.
 - An updated prompt-log.md recording AI-assisted research, checks, errors, and the author's final reflection.
