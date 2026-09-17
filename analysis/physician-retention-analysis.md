@@ -59,7 +59,7 @@ The core test is labor-supply elasticity to Navy compensation: compare bonus acc
 
 Public [Navy Medical Corps community values](https://mccareer.org/wp-content/uploads/2025/01/fy26_ac_staff_community_briefs.pdf) identify active specialty practice, skill maintenance, operational experience, and professional growth as priorities. [GAO's 2026 public review](https://www.gao.gov/products/gao-26-107677) documents clinical-readiness opportunities from military-civilian partnerships and incomplete activity data for assessing them. These are reasons to track clinical practice as a possible nonpay retention factor, not evidence that it outweighs pay or changes retention by a known amount.
 
-A physician-level evaluation should record assignment preferences and moves, clinical days in the primary specialty, partnership activity where applicable, training access, promotion timing, bonus eligibility and acceptance, and separation after the agreement. The fixed four-year table assumes O-4 throughout; it is not applicable unchanged to a physician promoted to O-5. Grade-dependent basic pay and BAH should be recalculated for that person's promotion path.
+A physician-level evaluation should record assignment preferences and moves, clinical days in the primary specialty, partnership activity where applicable, training access, promotion timing, perceived mission connection and administrative burden, bonus eligibility and acceptance, and separation after the agreement. The fixed four-year table assumes O-4 throughout; it is not applicable unchanged to a physician promoted to O-5. Grade-dependent basic pay and BAH should be recalculated for that person's promotion path.
 
 ## Benefits layer: deliberately unpriced in the base table
 
