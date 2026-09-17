@@ -80,3 +80,18 @@ A physician-level evaluation should record assignment preferences and moves, cli
 
 The companion figure is [the cumulative-gap chart](../figures/physician-retention-cumulative-gap.svg).
 
+## FY26 guidance and expanded compensation check
+
+The attached [NAVADMIN 229/25](https://www.med.navy.mil/Portals/62/Documents/BUMED/Special%20Pays/FY26/NAVADMIN%20229-25.pdf?ver=TfDkIMOG-xZUcffS8qWIAw%3D%3D) is unclassified and confirms continuation of FY26 medical-department special-pay authority. It refers officers to [corps-specific guidance](https://www.med.navy.mil/Special-Pays/). The supplied FY26 Medical Service Corps guidance concerns a different corps; **Medical Corps** guidance governs this physician scenario. The NAVADMIN does not authorize the proposed new bonus amounts. Their feasibility requires an eligibility, ceiling, agreement, and approval review before a pilot.
+
+The published benefits material is useful as an inventory, but its broad financial claims cannot be entered as fixed annual compensation. The current Navy cash line **already contains BAH and BAS**. [DoD identifies both as generally tax-exempt allowances](https://militarypay.defense.gov/Pay/Tax-Information/Exempt/), so the gross Navy-versus-civilian comparison may understate Navy's after-tax value. An after-tax sensitivity would apply individual federal and state tax assumptions to both paths and add only the resulting tax difference. It must not add BAH or BAS a second time. Conversely, the table omits possible civilian employer retirement contributions, health coverage, paid leave, and malpractice coverage. Actual offers are needed on both sides.
+
+| Benefit or job attribute | Retention-relevant measure | Double-counting or comparability rule |
+| --- | --- | --- |
+| Pension and BRS/TSP | Expected present value of **additional** retirement value caused by staying | Do not add a full lifetime pension to one year of cash or treat accrued/portable savings as lost on separation. |
+| TRICARE and insurance | Household premium and expected out-of-pocket difference from a specific civilian plan; comparable life/disability protection | Compare like coverage and avoid counting the civilian employer contribution as both salary and benefit. |
+| GI Bill transfer | Dependent-transfer value that depends on additional service | [VA rules](https://benefits.va.gov/gibill/post911_transfer.asp) generally require six years served and four more agreed at transfer; already earned personal entitlement remains available after separation. |
+| Leave, CME, clinical opportunity, assignments, mission | Hours, leave days, training funds/time, clinical days, location stability, stated preferences | Show separately unless a physician provides a defensible personal dollar value; these are possible compensating differentials, not measured retention effects. |
+| Civilian overhead or malpractice | Physician-paid cost under the actual civilian job structure | Do not deduct practice-owner expenses from an employed physician salary without evidence the physician bears them. |
+
+These additions do not change any row of the 12-row gross-cash table. They identify what would be needed to transform its arithmetic gap into an individual expected-value comparison. A frequently cited fixed pension value is inappropriate because retirement system, service years, High-3 pay, likelihood of reaching 20 years, taxes, and discounting vary. The policy outcome remains acceptance and subsequent retention, not modeled pay parity by itself.
