@@ -13,6 +13,8 @@ hypothesis: "At current pay rates, accurate communication about available Navy-s
 
 Navy Medicine must retain experienced physicians after their initial service obligations end. Losing physicians can leave clinical positions unfilled and weaken continuity of care and readiness. [GAO's 2025 staffing review](https://www.gao.gov/products/gao-25-106988) reports a decline in assigned military medical personnel across DOD and expected shortfalls through at least 2027. That is current DOD-wide context, not a measured San Diego Navy primary-care attrition rate. The question here is what could help retain Navy pediatricians, general internists, and family physicians who have a civilian alternative.
 
+The global challenge is sustaining the medical workforce that supports U.S. naval operations in the Pacific. [Naval Medical Forces Pacific](https://www.med.navy.mil/Naval-Medical-Forces-Pacific/Region/) is headquartered in San Diego and spans commands in Hawaii, Japan, and Guam; its [mission](https://www.med.navy.mil/Naval-Medical-Forces-Pacific/Region/Mission/) includes keeping assigned medical forces staffed, trained, and ready to deploy. San Diego is the local labor-market case for this larger workforce question. This project tests a potential retention mechanism; it does not show that departures among these three specialties have reduced Pacific readiness.
+
 ## What I am assuming
 
 - Some physicians face higher expected civilian compensation, more geographic flexibility, or different clinical opportunities after their Navy obligation.
@@ -26,6 +28,8 @@ At current pay rates, targeted, accurate communication about available Navy-spec
 
 The economic concepts are **opportunity cost** and **choice among bundles of financial and nonfinancial attributes**. The accompanying model estimates the present-value financial opportunity cost of staying: the difference between a feasible civilian path and continued Navy service over the same horizon. Its starting table uses current Navy compensation and published San Diego specialty benchmarks; the individual lab adds taxes, pension continuation, healthcare, GI Bill transfer, and physician-paid costs when reliable inputs are available. It does not measure how much a physician values the nonfinancial attributes or predict retention from salary data alone.
 
+The proposed chain is: local civilian alternatives affect a physician's stay-or-leave choice; those choices may affect Navy medical staffing; staffing may affect the force's ability to provide care and deploy. The model measures only the first link. Testing later links requires specialty-level vacancies, fill times, clinical capacity, deployability, and assignment data rather than assuming a pay gap is a readiness loss.
+
 ## How I would know I was wrong
 
 The hypothesis would be weakened if accurate awareness improved but agreement acceptance and later retention did not improve relative to a comparable group. It would also be weakened if the advertised opportunities were rarely accessible or if physicians already knew about them. Survey intentions alone are insufficient: the test should observe acceptance at the next unobligated choice and retention after the agreement, accounting for specialty, career stage, pay agreement vintage, and assignment conditions. A weak effect among physicians with the largest verified gaps would limit the strategy's reach.
@@ -33,6 +37,7 @@ The hypothesis would be weakened if accurate awareness improved but agreement ac
 ## Initial sources and data needed
 
 - [GAO, military medical personnel staffing (2025)](https://www.gao.gov/products/gao-25-106988) for current DOD-wide context.
+- [Naval Medical Forces Pacific region](https://www.med.navy.mil/Naval-Medical-Forces-Pacific/Region/) and [mission](https://www.med.navy.mil/Naval-Medical-Forces-Pacific/Region/Mission/) for the San Diego-to-Pacific operational connection; neither provides a causal estimate for these specialties.
 - [GAO, military medical personnel incentives (2020)](https://www.gao.gov/products/gao-20-165) for gaps in civilian wage, bonus acceptance, and replacement-cost data.
 - [Navy Medicine FY26 Medical Corps special-pay guidance](https://www.med.navy.mil/Special-Pays/) and actual agreements for current compensation.
 - [Marit Health San Diego specialty benchmarks](https://www.marithealth.com/salary/methodology), checked against comparable civilian-only offers; [Doximity's 2026 report](https://www.doximity.com/reports/physician-compensation-report/2026) is a separate national sensitivity source.
