@@ -22,7 +22,7 @@ Navy Medicine must retain experienced physicians after their initial service obl
 
 ## Hypothesis
 
-At **current pay rates**, targeted, accurate communication about available Navy-specific nonfinancial opportunities will increase awareness and may improve agreement acceptance and later retention among eligible San Diego-based primary-care physicians relative to standard information. I expect a smaller retention effect for physicians with a larger *verified* civilian financial advantage. This is a testable prediction, not a claim that communication can compensate for every pay gap.
+At current pay rates, targeted, accurate communication about available Navy-specific nonfinancial opportunities will increase awareness and may improve agreement acceptance and later retention among eligible San Diego-based primary-care physicians relative to standard information. I expect a smaller retention effect for physicians with a larger *verified* civilian financial advantage. This is a testable prediction, not a claim that communication can compensate for every pay gap.
 
 The economic concepts are **opportunity cost** and **choice among bundles of financial and nonfinancial attributes**. The accompanying model estimates the present-value financial opportunity cost of staying: the difference between a feasible civilian path and continued Navy service over the same horizon. Its starting table uses current Navy compensation and published San Diego specialty benchmarks; the individual lab adds taxes, pension continuation, healthcare, GI Bill transfer, and physician-paid costs when reliable inputs are available. It does not measure how much a physician values the nonfinancial attributes or predict retention from salary data alone.
 
