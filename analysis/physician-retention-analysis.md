@@ -2,6 +2,8 @@
 
 Four-year illustrative agreement, 2027–2030, in constant 2026 dollars. The profile is a board-certified O-4 just past 10 years of service, with dependents, assigned to ZIP 92134 and eligible for the listed FY26 special pays. Only the **current FY26 retention bonus** is included.
 
+San Diego is a local case in a wider Pacific medical-workforce problem. [Naval Medical Forces Pacific](https://www.med.navy.mil/Naval-Medical-Forces-Pacific/Region/) is headquartered in San Diego and includes commands in Hawaii, Japan, and Guam; its [mission](https://www.med.navy.mil/Naval-Medical-Forces-Pacific/Region/Mission/) is to keep assigned forces ready to deploy. This table measures compensation differences, not physician departures, vacancies, deployability, or a readiness effect. Linking retention to Pacific operations requires those outcome data by specialty and billet.
+
 | Specialty | Year | Marit San Diego benchmark | Current Navy cash | Current cash gap |
 | --- | ---: | ---: | ---: | ---: |
 | Pediatrics | 2027 | $303,974.00 | $263,965.76 | $40,008.24 |
