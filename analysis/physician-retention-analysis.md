@@ -95,3 +95,7 @@ A fuller benefits inventory is useful, but broad financial claims cannot be ente
 | Civilian overhead or malpractice | Physician-paid cost under the actual civilian job structure | Do not deduct practice-owner expenses from an employed physician salary without evidence the physician bears them. |
 
 These additions do not change any row of the 12-row gross-cash table. They identify what would be needed to transform its arithmetic gap into an individual expected-value comparison. A frequently cited fixed pension value is inappropriate because retirement system, service years, High-3 pay, likelihood of reaching 20 years, taxes, and discounting vary. The policy outcome remains acceptance and subsequent retention, not modeled pay parity by itself.
+
+## Outcome-data path
+
+[Section 718 of Public Law 118-159](https://www.govinfo.gov/content/pkg/PLAW-118publ159/pdf/PLAW-118publ159.pdf) requires annual surveys on why military health care providers remain or separate, with reported data broken out by specialty, rank, years of service, and accession path. Those tabulations could help test whether pay, location, career opportunities, or workload are reported as salient factors. They are not a substitute for individual bonus eligibility, acceptance, and later separation records, and stated reasons alone do not identify a causal retention response. The supplied announcement workbook contains communications rather than those outcome observations, so it does not change the cash table or supply a retention elasticity.
