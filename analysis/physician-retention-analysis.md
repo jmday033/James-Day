@@ -37,6 +37,16 @@ Doximity’s 2026 report gives national specialty averages based on 2025 compens
 | Internal medicine | $339,274.00 | $276,965.76 | $62,308.24 |
 | Family medicine | $325,040.00 | $276,965.76 | $48,074.24 |
 
+The [SalaryDr 2026 report](https://www.salarydr.com/reports/physician-pay-2026) provides another publicly visible national sensitivity check. Its figures are **medians**, not the same statistic as the Doximity averages or a San Diego offer. They come from verified self-reports through July 17, 2026; specialty samples are modest, and the internal-medicine group includes hospital medicine.
+
+| Specialty | SalaryDr national median | Specialty responses | Year 1 current gap |
+| --- | ---: | ---: | ---: |
+| Pediatrics | $310,000.00 | 261 | $46,034.24 |
+| Internal medicine | $345,000.00 | 157 | $68,034.24 |
+| Family medicine | $310,000.00 | 143 | $33,034.24 |
+
+MedMoneyGuide's specialty ranges are attributed to Medscape or Doximity, so adding them as a separate toggle would double-count those underlying reports. The NEJM CareerCenter compensation article discusses MGMA/AMGA data and pay-plan design but does not publish a matched, three-specialty dataset for this calculator. The lab therefore removes empty MGMA/AMGA choices and offers SalaryDr instead. Keep all national comparisons separate from the Marit local baseline and verify a real offer before interpreting any benchmark as a personal opportunity cost.
+
 ## Working hypothesis and what this analysis can test
 
 At current pay rates, clearer, targeted communication about real Navy-specific nonfinancial opportunities may improve agreement acceptance and later retention for primary-care physicians who value those opportunities. The effect may be smaller when a physician faces a larger verified financial advantage from civilian practice. The table quantifies a gross-cash proxy for the financial opportunity cost; the person-specific lab can add taxes, pension continuation, health, GI Bill transfer, and physician-paid costs. Neither the table nor the lab measures the personal value of leadership, teaching, research, specialty practice, operational experience, mission, or assignment stability.
@@ -129,6 +139,7 @@ A physician-level evaluation should record assignment preferences and moves, cli
 - [DoD BAS](https://militarypay.defense.gov/Pay/Allowances/BAS/): 2026 officer rate = $328.48/month.
 - [Navy Medicine FY26 special pays](https://www.med.navy.mil/Special-Pays/): modeled primary-care IP = $43,000/year, BCP = $8,000/year, four-year RB = $35,000 pediatrics and $48,000 internal/family medicine; eligibility must be verified for actual physicians.
 - [Doximity 2026 Physician Compensation Report](https://www.doximity.com/reports/physician-compensation-report/2026): national averages of $273,665 pediatrics, $339,274 internal medicine, and $325,040 family medicine, from a 2025 compensation survey. This is a separate geography and method from Marit.
+- [SalaryDr 2026 Physician Pay Report](https://www.salarydr.com/reports/physician-pay-2026): national attending medians of $310,000 pediatrics, $345,000 internal medicine, and $310,000 family medicine from verified self-reports through July 17, 2026. The internal-medicine grouping includes hospital medicine; do not blend these medians with Marit or Doximity.
 - Marit San Diego published benchmarks: [pediatrics](https://www.marithealth.com/o/-/pediatrician/salary/san-diego-ca) $303,974 (Aug. 28, 2026), [internists](https://www.marithealth.com/o/-/internist/salary/san-diego-ca) $459,057 (Apr. 30, 2026), [family medicine](https://www.marithealth.com/o/-/family-medicine-physician/salary/san-diego-ca) $373,038 (June 5, 2026). These are citywide and not verified civilian-only salary figures.
 
 The companion figure is [the cumulative-gap chart](../figures/physician-retention-cumulative-gap.svg).
