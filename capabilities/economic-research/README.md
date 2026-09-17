@@ -14,7 +14,7 @@ This capability studies Navy primary-care physician retention in San Diego as a 
 
 The brief records the author's question and falsifiable hypothesis. The spec defines sources, named inputs, calculations, figure requirements, and acceptance checks. The paper and final recommendation remain the author's work.
 
-The [interactive Physician Pay Gap Lab](physician-pay-lab.html) is a supplemental sensitivity tool. It accepts rank, physician, civilian-pay, and benefit assumptions and calculates a present-value financial gap and year-by-year cash comparison under current compensation. Its San Diego Marit benchmarks are citywide, not ZIP-specific; only ZIP 92134 has prefilled BAH rates. The lab does not estimate retention or operational-readiness effects.
+The [interactive Physician Pay Gap Lab](physician-pay-lab.html) is a supplemental sensitivity tool. It accepts rank, physician, civilian-pay, and benefit assumptions and calculates a present-value financial gap and year-by-year cash comparison under current compensation. Its San Diego Marit benchmarks are citywide, not ZIP-specific. The lab maps any duty-station ZIP in the 2026 DoD BAH crosswalk to the relevant housing area and fills BAH for O-4 through O-6; unmapped ZIPs require a verified manual amount. The lab does not estimate retention or operational-readiness effects.
 
 The operational link is documented in the [Naval Medical Forces Pacific region](https://www.med.navy.mil/Naval-Medical-Forces-Pacific/Region/) and [mission](https://www.med.navy.mil/Naval-Medical-Forces-Pacific/Region/Mission/) pages; the project still needs specialty-level staffing and deployment outcomes before claiming a readiness effect.
 
