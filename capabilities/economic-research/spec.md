@@ -12,6 +12,12 @@ status: built
 
 Estimate the financial opportunity cost of another Navy agreement for a San Diego-based general pediatrician, general internist, or family physician using the **existing compensation package**. Compare the present value of continued Navy service with a feasible civilian path over the same period. The current model does not recommend, enter, or calculate a new retention-bonus rate. The original research brief records an earlier hypothesis; it is retained as a historical project artifact and does not govern this version.
 
+## Working hypothesis
+
+**At current pay rates, a targeted effort to make eligible primary-care physicians aware of verifiable Navy-specific nonfinancial opportunities will increase their awareness and, among physicians who value those opportunities, increase agreement acceptance or later retention relative to otherwise similar physicians who receive standard information.** The estimated financial opportunity cost may moderate that response: communication alone is less likely to change a choice when the physician faces a large, credible civilian advantage. This is a prediction to test, not a measured effect.
+
+“No additional financial compensation” means no pay increase beyond the current package. Pension, TRICARE, GI Bill eligibility, tax treatment, and existing bonuses belong in the **financial** comparison. Clinical practice, leadership, research, teaching, operational work, mission, and assignment experiences are candidate **nonfinancial** attributes. Advertising can improve awareness of real opportunities; it cannot create an opportunity that is unavailable to the physician.
+
 ## Baseline profile and inputs
 
 The reproducible baseline is a board-certified O-4 just past 10 years of service, with dependents, at ZIP 92134. The comparison covers 2027–2030 in constant 2026 dollars. Years 1–2 use the 2026 O-4 over-10 basic-pay rate; Years 3–4 use over-12. Rank stays O-4; 2026 BAH, BAS, special pays, and civilian benchmarks are held fixed. This is an illustrative path, not a pay forecast.
@@ -30,15 +36,21 @@ The annual equivalent divides the present-value difference by the present value 
 
 The 12-row audit table reports each specialty and year with the Marit benchmark, current Navy cash, and current gross cash gap. The figure plots cumulative current gross cash gap by specialty. At an illustrative 5% real discount rate, with 2027 as year zero and no extra taxes or benefits priced, the four-year present-value gross cash gaps are about $139,009 for pediatrics, $668,019 for internal medicine, and $347,749 for family medicine. These are incomplete financial comparisons, not recommended bonus amounts.
 
+This threshold describes the size of the tradeoff, not an amount a message can claim to supply. Report it by specialty and person-specific scenario alongside a separate inventory of opportunities actually accessible to the physician. Do not convert awareness or stated interest directly into a dollar value.
+
 ## Benefits and nonfinancial attributes
 
 Compare BRS or legacy pension rights using service credit, expected future service, retirement eligibility, projected High-3, discount rate, payment period, and probability of reaching retirement. Do not count already vested rights as incremental to staying. Compare household TRICARE costs with an actual civilian health plan. Count GI Bill transfer value only when staying changes dependent eligibility or use; an earned personal entitlement is not lost merely by separating. Model civilian malpractice premium and tail only if the physician, rather than the employer, pays them and they are not already reflected in the compensation figure. Record assignment predictability, clinical opportunities, family time, mission, and geographic flexibility separately; their dollar values are not observed in salary data.
+
+For the communication strategy, identify specific available opportunities and their eligibility conditions: protected specialty practice, leadership billets, teaching or research roles, operational experience, professional development, and assignment options that can be promised accurately. Record whether each physician already knew about, wanted, and could access the opportunity. Exclude claims that cannot be verified for the relevant billet or career stage.
 
 ## Economics and evaluation
 
 The civilian path is the opportunity cost of another Navy agreement. The choice involves a bundle of pay and nonpay attributes, so a gross cash gap does not identify indifference between jobs. Current retention-bonus payments affect the marginal reward from staying; sunk training costs cannot justify future pay. A compensating wage differential may be needed for unwanted moves or loss of clinical autonomy. Labor-supply elasticity requires observed behavior after a compensation change, not a salary comparison alone.
 
-Collect specialty-level and person-level eligibility, current bonus acceptance, agreement vintage, civilian offers where voluntarily available, assignment history, clinical practice, and separation after obligation. The FY25–FY26 general internal-medicine bonus increase may support an evaluation only if eligibility, timing, concurrent changes, and outcomes can be observed. Distinguish acceptance at the first unobligated decision from retention after the agreement. Compare any future policy's **incremental** fiscal cost with causal additional retention and avoidable replacement or readiness costs. The current model does not estimate either elasticity or cost effectiveness.
+Collect specialty-level and person-level eligibility, current bonus acceptance, agreement vintage, civilian offers where voluntarily available, assignment history, clinical practice, and separation after obligation. Measure baseline awareness, preferences, and access to the advertised opportunities. Compare a clearly specified targeted communication group with a similar standard-information group, ideally assigned in a way that limits selection bias. Predefine three outcomes: increased accurate awareness, agreement acceptance at the first unobligated decision, and retention after the agreement. Analyze whether any effect differs by estimated financial gap and specialty. Distinguish survey intentions from observed acceptance and separation. Account for the separate FY25–FY26 internal-medicine pay change. Compare communication cost with any causal additional retention; the current model does not establish the program effect or cost effectiveness.
+
+The hypothesis would be weakened if awareness rose but acceptance and later retention did not improve relative to a comparable group, or if the advertised opportunities were rarely accessible in practice. A small effect for physicians with the largest verified financial gaps would limit the strategy's scope. The obvious objection is that information cannot replace compensation. The narrower claim is that better information may matter for physicians who already place substantial value on attainable Navy opportunities, while the model quantifies the financial tradeoff they face.
 
 ## Validation and limits
 
