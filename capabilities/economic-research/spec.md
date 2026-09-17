@@ -10,7 +10,7 @@ status: built
 
 ## Decision and scope
 
-Estimate the financial opportunity cost of another Navy agreement for a San Diego-based general pediatrician, general internist, or family physician using the **existing compensation package**. Compare the present value of continued Navy service with a feasible civilian path over the same period. The current model does not recommend, enter, or calculate a new retention-bonus rate. The original research brief records an earlier hypothesis; it is retained as a historical project artifact and does not govern this version.
+Estimate the financial opportunity cost of another Navy agreement for a San Diego-based general pediatrician, general internist, or family physician using the **existing compensation package**. Compare the present value of continued Navy service with a feasible civilian path over the same period. The current model does not recommend, enter, or calculate a new retention-bonus rate. The revised research brief states the same working hypothesis; GitHub history preserves the earlier bonus hypothesis.
 
 ## Working hypothesis
 
