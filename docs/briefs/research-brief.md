@@ -36,5 +36,6 @@ The hypothesis would be weakened if accurate awareness improved but agreement ac
 - [GAO, military medical personnel incentives (2020)](https://www.gao.gov/products/gao-20-165) for gaps in civilian wage, bonus acceptance, and replacement-cost data.
 - [Navy Medicine FY26 Medical Corps special-pay guidance](https://www.med.navy.mil/Special-Pays/) and actual agreements for current compensation.
 - [Marit Health San Diego specialty benchmarks](https://www.marithealth.com/salary/methodology), checked against comparable civilian-only offers; [Doximity's 2026 report](https://www.doximity.com/reports/physician-compensation-report/2026) is a separate national sensitivity source.
+- [White Coat Investor, *Should I Stay or Should I Go?* (2012)](https://www.whitecoatinvestor.com/should-i-stay-or-should-i-go-financial-implications-of-military-separation/) for questions about taxes, retirement timing, earlier civilian earnings, and nonfinancial motives; its historical numbers are not current inputs.
 - Verified descriptions of Navy opportunities and physician-level information on awareness, eligibility, agreement acceptance, and later separation. Internal survey findings should be labeled preliminary and not published without release approval.
 
