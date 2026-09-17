@@ -14,7 +14,7 @@ Estimate the financial opportunity cost of another Navy agreement for a San Dieg
 
 ## Working hypothesis
 
-**At current pay rates, a targeted effort to make eligible primary-care physicians aware of verifiable Navy-specific nonfinancial opportunities will increase their awareness and, among physicians who value those opportunities, increase agreement acceptance or later retention relative to otherwise similar physicians who receive standard information.** The estimated financial opportunity cost may moderate that response: communication alone is less likely to change a choice when the physician faces a large, credible civilian advantage. This is a prediction to test, not a measured effect.
+At current pay rates, a targeted effort to make eligible primary-care physicians aware of verifiable Navy-specific nonfinancial opportunities will increase their awareness and, among physicians who value those opportunities, increase agreement acceptance or later retention relative to otherwise similar physicians who receive standard information. The estimated financial opportunity cost may moderate that response: communication alone is less likely to change a choice when the physician faces a large, credible civilian advantage. This is a prediction to test, not a measured effect.
 
 “No additional financial compensation” means no pay increase beyond the current package. Pension, TRICARE, GI Bill eligibility, tax treatment, and existing bonuses belong in the **financial** comparison. Clinical practice, leadership, research, teaching, operational work, mission, and assignment experiences are candidate **nonfinancial** attributes. Advertising can improve awareness of real opportunities; it cannot create an opportunity that is unavailable to the physician.
 
