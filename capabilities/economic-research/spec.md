@@ -232,3 +232,15 @@ The current gross-cash gap is therefore **not** an after-tax or total-compensati
 ### Retention outcome data to request
 
 [Section 718 of Public Law 118-159](https://www.govinfo.gov/content/pkg/PLAW-118publ159/pdf/PLAW-118publ159.pdf) requires annual military-department surveys of why health care providers stay or separate, with reporting disaggregated by specialty, rank, years of service, and accession path. Request access to appropriate Navy survey tabulations and, where permissible, physician-level longitudinal personnel records for the pilot. Survey responses can describe stated reasons and help choose covariates; actual bonus eligibility, acceptance, obligations, and separation records are still needed to estimate a retention response. The supplied announcement workbook is qualitative communication, not a dataset of physician salaries, individual bonus decisions, or observed retention outcomes. Do not infer an elasticity or add its text to the public source register.
+
+### FY25–FY26 Medical Corps pay-plan comparison
+
+The corrected [FY25 Medical Corps guidance](https://www.med.navy.mil/Portals/62/Documents/BUMED/Special%20Pays/FY25/FY25%20MC%20SPECIAL%20PAY%20GUIDANCE-Correction.pdf?ver=Fu3zLzlHCUzEu0ynrllaAQ%3D%3D) and [FY26 Medical Corps guidance](https://www.med.navy.mil/Portals/62/Documents/BUMED/Special%20Pays/FY26/FY26%20MC%20SPECIAL%20PAY%20GUIDANCE.pdf?ver=rucne9MfWLwappLSef4R3w%3D%3D) show the following annual rates for fully qualified physicians:
+
+| Specialty | IP FY25/FY26 | Four-year RB FY25 | Four-year RB FY26 | Change |
+| --- | ---: | ---: | ---: | ---: |
+| General pediatrics | $43,000 | $35,000 | $35,000 | $0 |
+| General internal medicine | $43,000 | $40,000 | $48,000 | +$8,000 |
+| Family medicine | $43,000 | $48,000 | $48,000 | $0 |
+
+The main model uses FY26 rates for a **hypothetical new agreement**. For an actual physician, add CONTRACT_START_FY, AGREEMENT_END_DATE, CURRENT_CONTRACT_RB, CURRENT_CONTRACT_IP, remaining education/accession obligation, and whether renegotiation is approved. Guidance states that the IP rate associated with an RB agreement follows the fiscal-year plan in effect when that RB contract begins and continues for its term; an officer cannot simply apply a later rate to an existing agreement. Eligible RB recipients must also have completed specified prior obligations, remain licensed, privileged, and practicing in the specialty, and have an accepted written agreement. Compare a FY25-contract internist at the actual contract rate rather than silently assigning the FY26 $48,000 RB. The FY25-to-FY26 change is a policy input and potential confounder in any subsequent retention evaluation, not proof that the increase changed retention.
