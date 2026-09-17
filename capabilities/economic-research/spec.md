@@ -11,9 +11,11 @@ built_with: "Python reproducible comparison script and interactive HTML lab"
 
 ## Purpose
 
-Support a decision about Navy primary care physician retention bonuses in San Diego. Compare the gross cash compensation of eligible Navy general pediatricians, general internists, and family physicians with published San Diego city and national compensation benchmarks, then assess a flat $100,000 annual bonus and a specialty-specific schedule that closes 50% of each current pay gap. Compare those pay policies with assignment predictability and protected specialty practice as plausible nonbonus strategies. The model must show what each policy costs per eligible physician and how much of the modeled pay gap remains. It must also assess the incremental value of pension eligibility, health coverage, and GI Bill rights in the stay-versus-leave decision. It cannot, without retention data, show how many physicians either policy would retain.
+Estimate the **financial opportunity cost of staying** for an eligible Navy general pediatrician, general internist, or family physician in San Diego at the next unobligated decision. Compare the expected present value of continued Navy service with a feasible civilian job over the same horizon, then identify the nonfinancial value that would have to offset any remaining financial disadvantage. A positive gap favors the civilian path financially; it is not a measured reservation wage or a retention prediction.
 
-This spec implements the question and hypothesis in [the committed research brief](../../docs/briefs/research-brief.md). The comparison horizon is the next four calendar years, 2027–2030, for a hypothetical agreement beginning January 2027. The four-year agreement is an eligibility and commitment assumption; the amounts below are annual.
+Retain the original $100,000 total annual retention-bonus hypothesis in [the committed research brief](../../docs/briefs/research-brief.md) as a predeclared test case. The 50%-of-current-gross-gap schedule remains a separate sensitivity case. The 12-row table and cumulative figure are the reproducible **gross-cash audit**, not the full opportunity-cost estimate or a recommended bonus schedule. Compare targeted bonuses with assignment predictability and protected specialty practice, and evaluate any pilot using acceptance and later retention rather than cash parity alone.
+
+The base comparison horizon is a hypothetical four-year agreement beginning January 2027, shown in constant 2026 dollars. The interactive lab permits a different expected duration; it must apply the selected horizon consistently to the present-value calculation and displayed rows. The model cannot, without retention data, show how many physicians a policy would retain.
 
 ## Inputs — the named contract
 
@@ -55,6 +57,21 @@ Benefits inputs to collect before assigning dollar values:
 | DISCOUNT_RATE | Not yet selected | annual share | Author's stated present-value assumption, if benefits are monetized |
 
 Context sources: [GAO's staffing report](https://www.gao.gov/products/gao-25-106988) provides a DOD-wide personnel trend, not a San Diego Navy physician retention rate; [GAO's incentives report](https://www.gao.gov/products/gao-20-165) explains data limitations; [MCCareer.org's pay-plan account](https://mccareer.org/2024/09/28/fy25-medical-corps-pay-plan/) supplies practitioner context. Verify policy dollar amounts against official Navy guidance. Marit supplies city-level specialty figures, but the public pages do not provide a ZIP-level filter, and their all-employer cohorts include military entries. Seek civilian-only San Diego offers or a filtered cohort for validation; never relabel city data as ZIP data or mixed-employer data as civilian-only.
+
+## Opportunity-cost extension: inputs, calculation, and output
+
+At the physician's decision date, collect a comparable civilian-only offer (specialty, location, full-time equivalent, hours, call, practice type, base pay, and expected incentives). Add only civilian benefits absent from its reported compensation. Record Navy basic pay, BAH/BAS, incentive and board-certification pay, current RB and contract vintage, grade/promotion path, service obligation, retirement system and credible probability of reaching eligibility, tax estimates for both paths, and person-specific health, GI Bill, and malpractice differences. Keep already earned rights and sunk training expenditures out of the incremental comparison.
+
+For each service year `t`, calculate:
+
+    FINANCIAL_GAP_t = (civilian cash_t − civilian tax_t + added civilian benefits_t − physician-paid civilian costs_t)
+                    − (Navy cash_t − Navy tax_t + incremental Navy benefits_t)
+    PV_GAP = SUM over t of FINANCIAL_GAP_t / (1 + real discount rate)^t
+    ANNUAL_EQUIVALENT = PV_GAP / SUM over t of 1 / (1 + real discount rate)^t
+
+The lab uses year 1 as `t = 0`, holds entered annual taxes and benefit adjustments constant unless the user changes them, and applies a user-entered marginal tax rate to a **change** in RB. Tax fields default to zero, which denotes an unadjusted scenario, not a finding of zero tax liability. Its optional pension module is a conditional illustration, weighted by a user-entered chance of reaching retirement; it does not establish a general pension value. Any user-supplied MGMA or AMGA figure must carry its specialty/geography/definition metadata. Marit is the default city benchmark; Doximity and Medscape national figures are separate sensitivity cases.
+
+Report `PV_GAP`, annual equivalent, and the residual `PV_GAP` under each feasible candidate bonus. A positive residual is the minimum **net nonfinancial value of Navy service** needed to prefer staying in this simplified model; it is an inferred threshold, not an observed preference. Show which tax, benefit, and offer inputs remain unverified and vary them to produce a range. Do not label a 50% cash-gap closure as optimal or assert an exact dollar amount from a mixed-employer city benchmark. Compare a pilot's incremental fiscal cost with its **causal** additional retention only when outcome data exist.
 
 ## Structure
 
