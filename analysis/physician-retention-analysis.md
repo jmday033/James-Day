@@ -35,6 +35,14 @@ Doximity’s 2026 report gives national specialty averages based on 2025 compens
 | Internal medicine | $339,274.00 | $276,965.76 | $62,308.24 |
 | Family medicine | $325,040.00 | $276,965.76 | $48,074.24 |
 
+## Working hypothesis and what this analysis can test
+
+At current pay rates, clearer, targeted communication about **real Navy-specific nonfinancial opportunities** may improve agreement acceptance and later retention for primary-care physicians who value those opportunities. The effect may be smaller when a physician faces a larger verified financial advantage from civilian practice. The table quantifies a gross-cash proxy for the financial opportunity cost; the person-specific lab can add taxes, pension continuation, health, GI Bill transfer, and physician-paid costs. Neither the table nor the lab measures the personal value of leadership, teaching, research, specialty practice, operational experience, mission, or assignment stability.
+
+Advertising changes awareness, not the underlying job. The hypothesis requires documenting which opportunities are actually available, whether physicians knew about them, and whether the information changes behavior. Compare eligible physicians receiving targeted, accurate information with a comparable group receiving standard information. Measure awareness first, then acceptance at an unobligated choice and later retention. A larger awareness score alone is insufficient. Record each person's estimated financial gap to test whether it moderates the response. The FY25–FY26 internal-medicine pay change and assignment changes are potential confounders.
+
+If awareness improves but acceptance and later retention do not, or if the advertised opportunities prove inaccessible, the hypothesis is weakened. The especially large modeled internist cash gap illustrates why communication may be insufficient for some physicians; it does not prove how any individual values Navy service. The policy objection is that information cannot compensate for a pay gap. The defensible response is conditional: it may reveal an existing opportunity the physician values, but the outcome data must show whether that affects retention.
+
 ## Verification and interpretation
 
 - The table contains 12 current-pay observations. Years 1–2 use the 2026 O-4 over-10 rate and Years 3–4 use the over-12 rate.
@@ -72,7 +80,7 @@ These are present values of **benchmark cash differences**, not complete opportu
 | Physician-paid malpractice premium and tail, if any | Deduct from the civilian path only when the physician bears the cost | Employer-paid coverage or costs already reflected in reported net compensation count as $0. |
 | Discount rate, decision horizon, and subsequent career path | Converts future differences to present value | State and vary these assumptions. |
 
-The **nonfinancial threshold** is the remaining positive financial opportunity cost under the current compensation package: the physician would have to value Navy-specific nonpay attributes at least that much over the horizon to prefer staying on this simplified model. The study does not observe that value. Assignment stability, clinical practice, mission, and family time should be reported as separate attributes or elicited in a survey, rather than automatically converted to dollars. Retention outcomes are still needed to learn whether any bonus actually changes choices.
+The **nonfinancial threshold** is the remaining positive financial opportunity cost under the current compensation package: the physician would have to value Navy-specific nonpay attributes at least that much over the horizon to prefer staying on this simplified model. The study does not observe that value. Assignment stability, clinical practice, mission, and family time should be reported as separate attributes or elicited in a survey, rather than automatically converted to dollars. Retention outcomes are needed to learn whether communication about available opportunities changes choices.
 
 ## Economic mechanism and decision limits
 
