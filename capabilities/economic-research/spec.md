@@ -82,6 +82,20 @@ Public [Medical Corps community values](https://mccareer.org/wp-content/uploads/
 
 For any future physician-level test, collect the following **noncash covariates** at the decision date and during the agreement: preferred versus assigned duty location, assignment notice and moves, days practicing the primary specialty, clinical workload and partnership activity where applicable, training access, promotion timing and grade, perceived mission connection and administrative burden, and the physician's stated intention to stay. Match them to bonus eligibility, acceptance, actual separation, and post-obligation retention. Record promotion timing because the fixed table assumes O-4 throughout 2027–2030; a real O-5 promotion changes basic pay and may change BAH. Do not infer a promotion rate or claim that any clinical opportunity caused retention from the public sources alone.
 
+## Course concepts and required observations
+
+The professor's lectures provide the economic logic for the test; the oil and farm examples do not supply physician-specific parameters.
+
+| Lecture concept | Use in this study | Observation or limit |
+| --- | --- | --- |
+| Opportunity cost and economic profit (BUS 620 Session 3, pp. 35–36; Micro C5, pp. 5–6) | Compare the value of the next-best civilian job with the value of another Navy agreement at the actual decision date. | Obtain comparable local offers and person-specific taxes, benefits, hours, and contract terms. A gross salary gap is only one component. |
+| Marginal cost, variable cost, and sunk cost (Micro C4, pp. 7–15) | Compare the incremental bonus cost with the additional retention it causes and any avoidable replacement or readiness cost. | Past HPSP or training spending is sunk at this decision; an outstanding service obligation and future training costs still matter. Track eligible counts, acceptance, separations, and replacement costs. |
+| Elasticity and time horizon (BUS 620 Session 1, pp. 18, 24–30) | Test how much retention changes when compensation changes, first at bonus acceptance and later after the agreement. | The lecture's oil elasticities cannot be applied to physicians. Estimate a response from comparable physician cohorts and record contract vintage, specialty, career stage, and concurrent assignment changes. |
+| Consumer choice, indifference curves, and compensating differentials (Micro C6 consumer choice, pp. 5–14; reading indifference curves, pp. 3–9) | Treat pay, assignment stability, clinical work, family time, mission, and benefits as a bundle. | Survey or stated-preference data are needed to value nonpay attributes; the lab's cash-gap zero is not a demonstrated indifference point. |
+| Economic rent and who receives the benefit (Micro C5, p. 19; BUS 620 Session 3, pp. 35–43) | A bonus may exceed one physician's minimum required to stay yet be too small for another; record the Navy's fiscal cost and the physician's gain separately from patient/readiness benefits. | Individual reservation pay is unobserved. Bonus payments are a transfer in social accounting, while any extra taxes or distortions from funding and any readiness gains require separate evidence. |
+
+The pilot should predefine two outcomes: signing at the first unobligated choice and remaining after the new agreement expires. For each specialty, report the change in each outcome relative to a comparable group, incremental budget cost per additional physician retained, and uncertainty. A percentage bonus change alone is not a retention elasticity; the numerator must be an observed percentage change in retention attributable to that pay change. Do not infer the bonus needed for retention from the 50% cash-gap scenario.
+
 ## Calculation logic
 
 Use named inputs, not spreadsheet cell positions. Apply the same baseline to all three specialties; substitute RB_s, CIV_s, and MARIT_s from the named specialty rows above. For the year-by-year table, policy means current (NAVY_CURRENT_s, RB_s), flat (NAVY_FLAT_s, FLAT_RB), or half-gap (MARIT_NAVY_HALF_s, MARIT_RB_HALF_s).
