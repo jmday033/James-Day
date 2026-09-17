@@ -43,6 +43,37 @@ Doximity's 2026 report gives national specialty averages based on 2025 compensat
 - Marit's published San Diego figures are self-reported, use small visible local cohorts, and include multiple employer types. The internist public preview includes a military contractor. A civilian-only, similar-hours, similar-experience San Diego offer is needed to validate the market comparator before making a definitive policy-cost claim.
 - The sensitivity checks should use Doximity national benchmarks separately, BAH without dependents, and verified civilian-only offers if obtained. The paper should not blend national and city estimates into a single 'civilian salary.'
 
+## Financial opportunity-cost model for the decision
+
+The 12-row table measures **gross cash gaps**. It does not measure the full opportunity cost of remaining in the Navy. For an eligible physician at an unobligated decision, define two feasible paths over the same chosen horizon: stay for another agreement or accept a comparable civilian job. For each year, estimate after-tax Navy cash and civilian cash, add employer or service benefits that differ between the paths, and subtract expenses the physician actually bears. Discount each year's difference and any later pension or education value to the decision date. The financial opportunity cost of staying is:
+
+    PV(civilian after-tax cash + incremental civilian benefits − physician-paid civilian costs)
+    − PV(Navy after-tax cash + incremental Navy benefits)
+
+A positive result favors the civilian path financially; a negative result favors continued Navy service financially. Dividing the present-value difference by the present value of one dollar paid in each service year gives an **annual equivalent**. This is a model estimate conditional on the inputs, not an exact reservation wage or a prediction of behavior. The original $100,000 total annual bonus in the committed brief is a predeclared comparison. The 50%-of-gross-gap schedule in the table and figure is another sensitivity case, not a recommended amount.
+
+The existing cash table can supply a **lower-information starting calculation**. Discount its four annual gross-cash gaps at an illustrative 5% real rate, with 2027 as year 0 and no taxes or additional benefits priced:
+
+| Specialty | Present value of four-year gross cash gap | Annual equivalent |
+| --- | ---: | ---: |
+| Pediatrics | $139,009 | $37,335 |
+| Internal medicine | $668,019 | $179,418 |
+| Family medicine | $347,749 | $93,399 |
+
+These are present values of **benchmark cash differences**, not complete opportunity-cost estimates. They use the published Marit city figures, hold compensation in constant 2026 dollars, and assume the O-4 pay path in the audit table. After-tax cash, benefits, physician-paid expenses, and actual civilian offers could change the sign or size of the full financial estimate.
+
+| Input needed beyond the cash table | How it enters | Status |
+| --- | --- | --- |
+| Comparable civilian-only San Diego offer, including expected incentives, hours, call, and practice setting | Defines the feasible outside option | Marit is a citywide mixed-employer proxy; an individual offer is missing. |
+| Federal and state tax treatment of each path | Converts gross cash to after-tax cash; BAH and BAS are already in Navy cash but generally tax-exempt | Person-specific assumptions are missing; do not assign a universal tax advantage. |
+| Civilian retirement match, health and leave benefits, and Navy TRICARE/TSP differences | Add only value that changes with the stay-versus-leave choice | Specific civilian offer and household inputs are missing. |
+| Pension system, service credit, promotion path, and probability of reaching retirement | Expected incremental pension present value | No generic pension dollar value applies to the O-4-over-10 profile. |
+| GI Bill transfer status and dependent use | Value contingent on further service, if any | Already earned personal entitlement is not lost on separation. |
+| Physician-paid malpractice premium and tail, if any | Deduct from the civilian path only when the physician bears the cost | Employer-paid coverage or costs already reflected in reported net compensation count as $0. |
+| Discount rate, decision horizon, and subsequent career path | Converts future differences to present value | State and vary these assumptions. |
+
+The **nonfinancial threshold** is the remaining positive financial opportunity cost after a candidate bonus: the physician would have to value Navy-specific nonpay attributes at least that much over the horizon to prefer staying on this simplified model. The study does not observe that value. Assignment stability, clinical practice, mission, and family time should be reported as separate attributes or elicited in a survey, rather than automatically converted to dollars. Retention outcomes are still needed to learn whether any bonus actually changes choices.
+
 ## Economic mechanism and decision limits
 
 The physician's civilian alternative is the opportunity cost of staying. A bonus changes the marginal financial return from signing another agreement. Assignment stability and protected clinical practice can also change the nonpay value of staying; a compensating wage differential may be needed when the Navy job entails less geographic or professional flexibility. These are mechanisms, not measured effect sizes.
@@ -133,3 +164,6 @@ An [independent MCCareer.org post](https://mccareer.org/2026/01/20/medical-corps
 The [official FY26 Medical Corps pay table](https://www.med.navy.mil/Portals/62/Documents/BUMED/Special%20Pays/FY26/FY26%20MC%20SPECIAL%20PAY%20GUIDANCE.pdf?ver=rucne9MfWLwappLSef4R3w%3D%3D) also offers six-year annual RB rates of $40,000 for pediatrics and $60,000 for general internal and family medicine, compared with four-year rates of $35,000/$48,000/$48,000. Agreement length is therefore an additional policy variable. A valid six-year comparison needs a six-year cash path, the added two years of obligation, and retention measured after the longer agreement; the present four-year figure cannot evaluate it.
 
 For pension sensitivity, a [DoD retirement-credit memorandum hosted by MCCareer](https://mccareer.org/wp-content/uploads/2025/05/usuhs-retirement-credit.pdf) distinguishes USU medical-student service used to **compute** retired pay from service used to **qualify** for 20-year retirement. [MCCareer's 2026 article](https://mccareer.org/2026/02/09/how-to-confirm-credit-for-usu-and-hpsp-time-before-retirement/) highlights verification of USU and qualifying HPSP active-training credit on the retirement Statement of Service. Record accession path and actual creditable student/training periods; do not add all school years to the 20-year eligibility clock or assume the same pension multiplier for every physician. This does not change the gross-cash results.
+
+
+
