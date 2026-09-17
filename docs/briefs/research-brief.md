@@ -3,40 +3,38 @@ type: brief
 engagement: research-paper
 capability: economic-research
 date: 2026-09-16
-status: committed
-hypothesis: "I expect raising annual retention bonuses toward $100,000 to improve retention among eligible Navy primary care physicians in San Diego more than assignment predictability alone, with the effect varying across pediatrics, internal medicine, and family medicine according to each specialty's civilian pay opportunity."
+status: revised
+hypothesis: "At current pay rates, accurate communication about available Navy-specific nonfinancial opportunities may improve agreement acceptance and later retention among eligible San Diego-based primary-care physicians, with a smaller effect when a physician faces a larger verified civilian financial advantage."
 ---
 
-# Navy physician retention — research brief
+# Navy primary-care physician retention — research brief
 
 ## The problem
 
-Navy Medicine must decide how to retain experienced physicians after their initial service obligations end. Losing physicians can leave clinical positions unfilled, increase reliance on civilian care, and make it harder to maintain the medical skills needed for military readiness.
-
-The staffing concern is current, but the available numbers need careful labeling. The Government Accountability Office (GAO) found that **assigned military medical personnel across the Department of Defense** fell about 16% from fiscal years 2015 to 2023; that figure covers all military medical occupations and is **not** a Navy physician retention rate. Navy Medicine has already increased special pays. [MCCareer.org's account of the FY25 Medical Corps pay plan](https://mccareer.org/2024/09/28/fy25-medical-corps-pay-plan/) describes additional salary support intended to encourage physician retention. These sources establish the staffing and policy context, but they do not yet show whether a larger bonus causes more physicians to stay.
-
-The choice I want to study is whether Navy Medicine should raise retention bonuses for physicians in specialties with a substantial civilian pay gap. I will compare pediatrics, general internal medicine, and family medicine using a San Diego-based Navy physician profile. The proposed amount is **$100,000 per eligible physician per year** under a multiyear agreement, compared with current specialty-specific bonuses and with an assignment-predictability strategy. This is a test amount, not a claim that one bonus creates equal pay across all three specialties. The Navy must make this choice within its personnel budget and while still meeting operational staffing needs.
+Navy Medicine must retain experienced physicians after their initial service obligations end. Losing physicians can leave clinical positions unfilled and weaken continuity of care and readiness. [GAO's 2025 staffing review](https://www.gao.gov/products/gao-25-106988) reports a decline in assigned military medical personnel across DOD and expected shortfalls through at least 2027. That is current DOD-wide context, not a measured San Diego Navy primary-care attrition rate. The question here is what could help retain Navy pediatricians, general internists, and family physicians who have a civilian alternative.
 
 ## What I am assuming
 
-- Higher civilian compensation is an important reason some Navy physicians leave after completing their service obligation.
-- Greater flexibility and fewer required moves also matter, but I expect the compensation gap to have a larger effect on the decision for at least some eligible physicians.
-- A $100,000 annual retention bonus would meaningfully narrow the pay gap for at least some San Diego-based primary care physicians. Its effect on pay competitiveness may differ across pediatrics, internal medicine, and family medicine; I will test this using annual cash compensation rather than base pay alone.
-- Retention bonuses are available only to physicians who meet the applicable eligibility and service-agreement rules. I will distinguish a proposed policy amount from currently authorized Navy pay.
+- Some physicians face higher expected civilian compensation, more geographic flexibility, or different clinical opportunities after their Navy obligation.
+- Physicians may not know which Navy-specific opportunities are available to them, or may not have enough detail to judge those opportunities accurately.
+- More accurate information could affect choices only when the opportunities are real, accessible, and valued by the physician. It cannot create an unavailable opportunity or eliminate a pay gap.
+- Existing pay, pension, healthcare, GI Bill eligibility, and tax treatment are **financial** components of the stay-versus-leave comparison. Leadership, teaching, research, specialty practice, operational work, mission, and assignment experience are candidate **nonfinancial** attributes.
 
 ## Hypothesis
 
-I expect raising annual retention bonuses toward $100,000 to increase the share of eligible San Diego-based Navy primary care physicians who remain on active duty. I predict it will improve retention more than an assignment-predictability program alone because physicians respond to the financial opportunity cost of giving up civilian practice. The effect may differ across pediatrics, internal medicine, and family medicine. The economic concept is the **elasticity of labor supply to the Navy**: how much the decision to stay changes when compensation rises.
+At **current pay rates**, targeted, accurate communication about available Navy-specific nonfinancial opportunities will increase awareness and may improve agreement acceptance and later retention among eligible San Diego-based primary-care physicians relative to standard information. I expect a smaller retention effect for physicians with a larger *verified* civilian financial advantage. This is a testable prediction, not a claim that communication can compensate for every pay gap.
 
-I will first measure how current and proposed bonuses change the civilian pay gap in each specialty. If credible physician-level retention data become available, I will compare retention before and after a bonus change and, where feasible, against a similar group whose bonus did not change. Without those data, the paper can test pay competitiveness and model possible retention responses, but it cannot estimate actual elasticity or cost per additional physician retained.
+The economic concepts are **opportunity cost** and **choice among bundles of financial and nonfinancial attributes**. The accompanying model estimates the present-value financial opportunity cost of staying: the difference between a feasible civilian path and continued Navy service over the same horizon. Its starting table uses current Navy compensation and published San Diego specialty benchmarks; the individual lab adds taxes, pension continuation, healthcare, GI Bill transfer, and physician-paid costs when reliable inputs are available. It does not measure how much a physician values the nonfinancial attributes or predict retention from salary data alone.
 
 ## How I would know I was wrong
 
-I would know my prediction was wrong if a meaningful increase in the retention bonus did **not** improve retention among eligible primary care physicians relative to a comparable group without the increase. I would also reconsider it if an assignment-predictability program produced a larger retention gain per dollar. Either result would suggest that higher pay has less influence on this decision than I expect.
+The hypothesis would be weakened if accurate awareness improved but agreement acceptance and later retention did not improve relative to a comparable group. It would also be weakened if the advertised opportunities were rarely accessible or if physicians already knew about them. Survey intentions alone are insufficient: the test should observe acceptance at the next unobligated choice and retention after the agreement, accounting for specialty, career stage, pay agreement vintage, and assignment conditions. A weak effect among physicians with the largest verified gaps would limit the strategy's reach.
 
-## Initial sources to verify and develop
+## Initial sources and data needed
 
-- [GAO, *Defense Health Care: Information Needed to Improve Monitoring of Military Personnel Staffing at Medical Facilities* (2025)](https://www.gao.gov/products/gao-25-106988).
-- [MCCareer.org, *FY25 Medical Corps Pay Plan* (2024)](https://mccareer.org/2024/09/28/fy25-medical-corps-pay-plan/).
-- [Navy Medicine, *Special Pays* (FY26 guidance)](https://www.med.navy.mil/Special-Pays/).
-- [Doximity, *2026 Physician Compensation Report*](https://www.doximity.com/reports/physician-compensation-report/2026).
+- [GAO, military medical personnel staffing (2025)](https://www.gao.gov/products/gao-25-106988) for current DOD-wide context.
+- [GAO, military medical personnel incentives (2020)](https://www.gao.gov/products/gao-20-165) for gaps in civilian wage, bonus acceptance, and replacement-cost data.
+- [Navy Medicine FY26 Medical Corps special-pay guidance](https://www.med.navy.mil/Special-Pays/) and actual agreements for current compensation.
+- [Marit Health San Diego specialty benchmarks](https://www.marithealth.com/salary/methodology), checked against comparable civilian-only offers; [Doximity's 2026 report](https://www.doximity.com/reports/physician-compensation-report/2026) is a separate national sensitivity source.
+- Verified descriptions of Navy opportunities and physician-level information on awareness, eligibility, agreement acceptance, and later separation. Internal survey findings should be labeled preliminary and not published without release approval.
+
