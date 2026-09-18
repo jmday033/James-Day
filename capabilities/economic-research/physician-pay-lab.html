@@ -113,7 +113,7 @@ let prevSpec='',prevPayKey='',prevBahKey='',prevBenchmark='';
 function moneyNumber(v){return Number(String(v).replace(/,/g,''))}
 function clamp(v,min=0,max=1e9){return Math.max(min,Math.min(max,moneyNumber(v)||0))}
 function read(id){return clamp($(id).value)}
-function formatMoneyFields(){document.querySelectorAll('input[data-money]').forEach(el=>{if(el===document.activeElement)return;const raw=el.value.trim();if(raw==='')return;const value=moneyNumber(raw);if(Number.isFinite(value))el.value=value.toLocaleString('en-US',{maximumFractionDigits:2})})}
+function formatMoneyFields(){document.querySelectorAll('input[data-money]').forEach(el=>{if(el===document.activeElement)return;const raw=el.value.trim();if(raw==='')return;const value=moneyNumber(raw);if(Number.isFinite(value))el.value=value.toLocaleString('en-US',{maximumFractionDigits:0})})}
 const maritEntered={};
 let civilianLocation={zip:'92134',city:'San Diego',state:'CA',status:'found'},civilianZipTimer,civilianZipRequest=0;
 const specialtySlug={peds:'pediatrician',im:'internist',fm:'family-medicine-physician'};
@@ -174,7 +174,7 @@ async function readLesInBrowser(){
   const base=lesAmountAfter(items,'BASE PAY'),bah=lesAmountAfter(items,'BAH');
   if(base==null||bah==null||base<0||bah<0||base>50000||bah>30000)throw Error('Required pay fields were not found');
   lesExtracted={base,bah};
-  $('lesBasePreview').textContent=base.toLocaleString('en-US',{style:'currency',currency:'USD'});$('lesBahPreview').textContent=bah.toLocaleString('en-US',{style:'currency',currency:'USD'});
+  $('lesBasePreview').textContent=base.toLocaleString('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0});$('lesBahPreview').textContent=bah.toLocaleString('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0});
   $('lesPreview').hidden=false;$('lesStatus').textContent='Check these amounts against your LES before applying.';
  }catch(error){$('lesStatus').textContent='Could not read basic pay and BAH from this PDF. Enter them manually or try a text-based LES.'}
  finally{if(doc)await doc.destroy();$('lesFile').value=''}
