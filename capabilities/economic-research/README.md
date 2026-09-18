@@ -12,7 +12,7 @@ This capability studies Navy primary-care physician retention in San Diego as a 
 
 **Exercised in:** [research brief](../../docs/briefs/research-brief.md) · [model specification](spec.md) · [12-row analysis](../../analysis/physician-retention-analysis.md) · [cumulative-gap figure](../../figures/physician-retention-cumulative-gap.svg) · [working decision memo](../../docs/decisions/physician-retention-economics-memo.md) · [author-supplied paper draft](../../docs/papers/navy-primary-care-physician-retention-draft.md). The finished research-paper PDF will be linked when available.
 
-The [course economics crosswalk](course-economics-crosswalk.md) maps all six supplied scans of Frank et al.'s *Principles of Economics* (4th ed.) to the paper and model. It separates textbook decision rules from empirical Navy pay and retention evidence.
+The [course economics crosswalk](course-economics-crosswalk.md) maps relevant chapters of Frank et al.'s *Principles of Economics* (4th ed.) to the paper and model. It separates textbook decision rules from empirical Navy pay and retention evidence.
 
 The brief records the author's question and falsifiable hypothesis. The spec defines sources, named inputs, calculations, figure requirements, and acceptance checks. The September 2026 paper draft preserves the author's fixed O-5 scenario and recommendation. Its embedded cash-pay figure is transcribed as an accessible table in the GitHub version. The draft uses a 4% discount rate and $239,000 Navy cash figure, which differ from the interactive lab's default scenario. Its source citations, retention-elasticity application, and present-value timing still need checking before submission; one reference remains a placeholder. It is a draft, not a verified output of the live lab.
 
