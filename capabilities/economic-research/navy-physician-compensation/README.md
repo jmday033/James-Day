@@ -17,3 +17,6 @@ This graduate economics project compares the financial value of continued Navy s
 The written deliverables are research drafts and may describe earlier versions of the lab. Treat differences between them and the current calculator as findings to flag. In particular, check service-credit and pension assumptions, the treatment of BRS contributions, tax estimates, salary benchmark scope, and whether the conclusions exceed the evidence.
 
 The lab is a conditional planning model. Its output is not a measured retention effect or an individual financial recommendation. Editable pay inputs and cited source values remain exact in the calculations; comparison displays round dollar results to the nearest $100.
+
+The [analysis](physician-retention-analysis.md) now includes a fixed-scenario methodology, a nine-cell discount-rate and salary-growth sensitivity, and a literature section connecting the lab's stay-or-leave comparison to ACOL and DRM research. The lab is ACOL-inspired, not a fitted retention model. The paper does not apply an unverified Navy physician pay elasticity.
+
