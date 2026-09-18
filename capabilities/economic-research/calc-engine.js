@@ -1,3 +1,6 @@
+export const boardCertificationPay = 8000; // FY26 paid BCP, not the $15,000 statutory ceiling.
+export const fy26SpecialPayTableUrl = 'https://www.dfas.mil/MilitaryMembers/payentitlements/Pay-Tables/HPO4/';
+export function bonusStatusAllowsRate(status) { return status === 'signed' || status === 'eligible'; }
 export const rbRates={
  FY25:{peds:{'2':15000,'3':20000,'4':35000,'6':null},im:{'2':13000,'3':23000,'4':40000,'6':null},fm:{'2':20000,'3':28000,'4':48000,'6':60000}},
  FY26:{peds:{'2':15000,'3':25000,'4':35000,'6':40000},im:{'2':20000,'3':28000,'4':48000,'6':60000},fm:{'2':20000,'3':28000,'4':48000,'6':60000}}
@@ -40,7 +43,7 @@ export function gradeForYear({rank, commissionYear, promotionOn}, index) {
 
 export function calculateScenario(input) {
   const {rank, commissionYear, promotionOn, payYos, base, bah, bahLookup, zip, deps,
-    bas=328.48, ip=43000, bcp=8000, rbRemaining=0, currentBonus=0,
+    bas=328.48, ip=43000, bcp=boardCertificationPay, rbRemaining=0, currentBonus=0,
     civilianSalary, civilianGrowth=0, civilianTax=0, navyTax=0, growthTax=0,
     civilianBenefits=0, navyTsp=0, navyTspAuto=false, isBrs=true,
     health=0, gi=0, pensionAnnual=0, malpractice=0, discount=0.05,
@@ -75,12 +78,16 @@ export function calculateScenario(input) {
     grossGap:rows[0].grossGap, adjustedGap:rows[0].gap};
 }
 
+export function annualPension({pensionBase, creditableYears, retirement='brs'}) {
+  return pensionBase * (retirement === 'brs' ? 0.02 : 0.025) * creditableYears;
+}
+
 export function pensionPresentValue({activeYears, additionalYears, retirement='brs',
   pensionBase, usuYears=0, currentAge=40, paymentYears=30, pensionTax=0.22,
   discount=0.05}) {
   if (activeYears >= 20 || activeYears + additionalYears < 20) return 0;
-  const multiplier = retirement === 'brs' ? 0.02 : 0.025;
-  const annual = pensionBase * multiplier * (activeYears + additionalYears + usuYears) * (1-pensionTax);
+  const annual = annualPension({pensionBase, creditableYears:activeYears + additionalYears + usuYears, retirement}) * (1-pensionTax);
   const stream = discount === 0 ? paymentYears : (1-Math.pow(1+discount,-paymentYears))/discount;
   return annual * stream / Math.pow(1+discount,additionalYears);
 }
+
