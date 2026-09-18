@@ -147,20 +147,20 @@ async function readLesInBrowser(){
  if(!file){$('lesStatus').textContent='Select an LES PDF first.';return}
  if(!/\.pdf$/i.test(file.name)&&file.type!=='application/pdf'){$('lesStatus').textContent='Choose a PDF file.';return}
  $('lesStatus').textContent='Reading the LES in this browser…';
+ let doc;
  try{
   const pdfjs=await import('./vendor/pdfjs/pdf.min.mjs');
   pdfjs.GlobalWorkerOptions.workerSrc=new URL('./vendor/pdfjs/pdf.worker.min.mjs',document.baseURI).href;
   const data=new Uint8Array(await file.arrayBuffer());
-  const doc=await pdfjs.getDocument({data,isEvalSupported:false}).promise;
+  doc=await pdfjs.getDocument({data,isEvalSupported:false}).promise;
   const page=await doc.getPage(1),content=await page.getTextContent(),items=content.items;
   const base=lesAmountAfter(items,'BASE PAY'),bah=lesAmountAfter(items,'BAH');
-  await doc.destroy();
   if(base==null||bah==null||base<0||bah<0||base>50000||bah>30000)throw Error('Required pay fields were not found');
   lesExtracted={base,bah};
   $('lesBasePreview').textContent=fmt(base);$('lesBahPreview').textContent=fmt(bah);
   $('lesPreview').hidden=false;$('lesStatus').textContent='Check these amounts against your LES before applying.';
  }catch(error){$('lesStatus').textContent='Could not read basic pay and BAH from this PDF. Enter them manually or try a text-based LES.'}
- finally{$('lesFile').value=''}
+ finally{if(doc)await doc.destroy();$('lesFile').value=''}
 }
 $('readLes').addEventListener('click',readLesInBrowser);
 $('lesFile').addEventListener('change',()=>{lesExtracted=null;$('lesPreview').hidden=true;$('lesStatus').textContent='';});
