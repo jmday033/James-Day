@@ -23,6 +23,7 @@ function clearResults(message){
 function update(){
   const stage=$('careerStage').value,training=stage==='gmo'||stage==='prospective',renewal=stage==='renewal';
   $('comparisonInputs').hidden=training;$('trainingNote').hidden=!training;$('renewalInputs').hidden=!renewal||training;
+  $('fullModelLink').hidden=training;document.querySelector('.try').hidden=training;
   $('stageNote').hidden=training;
   if(training){
     $('trainingNote').innerHTML=stage==='gmo'?'<strong>Residency decision: no pay-gap estimate yet.</strong> Compare Navy and civilian residency pay, training availability, and any new service obligation. An immediate civilian attending salary would overstate the alternative. The full model does not estimate this training decision.':'<strong>Medical-school decision: no pay-gap estimate yet.</strong> Compare scholarship or USU support, school costs, training paths, service obligations, and later earnings. The full model does not estimate this entry decision.';
@@ -57,7 +58,7 @@ function update(){
   $('interpret').textContent=result.pv>=0?'Positive: the civilian path pays more on these assumptions.':'Negative: the Navy path pays more on these assumptions.';
   $('navyCash').textContent=fmt(result.navyCash);$('civCash').textContent=fmt(result.civilianCash);
   const scale=Math.max(result.navyCash,result.civilianCash,1);$('navyBar').style.width=100*result.navyCash/scale+'%';$('civBar').style.width=100*result.civilianCash/scale+'%';
-  $('status').textContent=benchmarks[source].label+' benchmark · '+bah.name+' BAH region · before personal taxes and benefits.'+(renewal?' Includes the verified new bonus for '+years+' year(s); excludes the expiring bonus.':' No retention bonus included.');
+  $('status').textContent=benchmarks[source].label+' benchmark · '+bah.name+' BAH region · before personal taxes and benefits.'+(renewal?' Includes the verified new bonus for '+years+' '+(years===1?'year':'years')+'; excludes the expiring bonus.':' No retention bonus included.');
 }
 document.querySelectorAll('input,select').forEach(el=>el.addEventListener('input',update));
 $('benchmark').addEventListener('change',()=>{$('moreBenchmark').value='';update()});
