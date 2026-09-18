@@ -8,9 +8,13 @@ Navy Medicine depends on family medicine, internal medicine, and pediatrics phys
 
 ## Economic Analysis
 
-Two labor-economics concepts explain why the compensation gap matters. First, compensating wage differentials allow a lower-paying job to retain workers when valued noncash attributes offset foregone wages. Military physicians may accept less cash in exchange for a pension, mission, camaraderie, funded training, and distinctive operational practice. The White Coat Investor’s discussion of whether military physicians should remain to 20 years illustrates that physicians consciously compare those benefits with civilian earnings and professional autonomy (Dahle, n.d.). A persistent pay gap is therefore compatible with retention—but only while the total military package yields comparable utility.
+The course text defines opportunity cost as the value of the best forgone alternative and emphasizes judging a decision by the costs and benefits that change at the margin (Frank et al., 2022, pp. 5–8). For a physician approaching an agreement decision, that means comparing a feasible civilian offer with the *next* period of Navy service. Medical-school support already received is sunk; future bonus payments, pension accrual, taxes, and the working conditions on each path can still change the decision. The analysis uses constant 2026 dollars and a real discount rate so later pay and retirement income can be compared at the decision date (Frank et al., 2022, pp. 324, 407–414).
+
+Two labor-economics concepts explain why the compensation gap matters. First, compensating wage differentials allow a lower-paying job to retain workers when valued job attributes offset foregone wages. Pension accrual and future funded training have financial value; mission, camaraderie, and distinctive operational practice may have personal value that the salary data cannot price. The White Coat Investor’s discussion of whether military physicians should remain to 20 years illustrates that physicians compare those benefits with civilian earnings and professional autonomy (Dahle, n.d.). A persistent pay gap is therefore compatible with retention—but only while the total military package yields comparable utility.
 
 Second, labor supply elasticity links changes in compensation to retention behavior. Dynamic retention model research by Asch, Mattock, and Hosek places officer retention elasticity in an approximate 0.8–1.5 range: a 10 percent pay increase is associated with roughly 8–15 percent higher retention. This estimate does not prove the effect for Navy primary-care physicians, but it makes the compensation gap behaviorally consequential rather than merely descriptive.
+
+The text's elasticity lesson describes a percentage response to a percentage change (Frank et al., 2022, pp. 73–80). That concept motivates a retention test; it does not turn an observed salary gap into an observed separation response. The officer estimate above would need validation in this specialty and career stage before it could support a Navy forecast. The labor-market supply and demand model likewise clarifies why civilian alternatives may affect wages and staffing, while leaving the size of the San Diego response to be measured (Frank et al., 2022, pp. 376–385).
 
 ## Economic Analysis Continued
 
@@ -47,6 +51,8 @@ A larger Retention Bonus is a real budget cost, and dynamic-retention evidence s
 Navy Medicine should add $25,000 per year to the four-year Retention Bonus for family medicine, internal medicine, and pediatrics and preserve meaningful operational assignments for senior clinicians. Success should be evaluated with panel data comparing actual specialty-specific separations and bonus acceptance before and after the change, because this analysis estimates the incentive—not its measured causal effect.
 
 ## References
+
+- Frank, R. H., Bernanke, B. S., Antonovics, K., & Heffetz, O. (2022). *Principles of economics: A streamlined approach* (4th ed.). McGraw Hill.
 
 - Asch, B. J., Mattock, M. G., & Hosek, J. (2019). The effects of compensation on the retention of military personnel: Evidence from the dynamic retention model. RAND Corporation.
 
