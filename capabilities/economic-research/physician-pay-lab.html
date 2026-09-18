@@ -157,7 +157,7 @@ async function readLesInBrowser(){
   const base=lesAmountAfter(items,'BASE PAY'),bah=lesAmountAfter(items,'BAH');
   if(base==null||bah==null||base<0||bah<0||base>50000||bah>30000)throw Error('Required pay fields were not found');
   lesExtracted={base,bah};
-  $('lesBasePreview').textContent=fmt(base);$('lesBahPreview').textContent=fmt(bah);
+  $('lesBasePreview').textContent=base.toLocaleString('en-US',{style:'currency',currency:'USD'});$('lesBahPreview').textContent=bah.toLocaleString('en-US',{style:'currency',currency:'USD'});
   $('lesPreview').hidden=false;$('lesStatus').textContent='Check these amounts against your LES before applying.';
  }catch(error){$('lesStatus').textContent='Could not read basic pay and BAH from this PDF. Enter them manually or try a text-based LES.'}
  finally{if(doc)await doc.destroy();$('lesFile').value=''}
