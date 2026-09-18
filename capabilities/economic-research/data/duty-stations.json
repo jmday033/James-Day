@@ -1,0 +1,205 @@
+[
+  {
+    "name": "Naval Medical Center San Diego",
+    "zip": "92134",
+    "aliases": "NMCSD Balboa NMRTC San Diego",
+    "source": "https://www.med.navy.mil/NMRTC-San-Diego-CA/contactUs/"
+  },
+  {
+    "name": "Naval Base San Diego",
+    "zip": "92136",
+    "aliases": "32nd Street NBSD",
+    "source": "https://www.med.navy.mil/Naval-Medical-Forces-Pacific/Staff-Info/Welcome-Aboard/"
+  },
+  {
+    "name": "Naval Hospital Camp Pendleton",
+    "zip": "92055",
+    "aliases": "NMRTC Camp Pendleton",
+    "source": "https://www.med.navy.mil/NMRTC-Camp-Pendleton-CA/"
+  },
+  {
+    "name": "Naval Hospital Twentynine Palms",
+    "zip": "92278",
+    "aliases": "29 Palms NMRTC",
+    "source": "https://www.med.navy.mil/NMRTC-Twentynine-Palms-CA/index.html"
+  },
+  {
+    "name": "Naval Health Clinic Lemoore",
+    "zip": "93246",
+    "aliases": "NMRTC Lemoore",
+    "source": "https://www.med.navy.mil/Naval-Medical-Forces-Pacific/Contact-Us/"
+  },
+  {
+    "name": "Naval Health Clinic Oak Harbor",
+    "zip": "98278",
+    "aliases": "NMRTC Oak Harbor Whidbey Island",
+    "source": "https://www.med.navy.mil/Naval-Medical-Forces-Pacific/Contact-Us/"
+  },
+  {
+    "name": "Naval Hospital Bremerton",
+    "zip": "98312",
+    "aliases": "NMRTC Bremerton",
+    "source": "https://www.med.navy.mil/NMRTC-Bremerton-WA/"
+  },
+  {
+    "name": "Naval Medical Center Portsmouth",
+    "zip": "23708",
+    "aliases": "NMRTC Portsmouth Virginia",
+    "source": "https://www.med.navy.mil/Naval-Medical-Forces-Atlantic/Organization/Support-Forces/NMRTC-Portsmouth/"
+  },
+  {
+    "name": "Naval Medical Center Camp Lejeune",
+    "zip": "28547",
+    "aliases": "NMRTC Camp Lejeune",
+    "source": "https://www.med.navy.mil/Naval-Medical-Forces-Atlantic/Organization/Support-Forces/NMRTC-Camp-Lejeune/"
+  },
+  {
+    "name": "Naval Hospital Jacksonville",
+    "zip": "32214",
+    "aliases": "NMRTC Jacksonville",
+    "source": "https://jacksonville.tricare.mil/About-Us/Contact-Us/"
+  },
+  {
+    "name": "Branch Health Clinic Mayport",
+    "zip": "32228",
+    "aliases": "Naval Station Mayport Jacksonville",
+    "source": "https://jacksonville.tricare.mil/clinics/branch-health-clinic-mayport/"
+  },
+  {
+    "name": "Naval Hospital Pensacola",
+    "zip": "32512",
+    "aliases": "NMRTC Pensacola",
+    "source": "https://www.med.navy.mil/Naval-Medical-Forces-Atlantic/Organization/Support-Forces/NMRTC-Pensacola/"
+  },
+  {
+    "name": "Naval Health Clinic Cherry Point",
+    "zip": "28533",
+    "aliases": "NMRTC Cherry Point",
+    "source": "https://www.med.navy.mil/Naval-Medical-Forces-Atlantic/Organization/Support-Forces/NMRTC-Cherry-Point/"
+  },
+  {
+    "name": "Naval Health Clinic New England (Newport)",
+    "zip": "02841",
+    "aliases": "NMRTC Newport Rhode Island",
+    "source": "https://www.med.navy.mil/Naval-Medical-Forces-Atlantic/Organization/Support-Forces/NMRTC-New-England-RI/NMRTC-Newport-RI/"
+  },
+  {
+    "name": "Walter Reed National Military Medical Center",
+    "zip": "20889",
+    "aliases": "NMRTC Bethesda Maryland",
+    "source": "https://www.dha.mil/Offices-and-Programs/ASBP/Blood-Donor-Centers"
+  },
+  {
+    "name": "U.S. Naval Hospital Guam",
+    "zip": "96910",
+    "aliases": "NMRTC Guam Agana Heights",
+    "source": "https://www.med.navy.mil/Naval-Medical-Forces-Pacific/Contact-Us/",
+    "overseas": true
+  },
+  {
+    "name": "Marine Corps Base Camp Pendleton",
+    "zip": "92055",
+    "aliases": "MCB Pendleton Oceanside USMC",
+    "source": "https://www.pendleton.marines.mil/Useful-Information/Useful-Addresses/"
+  },
+  {
+    "name": "Marine Corps Air Station Miramar",
+    "zip": "92145",
+    "aliases": "MCAS Miramar San Diego USMC",
+    "source": "https://www.miramar.marines.mil/Arriving/ID-Center/"
+  },
+  {
+    "name": "Marine Corps Recruit Depot San Diego",
+    "zip": "92140",
+    "aliases": "MCRD San Diego USMC",
+    "source": "https://www.mcrdsd.marines.mil/Visitors/MCRDSD-Museum/"
+  },
+  {
+    "name": "Marine Corps Air Ground Combat Center Twentynine Palms",
+    "zip": "92278",
+    "aliases": "MCAGCC 29 Palms USMC",
+    "source": "https://www.29palms.marines.mil/Contact-Us/Mock/dvpTag/MCAGCC/"
+  },
+  {
+    "name": "Marine Corps Logistics Base Barstow",
+    "zip": "92311",
+    "aliases": "MCLB Barstow USMC",
+    "source": "https://www.mclbbarstow.marines.mil/Agencies/Inspector-General/"
+  },
+  {
+    "name": "Marine Corps Air Station Yuma",
+    "zip": "85369",
+    "aliases": "MCAS Yuma branch health clinic USMC",
+    "source": "https://www.mcasyuma.marines.mil/Commands/Branch-Health-Clinic-MCAS-Yuma/"
+  },
+  {
+    "name": "Marine Corps Base Hawaii (Kaneohe Bay)",
+    "zip": "96863",
+    "aliases": "MCBH Kaneohe Bay MCAS Kaneohe USMC",
+    "source": "https://www.mcbhawaii.marines.mil/Contact-Us/"
+  },
+  {
+    "name": "Marine Corps Base Camp Lejeune",
+    "zip": "28542",
+    "aliases": "MCB Lejeune Jacksonville North Carolina USMC",
+    "source": "https://www.lejeune.marines.mil/Portals/27/Documents/IPAC/ENCLOSURE%202%20RPAC%20SOP%2020241217.pdf?ver=h_mHOTFp8xGCnanhxCjO8Q%3D%3D"
+  },
+  {
+    "name": "Marine Corps Air Station New River",
+    "zip": "28545",
+    "aliases": "MCAS New River Jacksonville North Carolina USMC",
+    "source": "https://www.lejeune.marines.mil/Portals/27/Documents/IPAC/ENCLOSURE%202%20RPAC%20SOP%2020241217.pdf?ver=h_mHOTFp8xGCnanhxCjO8Q%3D%3D"
+  },
+  {
+    "name": "Marine Corps Air Station Cherry Point",
+    "zip": "28533",
+    "aliases": "MCAS Cherry Point Havelock USMC",
+    "source": "https://www.lejeune.marines.mil/Portals/27/Documents/IPAC/ENCLOSURE%202%20RPAC%20SOP%2020241217.pdf?ver=h_mHOTFp8xGCnanhxCjO8Q%3D%3D"
+  },
+  {
+    "name": "Marine Corps Air Station Beaufort",
+    "zip": "29904",
+    "aliases": "MCAS Beaufort South Carolina USMC",
+    "source": "https://www.lejeune.marines.mil/Portals/27/Documents/IPAC/ENCLOSURE%202%20RPAC%20SOP%2020241217.pdf?ver=h_mHOTFp8xGCnanhxCjO8Q%3D%3D"
+  },
+  {
+    "name": "Marine Corps Logistics Base Albany",
+    "zip": "31704",
+    "aliases": "MCLB Albany Georgia USMC",
+    "source": "https://www.lejeune.marines.mil/Portals/27/Documents/IPAC/ENCLOSURE%202%20RPAC%20SOP%2020241217.pdf?ver=h_mHOTFp8xGCnanhxCjO8Q%3D%3D"
+  },
+  {
+    "name": "Marine Corps Base Quantico",
+    "zip": "22134",
+    "aliases": "MCB Quantico Virginia USMC",
+    "source": "https://www.quantico.marines.mil/Resources/PCS-Inbound-Outbound/Checking-Out/"
+  },
+  {
+    "name": "Marine Corps Recruit Depot Parris Island",
+    "zip": "29905",
+    "aliases": "MCRD Parris Island South Carolina USMC",
+    "source": "https://www.mcrdpi.marines.mil/Permanent-Personnel/Resources/Voting-Information/"
+  },
+  {
+    "name": "Marine Corps Base Camp Blaz (Guam)",
+    "zip": "",
+    "aliases": "MCB Blaz Dededo Guam USMC",
+    "source": "https://www.mcbblaz.marines.mil/About/",
+    "overseas": true
+  },
+  {
+    "name": "Marine Corps Air Station Iwakuni (Japan)",
+    "zip": "",
+    "aliases": "MCAS Iwakuni Japan USMC",
+    "source": "https://www.mcasiwakuni.marines.mil/Organizations/Station/Postal/Mailing-Restrictions/",
+    "overseas": true
+  },
+  {
+    "name": "Marine Corps Base Camp Foster (Okinawa)",
+    "zip": "",
+    "aliases": "MCB Butler Camp Foster Okinawa Japan USMC",
+    "source": "https://www.mcbbutler.marines.mil/Camps/Camp-Foster/CO/",
+    "overseas": true
+  }
+]
+
