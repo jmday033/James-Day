@@ -27,3 +27,10 @@ Added retirement decision-date and delayed-pension distinctions, after-tax and b
 Integrated the author's academic and comparative-policy sources into the paper. Distinguished the fixed four-year cash comparison from estimated ACOL/DRM models; added military-clinician studies, personal-discount-rate limitations, incremental-service evaluation, and VA staffing evidence with population and design limits. Corrected mismatched DOIs, historical dates, the VHA article's journal, and the meaning of relative turnover reduction. Verified distinct Warner 1979/1981 bibliographic records but did not claim an original ACOL development date because original full text remained inaccessible. Inaccessible QRMC/CBO materials and historical pilot bonus amounts are documented in the source review instead of treated as validated quantitative evidence.
 
 Salary inputs, fixed calculations, and interactive lab are unchanged. Studies motivate further validation and evaluation, not a calibrated Navy retention prediction or assumed APP savings.
+
+
+## Primary-care working conditions and burnout — 2026-09-19
+
+Reviewed the author's 17 additional references and integrated 14 into the paper's context, military evidence, comparison method, communication policy, and team-staffing evaluation. Three JAMA news briefs remain contextual sources in the audit rather than quantitative Navy evidence. Corrected the Antao publication year, the NEJM Catalyst journal attribution, and online/issue-year distinctions. The strongest newly supplied behavioral evidence links Army leave sentiments with subsequent separation; other studies often measure satisfaction, burnout, or intentions and are not treated as causal Navy estimates.
+
+The paper now explicitly compares working conditions on both career paths and pairs targeted communication with evaluation of actual operational improvements. This extends the nonfinancial-policy discussion without changing the central financial research question, three policy options, numerical results, or lab.
