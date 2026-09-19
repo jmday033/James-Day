@@ -6,7 +6,7 @@ James M. Day  |  September 2026
 
 The U.S. Navy Medical Corps needs a clear understanding of the financial alternatives facing physicians at retention decisions. For family medicine, internal medicine, and pediatrics, the relevant question is: **How much financial compensation does a physician forgo by remaining in the Navy over the next four years rather than accepting a feasible civilian position?**
 
-This paper estimates that difference to inform retention strategy. The findings can help the Medical Corps evaluate advocacy for larger retention bonuses and targeted advertising of existing nonfinancial benefits. The analysis measures a financial incentive; it does not identify an optimal bonus or predict how many physicians either intervention would retain.
+This paper estimates that difference to inform retention strategy. The findings can help the Medical Corps evaluate advocacy for larger retention bonuses, targeted advertising of existing nonfinancial benefits, and shifting appropriate primary-care clinical work toward advanced practice providers. The analysis measures a financial incentive; it does not identify an optimal bonus, predict retention, or establish the most cost-effective staffing mix.
 
 The information need is supported by the U.S. Government Accountability Office (GAO, 2020). Its comparison of 2017 compensation found maximum military cash compensation below the civilian median in 21 of 27 medical and dental specialties reviewed. GAO recommended collecting civilian wage, bonus-acceptance, and replacement-cost information to inform incentive decisions. Those historical, department-wide findings motivate this analysis; they do not establish a current Navy primary-care pay gap.
 
@@ -83,11 +83,21 @@ Such communication addresses an information gap only when physicians are unaware
 
 Bonus advocacy and communication can be complementary. A larger bonus changes financial compensation; accurate advertising helps physicians understand the existing job attributes. Whether either approach improves retention, and for whom, remains a question for evaluation.
 
+### Evaluating a greater role for advanced practice providers
+
+A third policy option is to shift a greater share of appropriate primary-care clinical positions and responsibilities toward nurse practitioners and physician assistants, while retaining physicians for functions that require their expertise and for military readiness requirements. This would address the cost of providing clinical capacity as well as the challenge of retaining physicians.
+
+The economic hypothesis is that Navy compensation for these advanced practice providers may be closer to their civilian alternatives, making competitive compensation more attainable than closing physician pay gaps. This possibility requires a separate military–civilian compensation comparison for each profession; the physician results in this paper do not establish it. A lower civilian salary alone would not demonstrate either a smaller military–civilian gap or lower total staffing costs.
+
+The relevant economic comparison is the total cost of meeting a defined care need with different staffing combinations. Evaluation should include compensation and benefits, recruitment and training, applicable supervision and consultation time, patient complexity, productivity, referrals, and downstream utilization. Any proposed shift should follow applicable scope-of-practice and credentialing requirements and preserve access, quality, continuity, and the physician capacity needed for complex care, teaching, and operational missions.
+
+A limited pilot could compare team configurations using total cost per appropriately managed patient, access, clinical outcomes, physician workload, and readiness measures. Expansion would be justified if the revised staffing mix met those requirements at a lower total cost. This option complements retention policy by changing how clinical work is allocated; it does not assume one-for-one substitution or eliminate the need to retain physicians.
+
 ## Limitations and Further Evaluation
 
 The largest limitation is that the current results are a gross-cash comparison using provisional inputs. They omit differences in income and payroll taxes, pension value, retirement contributions, health coverage, educational benefits, malpractice costs, and other employment expenses. Their net effect could narrow or widen the measured gap. A complete comparison should value only financial consequences that differ between staying and leaving, including future retirement consequences of the decision, without counting already earned benefits twice.
 
-The fixed O-5 profile cannot represent all career stages. National salary benchmarks also cannot establish an individual's best feasible local alternative. Neither the compensation table nor its sensitivity calculations demonstrate a separation rate, a causal retention effect, or an operational-readiness loss.
+The fixed O-5 profile cannot represent all career stages. National salary benchmarks also cannot establish an individual's best feasible local alternative. Neither the compensation table nor its sensitivity calculations demonstrate a separation rate, a causal retention effect, or an operational-readiness loss. The model also contains no advanced-practitioner compensation or staffing-outcome data, so that policy option remains a proposal for separate evaluation.
 
 Before using the estimates for policy advocacy, the Medical Corps would need validated compensation components and comparable civilian alternatives by specialty and career stage. Evaluation of a subsequent bonus or communication initiative should then track baseline agreement acceptance, actual retention, costs, and access to advertised opportunities. A credible comparison group and attention to concurrent assignment or pay changes are needed to distinguish an intervention's effect from other influences. Increased awareness alone would not establish improved retention.
 
@@ -95,7 +105,7 @@ Before using the estimates for policy advocacy, the Medical Corps would need val
 
 Calculating opportunity cost gives the U.S. Navy Medical Corps a clearer account of the financial alternatives facing primary-care physicians. In this illustrative four-year scenario, the present-value civilian cash advantage ranges from approximately $94,000 for pediatrics to $247,000 for internal medicine, with family medicine at approximately $152,000. These are conditional cash-gap estimates rather than complete financial valuations or predicted retention outcomes.
 
-The practical contribution is a transparent framework for comparing career paths. Once its inputs are verified and its financial scope expanded where data permit, it can inform advocacy for larger retention bonuses and targeted communication of existing nonfinancial benefits. The analysis supports better-informed retention decisions without claiming that a particular bonus or advertising campaign has already been shown to work.
+The practical contribution is a transparent framework for comparing career paths. Once its inputs are verified and its financial scope expanded where data permit, it can inform advocacy for larger retention bonuses, targeted communication of existing nonfinancial benefits, and evaluation of a greater role for advanced practice providers in appropriate primary-care work. The analysis supports better-informed retention and staffing decisions without claiming that any of these approaches has already been shown to be effective or cost-saving in the modeled setting.
 
 ## References
 

@@ -24,7 +24,7 @@ The global challenge is sustaining the medical workforce that supports U.S. nava
 
 ## Research question and contribution
 
-What is the financial opportunity cost of continued Navy service for family medicine, internal medicine, and pediatrics physicians over the next four years? The paper's primary contribution is a transparent calculation for the U.S. Navy Medical Corps. Larger retention bonuses and targeted advertising of existing nonfinancial benefits are possible applications of the findings, not predetermined recommendations.
+What is the financial opportunity cost of continued Navy service for family medicine, internal medicine, and pediatrics physicians over the next four years? The paper's primary contribution is a transparent calculation for the U.S. Navy Medical Corps. Larger retention bonuses, targeted advertising of existing nonfinancial benefits, and shifting appropriate primary-care work toward nurse practitioners and physician assistants are possible applications of the findings, not predetermined recommendations.
 
 The economic concepts are **opportunity cost**, **marginal choice**, and **choice among financial and nonfinancial job attributes**. The full financial comparison is the present value of a feasible civilian path minus continued Navy service over the same horizon. The current paper calculates only a gross-cash gap, so it is a partial estimate of financial opportunity cost. It does not price personal preferences or forecast retention.
 
@@ -44,6 +44,7 @@ The calculation does not test whether bonuses or advertising improve retention. 
 
 - **Bonus advocacy:** quantify the financial tradeoff and compare illustrative bonus amounts without treating any gap-closure percentage as an optimal retention price.
 - **Targeted advertising and counseling:** explain existing mission, operational practice, teaching, research, and leadership opportunities candidly, with eligibility and availability stated. Communication cannot erase a cash gap or create an unavailable opportunity.
+- **Staffing mix:** evaluate a greater role for nurse practitioners and physician assistants if their military compensation is more competitive with civilian alternatives. Test that hypothesis with profession-specific data and compare total staffing costs, supervision, patient complexity, outcomes, access, and military readiness requirements; do not assume one-for-one substitution.
 - **Further research:** collect person-specific financial inputs and observed career choices. Keep pension, healthcare, and educational benefits in the financial comparison; investigate preferences for nonfinancial attributes separately.
 
 ## Initial sources and data needed

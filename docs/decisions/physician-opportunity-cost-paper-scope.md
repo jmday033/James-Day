@@ -9,3 +9,7 @@ The revised paper therefore makes the calculation its primary contribution, labe
 The original fixed O-5 inputs and 4% year-end discount convention are preserved and disclosed. Annual, four-year, and discount-rate sensitivity calculations were independently recomputed. Compensation-input source verification remains outstanding; no invented pay breakdown or source attribution was added.
 
 The canonical research brief and capability summary are aligned with this purpose. Earlier model specifications, analysis packages, and decision memos remain records of prior work and are not the source of the revised paper's fixed estimates. This scope decision supersedes earlier policy selections for the current paper. Interactive calculators are unchanged.
+
+## Additional policy option — 2026-09-19
+
+At the author's request, the paper now includes shifting appropriate primary-care clinical work toward nurse practitioners and physician assistants. The proposed rationale is a potentially smaller military–civilian compensation gap. This remains an untested hypothesis requiring profession-specific pay data and a total-cost comparison that accounts for clinical outcomes, supervision, patient complexity, access, and readiness. The physician calculations are unchanged.
