@@ -20,3 +20,10 @@ At the author's request, the paper now includes shifting appropriate primary-car
 At the author's request, screened the 73 distinct MCCareer/White Coat Investor links, including historical pay PDFs and an archive link, and recorded source-by-source dispositions in docs/papers/navy-physician-source-review.md. Seven original post URLs required same-site archive recovery; one was available as an excerpt. Official FY26 corps-specific guidance returned 403, so the verified FY25 primary-care special-pay table is expressly historical. Existing four-year salary scenarios remain provisional rather than receiving unsupported source attributions.
 
 Added retirement decision-date and delayed-pension distinctions, after-tax and benefit comparability, conditional moonlighting, accession-versus-retention separation, and balanced benefit communications. Preserved the author's three policy options and avoided treating narrative accounts as causal retention evidence. The fixed scenario's numerical inputs and calculations remain unchanged; individual pay and civilian benchmark validation is still required.
+
+
+## Retention and staffing literature — 2026-09-19
+
+Integrated the author's academic and comparative-policy sources into the paper. Distinguished the fixed four-year cash comparison from estimated ACOL/DRM models; added military-clinician studies, personal-discount-rate limitations, incremental-service evaluation, and VA staffing evidence with population and design limits. Corrected mismatched DOIs, historical dates, the VHA article's journal, and the meaning of relative turnover reduction. Verified distinct Warner 1979/1981 bibliographic records but did not claim an original ACOL development date because original full text remained inaccessible. Inaccessible QRMC/CBO materials and historical pilot bonus amounts are documented in the source review instead of treated as validated quantitative evidence.
+
+Salary inputs, fixed calculations, and interactive lab are unchanged. Studies motivate further validation and evaluation, not a calibrated Navy retention prediction or assumed APP savings.
