@@ -150,3 +150,11 @@ Add, in your own words, where AI helped the research process. The paragraph abov
 ### Analytical qualification recorded separately from the reflection
 
 The pension table conditions on reaching 20 years and isolates the pension stream. It does not estimate actual retention probabilities or prove a universal monotonic increase in the net incentive to stay. Civilian earnings, additional service costs, Reserve eligibility, and vested BRS TSP assets also matter.
+
+## 2026-09-19 — Import professor's repository skills
+
+**Request:** Add brand-guidelines, accounting-ratios, docx, xlsx, pptx, pdf, internal-comms, and skill-creator from the professor's repository.
+
+**AI assistance:** Copied the eight complete folders from `adamwstauffer/shidler` at commit `2460d75d6905139626c5f622827bf788dedb543b` into `.claude/skills/`, preserving supporting files, file modes, and license notices. Kept the existing career-docs skill. Added source provenance in `.claude/skills/README.md`. No imported scripts were executed or runtime dependencies installed.
+
+**Verification:** Compared all imported file hashes and modes with the pinned source tree before publication.
