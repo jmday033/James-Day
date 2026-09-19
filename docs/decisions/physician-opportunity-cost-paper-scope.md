@@ -13,3 +13,10 @@ The canonical research brief and capability summary are aligned with this purpos
 ## Additional policy option — 2026-09-19
 
 At the author's request, the paper now includes shifting appropriate primary-care clinical work toward nurse practitioners and physician assistants. The proposed rationale is a potentially smaller military–civilian compensation gap. This remains an untested hypothesis requiring profession-specific pay data and a total-cost comparison that accounts for clinical outcomes, supervision, patient complexity, access, and readiness. The physician calculations are unchanged.
+
+
+## Source review — 2026-09-19
+
+At the author's request, screened the 73 distinct MCCareer/White Coat Investor links, including historical pay PDFs and an archive link, and recorded source-by-source dispositions in docs/papers/navy-physician-source-review.md. Seven original post URLs required same-site archive recovery; one was available as an excerpt. Official FY26 corps-specific guidance returned 403, so the verified FY25 primary-care special-pay table is expressly historical. Existing four-year salary scenarios remain provisional rather than receiving unsupported source attributions.
+
+Added retirement decision-date and delayed-pension distinctions, after-tax and benefit comparability, conditional moonlighting, accession-versus-retention separation, and balanced benefit communications. Preserved the author's three policy options and avoided treating narrative accounts as causal retention evidence. The fixed scenario's numerical inputs and calculations remain unchanged; individual pay and civilian benchmark validation is still required.
