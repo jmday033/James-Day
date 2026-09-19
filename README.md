@@ -13,6 +13,8 @@ His interests include healthcare leadership, clinical informatics, and global he
 
 ### Engagements and Evidence
 
+- [Navy Physician Compensation, Opportunity Cost, and Retention](capabilities/economic-research/navy-physician-compensation/README.md) — research, paper, policy decision, and interactive compensation labs
+
 - [Capabilities](capabilities/) — professional capabilities supported by concrete evidence
 - [Briefs](docs/briefs/) — concise analyses and recommendations
 - [Decision Records](docs/decisions/) — important project decisions and their rationale

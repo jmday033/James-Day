@@ -7,7 +7,7 @@ from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parent
 OUT = ROOT / "outputs"
 OUT.mkdir(exist_ok=True)
 
@@ -202,7 +202,7 @@ lines += [
     "- [Navy Medicine FY26 special pays](https://www.med.navy.mil/Special-Pays/): modeled primary-care IP = $43,000/year, BCP = $8,000/year, four-year RB = $35,000 pediatrics and $48,000 internal/family medicine; eligibility must be verified for actual physicians.",
     "- [Doximity 2026 Physician Compensation Report](https://www.doximity.com/reports/physician-compensation-report/2026): national averages of $273,665 pediatrics, $339,274 internal medicine, and $325,040 family medicine, from a 2025 compensation survey. This is a separate geography and method from Marit.",
     "- Marit San Diego published benchmarks: [pediatrics](https://www.marithealth.com/o/-/pediatrician/salary/san-diego-ca) $303,974 (Aug. 28, 2026), [internists](https://www.marithealth.com/o/-/internist/salary/san-diego-ca) $459,057 (Apr. 30, 2026), [family medicine](https://www.marithealth.com/o/-/family-medicine-physician/salary/san-diego-ca) $373,038 (June 5, 2026). These are citywide and not verified civilian-only salary figures.",
-    "", "The companion figure is [the cumulative-gap chart](../figures/physician-retention-cumulative-gap.svg).",
+    "", "The companion figure is [the cumulative-gap chart](../../figures/physician-retention-cumulative-gap.svg).",
 ]
 (OUT / "physician-retention-analysis.md").write_text("\n".join(lines)+"\n",encoding="utf-8")
 print("PASS: 12 rows, baseline pay, BAH sensitivity, all cumulative-gap checks")

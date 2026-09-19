@@ -126,3 +126,9 @@ Finally, I checked that each marginal-cost value measured the cost of adding one
 | Date | Tool | What I asked | What I got | What I did with it |
 |---|---|---|---|---|
 | 2026-09-19 | Codex (OpenAI) | Merge physician opportunity cost and physician retention into one repository decision | Consolidated the current scope and earlier memo, labeled their different scenarios, repaired memo links, and pointed the older package copy to the canonical decision | Requested repository organization; existing policy choices and calculations preserved, with no new paper prose or personal reflection |
+
+## Physician project consolidation — 2026-09-19
+
+| Date | Tool | What I asked | What I got | What I did with it |
+|---|---|---|---|---|
+| 2026-09-19 | Codex (OpenAI) | Organize all physician compensation, retention, and opportunity-cost work under one project | Moved canonical research, decision, analysis, data, figures, and lab resources into capabilities/economic-research/navy-physician-compensation; preserved nonidentical earlier package copies in its archive; updated links and retained course entry points and old lab redirects | Requested repository organization; paper prose, numerical assumptions, and research conclusions were not revised |
