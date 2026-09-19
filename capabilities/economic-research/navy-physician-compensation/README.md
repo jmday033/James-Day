@@ -9,7 +9,7 @@ This graduate economics project compares the financial value of continued Navy s
 - [Research brief](research-brief.md)
 - [Model specification](physician-retention-model-spec.md)
 - [Analysis](physician-retention-analysis.md)
-- [Decision memo](physician-retention-economics-memo.md)
+- [Opportunity-cost and retention decision](../../../docs/decisions/physician-retention-economics-memo.md)
 - [Four-year comparison data](physician-retention-12-row-comparison.csv)
 - [Cumulative-gap figure](physician-retention-cumulative-gap.svg)
 

@@ -120,3 +120,9 @@ Finally, I checked that each marginal-cost value measured the cost of adding one
 | 2026-09-19 | ChatGPT / Codex (OpenAI) | Incorporate the pasted discussion of existing military physician retention and staffing policies | Added a sourced policy-context section covering incentives, training obligations, family policies, clinical staffing, and skills partnerships; qualified effectiveness claims and removed personal examples | Incorporated verified policy context for author review; numerical results and lab unchanged, and original salary validation remains pending |
 
 | 2026-09-19 | ChatGPT / Codex (OpenAI) | Incorporate the additional GAO, RAND, and DoD Inspector General source summary | Verified current recommendation status, corrected RAND's five-option list, and added publicly documented readiness-assignment recommendations with access limits | Updated existing paper passages and source review; calculations and lab unchanged; salary validation remains pending |
+
+## Decision-record consolidation — 2026-09-19
+
+| Date | Tool | What I asked | What I got | What I did with it |
+|---|---|---|---|---|
+| 2026-09-19 | Codex (OpenAI) | Merge physician opportunity cost and physician retention into one repository decision | Consolidated the current scope and earlier memo, labeled their different scenarios, repaired memo links, and pointed the older package copy to the canonical decision | Requested repository organization; existing policy choices and calculations preserved, with no new paper prose or personal reflection |
