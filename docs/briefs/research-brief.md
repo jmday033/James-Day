@@ -2,18 +2,18 @@
 type: brief
 engagement: research-paper
 capability: economic-research
-date: 2026-09-16
+date: 2026-09-19
 status: revised
-hypothesis: "At current pay rates, accurate communication about available Navy-specific nonfinancial opportunities may improve agreement acceptance and later retention among eligible San Diego-based primary-care physicians, with a smaller effect when a physician faces a larger verified civilian financial advantage."
+research_question: "What is the financial opportunity cost of continued Navy service for family medicine, internal medicine, and pediatrics physicians over the next four years?"
 ---
 
 # Navy primary-care physician retention — research brief
 
 ## The problem
 
-Navy Medicine must retain experienced physicians after their initial service obligations end. Losing physicians can leave clinical positions unfilled and weaken continuity of care and readiness. [GAO's 2025 staffing review](https://www.gao.gov/products/gao-25-106988) reports a decline in assigned military medical personnel across DOD and expected shortfalls through at least 2027. That is current DOD-wide context, not a measured San Diego Navy primary-care attrition rate. The question here is what could help retain Navy pediatricians, general internists, and family physicians who have a civilian alternative.
+Navy Medicine must retain experienced physicians after their initial service obligations end. Losing physicians can leave clinical positions unfilled and weaken continuity of care and readiness. [GAO's 2025 staffing review](https://www.gao.gov/products/gao-25-106988) reports a decline in assigned military medical personnel across DOD and expected shortfalls through at least 2027. That is current DOD-wide context, not a measured San Diego Navy primary-care attrition rate. The question here is how much financial compensation Navy pediatricians, general internists, and family physicians forgo by staying rather than pursuing a feasible civilian alternative.
 
-The global challenge is sustaining the medical workforce that supports U.S. naval operations in the Pacific. [Naval Medical Forces Pacific](https://www.med.navy.mil/Naval-Medical-Forces-Pacific/Region/) is headquartered in San Diego and spans commands in Hawaii, Japan, and Guam; its [mission](https://www.med.navy.mil/Naval-Medical-Forces-Pacific/Region/Mission/) includes keeping assigned medical forces staffed, trained, and ready to deploy. San Diego is the local labor-market case for this larger workforce question. This project tests a potential retention mechanism; it does not show that departures among these three specialties have reduced Pacific readiness.
+The global challenge is sustaining the medical workforce that supports U.S. naval operations in the Pacific. [Naval Medical Forces Pacific](https://www.med.navy.mil/Naval-Medical-Forces-Pacific/Region/) is headquartered in San Diego and spans commands in Hawaii, Japan, and Guam; its [mission](https://www.med.navy.mil/Naval-Medical-Forces-Pacific/Region/Mission/) includes keeping assigned medical forces staffed, trained, and ready to deploy. San Diego is the local labor-market case for this larger workforce question. This project estimates the financial difference between career paths; it does not establish a retention response or show that departures among these three specialties have reduced Pacific readiness.
 
 ## What I am assuming
 
@@ -22,21 +22,29 @@ The global challenge is sustaining the medical workforce that supports U.S. nava
 - More accurate information could affect choices only when the opportunities are real, accessible, and valued by the physician. It cannot create an unavailable opportunity or eliminate a pay gap.
 - Existing pay, pension, healthcare, GI Bill eligibility, and tax treatment are **financial** components of the stay-versus-leave comparison. Leadership, teaching, research, specialty practice, operational work, mission, and assignment experience are candidate **nonfinancial** attributes.
 
-## Hypothesis
+## Research question and contribution
 
-At current pay rates, targeted, accurate communication about available Navy-specific nonfinancial opportunities will increase awareness and may improve agreement acceptance and later retention among eligible San Diego-based primary-care physicians relative to standard information. I expect a smaller retention effect for physicians with a larger *verified* civilian financial advantage. This is a testable prediction, not a claim that communication can compensate for every pay gap.
+What is the financial opportunity cost of continued Navy service for family medicine, internal medicine, and pediatrics physicians over the next four years? The paper's primary contribution is a transparent calculation for the U.S. Navy Medical Corps. Larger retention bonuses and targeted advertising of existing nonfinancial benefits are possible applications of the findings, not predetermined recommendations.
 
-The economic concepts are **opportunity cost** and **choice among bundles of financial and nonfinancial attributes**. The accompanying model estimates the present-value financial opportunity cost of staying: the difference between a feasible civilian path and continued Navy service over the same horizon. Its starting table uses current Navy compensation and published San Diego specialty benchmarks; the individual lab adds taxes, pension continuation, healthcare, GI Bill transfer, and physician-paid costs when reliable inputs are available. It does not measure how much a physician values the nonfinancial attributes or predict retention from salary data alone.
+The economic concepts are **opportunity cost**, **marginal choice**, and **choice among financial and nonfinancial job attributes**. The full financial comparison is the present value of a feasible civilian path minus continued Navy service over the same horizon. The current paper calculates only a gross-cash gap, so it is a partial estimate of financial opportunity cost. It does not price personal preferences or forecast retention.
+
+The paper retains provisional annual inputs of $239,000 for Navy O-5 cash compensation and civilian figures of $281,000 for family medicine, $307,000 for internal medicine, and $265,000 for pediatrics. It assumes four year-end payments, constant 2026 dollars, and a 4% real discount rate. Those inputs need an itemized Navy-pay reconciliation and exact civilian-source citations before empirical use. The interactive lab and earlier San Diego comparison remain separate scenarios; their defaults must not be presented as the source of these fixed paper results.
 
 Frank et al.'s *Principles of Economics* (4th ed., 2022) makes the course link more precise: the next agreement is a **marginal choice**, so compare future consequences and exclude sunk training costs (pp. 5–8); the labor market responds to wages and alternatives, but a gap alone cannot reveal a retention elasticity (pp. 73–80, 376–385); and future pay and pension must be put in consistent real dollars before comparing them (pp. 324, 407–414). The [course economics crosswalk](../../capabilities/economic-research/course-economics-crosswalk.md) shows how the textbook applies to the project.
 
 The proposed chain is: local civilian alternatives affect a physician's stay-or-leave choice; those choices may affect Navy medical staffing; staffing may affect the force's ability to provide care and deploy. The model measures only the first link. Testing later links requires specialty-level vacancies, fill times, clinical capacity, deployability, and assignment data rather than assuming a pay gap is a readiness loss.
 
-## How I would know I was wrong
+## Validation and limits
 
-The hypothesis would be weakened if accurate awareness improved but agreement acceptance and later retention did not improve relative to a comparable group. It would also be weakened if the advertised opportunities were rarely accessible or if physicians already knew about them. A stronger alternative is that changing actual assignment predictability, duty-station choice, family conditions, mentoring, or clinical work matters more than describing opportunities. Survey intentions alone are insufficient: the test should observe acceptance at the next unobligated choice and retention after the agreement, accounting for specialty, career stage, pay agreement vintage, and assignment conditions. A weak effect among physicians with the largest verified gaps would limit the strategy's reach.
+Recalculate each annual gap and discounted total independently. Check the Navy total against an explicit profile and eligible pay components, and check each civilian alternative for specialty, location, hours, practice setting, benefits, and actual feasibility. Test alternative salaries and discount rates. A claim that staying has a financial disadvantage would be weakened or reversed if a comparable alternative and the complete incremental benefits-and-costs comparison eliminated the gap.
 
-Recent reviews strengthen that test rather than settle it. A [health-workforce umbrella review](https://doi.org/10.1186/s12913-025-12966-5) warns that intentions and actual departures differ and that intervention evidence varies by setting. A [U.S. rural primary-care review](https://link.springer.com/article/10.1007/s11606-026-10218-8) finds financial and educational programs promising where outcomes were reported, but inconsistent follow-up. These are reasons to keep financial and real-opportunity changes as live alternatives and to measure post-obligation retention; neither review estimates a Navy communication effect.
+The calculation does not test whether bonuses or advertising improve retention. Those are subsequent evaluation questions. Bonus evaluation requires incremental spending, eligible physicians, uptake, and additional physicians retained. Targeted communication should describe real, accessible opportunities; improved awareness without improved acceptance or subsequent retention would not establish a retention benefit. Both approaches need credible comparison groups and attention to career stage and concurrent policy changes.
+
+## Possible uses of the findings
+
+- **Bonus advocacy:** quantify the financial tradeoff and compare illustrative bonus amounts without treating any gap-closure percentage as an optimal retention price.
+- **Targeted advertising and counseling:** explain existing mission, operational practice, teaching, research, and leadership opportunities candidly, with eligibility and availability stated. Communication cannot erase a cash gap or create an unavailable opportunity.
+- **Further research:** collect person-specific financial inputs and observed career choices. Keep pension, healthcare, and educational benefits in the financial comparison; investigate preferences for nonfinancial attributes separately.
 
 ## Initial sources and data needed
 

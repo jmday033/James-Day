@@ -1,74 +1,105 @@
-# Closing the Primary Care Physician Retention Gap in Navy Medicine
+# The Financial Opportunity Cost of Continued Navy Service for Primary-Care Physicians: Implications for Retention Strategy
 
 James M. Day  |  September 2026
 
-## The Challenge
+## Purpose and Research Question
 
-Navy Medicine depends on family medicine, internal medicine, and pediatrics physicians to sustain beneficiary care and operational readiness, yet many physicians leave soon after completing their initial service obligation. The pattern is not unique to the Navy: RAND found that Army Medical Corps recruitment has not kept pace with separations and that a larger-than-expected share of physicians leave after satisfying their obligation (Chan et al., 2024). Compensation is not the only cause, but it is measurable and actionable. GAO found that in 2017 maximum military cash compensation fell below the civilian median in 21 of 27 medical and dental specialties reviewed (U.S. Government Accountability Office [GAO], 2020). This paper therefore isolates the financial dimension for primary-care physicians using a fixed-scenario compensation model. It recommends raising the four-year Retention Bonus for family medicine, internal medicine, and pediatrics by $25,000 per year while preserving access to operational-medicine assignments as a complementary nonfinancial incentive.
+The U.S. Navy Medical Corps needs a clear understanding of the financial alternatives facing physicians at retention decisions. For family medicine, internal medicine, and pediatrics, the relevant question is: **How much financial compensation does a physician forgo by remaining in the Navy over the next four years rather than accepting a feasible civilian position?**
 
-## Economic Analysis
+This paper estimates that difference to inform retention strategy. The findings can help the Medical Corps evaluate advocacy for larger retention bonuses and targeted advertising of existing nonfinancial benefits. The analysis measures a financial incentive; it does not identify an optimal bonus or predict how many physicians either intervention would retain.
 
-The course text defines opportunity cost as the value of the best forgone alternative and emphasizes judging a decision by the costs and benefits that change at the margin (Frank et al., 2022, pp. 5–8). For a physician approaching an agreement decision, that means comparing a feasible civilian offer with the *next* period of Navy service. Medical-school support already received is sunk; future bonus payments, pension accrual, taxes, and the working conditions on each path can still change the decision. The analysis uses constant 2026 dollars and a real discount rate so later pay and retirement income can be compared at the decision date (Frank et al., 2022, pp. 324, 407–414).
+The information need is supported by the U.S. Government Accountability Office (GAO, 2020). Its comparison of 2017 compensation found maximum military cash compensation below the civilian median in 21 of 27 medical and dental specialties reviewed. GAO recommended collecting civilian wage, bonus-acceptance, and replacement-cost information to inform incentive decisions. Those historical, department-wide findings motivate this analysis; they do not establish a current Navy primary-care pay gap.
 
-Two labor-economics concepts explain why the compensation gap matters. First, compensating wage differentials allow a lower-paying job to retain workers when valued job attributes offset foregone wages. Pension accrual and future funded training have financial value; mission, camaraderie, and distinctive operational practice may have personal value that the salary data cannot price. The White Coat Investor’s discussion of whether military physicians should remain to 20 years illustrates that physicians compare those benefits with civilian earnings and professional autonomy (Dahle, n.d.). A persistent pay gap is therefore compatible with retention—but only while the total military package yields comparable utility.
+## Economic Framework
 
-Second, labor supply elasticity links changes in compensation to retention behavior. Dynamic retention model research by Asch, Mattock, and Hosek places officer retention elasticity in an approximate 0.8–1.5 range: a 10 percent pay increase is associated with roughly 8–15 percent higher retention. This estimate does not prove the effect for Navy primary-care physicians, but it makes the compensation gap behaviorally consequential rather than merely descriptive.
+Opportunity cost is the value of the best forgone alternative. For this paper, the **financial opportunity cost of staying** is operationalized as the difference between the present value of a feasible civilian career path and continued Navy service over the same horizon. A positive difference indicates a civilian financial advantage. The current calculation isolates gross cash compensation, so its results are a **partial estimate of financial opportunity cost**, not a complete valuation of either career.
 
-The text's elasticity lesson describes a percentage response to a percentage change (Frank et al., 2022, pp. 73–80). That concept motivates a retention test; it does not turn an observed salary gap into an observed separation response. The officer estimate above would need validation in this specialty and career stage before it could support a Navy forecast. The labor-market supply and demand model likewise clarifies why civilian alternatives may affect wages and staffing, while leaving the size of the San Diego response to be measured (Frank et al., 2022, pp. 376–385).
+The decision is marginal: compare the consequences of the next period of service with the alternative available at that decision date (Frank et al., 2022, pp. 5–8). Medical-school support already received is sunk. Future compensation, additional service obligations, retirement accrual, and working conditions remain relevant. A civilian attending position is a valid comparator only if the physician can separate, is qualified for that position, and can realistically obtain it. A physician who still needs residency training requires a different comparison.
 
-## Economic Analysis Continued
+Compensating wage differentials explain why cash pay alone need not determine a career choice. Physicians may value mission, camaraderie, teaching, leadership, research, and operational practice differently. These job attributes can influence preferences, but the cash gap does not measure their value. Pension, health coverage, and funded educational benefits belong in the financial comparison rather than being labeled nonfinancial compensation.
 
-The fixed scenario compares an O-5 internal-medicine physician receiving $239,000 in annual cash compensation with a conservative civilian benchmark of $307,000. The annual opportunity cost of remaining in uniform is therefore approximately $68,000. Over a four-year retention decision, the nominal gap is $272,000; discounted at 4 percent, its present value is approximately $247,000. The benchmark itself is uncertain. Internal-medicine estimates in the source set ranged from about $307,000 in Medscape data to approximately $459,000 in a San Diego market estimate from Marit Health—a spread near 50 percent. “Civilian market rate” should therefore be treated as a range, not a settled point estimate.
+Labor-market theory helps explain why outside opportunities matter, but a compensation gap does not reveal retention responsiveness (Frank et al., 2022, pp. 376–385). This paper therefore does not apply a general officer elasticity to forecast Navy physician retention.
 
-This is a conservative retention signal. In GAO’s percentile comparisons, family medicine, internal medicine, and pediatrics were among the specialties with the smallest documented military–civilian gaps. Evidence of meaningful pressure in these specialties is less vulnerable to the charge that the analysis selected only the most lucrative procedural fields. Figure 1 makes the fixed scenario visible across the three primary-care specialties.
+## Method and Assumptions
 
-| Specialty | Navy O-5 annual cash | Civilian benchmark |
-| --- | ---: | ---: |
-| Family medicine | $239,000 | $281,000 |
-| Internal medicine | $239,000 | $307,000 |
-| Pediatrics | $239,000 | $265,000 |
+The draft uses an illustrative O-5 scenario with annual Navy cash compensation held at $239,000. The civilian inputs retained from the original draft are $281,000 for family medicine, $307,000 for internal medicine, and $265,000 for pediatrics. These are provisional scenario inputs, not verified civilian offers or established San Diego market rates.
 
-*Figure 1. Illustrative annual cash compensation at the O-5 benchmark. Navy value is annualized from the fixed scenario; civilian values are the conservative specialty benchmarks used in the model. Values exclude pension present value and other noncash benefits.*
+All amounts are treated as constant 2026 dollars, with no real compensation growth, promotion, or longevity-step changes in this fixed example. The horizon is four years. Annual differences are received at year-end and discounted to the initial decision date at a 4 percent real rate, consistent with comparing real amounts over time (Frank et al., 2022, pp. 324, 407–414). The rate is an analytical assumption, not an estimated physician preference.
 
-A $25,000 annual increase would raise this scenario’s military cash compensation by 10.5 percent and close about 37 percent of the internal-medicine gap. Applying the 0.8–1.5 elasticity range yields an illustrative retention increase of roughly 8–16 percent. That range is not a fitted Navy forecast; it is an assumption-driven translation of published elasticity into the model’s scenario. The estimate should guide a testable policy change, not be mistaken for a guaranteed outcome.
+For specialty s:
 
-Pay alone will not resolve the problem. RAND and physician career commentary also identify job design as a confound: promotion toward O-6 often moves primary-care physicians away from sea duty, expeditionary medicine, and other operational roles that initially attracted them. A retention-bonus increase is thus a discretionary allocation within the defense health budget, competing with readiness, facilities, access, and other medical priorities.
+**Annual cash gap = civilian annual cash compensation − Navy annual cash compensation**
 
-## Recommendation
+**Four-year present-value cash gap = Σ from t = 1 to 4 of [(civilian cash in year t − Navy cash in year t) / (1 + r)^t]**
 
-The Department of the Navy should increase the four-year Retention Bonus for family medicine, internal medicine, and pediatrics by $25,000 per year. The proposed $100,000 nominal four-year increase is concrete, costable, and administered through an incentive that the Department of Defense already uses. It closes approximately 37 percent of the modeled $68,000 annual internal-medicine gap without attempting to match every civilian offer or convert uncertain pension value into immediate cash.
+Here, r is the real discount rate and t is the year after the decision. At 4 percent, four equal year-end payments have a present-value factor of approximately 3.6299. The undiscounted total is four times the annual gap.
 
-The recommendation follows directly from the preceding analysis. The modeled four-year present-value gap is approximately $247,000, while the proposed bonus has a four-year nominal cost of $100,000 per physician. In the fixed scenario, the annual increase equals 10.5 percent of military cash compensation. If the broader officer elasticity range transfers even imperfectly to this population, the expected retention response is economically meaningful. At the low end, the illustrative effect is approximately 8 percent; at the high end, approximately 16 percent. Because primary-care specialties already show smaller gaps than many procedural specialties, a targeted increase also avoids building policy around an extreme comparison.
+A reproducible Navy total should separately identify basic pay, Basic Allowance for Housing, Basic Allowance for Subsistence, physician incentive pay, board-certification pay, and any eligible retention bonus for the modeled agreement. The existing $239,000 input has not yet been reconciled to those components, years of service, dependent status, or a specific duty-station housing rate. It is retained as an explicit assumption rather than assigned an invented breakdown. Future comparisons should exclude an expiring bonus unless a new agreement makes it payable during the modeled period.
 
-Implementation should preserve a lower-cost complement: continued access for O-5 and O-6 physicians to operational-medicine billets when service needs and qualifications permit. This is not a second funding request. It is a job-design safeguard that protects the mission value embedded in the compensating wage differential. A larger bonus can reduce the financial penalty of staying, while operational access protects a distinctive benefit that civilian employment cannot easily reproduce.
+The civilian inputs likewise require a report edition, table or page, observation period, geographic coverage, and compensation definition. National averages, local estimates, and verified offers should remain separate scenarios. Differences in hours, practice setting, productivity incentives, and employer-paid benefits may make otherwise similar salary figures noncomparable.
 
-### Objection and Response
+This fixed paper scenario differs from the interactive lab's default profile and 5 percent discount rate. The lab is a supplemental tool for exploring assumptions; its changing screen output is not the source of the fixed results below.
 
-A larger Retention Bonus is a real budget cost, and dynamic-retention evidence suggests that pay increases may delay rather than permanently prevent separation. That objection is valid, but delay still has operational value when it retains experienced physicians through key assignments and reduces replacement pressure. Even at the low end of the elasticity range, partial gap closure predicts a nontrivial gain relative to the bonus, while preserving operational-medicine access addresses the separate concern that pay alone is insufficient.
+## Results
+
+| Specialty | Assumed annual Navy cash | Assumed annual civilian cash | Annual civilian advantage | Four-year undiscounted gap | Four-year present-value gap at 4% |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Family medicine | $239,000 | $281,000 | $42,000 | $168,000 | $152,456 |
+| Internal medicine | $239,000 | $307,000 | $68,000 | $272,000 | $246,833 |
+| Pediatrics | $239,000 | $265,000 | $26,000 | $104,000 | $94,377 |
+
+*Table 1. Author's calculations from the original draft's provisional fixed inputs. Present values are rounded to the nearest dollar. Results exclude taxes, retirement, other benefits, and differences in physician-paid costs.*
+
+Under these assumptions, each specialty has a positive civilian cash advantage. Internal medicine has the largest modeled gap and pediatrics the smallest. This ranking describes the selected inputs; it is not evidence that internists leave at a higher rate or that pediatricians need a smaller retention incentive.
+
+Changing the discount rate alters the size of the four-year difference without changing its sign in this fixed scenario:
+
+| Real discount rate | Family medicine PV gap | Internal medicine PV gap | Pediatrics PV gap |
+| --- | ---: | ---: | ---: |
+| 0% | $168,000 | $272,000 | $104,000 |
+| 4% | $152,456 | $246,833 | $94,377 |
+| 5% | $148,930 | $241,125 | $92,195 |
+| 7% | $142,263 | $230,330 | $88,067 |
+
+*Table 2. Discount-rate sensitivity with compensation inputs and year-end timing held constant.*
+
+Salary uncertainty also matters. At 4 percent, a $10,000 change in annual civilian compensation changes the four-year gap by approximately $36,299, holding Navy pay constant. A scenario comparison should therefore show a range of comparable civilian alternatives rather than describe one published salary as the market rate.
+
+## Implications for the Medical Corps
+
+### Informing retention-bonus advocacy
+
+A documented cash gap gives the Medical Corps a transparent basis for explaining the financial tradeoff physicians face. It can support evaluation of higher bonuses, but does not by itself establish the bonus amount required for retention.
+
+For illustration, an additional $25,000 per year in constant 2026 dollars would reduce the internal-medicine annual gap from $68,000 to $43,000, closing approximately 37 percent. Over four years, the added payments total $100,000 undiscounted and approximately $90,747 in present value at 4 percent. The remaining cash gap would be approximately $156,085 in present value. A fixed nominal bonus would instead need conversion to real dollars before comparison.
+
+This is an arithmetic scenario, not a recommendation that $25,000 is optimal. Assessing a policy requires eligible-physician counts, agreement uptake, additional physicians retained, and costs of alternative staffing approaches. Spending on physicians who would remain without a larger bonus also matters. The relevant policy comparison is the marginal cost per additional physician retained and the value of that retention, not simply the share of a salary gap closed.
+
+### Informing targeted advertising of nonfinancial benefits
+
+The same analysis can help the Medical Corps communicate the Navy career proposition candidly. Targeted advertising or career counseling could describe real opportunities for operational practice, teaching, leadership, research, and mission-focused service to physicians approaching a retention decision. Messages should identify eligibility, availability, selection requirements, and associated commitments.
+
+Such communication addresses an information gap only when physicians are unaware of opportunities they can actually access and value. It does not reduce the financial gap or create unavailable assignments. The analysis cannot establish that a particular benefit offsets $42,000, $68,000, or $26,000 per year for a physician. Those preferences require separate evidence.
+
+Bonus advocacy and communication can be complementary. A larger bonus changes financial compensation; accurate advertising helps physicians understand the existing job attributes. Whether either approach improves retention, and for whom, remains a question for evaluation.
+
+## Limitations and Further Evaluation
+
+The largest limitation is that the current results are a gross-cash comparison using provisional inputs. They omit differences in income and payroll taxes, pension value, retirement contributions, health coverage, educational benefits, malpractice costs, and other employment expenses. Their net effect could narrow or widen the measured gap. A complete comparison should value only financial consequences that differ between staying and leaving, including future retirement consequences of the decision, without counting already earned benefits twice.
+
+The fixed O-5 profile cannot represent all career stages. National salary benchmarks also cannot establish an individual's best feasible local alternative. Neither the compensation table nor its sensitivity calculations demonstrate a separation rate, a causal retention effect, or an operational-readiness loss.
+
+Before using the estimates for policy advocacy, the Medical Corps would need validated compensation components and comparable civilian alternatives by specialty and career stage. Evaluation of a subsequent bonus or communication initiative should then track baseline agreement acceptance, actual retention, costs, and access to advertised opportunities. A credible comparison group and attention to concurrent assignment or pay changes are needed to distinguish an intervention's effect from other influences. Increased awareness alone would not establish improved retention.
 
 ## Conclusion
 
-Navy Medicine should add $25,000 per year to the four-year Retention Bonus for family medicine, internal medicine, and pediatrics and preserve meaningful operational assignments for senior clinicians. Success should be evaluated with panel data comparing actual specialty-specific separations and bonus acceptance before and after the change, because this analysis estimates the incentive—not its measured causal effect.
+Calculating opportunity cost gives the U.S. Navy Medical Corps a clearer account of the financial alternatives facing primary-care physicians. In this illustrative four-year scenario, the present-value civilian cash advantage ranges from approximately $94,000 for pediatrics to $247,000 for internal medicine, with family medicine at approximately $152,000. These are conditional cash-gap estimates rather than complete financial valuations or predicted retention outcomes.
+
+The practical contribution is a transparent framework for comparing career paths. Once its inputs are verified and its financial scope expanded where data permit, it can inform advocacy for larger retention bonuses and targeted communication of existing nonfinancial benefits. The analysis supports better-informed retention decisions without claiming that a particular bonus or advertising campaign has already been shown to work.
 
 ## References
 
 - Frank, R. H., Bernanke, B. S., Antonovics, K., & Heffetz, O. (2022). *Principles of economics: A streamlined approach* (4th ed.). McGraw Hill.
+- U.S. Government Accountability Office. (2020). *Defense health care: DOD should collect and use key information to make decisions about incentives for physicians and dentists* (GAO-20-165). https://www.gao.gov/products/gao-20-165
 
-- Asch, B. J., Mattock, M. G., & Hosek, J. (2019). The effects of compensation on the retention of military personnel: Evidence from the dynamic retention model. RAND Corporation.
-
-- Bureau of Medicine and Surgery. (2025). Fiscal year 2026 Medical Corps special pay guidance. U.S. Navy.
-
-- Chan, E. W., Mattock, M. G., Tong, P. K., Hanser, L. M., Panis, C., & Baker, S. (2024). Reimagining the Army Medical Corps: Five ideas for raising recruitment, restoring retention, and restructuring requirements (RRA2119-1). RAND Corporation. https://www.rand.org/pubs/research_reports/RRA2119-1.html
-
-- Dahle, J. M. (n.d.). Stay or go at 20 years? White Coat Investor.
-
-- Mundell, B. F. (2010). Retention of military physicians: The differential effects of practice opportunities across the three services (RGSD-275). RAND Corporation.
-
-- Naval Postgraduate School. (2024). Analysis of Medical Corps retention and compensation (NPS-AM-24-213).
-
-- U.S. Government Accountability Office. (2020). Defense health care: DOD should collect and use key information to make decisions about incentives for physicians and dentists (GAO-20-165). https://www.gao.gov/products/gao-20-165
-
-- [Army DACES study]. (2024). Physician retention and compensation using the Dynamic Retention Model. Military Medicine.
-
-*Model note. The locked laboratory workbook was not available during drafting. The paper therefore uses a transparent fixed scenario: $239,000 Navy annual cash compensation; civilian benchmarks of $281,000 for family medicine, $307,000 for internal medicine, and $265,000 for pediatrics; and a 4 percent discount rate. Replace these inputs with the lab’s locked values before submission if they differ.*
-
+*Draft input note. The compensation inputs are carried forward from the author's original fixed scenario. Exact source citations for the three civilian figures and an itemized reconciliation of the $239,000 Navy total remain necessary before treating these results as verified empirical estimates. The calculations have been checked, but arithmetic verification does not validate the inputs.*
