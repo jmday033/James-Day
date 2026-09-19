@@ -25,9 +25,12 @@ export function calculateGmoResidency({
   const trainingNavyAdvantage=rows.filter(r=>r.pgy).reduce((sum,r)=>sum-r.gap,0);
   const postCivilianAdvantage=rows.filter(r=>!r.pgy).reduce((sum,r)=>sum+r.gap,0);
   const presentValueGap=rows.reduce((sum,r)=>sum+r.discountedGap,0);
+  // Illustrative gross-cash catch-up can occur after the selected service horizon.
   let cumulative=-trainingNavyAdvantage, crossover=null;
-  for (let year=1;year<=obligationYears;year++) {
-    cumulative+=rows[residentPgys.length+year-1].gap;
+  for (let year=1;year<=15;year++) {
+    const modeledRow=rows[residentPgys.length+year-1];
+    const projectedNavyCash=12*(payFor(rank,activeYears+residentPgys.length+year-1)+bahMonthly+basMonthly)+attendingIp;
+    cumulative+=modeledRow?.gap ?? civilianAttending-projectedNavyCash;
     if(crossover===null && cumulative>=0) crossover=year;
   }
   return {rows,trainingYears:residentPgys.length,obligationYears,trainingNavyAdvantage,postCivilianAdvantage,presentValueGap,crossover};
