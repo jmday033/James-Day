@@ -1,5 +1,7 @@
 # Physician retention cash comparison — audit table
 
+> Current timing update (September 19, 2026): base-case cash flows now use 5% real discounting at year-end. The historical analysis below retains its earlier beginning-of-year values. Use the [current internal-medicine audit](internal-medicine-scenario.md) for the paper and current lab comparison; do not mix the timing conventions.
+
 **Course interpretation.** This table shows a gross cash difference, not a measured retention effect. *Principles of Economics* distinguishes the best forgone alternative and marginal future consequences (Frank et al., 2022, pp. 5–8), real from nominal amounts (p. 324), and a wage incentive from an observed labor-supply response (pp. 73–80, 376–385). Pension and TSP are financial compensation that must be compared over time; mission and clinical opportunities are job attributes whose personal values are not in this table. The [course crosswalk](../course-economics-crosswalk.md) maps the relevant chapters to the project.
 
 Four-year illustrative agreement, 2027–2030, in constant 2026 dollars. The profile is a board-certified O-4 just past 10 years of service, with dependents, assigned to ZIP 92134 and eligible for the listed FY26 special pays. Only the **current FY26 retention bonus** is included.

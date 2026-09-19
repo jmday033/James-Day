@@ -8,6 +8,14 @@ status: built
 
 # Physician retention model specification
 
+## Final paper scenario selected September 19, 2026
+
+Use the documented O-4 profile below and a 5% real base-case discount rate throughout the current paper and lab. The paper's primary figure compares general internal medicine with Marit's published San Diego all-employer average of $459,057. The $239,000 fixed O-5 scenario is superseded. This is a representative officer scenario, not a measured average Navy internist.
+
+Cash flows are discounted at year-end: the first year uses t = 1. Basic-pay longevity uses starting years of service plus the zero-based year index: years 1–2 at over-10 and years 3–4 at over-12. The updated lab follows these same conventions. A four-year path from 10 active years does not reach the usual pension eligibility threshold; excluded future pension value is unpriced, not zero.
+
+The initial policy selected by the author is a limited social-media and advertising pilot emphasizing accessible nonfinancial opportunities. Lower implementation cost is a hypothesis requiring staff-time, production, approval, distribution, and evaluation cost data. Measure observed acceptance and later retention, not only clicks or awareness.
+
 ## Decision and scope
 
 Estimate the financial opportunity cost of another Navy agreement for a San Diego-based general pediatrician, general internist, or family physician using the **existing compensation package**. Compare the present value of continued Navy service with a feasible civilian path over the same period. The current model does not recommend, enter, or calculate a new retention-bonus rate. The revised research brief states the same working hypothesis; GitHub history preserves the earlier bonus hypothesis.
@@ -36,7 +44,7 @@ For each service year, calculate after-tax civilian cash plus civilian benefits 
 
 The annual equivalent divides the present-value difference by the present value of one dollar paid in each year. The **nonfinancial threshold** is the positive part of the financial gap: the minimum net value the physician would have to assign to Navy-specific nonpay attributes for staying to be preferable in this simplified model. It is not an observed preference, reservation wage, or predicted retention probability.
 
-The 12-row audit table reports each specialty and year with the Marit benchmark, current Navy cash, and current gross cash gap. The figure plots cumulative current gross cash gap by specialty. At an illustrative 5% real discount rate, with 2027 as year zero and no extra taxes or benefits priced, the four-year present-value gross cash gaps are about $139,009 for pediatrics, $668,019 for internal medicine, and $347,749 for family medicine. These are incomplete financial comparisons, not recommended bonus amounts.
+The 12-row audit table reports each specialty and year with the Marit benchmark, current Navy cash, and current gross cash gap. The figure plots cumulative current gross cash gap by specialty. At an illustrative 5% real discount rate, with year-end payments (2027 is t = 1) and no extra taxes or benefits priced, the four-year present-value gross cash gaps are about $132,390 for pediatrics, $636,209 for internal medicine, and $331,190 for family medicine. These are incomplete financial comparisons, not recommended bonus amounts.
 
 This threshold describes the size of the tradeoff, not an amount a message can claim to supply. Report it by specialty and person-specific scenario alongside a separate inventory of opportunities actually accessible to the physician. Do not convert awareness or stated interest directly into a dollar value.
 

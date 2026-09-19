@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720"><rect width="100%" height="100%" fill="white"/>
+<text x="42" y="51" font-family="Arial,sans-serif" font-size="29" fill="#182d3d" font-weight="bold">Internal medicine in San Diego</text>
+<text x="42" y="81" font-family="Arial,sans-serif" font-size="19" fill="#182d3d">Illustrative Navy O-4 versus published local benchmark | Constant 2026 dollars</text>
+<text x="55" y="133" font-family="Arial,sans-serif" font-size="21" fill="#182d3d" font-weight="bold">A  Annual gross cash</text>
+<text x="650" y="133" font-family="Arial,sans-serif" font-size="21" fill="#182d3d" font-weight="bold">B  Cumulative discounted cash gap</text>
+<line x1="90" y1="500" x2="560" y2="500" stroke="#d7dce0" stroke-width="1"/>
+<text x="25" y="504" font-family="Arial,sans-serif" font-size="15" fill="#182d3d">$0k</text>
+<line x1="90" y1="438" x2="560" y2="438" stroke="#d7dce0" stroke-width="1"/>
+<text x="25" y="442" font-family="Arial,sans-serif" font-size="15" fill="#182d3d">$100k</text>
+<line x1="90" y1="376" x2="560" y2="376" stroke="#d7dce0" stroke-width="1"/>
+<text x="25" y="380" font-family="Arial,sans-serif" font-size="15" fill="#182d3d">$200k</text>
+<line x1="90" y1="314" x2="560" y2="314" stroke="#d7dce0" stroke-width="1"/>
+<text x="25" y="318" font-family="Arial,sans-serif" font-size="15" fill="#182d3d">$300k</text>
+<line x1="90" y1="252" x2="560" y2="252" stroke="#d7dce0" stroke-width="1"/>
+<text x="25" y="256" font-family="Arial,sans-serif" font-size="15" fill="#182d3d">$400k</text>
+<line x1="90" y1="190" x2="560" y2="190" stroke="#d7dce0" stroke-width="1"/>
+<text x="25" y="194" font-family="Arial,sans-serif" font-size="15" fill="#182d3d">$500k</text>
+<line x1="90" y1="190" x2="90" y2="500" stroke="#536571" stroke-width="1"/>
+<line x1="695" y1="500" x2="1160" y2="500" stroke="#d7dce0" stroke-width="1"/>
+<text x="630" y="504" font-family="Arial,sans-serif" font-size="15" fill="#182d3d">$0k</text>
+<line x1="695" y1="438" x2="1160" y2="438" stroke="#d7dce0" stroke-width="1"/>
+<text x="630" y="442" font-family="Arial,sans-serif" font-size="15" fill="#182d3d">$140k</text>
+<line x1="695" y1="376" x2="1160" y2="376" stroke="#d7dce0" stroke-width="1"/>
+<text x="630" y="380" font-family="Arial,sans-serif" font-size="15" fill="#182d3d">$280k</text>
+<line x1="695" y1="314" x2="1160" y2="314" stroke="#d7dce0" stroke-width="1"/>
+<text x="630" y="318" font-family="Arial,sans-serif" font-size="15" fill="#182d3d">$420k</text>
+<line x1="695" y1="252" x2="1160" y2="252" stroke="#d7dce0" stroke-width="1"/>
+<text x="630" y="256" font-family="Arial,sans-serif" font-size="15" fill="#182d3d">$560k</text>
+<line x1="695" y1="190" x2="1160" y2="190" stroke="#d7dce0" stroke-width="1"/>
+<text x="630" y="194" font-family="Arial,sans-serif" font-size="15" fill="#182d3d">$700k</text>
+<line x1="695" y1="190" x2="695" y2="500" stroke="#536571" stroke-width="1"/>
+<rect x="118" y="328.2812288" width="30" height="171.7187712" fill="#245f86"/>
+<rect x="154" y="215.38466" width="30" height="284.61534" fill="#ca8242"/>
+<text x="120" y="529" font-family="Arial,sans-serif" font-size="16" fill="#182d3d">2027</text>
+<rect x="230" y="328.2812288" width="30" height="171.7187712" fill="#245f86"/>
+<rect x="266" y="215.38466" width="30" height="284.61534" fill="#ca8242"/>
+<text x="232" y="529" font-family="Arial,sans-serif" font-size="16" fill="#182d3d">2028</text>
+<rect x="342" y="324.7970768" width="30" height="175.20292320000001" fill="#245f86"/>
+<rect x="378" y="215.38466" width="30" height="284.61534" fill="#ca8242"/>
+<text x="344" y="529" font-family="Arial,sans-serif" font-size="16" fill="#182d3d">2029</text>
+<rect x="454" y="324.7970768" width="30" height="175.20292320000001" fill="#245f86"/>
+<rect x="490" y="215.38466" width="30" height="284.61534" fill="#ca8242"/>
+<text x="456" y="529" font-family="Arial,sans-serif" font-size="16" fill="#182d3d">2030</text>
+<rect x="716" y="419.1996130612245" width="8" height="8" fill="#675184"/>
+<text x="689" y="529" font-family="Arial,sans-serif" font-size="16" fill="#182d3d">2027</text>
+<line x1="720" y1="423.1996130612245" x2="857" y2="350.05638740524785" stroke="#675184" stroke-width="4"/>
+<rect x="853" y="346.05638740524785" width="8" height="8" fill="#675184"/>
+<text x="826" y="529" font-family="Arial,sans-serif" font-size="16" fill="#182d3d">2028</text>
+<line x1="857" y1="350.05638740524785" x2="994" y2="282.5459878495071" stroke="#675184" stroke-width="4"/>
+<rect x="990" y="278.5459878495071" width="8" height="8" fill="#675184"/>
+<text x="963" y="529" font-family="Arial,sans-serif" font-size="16" fill="#182d3d">2029</text>
+<line x1="994" y1="282.5459878495071" x2="1131" y2="218.25036922499226" stroke="#675184" stroke-width="4"/>
+<rect x="1127" y="214.25036922499226" width="8" height="8" fill="#675184"/>
+<text x="1100" y="529" font-family="Arial,sans-serif" font-size="16" fill="#182d3d">2030</text>
+<text x="915" y="200" font-family="Arial,sans-serif" font-size="24" fill="#675184" font-weight="bold">$636,209</text>
+<text x="940" y="226" font-family="Arial,sans-serif" font-size="17" fill="#182d3d">Four-year PV</text>
+<rect x="95" y="565" width="20" height="17" fill="#245f86"/>
+<text x="123" y="577" font-family="Arial,sans-serif" font-size="17" fill="#182d3d">Navy: $276,966 to $282,585</text>
+<rect x="95" y="593" width="20" height="17" fill="#ca8242"/>
+<text x="123" y="606" font-family="Arial,sans-serif" font-size="17" fill="#182d3d">Marit all-employer average: $459,057</text>
+<text x="665" y="579" font-family="Arial,sans-serif" font-size="17" fill="#182d3d">5% real discount rate; year-end payments</text>
+<text x="665" y="607" font-family="Arial,sans-serif" font-size="17" fill="#182d3d">Cash only: excludes pension and other benefits</text>
+<text x="42" y="662" font-family="Arial,sans-serif" font-size="16" fill="#182d3d">Navy: O-4, 10 starting years, dependents, ZIP 92134; conditional $48,000 annual RB.</text>
+<text x="42" y="691" font-family="Arial,sans-serif" font-size="16" fill="#182d3d">Sources: DFAS; documented BAH input; Marit Health (April 2026). Not a matched civilian offer.</text>
+</svg>

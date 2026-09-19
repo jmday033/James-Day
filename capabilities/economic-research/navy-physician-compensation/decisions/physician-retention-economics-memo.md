@@ -11,7 +11,13 @@ audience: "Navy Medicine decision-makers"
 
 This consolidated record combines the paper-scope decision and the earlier retention economics memo. The current scope below governs the [paper draft](../paper/navy-primary-care-physician-retention-draft.md). The earlier memo is retained for its rationale, evaluation design, and research history; its communication hypothesis is one policy option, not a demonstrated best intervention.
 
-## Current decision: calculate financial opportunity cost
+## Current revision selected September 19, 2026
+
+The author selected the documented O-4 San Diego general-internist example and a 5% real rate for the paper and lab, with year-end cash flows. The current figure uses the published $459,057 San Diego mixed-employer benchmark and itemized Navy pay, conditional on entitlement. The four-year PV cash gap is $636,208.84. This supersedes the fixed O-5/4% scenario recorded below.
+
+The author selected a limited social-media and advertising pilot emphasizing nonfinancial benefits as the initial recommendation, subject to actual opportunity availability, a measured implementation budget, and evaluation of acceptance and later retention. The author reported catching the omission of pension eligibility. APA is selected for the submission copy.
+
+## Earlier scope decision: calculate financial opportunity cost
 
 The author clarified that the paper's purpose is to calculate the opportunity cost of continued Navy service for primary-care physicians so the U.S. Navy Medical Corps can make better-informed retention decisions. Advocacy for larger retention bonuses and targeted advertising of existing nonfinancial benefits are possible uses of that information.
 

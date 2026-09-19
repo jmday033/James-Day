@@ -65,7 +65,7 @@ export function calculateScenario(input) {
   let pv = 0, annuity = 0;
   for (let i = 0; i < years; i++) {
     const grade = gradeForYear({rank, commissionYear, promotionOn}, i);
-    const basicMonthly = i === 0 && grade === rank ? base : payFor(grade, payYos + i + 1);
+    const basicMonthly = i === 0 && grade === rank ? base : payFor(grade, payYos + i);
     const mappedBah = grade !== rank && bahLookup && Math.abs(bah - bahLookup.monthly) <= 1
       ? bahFor(zip, grade, deps)?.monthly : null;
     const bahMonthly = mappedBah ?? bah;
@@ -77,7 +77,7 @@ export function calculateScenario(input) {
     const civilianValue = civilianCash - annualCivilianTax + civilianBenefits - malpractice;
     const navyValue = navyCash - navyTax + health + gi + pensionAnnual + tsp;
     const gap = civilianValue - navyValue;
-    const factor = 1 / Math.pow(1 + discount, i);
+    const factor = 1 / Math.pow(1 + discount, i + 1);
     annuity += factor;
     pv += gap * factor;
     rows.push({year:2027+i, activeYos:payYos+i+1, grade, basicMonthly, bahMonthly,

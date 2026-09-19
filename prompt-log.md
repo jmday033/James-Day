@@ -132,3 +132,21 @@ Finally, I checked that each marginal-cost value measured the cost of adding one
 | Date | Tool | What I asked | What I got | What I did with it |
 |---|---|---|---|---|
 | 2026-09-19 | Codex (OpenAI) | Organize all physician compensation, retention, and opportunity-cost work under one project | Moved canonical research, decision, analysis, data, figures, and lab resources into capabilities/economic-research/navy-physician-compensation; preserved nonidentical earlier package copies in its archive; updated links and retained course entry points and old lab redirects | Requested repository organization; paper prose, numerical assumptions, and research conclusions were not revised |
+
+## Draft alignment and author review — 2026-09-19
+
+| Date | Tool | What I asked | What I got | What I did with it |
+|---|---|---|---|---|
+| 2026-09-19 | Codex (OpenAI) | Use 5% throughout; use the documented O-4 example; preserve yesterday's and today's drafts; provide a San Diego internist figure; prioritize nonfinancial-benefit advertising; use APA; format the title and anonymous body | Updated scenario calculations, itemized pay, a source-limit audit, a figure, conditional pension sensitivity, actual-history snapshots, and a formatted working PDF; corrected first-year discount timing and the lab longevity step | Selected the O-4 case and APA; selected the advertising pilot as the initial policy; will shorten and author-review the working material before submission. Navy agreement/BAH validation and a matched civilian offer remain outstanding |
+ 
+## Research-paper reflection — author supplied September 19, 2026
+
+I verified the omission by reviewing the DoD retirement eligibility rule, comparing it with my own years of service, and examining the retirement assumptions used in the analysis. The model did not clearly quantify how the incentive to remain in the military increases as a physician approaches 20 years of service. Pension eligibility was treated mainly as an eventual benefit rather than as a growing retention incentive. In practice, leaving at 10 years means giving up a much more distant and uncertain pension, while leaving at 18 or 19 years means forfeiting a valuable lifetime benefit that is only one or two years away. Therefore, the opportunity cost of separation—and the motivation to remain—rises substantially as the service member approaches retirement eligibility. This nonlinear “golden handcuffs” effect should have been explicitly incorporated into the model.
+
+### Remaining reflection prompt
+
+Add, in your own words, where AI helped the research process. The paragraph above is the author's supplied account of the error and verification, not an AI-invented personal experience.
+
+### Analytical qualification recorded separately from the reflection
+
+The pension table conditions on reaching 20 years and isolates the pension stream. It does not estimate actual retention probabilities or prove a universal monotonic increase in the net incentive to stay. Civilian earnings, additional service costs, Reserve eligibility, and vested BRS TSP assets also matter.

@@ -15,8 +15,8 @@ const shared={rank:'O4',commissionYear:2016,promotionOn:false,payYos:10,base,
   years:4,discount:.05};
 const noBonus=calculateScenario({...shared,rbRemaining:0,currentBonus:0});
 const signedBonus=calculateScenario({...shared,rbRemaining:4,currentBonus:48000});
-assert.ok(Math.abs(noBonus.pv-392021.0032869021)<.01);
-assert.ok(Math.abs(signedBonus.pv-213305.09787711911)<.01);
+assert.ok(Math.abs(noBonus.pv-381669.87864521466)<.01);
+assert.ok(Math.abs(signedBonus.pv-211464.2544454214)<.01);
 assert.equal(signedBonus.navyCash,276965.76);
 assert.equal(noBonus.rows.length,4);
 assert.equal(signedBonus.rows[0].bonus,48000);
@@ -27,7 +27,7 @@ assert.equal(promoted.rows[0].grade,'O5');
 assert.ok(promoted.rows[0].navyCash>noBonus.rows[0].navyCash);
 const adjusted=calculateScenario({...shared,civilianTax:80000,navyTax:40000,
   civilianBenefits:12000,health:7000,malpractice:4000});
-assert.ok(Math.abs(adjusted.pv-246814.33014145342)<.01);
+assert.ok(Math.abs(adjusted.pv-243377.80898288265)<.01);
 assert.ok(adjusted.pv<noBonus.pv);
 
 assert.equal(pensionPresentValue({activeYears:10,additionalYears:9,pensionBase:120000}),0);
@@ -39,3 +39,19 @@ assert.throws(()=>calculateScenario({...shared,civilianSalary:-1}),/salary/);
 assert.throws(()=>calculateScenario({...shared,discount:.21}),/discount/);
 console.log('Calculation-engine checks passed');
 
+
+// Boundary and timing checks are independent of the engine's loop.
+assert.deepEqual(signedBonus.rows.map(r=>r.basicMonthly),[9420,9420,9888.3,9888.3]);
+assert.ok(Math.abs(signedBonus.rows[0].discountedGap-signedBonus.rows[0].gap/1.05)<1e-8);
+const sd=calculateScenario({...shared,civilianSalary:459057,rbRemaining:4,currentBonus:48000});
+const manual=182091.24/1.05+182091.24/1.05**2+176471.64/1.05**3+176471.64/1.05**4;
+assert.ok(Math.abs(sd.pv-manual)<.000001);
+assert.ok(Math.abs(sd.rows.reduce((s,r)=>s+r.grossGap,0)-717125.76)<.000001);
+console.log('Year-end timing and pay-longevity boundary checks passed');
+
+// Conditional pension sensitivity at three career stages; excludes taxes.
+for (const [activeYears, expected] of [[10,452992.86839086225],[18,669276.779401702],[19,702740.6183717871]]) {
+ const value=pensionPresentValue({activeYears,additionalYears:20-activeYears,pensionBase:120000,pensionTax:0,discount:.05});
+ assert.ok(Math.abs(value-expected)<.001);
+}
+console.log('Conditional pension career-stage checks passed');
