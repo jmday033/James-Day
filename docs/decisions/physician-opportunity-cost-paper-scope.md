@@ -39,3 +39,8 @@ The paper now explicitly compares working conditions on both career paths and pa
 ## Existing policy context — 2026-09-19
 
 Integrated the author's pasted policy narrative using official Navy/DHA guidance and recent GAO staffing and partnership reports. Distinguished incremental bonus payments from existing pay, training obligations from voluntary post-obligation retention, military-couple co-location from civilian-spouse needs, and staffed billets from available clinical work time. Added the readiness/beneficiary-care tradeoff of civilian partnerships. Omitted personal career details, unsupported branch comparisons, and unmeasured policy-effectiveness rankings. Fixed numerical calculations and interactive lab remain unchanged.
+
+
+## Incentive-evaluation status and policy-source correction — 2026-09-19
+
+Added GAO's verified June 2026 update and September 2028 estimated implementation date, retaining the historical 2017 basis of its pay comparison. Corrected the five RAND options and separated proposed civilian-employment arrangements from clinical partnerships. Added public Inspector General recommendations on assignments and readiness; disclosed inaccessible full-report text in the audit. No changes to numerical results or lab.

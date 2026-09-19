@@ -193,3 +193,14 @@ The author supplied a narrative describing financial incentives, training, caree
 | Overall synthesis | Compensation, job design, training, and family circumstances warrant joint evaluation. Neither necessity nor sufficiency of a particular bonus is established. No lab changes, salary substitutions, or numerical result changes were made. |
 
 Reference disambiguation: GAO (2025a) remains the cyber-workforce report; GAO (2025b) is the newly added military medical staffing report.
+
+## GAO status, RAND options, and Inspector General follow-up — September 19, 2026
+
+Reviewed the author's additional sourced summary against the original public records.
+
+- **GAO-20-165:** Directly rechecked the [report and recommendation status](https://www.gao.gov/products/gao-20-165). The 21-of-27 comparison concerns 2017 compensation, includes medical and dental specialties, and is not a current Navy primary-care estimate. All three recommendations remain open; June 2026 updates identify alternative data collection and contractor-funding constraints, with DOD estimating implementation by September 2028. Added this status as evidence of evaluation limitations, not proof that all incentives are ineffective or impossible to evaluate.
+- **Chan et al. (2024):** Rechecked the [publisher summary](https://www.rand.org/pubs/research_reports/RRA2119-1.html) and supplied full PDF. Corrected the pasted five-option list: the first option is more ancillary/administrative support, not increased scholarship production. Distinguished clinical partnerships from broader service options involving civilian employment. Retained the limitations on implementation time and evidence; recommendations are not described as adopted policy.
+- **DODIG-2025-114:** Verified the June 13, 2025 title/date through the official indexed OIG listing and read the [Oversight.gov recommendations](https://www.oversight.gov/reports/audit/evaluation-dod-efforts-assign-medical-personnel-locations-where-they-can-maintain). The supplied redacted PDF could not be directly retrieved. The paper therefore cites verified recommendations concerning Army/Navy assignments, facility capacity, and partnerships, rather than asserting unreviewed detailed findings.
+- **Family-policy limitation:** Already explicit in the paper; broader personnel policies are not represented as proven physician-retention interventions. No duplicate section added.
+
+Updated existing passages rather than inserting the supplied paragraph verbatim. Fixed calculations, salary assumptions, and lab remain unchanged.
