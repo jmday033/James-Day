@@ -9,11 +9,13 @@ status: working
 
 # Navy Physician Compensation, Opportunity Cost, and Retention
 
+**Latest additional draft:** [Condensed revision 2](paper/navy-physician-retention-condensed-revision-2.pdf) · [Submission review](paper/submission-readiness-review-2026-09-19.md). Preserved unchanged; not yet designated final.
+
 Final course project for BUS 620 — Micro and Macro Economics. Compensation, retention, opportunity-cost analysis, pension sensitivity, staffing alternatives, source reviews, and both labs are components of this one project. The Navy is the modeled case; the project title does not imply validation for every military service.
 
 ## Start here
 
-- [Latest author-supplied condensed draft (PDF)](paper/navy-physician-retention-condensed.pdf) — received September 19; draft only. Formatting, an evidence-bearing graph, and citation checks remain before submission.
+- [Earlier condensed draft (PDF)](paper/navy-physician-retention-condensed.pdf) — received September 19; draft only. Formatting, an evidence-bearing graph, and citation checks remain before submission.
 - [Condensed draft text extraction](../../../drafts/2026-09-19-condensed-draft.md) — searchable record; the PDF governs formatting and equations.
 
 - [Formatted working PDF](paper/navy-physician-working-draft.pdf) — long version for author review and shortening; not a four-page final submission

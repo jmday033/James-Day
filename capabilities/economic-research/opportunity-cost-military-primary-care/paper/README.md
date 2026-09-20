@@ -9,7 +9,9 @@ status: working
 
 # Opportunity Cost for Military Primary Care — paper versions
 
-- [Latest supplied condensed draft](navy-physician-retention-condensed.pdf): the author's uploaded PDF, preserved byte for byte. Not yet a final submission.
+**Latest additional draft:** [Condensed revision 2](navy-physician-retention-condensed-revision-2.pdf) · [Submission review](submission-readiness-review-2026-09-19.md). Preserved unchanged; not yet designated final.
+
+- [Earlier supplied condensed draft](navy-physician-retention-condensed.pdf): the author's uploaded PDF, preserved byte for byte. Not yet a final submission.
 - [Earlier long working PDF](navy-physician-working-draft.pdf) and [long Markdown draft](navy-primary-care-physician-retention-draft.md): supporting development versions, not the current condensed prose.
 - [Source review](navy-physician-source-review.md).
 - [Dated draft chain](../../../../drafts/README.md).
