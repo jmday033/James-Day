@@ -143,9 +143,11 @@ Finally, I checked that each marginal-cost value measured the cost of adding one
 
 I verified the omission by reviewing the DoD retirement eligibility rule, comparing it with my own years of service, and examining the retirement assumptions used in the analysis. The model did not clearly quantify how the incentive to remain in the military increases as a physician approaches 20 years of service. Pension eligibility was treated mainly as an eventual benefit rather than as a growing retention incentive. In practice, leaving at 10 years means giving up a much more distant and uncertain pension, while leaving at 18 or 19 years means forfeiting a valuable lifetime benefit that is only one or two years away. Therefore, the opportunity cost of separation—and the motivation to remain—rises substantially as the service member approaches retirement eligibility. This nonlinear “golden handcuffs” effect should have been explicitly incorporated into the model.
 
-### Remaining reflection prompt
+### Author's additional reflection
 
-Add, in your own words, where AI helped the research process. The paragraph above is the author's supplied account of the error and verification, not an AI-invented personal experience.
+AI helped me create the lab, which is the real value of this assignment to me personally, although that value is difficult to convey through the paper.
+
+This sentence is based on the author's supplied explanation, lightly edited for spelling and grammar.
 
 ### Analytical qualification recorded separately from the reflection
 
@@ -174,3 +176,18 @@ Added an accessible amber-to-red pension sensitivity visual to Quick Look and th
 ## 2026-09-19 — Additional revised draft and submission audit
 
 The author supplied `navy-physician-retention-condensed (1).pdf` and requested an additional saved draft plus a rubric/anonymity review. Preserved the exact PDF as condensed revision 2 and added a labeled text extraction, without overwriting earlier versions. Inspected all six pages and checked font sizes, line spacing, visible identifiers, metadata, attachments, arithmetic, and selected reference records. Found author-identifying PDF metadata despite anonymous body pages; recommended a separately sanitized submission export. Recorded remaining policy-defense, context, figure readability, formatting, reference, and author-reflection gaps. No paper prose was rewritten and no LMS submission was made.
+
+## 2026-09-19 — Author-requested policy, sensitivity, citation, and format revision
+
+The author supplied the rationale that increasing retention bonuses requires a bureaucratic process, requested WCI support for within-specialty pay variation, asked for a larger separate figure, and supplied the personal reflection about the lab's value. AI qualified the bonus-control claim rather than stating Navy Medicine has no influence, added policy prose and a proposed command-level comparison with 6/12/24-month endpoints, added explicitly hypothetical salary sensitivities, and cited Dahle (2021). These are AI-assisted substantive edits, not solely mechanical formatting. The artifact remains a review draft subject to the course's authorship requirements. Mechanical work expanded GAO/DFAS, cleaned and alphabetized references, removed uncited Agarwal, used Times New Roman, moved the table to an appendix, enlarged the figure, and removed author metadata and embedded attachments. Checked four body pages, nine total pages, numeric sensitivities, and rendered layout. No LMS submission occurred.
+
+# Research-paper reflection — author-supplied experience
+
+AI helped me create the lab, which is the real value of this assignment to me personally, although that value is difficult to convey through the paper.
+
+I verified the omission by reviewing the DoD retirement eligibility rule, comparing it with my own years of service, and examining the retirement assumptions used in the analysis. The model did not clearly quantify how the incentive to remain in the military increases as a physician approaches 20 years of service. Pension eligibility was treated mainly as an eventual benefit rather than as a growing retention incentive. In practice, leaving at 10 years means giving up a much more distant and uncertain pension, while leaving at 18 or 19 years means forfeiting a valuable lifetime benefit that is only one or two years away. Therefore, the opportunity cost of separation—and the motivation to remain—rises substantially as the service member approaches retirement eligibility. This nonlinear “golden handcuffs” effect should have been explicitly incorporated into the model.
+
+
+## Editorial and analytical disclosure
+
+The opening sentence lightly corrects spelling and grammar in the author's supplied statement; the pension paragraph preserves the author's previously supplied account. The model's sensitivity conditions on completing service to 20 years and isolates the pension stream; it does not establish that every physician's overall incentive increases monotonically. Earlier AI assistance included draft prose and analytical development as well as lab construction, research, calculations, figures, and formatting. The latest revision also includes AI-assisted policy wording and a proposed evaluation design based on the author's rationale. These contributions should not be described as formatting alone. The author must review the paper's prose and course AI-use requirements before submission.

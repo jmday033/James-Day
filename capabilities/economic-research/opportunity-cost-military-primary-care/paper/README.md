@@ -17,3 +17,7 @@ status: working
 - [Dated draft chain](../../../../drafts/README.md).
 
 The assignment's final target is `analysis/research-paper.pdf` at repository root, with figures under `figures/`. Do not label an unfinished draft as that submission. Preserve the author's prose; AI assistance is limited to research, critique, verification, figures from the author's specification, and mechanical formatting.
+
+## Latest review version — revision 3
+
+[Revised PDF](navy-physician-retention-condensed-revision-3.pdf): four-page body, separate enlarged figure, double-spaced references, pay table appendix, qualified policy rationale and WCI-supported salary sensitivity. AI-assisted wording and proposed evaluation design require author review against course policy; no final submission is implied. Earlier drafts remain preserved.

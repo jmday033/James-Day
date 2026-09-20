@@ -18,3 +18,5 @@ These snapshots were added on September 19 from actual saved content. They do no
 - [September 19 condensed draft extraction](2026-09-19-condensed-draft.md) and its linked source PDF: latest author-supplied version, preserved separately from the earlier same-day draft.
 
 - [September 19 condensed revision 2](2026-09-19-condensed-revision-2-draft.md): additional supplied draft with the cash-gap figure and double-spaced body. Prior same-day versions remain intact.
+
+- [September 19 revision 3](2026-09-19-condensed-revision-3-draft.md): author-requested substantive and mechanical edits; AI assistance disclosed; author-review draft.
