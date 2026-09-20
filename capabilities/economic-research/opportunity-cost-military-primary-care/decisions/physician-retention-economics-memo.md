@@ -1,13 +1,13 @@
 ---
-type: decision
-engagement: research-paper
+type: memo
+engagement: opportunity-cost-military-primary-care
 capability: economic-research
 date: 2026-09-19
 status: working-record
 audience: "Navy Medicine decision-makers"
 ---
 
-# Navy physician opportunity cost and retention — decision record
+# Opportunity Cost for Military Primary Care — decision record
 
 This consolidated record combines the paper-scope decision and the earlier retention economics memo. The current scope below governs the [paper draft](../paper/navy-primary-care-physician-retention-draft.md). The earlier memo is retained for its rationale, evaluation design, and research history; its communication hypothesis is one policy option, not a demonstrated best intervention.
 

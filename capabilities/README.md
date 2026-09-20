@@ -1,7 +1,8 @@
 # Capabilities
 
-This folder documents professional capabilities developed across clinical medicine, operational medicine, healthcare leadership, clinical informatics, and business education.
+## BUS 620 course projects
 
-Each entry should connect a capability to a concrete project, outcome, or example.
+- **Perfect competition:** [marginal-analysis capability](marginal-analysis/README.md).
+- **Opportunity Cost for Military Primary Care:** [economic-research capability](economic-research/README.md) and [final course project](economic-research/opportunity-cost-military-primary-care/README.md).
 
-- [Economic research: Navy physician compensation, opportunity cost, and retention](economic-research/navy-physician-compensation/README.md)
+These are separate engagements. Shared career documents, repository instructions, and reusable skills support the portfolio as a whole.

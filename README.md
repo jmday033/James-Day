@@ -11,9 +11,14 @@ His interests include healthcare leadership, clinical informatics, and global he
 - [Professional Bio](BIO.md)
 - [Résumé](RESUME.md)
 
-### Engagements and Evidence
+### Course projects
 
-- [Navy Physician Compensation, Opportunity Cost, and Retention](capabilities/economic-research/navy-physician-compensation/README.md) — research, paper, policy decision, and interactive compensation labs
+- [Perfect competition](analysis/perfect-competition-analysis.md) — marginal analysis, model, and farming decision.
+
+
+- [Opportunity Cost for Military Primary Care](capabilities/economic-research/opportunity-cost-military-primary-care/README.md) — final BUS 620 course project: research, paper, policy decision, and interactive labs
+
+### Shared portfolio resources
 
 - [Capabilities](capabilities/) — professional capabilities supported by concrete evidence
 - [Briefs](docs/briefs/) — concise analyses and recommendations

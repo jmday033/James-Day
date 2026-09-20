@@ -1,12 +1,12 @@
 ---
 type: spec
 capability: economic-research
-engagement: research-paper
+engagement: opportunity-cost-military-primary-care
 date: 2026-09-16
 status: built
 ---
 
-# Physician retention model specification
+# Opportunity Cost for Military Primary Care — model specification
 
 ## Final paper scenario selected September 19, 2026
 

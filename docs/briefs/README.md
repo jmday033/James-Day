@@ -1,5 +1,6 @@
-# Briefs
+# Engagement briefs
 
-Concise written briefs on healthcare, leadership, strategy, finance, informatics, and related topics belong here.
+Briefs state the question, assumptions, initial hypothesis, and how it could be falsified.
 
-Each brief should summarize the question, analysis, key findings, and practical implications.
+- [Perfect competition](perfect-competition-brief.md).
+- [Opportunity Cost for Military Primary Care](research-brief.md) — final course project.

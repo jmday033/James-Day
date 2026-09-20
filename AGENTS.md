@@ -33,3 +33,11 @@ I am a U.S. Navy internal medicine physician and medical officer pursuing an Exe
 ## AI-Assisted Work
 
 AI may help organize, critique, edit, or mechanically assemble portfolio materials when permitted. I remain responsible for checking the work, revising it into my own voice, and adding an appropriate disclosure when AI contributed.
+
+## Course project organization
+
+- The two course engagements are `perfect-competition` and `opportunity-cost-military-primary-care`.
+- All current physician compensation, opportunity-cost, pension, retention, source-review, staffing-policy, and lab work belongs to **Opportunity Cost for Military Primary Care** under `capabilities/economic-research/opportunity-cost-military-primary-care/`.
+- Keep course-required entry points at `docs/briefs/research-brief.md`, `capabilities/economic-research/spec.md`, and the shared root `prompt-log.md`; use links rather than competing copies.
+- Keep genuine dated snapshots in `drafts/`; do not rewrite previous sessions or invent dates. Shared skills and career documents remain portfolio resources.
+- The research-paper assignment reserves paper prose, analysis, and reflection for the author. Assist with source research, critique, verification, figures from the author's specifications, and mechanical formatting.

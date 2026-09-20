@@ -1,13 +1,13 @@
 ---
 type: brief
-engagement: research-paper
+engagement: opportunity-cost-military-primary-care
 capability: economic-research
 date: 2026-09-19
 status: revised
 research_question: "What is the financial opportunity cost of continued Navy service for family medicine, internal medicine, and pediatrics physicians over the next four years?"
 ---
 
-# Navy primary-care physician retention — research brief
+# Opportunity Cost for Military Primary Care — research brief
 
 ## The problem
 

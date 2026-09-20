@@ -162,3 +162,11 @@ The pension table conditions on reaching 20 years and isolates the pension strea
 ## 2026-09-19 — Visualize pension proximity to eligibility
 
 Added an accessible amber-to-red pension sensitivity visual to Quick Look and the full model. It shows BRS and Legacy present values at 10, 15, 18, and 19 active years, conditional on completing service to 20. Fixed assumptions match the paper's pension sensitivity ($120,000 annual High-3, 30 payments, 5% real discount, pretax). Labeled the 20-year eligibility threshold and distinguished pension value from overall retention incentives. Kept the illustration separate from scenario totals and hid it in training-decision views. Checked displayed values against the existing sensitivity CSV.
+
+## 2026-09-19 — Align final course project naming and filing
+
+**Request:** Group course work outside perfect competition under "Opportunity Cost for Military Primary Care" and align GitHub naming and filing.
+
+**Changes:** Renamed the consolidated physician project directory to `capabilities/economic-research/opportunity-cost-military-primary-care/`; aligned current brief/spec/memo engagement metadata, portfolio navigation, course entry points, and design metadata. Kept perfect-competition work, shared skills, and career documents separate. Preserved historical drafts and archives, and retained redirects for old lab URLs plus compatibility links used by the dated draft. Added the supplied condensed PDF without changing its bytes, and an explicitly labeled text extraction as a separate same-day snapshot. It remains a draft, not a final submission.
+
+**Verification:** Checked the resulting file map, local Markdown links, lab-relative assets, and protected-file hashes before publication. No research-paper prose or financial calculations were authored or revised in this organization pass.

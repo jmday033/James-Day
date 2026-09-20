@@ -4,6 +4,9 @@ title: James M. Day
 
 # James M. Day
 
-Welcome to my professional portfolio.
+[Career documents and full portfolio](README.md)
 
-[View my full portfolio, bio, and résumé](README.md)
+## Course projects
+
+- [Perfect competition](analysis/perfect-competition-analysis.md)
+- [Opportunity Cost for Military Primary Care](capabilities/economic-research/opportunity-cost-military-primary-care/README.md) — final course project

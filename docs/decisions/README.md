@@ -1,7 +1,6 @@
-# Decision Records
+# Decision records
 
-This folder captures important project decisions, the alternatives considered, and the reasoning behind the selected approach.
+- [Perfect competition](perfect-competition-memo.md).
+- [Opportunity Cost for Military Primary Care](opportunity-cost-military-primary-care-memo.md) — one consolidated course-project decision record.
 
-Decision records make the portfolio’s methods transparent and easier to revisit.
-
-- [Navy physician opportunity cost and retention — decision record](../../capabilities/economic-research/navy-physician-compensation/decisions/physician-retention-economics-memo.md): current paper scope, policy options, source-review history, and earlier retention analysis.
+Repository organization decisions are recorded in the project index and shared prompt log.

@@ -1,5 +1,5 @@
 {
-  "name": "Navy primary-care physician retention — research figure and lab",
+  "name": "Opportunity Cost for Military Primary Care",
   "tone": "Evidence-first academic analysis; clear labels and explicit source limits.",
   "palette": {
     "background": "#ffffff",
@@ -16,20 +16,72 @@
     "axes_and_caption": "Arial, 12–13 px"
   },
   "layout": {
-    "figure": "Three specialty panels, four annual points each",
-    "axis": "Cumulative civilian benchmark minus Navy cash; zero line in every panel",
-    "scale": "Panel-specific dollar scales, disclosed in caption",
-    "caption": "Source years, constant-dollar assumption, Marit comparability limit, and no retention effect claim"
+    "paper": "Anonymous body; separate title page, figure pages, and bibliography.",
+    "lab": "Responsive input and results panels; labels and numbers accompany color."
   },
   "rules": [
-    "Every plotted point reconciles to the 12-row CSV.",
-    "Use the same color for each policy across all specialty panels.",
-    "Label negative cash gaps as Navy above the published benchmark.",
-    "The figure must remain legible when exported for the paper.",
-    "Do not imply that closing a pay gap measures retention or labor-supply elasticity."
+    "Use the project title consistently in portfolio navigation.",
+    "Preserve author prose and historical draft contents.",
+    "Figures must identify scenario, source limits, units, and discount assumptions.",
+    "Red in the pension visual indicates proximity to eligibility, not advice to remain in service."
   ],
   "audit": {
-    "status": "built-and-checked",
-    "checked_against": "capabilities/economic-research/spec.md and data/physician-retention-12-row-comparison.csv"
+    "status": "organization-aligned; submission-formatting-outstanding",
+    "specification": "capabilities/economic-research/opportunity-cost-military-primary-care/spec.md"
+  },
+  "engagement": "opportunity-cost-military-primary-care",
+  "capability": "economic-research",
+  "artifacts": {
+    "paper": {
+      "font": "Times New Roman, 12pt",
+      "line_spacing": "double",
+      "margins": "1 inch",
+      "body_limit": "4 pages; excludes title page, graphs, bibliography, and appendix",
+      "status": "condensed draft still requires formatting and author revision"
+    },
+    "current_figure": {
+      "path": "capabilities/economic-research/opportunity-cost-military-primary-care/figures/internal-medicine-san-diego.svg",
+      "scenario": "O-4, San Diego internal medicine, 5% real year-end discounting"
+    },
+    "pension_visual": {
+      "colors": [
+        "#a87816",
+        "#c76a27",
+        "#c14638",
+        "#a82032"
+      ],
+      "meaning": "Nearer to 20 eligible active years; conditional pension component only",
+      "high3": 120000,
+      "discount": 0.05,
+      "payment_years": 30
+    },
+    "lab": {
+      "quick": "capabilities/economic-research/opportunity-cost-military-primary-care/quick-lab.html",
+      "full": "capabilities/economic-research/opportunity-cost-military-primary-care/physician-pay-lab.html"
+    }
+  },
+  "legacy_figure": {
+    "palette": {
+      "background": "#ffffff",
+      "text": "#17334b",
+      "muted": "#526878",
+      "current_bonus": "#16587a",
+      "flat_100k": "#c98227",
+      "targeted_50_percent": "#249d91",
+      "zero_line": "#7c8994"
+    },
+    "layout": {
+      "figure": "Three specialty panels, four annual points each",
+      "axis": "Cumulative civilian benchmark minus Navy cash; zero line in every panel",
+      "scale": "Panel-specific dollar scales, disclosed in caption",
+      "caption": "Source years, constant-dollar assumption, Marit comparability limit, and no retention effect claim"
+    },
+    "rules": [
+      "Every plotted point reconciles to the 12-row CSV.",
+      "Use the same color for each policy across all specialty panels.",
+      "Label negative cash gaps as Navy above the published benchmark.",
+      "The figure must remain legible when exported for the paper.",
+      "Do not imply that closing a pay gap measures retention or labor-supply elasticity."
+    ]
   }
 }

@@ -1,3 +1,12 @@
-# Research brief
+---
+type: brief
+engagement: opportunity-cost-military-primary-care
+capability: economic-research
+project: "Opportunity Cost for Military Primary Care"
+updated: 2026-09-19
+status: canonical-entry-point
+---
 
-The canonical [Navy physician research brief](../../capabilities/economic-research/navy-physician-compensation/research-brief.md) is maintained inside the single project folder. This entry point preserves the course-required path without duplicating the brief.
+# Opportunity Cost for Military Primary Care — research brief
+
+The [canonical brief](../../capabilities/economic-research/opportunity-cost-military-primary-care/research-brief.md) belongs to the single final course project. This course-required entry point avoids a second competing copy. The original dates and revision history remain in Git history.
