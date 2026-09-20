@@ -56,10 +56,10 @@ export function calculateScenario(input) {
     civilianSalary, civilianGrowth=0, civilianTax=0, navyTax=0, growthTax=0,
     civilianBenefits=0, navyTsp=0, navyTspAuto=false, isBrs=true,
     health=0, gi=0, pensionAnnual=0, malpractice=0, discount=0.05,
-    years=4} = input;
+    years=4, netPensionPV=0, navyTaxForYear, civilianTaxForYear, navyGrowthTax=0} = input;
   if (!Number.isInteger(years) || years < 1 || years > 30) throw new RangeError('Comparison years must be 1–30');
   if (!Number.isFinite(discount) || discount < 0 || discount > 0.20) throw new RangeError('Real discount rate must be 0–20%');
-  if (Number.isFinite(civilianSalary) && civilianSalary < 0) throw new RangeError('Civilian salary cannot be negative');
+  if (!Number.isFinite(civilianSalary) || civilianSalary < 0) throw new RangeError('Civilian salary must be a finite nonnegative number');
   if (!Number.isFinite(civilianGrowth) || civilianGrowth < -0.10 || civilianGrowth > 0.20) throw new RangeError('Real salary growth must be −10% to 20%');
   const rows = [];
   let pv = 0, annuity = 0;
@@ -72,20 +72,26 @@ export function calculateScenario(input) {
     const bonus = i < rbRemaining ? currentBonus : 0;
     const navyCash = 12 * (basicMonthly + bahMonthly + bas) + ip + bcp + bonus;
     const civilianCash = civilianSalary * Math.pow(1 + civilianGrowth, i);
-    const annualCivilianTax = Math.max(0, civilianTax + (civilianCash - civilianSalary) * growthTax);
+    const annualCivilianTax = civilianTaxForYear ? civilianTaxForYear(civilianCash, i) : Math.max(0, civilianTax + (civilianCash - civilianSalary) * growthTax);
+    const taxableNavy = 12 * basicMonthly + ip + bcp + bonus;
+    const initialTaxableNavy = 12 * base + ip + bcp + (rbRemaining > 0 ? currentBonus : 0);
+    const annualNavyTax = navyTaxForYear ? navyTaxForYear(taxableNavy, i) : Math.max(0, navyTax + (taxableNavy - initialTaxableNavy) * navyGrowthTax);
     const tsp = navyTspAuto && isBrs ? Math.round(0.05 * 12 * basicMonthly) : navyTsp;
     const civilianValue = civilianCash - annualCivilianTax + civilianBenefits - malpractice;
-    const navyValue = navyCash - navyTax + health + gi + pensionAnnual + tsp;
+    const navyValue = navyCash - annualNavyTax + health + gi + pensionAnnual + tsp;
     const gap = civilianValue - navyValue;
     const factor = 1 / Math.pow(1 + discount, i + 1);
     annuity += factor;
     pv += gap * factor;
     rows.push({year:2027+i, activeYos:payYos+i+1, grade, basicMonthly, bahMonthly,
       bonus, navyCash, civilianCash, grossGap:civilianCash-navyCash,
-      civilianTax:annualCivilianTax, navyTax, tsp, civilianValue, navyValue, gap,
+      civilianTax:annualCivilianTax, navyTax:annualNavyTax, tsp, civilianValue, navyValue, gap,
+      navyTakeHome:navyCash-annualNavyTax, civilianTakeHome:civilianCash-annualCivilianTax-malpractice-health,
       discountedGap:gap*factor});
   }
-  return {rows, pv, annuity, annualGap:pv/annuity,
+  const cashPV = pv;
+  pv -= netPensionPV;
+  return {rows, pv, cashPV, netPensionPV, annuity, annualGap:pv/annuity,
     navyCash:rows[0].navyCash, civilianCash:rows[0].civilianCash,
     grossGap:rows[0].grossGap, adjustedGap:rows[0].gap};
 }

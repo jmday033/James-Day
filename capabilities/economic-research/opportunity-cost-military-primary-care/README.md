@@ -65,3 +65,18 @@ The [Quick Look](quick-lab.html) now includes a separate GMO-to-residency illust
 The operational link is documented in the [Naval Medical Forces Pacific region](https://www.med.navy.mil/Naval-Medical-Forces-Pacific/Region/) and [mission](https://www.med.navy.mil/Naval-Medical-Forces-Pacific/Region/Mission/) pages; the project still needs specialty-level staffing and deployment outcomes before claiming a readiness effect.
 
 The [consolidated decision record](decisions/physician-retention-economics-memo.md) connects the pay-gap analysis to opportunity cost, incentives, marginal analysis, present value, compensating wage differentials, and labor-supply elasticity.
+
+
+## Career comparison upgrade — 2026-09-20
+
+The full lab adds a shared-horizon comparison of leaving now, staying through the selected period, and reaching 20 active years. It separates work cash from future pension value, models civilian work after separation and post-20 pension accrual/deferral, recalculates annual sample taxes (or uses manual overrides), and provides salary/bonus break-even values, deterministic sensitivity, workload comparisons, and browser-local scenario saves with JSON/CSV exports. Quick Look shares the corrected pension timing.
+
+Read the [accounting decisions and limits](docs/decisions/2026-09-20-career-comparison.md). Additional checks:
+
+```sh
+node tests/check-decision-engine.mjs
+# Optional: requires Playwright and a browser installation.
+node tests/check-decision-browser.cjs
+```
+
+The browser check accepts PLAYWRIGHT_MODULE (package path) and BROWSER_CHANNEL (for example, msedge). It serves files on loopback and blocks external requests. Model/schema versions are included in exports; imports recalculate only matching versions. Source dates are not invented when unavailable.

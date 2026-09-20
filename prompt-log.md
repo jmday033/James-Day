@@ -191,3 +191,8 @@ I verified the omission by reviewing the DoD retirement eligibility rule, compar
 ## Editorial and analytical disclosure
 
 The opening sentence lightly corrects spelling and grammar in the author's supplied statement; the pension paragraph preserves the author's previously supplied account. The model's sensitivity conditions on completing service to 20 years and isolates the pension stream; it does not establish that every physician's overall incentive increases monotonically. Earlier AI assistance included draft prose and analytical development as well as lab construction, research, calculations, figures, and formatting. The latest revision also includes AI-assisted policy wording and a proposed evaluation design based on the author's rationale. These contributions should not be described as formatting alone. The author must review the paper's prose and course AI-use requirements before submission.
+
+
+## 2026-09-20 — Opportunity Cost Lab decision tools
+
+At the author's request to implement the calculator-comparison recommendations, AI corrected year-end chart/pension accounting in both lab views and added a shared-horizon career model, post-retirement civilian earnings, post-20 pension comparisons, annual tax callbacks and manual overrides, break-even and deterministic sensitivity tools, workload labels and hourly cash, and versioned local scenario save/compare/import/export. Added source metadata, assumptions, limitations, and regression/browser checks. Tests used synthetic inputs. No patient information, LES files, paper prose, paper analysis, or personal reflection was added or changed. The work is prepared for review rather than merged or deployed.
