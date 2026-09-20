@@ -158,3 +158,7 @@ The pension table conditions on reaching 20 years and isolates the pension strea
 **AI assistance:** Copied the eight complete folders from `adamwstauffer/shidler` at commit `2460d75d6905139626c5f622827bf788dedb543b` into `.claude/skills/`, preserving supporting files, file modes, and license notices. Kept the existing career-docs skill. Added source provenance in `.claude/skills/README.md`. No imported scripts were executed or runtime dependencies installed.
 
 **Verification:** Compared all imported file hashes and modes with the pinned source tree before publication.
+
+## 2026-09-19 — Visualize pension proximity to eligibility
+
+Added an accessible amber-to-red pension sensitivity visual to Quick Look and the full model. It shows BRS and Legacy present values at 10, 15, 18, and 19 active years, conditional on completing service to 20. Fixed assumptions match the paper's pension sensitivity ($120,000 annual High-3, 30 payments, 5% real discount, pretax). Labeled the 20-year eligibility threshold and distinguished pension value from overall retention incentives. Kept the illustration separate from scenario totals and hid it in training-decision views. Checked displayed values against the existing sensitivity CSV.
