@@ -191,3 +191,8 @@ I verified the omission by reviewing the DoD retirement eligibility rule, compar
 ## Editorial and analytical disclosure
 
 The opening sentence lightly corrects spelling and grammar in the author's supplied statement; the pension paragraph preserves the author's previously supplied account. The model's sensitivity conditions on completing service to 20 years and isolates the pension stream; it does not establish that every physician's overall incentive increases monotonically. Earlier AI assistance included draft prose and analytical development as well as lab construction, research, calculations, figures, and formatting. The latest revision also includes AI-assisted policy wording and a proposed evaluation design based on the author's rationale. These contributions should not be described as formatting alone. The author must review the paper's prose and course AI-use requirements before submission.
+
+
+### 2026-09-21 - Quick Look salary-source cleanup
+
+User requested either location entry for Marit or its removal from Quick Look. Removed the San Diego-only option and its location-specific gate, retaining Doximity, Medscape, and SalaryDr. The full model is unchanged. Checked inline JavaScript syntax and confirmed all three national choices remain with no stale Marit references in Quick Look.
