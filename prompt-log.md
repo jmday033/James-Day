@@ -191,3 +191,8 @@ I verified the omission by reviewing the DoD retirement eligibility rule, compar
 ## Editorial and analytical disclosure
 
 The opening sentence lightly corrects spelling and grammar in the author's supplied statement; the pension paragraph preserves the author's previously supplied account. The model's sensitivity conditions on completing service to 20 years and isolates the pension stream; it does not establish that every physician's overall incentive increases monotonically. Earlier AI assistance included draft prose and analytical development as well as lab construction, research, calculations, figures, and formatting. The latest revision also includes AI-assisted policy wording and a proposed evaluation design based on the author's rationale. These contributions should not be described as formatting alone. The author must review the paper's prose and course AI-use requirements before submission.
+
+
+### 2026-09-21 - Duty-station search and installation coverage
+
+User reported no response for Marine Corps Base Hawaii and requested Navy and Marine Corps locations. Reproduced and fixed stale no-match results during JSON loading; added loading/error feedback, normalized word matching, and safe selection behavior. Expanded the directory from 33 to 108 publicly sourced installation/medical-facility records, preserving verified ZIPs and requiring manual inputs where necessary. Headless Edge tests passed for Hawaii ZIP/BAH, aliases, delayed/failed loads, missing ZIP, overseas selection, and no-match feedback. Coverage and limitations are recorded in the project decision log.
