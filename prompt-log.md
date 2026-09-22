@@ -196,3 +196,8 @@ The opening sentence lightly corrects spelling and grammar in the author's suppl
 ### 2026-09-21 - Duty-station search and installation coverage
 
 User reported no response for Marine Corps Base Hawaii and requested Navy and Marine Corps locations. Reproduced and fixed stale no-match results during JSON loading; added loading/error feedback, normalized word matching, and safe selection behavior. Expanded the directory from 33 to 108 publicly sourced installation/medical-facility records, preserving verified ZIPs and requiring manual inputs where necessary. Headless Edge tests passed for Hawaii ZIP/BAH, aliases, delayed/failed loads, missing ZIP, overseas selection, and no-match feedback. Coverage and limitations are recorded in the project decision log.
+
+
+### 2026-09-22 - Service-horizon slider repair
+
+User reported that the active-service horizon slider did not work. Reproduced past-year snapback and a frozen timeline label when ZIP validation failed. Restricted the slider to future end years and moved timeline synchronization ahead of calculation validation. Headless Edge tests passed for dragging, keyboard control, numeric input, active-year changes, invalid ZIP recovery, pension threshold and result changes; duty-station checks also passed.
