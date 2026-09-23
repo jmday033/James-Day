@@ -201,3 +201,8 @@ User reported no response for Marine Corps Base Hawaii and requested Navy and Ma
 ### 2026-09-22 - Service-horizon slider repair
 
 User reported that the active-service horizon slider did not work. Reproduced past-year snapback and a frozen timeline label when ZIP validation failed. Restricted the slider to future end years and moved timeline synchronization ahead of calculation validation. Headless Edge tests passed for dragging, keyboard control, numeric input, active-year changes, invalid ZIP recovery, pension threshold and result changes; duty-station checks also passed.
+
+
+### 2026-09-22 - Restore retention bonus controls
+
+User requested the full-lab retention bonus buttons. Initialize the six choices (none, 2/3/4/6-year agreements, custom signed rate) immediately and synchronize them before unrelated input validation. Retain eligibility gating and existing rates. Headless Edge checks pass with valid/unavailable pay data and invalid ZIP, including rate and remaining-year updates, specialty changes, obligated status and custom amounts. Service-horizon regression checks also pass.
