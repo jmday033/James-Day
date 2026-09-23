@@ -1,33 +1,497 @@
 [
   {
-    "name": "Naval Medical Center San Diego",
-    "zip": "92134",
-    "aliases": "NMCSD Balboa NMRTC San Diego",
-    "source": "https://www.med.navy.mil/NMRTC-San-Diego-CA/contactUs/"
+    "name": "Branch Health Clinic Mayport",
+    "zip": "32228",
+    "aliases": "Naval Station Mayport Jacksonville",
+    "source": "https://jacksonville.tricare.mil/clinics/branch-health-clinic-mayport/"
+  },
+  {
+    "name": "Commander Fleet Activities Chinhae",
+    "zip": "",
+    "aliases": "Commander Fleet Activities Chinhae South Korea Commander Fleet Activities Chinhae Commander Fleet Activities Chinhae",
+    "source": "https://installations.militaryonesource.mil/military-installation/commander-fleet-activities-chinhae",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/commander-fleet-activities-chinhae",
+    "region": "South Korea",
+    "overseas": true
+  },
+  {
+    "name": "Commander Fleet Activities Sasebo",
+    "zip": "",
+    "aliases": "Commander Fleet Activities Sasebo Japan Commander Fleet Activities Sasebo Commander Fleet Activities Sasebo",
+    "source": "https://installations.militaryonesource.mil/military-installation/commander-fleet-activities-sasebo",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/commander-fleet-activities-sasebo",
+    "region": "Japan",
+    "overseas": true
+  },
+  {
+    "name": "Commander Fleet Activities Yokosuka",
+    "zip": "",
+    "aliases": "Commander Fleet Activities Yokosuka Japan Commander Fleet Activities Yokosuka Commander Fleet Activities Yokosuka",
+    "source": "https://installations.militaryonesource.mil/military-installation/commander-fleet-activities-yokosuka",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/commander-fleet-activities-yokosuka",
+    "region": "Japan",
+    "overseas": true
+  },
+  {
+    "name": "Fort George G. Meade - Navy",
+    "zip": "20755",
+    "aliases": "Fort George G. Meade - Navy Maryland Fort George G. Meade - Navy Fort George G. Meade - Navy",
+    "source": "https://installations.militaryonesource.mil/military-installation/fort-george-g-meade-navy",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/fort-george-g-meade-navy",
+    "region": "Maryland",
+    "address": "Fort Meade, MD 20755"
+  },
+  {
+    "name": "Fort Myer (Joint Base Myer - Henderson Hall)",
+    "zip": "22211",
+    "aliases": "Fort Myer (Joint Base Myer - Henderson Hall) Virginia Fort Myer (Joint Base Myer - Henderson Hall) Fort Myer (JB Myer - Henderson Hall)",
+    "source": "https://installations.militaryonesource.mil/military-installation/fort-myer-joint-base-myer-henderson-hall",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/fort-myer-joint-base-myer-henderson-hall",
+    "region": "Virginia",
+    "address": "Fort Myer, VA 22211"
+  },
+  {
+    "name": "Henderson Hall (Joint Base Myer - Henderson Hall)",
+    "zip": "22214",
+    "aliases": "Henderson Hall (Joint Base Myer - Henderson Hall) Virginia Henderson Hall (Joint Base Myer - Henderson Hall) Henderson Hall (JB Myer - Henderson Hall)",
+    "source": "https://installations.militaryonesource.mil/military-installation/henderson-hall-joint-base-myer-henderson-hall",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/henderson-hall-joint-base-myer-henderson-hall",
+    "region": "Virginia",
+    "address": "Arlington, VA 22214-5000"
+  },
+  {
+    "name": "Joint Base Andrews-Naval Air Facility Washington",
+    "zip": "20762",
+    "aliases": "Joint Base Andrews-Naval Air Facility Washington Maryland Joint Base Andrews-Naval Air Facility Washington JB Andrews-NAF Washington",
+    "source": "https://installations.militaryonesource.mil/military-installation/joint-base-andrews-naval-air-facility-washington",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/joint-base-andrews-naval-air-facility-washington",
+    "region": "Maryland",
+    "address": "Andrews AFB, MD 20762-6421"
+  },
+  {
+    "name": "Joint Base McGuire-Dix-Lakehurst",
+    "zip": "08642",
+    "aliases": "Joint Base McGuire-Dix-Lakehurst New Jersey Joint Base McGuire-Dix-Lakehurst JB McGuire-Dix-Lakehurst",
+    "source": "https://installations.militaryonesource.mil/military-installation/joint-base-mcguire-dix-lakehurst",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/joint-base-mcguire-dix-lakehurst",
+    "region": "New Jersey",
+    "address": "Trenton, NJ 08642"
+  },
+  {
+    "name": "Joint Base Pearl Harbor - Hickam",
+    "zip": "96860",
+    "aliases": "Joint Base Pearl Harbor - Hickam Hawaii Joint Base Pearl Harbor - Hickam JB Pearl Harbor - Hickam",
+    "source": "https://installations.militaryonesource.mil/military-installation/joint-base-pearl-harbor-hickam",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/joint-base-pearl-harbor-hickam",
+    "region": "Hawaii",
+    "address": "JBPHH, HI 96860-3174"
+  },
+  {
+    "name": "Joint Expeditionary Base Little Creek-Fort Story",
+    "zip": "23459",
+    "aliases": "Joint Expeditionary Base Little Creek-Fort Story Virginia Joint Expeditionary Base Little Creek-Fort Story Joint Expeditionary Base Little Creek-Fort Story",
+    "source": "https://installations.militaryonesource.mil/military-installation/joint-expeditionary-base-little-creek-fort-story",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/joint-expeditionary-base-little-creek-fort-story",
+    "region": "Virginia",
+    "address": "Virginia Beach, VA 23459-3297"
+  },
+  {
+    "name": "Joint Region Marianas - Naval Base Guam",
+    "zip": "",
+    "aliases": "Joint Region Marianas - Naval Base Guam Guam Joint Region Marianas - Naval Base Guam Joint Region Marianas - NB Guam",
+    "source": "https://installations.militaryonesource.mil/military-installation/joint-region-marianas-naval-base-guam",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/joint-region-marianas-naval-base-guam",
+    "region": "Guam",
+    "overseas": true
+  },
+  {
+    "name": "Marine Corps Air Ground Combat Center Twentynine Palms",
+    "zip": "92278",
+    "aliases": "MCAGCC 29 Palms USMC Twentynine Palms (MCAGCC) California Twentynine Palms (MCAGCC) Twentynine Palms (MCAGCC)",
+    "source": "https://www.29palms.marines.mil/Contact-Us/Mock/dvpTag/MCAGCC/",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/twentynine-palms-mcagcc",
+    "region": "California"
+  },
+  {
+    "name": "Marine Corps Air Station Beaufort",
+    "zip": "29904",
+    "aliases": "MCAS Beaufort South Carolina USMC MCAS Beaufort South Carolina Marine Corps Air Station Beaufort MCAS Beaufort",
+    "source": "https://www.lejeune.marines.mil/Portals/27/Documents/IPAC/ENCLOSURE%202%20RPAC%20SOP%2020241217.pdf?ver=h_mHOTFp8xGCnanhxCjO8Q%3D%3D",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/mcas-beaufort",
+    "region": "South Carolina"
+  },
+  {
+    "name": "Marine Corps Air Station Cherry Point",
+    "zip": "28533",
+    "aliases": "MCAS Cherry Point Havelock USMC MCAS Cherry Point North Carolina Marine Corps Air Station Cherry Point MCAS Cherry Point",
+    "source": "https://www.lejeune.marines.mil/Portals/27/Documents/IPAC/ENCLOSURE%202%20RPAC%20SOP%2020241217.pdf?ver=h_mHOTFp8xGCnanhxCjO8Q%3D%3D",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/mcas-cherry-point",
+    "region": "North Carolina"
+  },
+  {
+    "name": "Marine Corps Air Station Iwakuni (Japan)",
+    "zip": "",
+    "aliases": "MCAS Iwakuni Japan USMC Marine Corps Air Station Iwakuni Japan Marine Corps Air Station Iwakuni Marine Corps Air Station Iwakuni",
+    "source": "https://www.mcasiwakuni.marines.mil/Organizations/Station/Postal/Mailing-Restrictions/",
+    "overseas": true,
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/marine-corps-air-station-iwakuni",
+    "region": "Japan"
+  },
+  {
+    "name": "Marine Corps Air Station Miramar",
+    "zip": "92145",
+    "aliases": "MCAS Miramar San Diego USMC Marine Corps Air Station Miramar California Marine Corps Air Station Miramar Marine Corps Air Station Miramar",
+    "source": "https://www.miramar.marines.mil/Arriving/ID-Center/",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/marine-corps-air-station-miramar",
+    "region": "California"
+  },
+  {
+    "name": "Marine Corps Air Station New River",
+    "zip": "28545",
+    "aliases": "MCAS New River Jacksonville North Carolina USMC MCAS New River North Carolina Marine Corps Air Station New River MCAS New River",
+    "source": "https://www.lejeune.marines.mil/Portals/27/Documents/IPAC/ENCLOSURE%202%20RPAC%20SOP%2020241217.pdf?ver=h_mHOTFp8xGCnanhxCjO8Q%3D%3D",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/mcas-new-river",
+    "region": "North Carolina"
+  },
+  {
+    "name": "Marine Corps Air Station Yuma",
+    "zip": "85369",
+    "aliases": "MCAS Yuma branch health clinic USMC MCAS Yuma Arizona Marine Corps Air Station Yuma MCAS Yuma",
+    "source": "https://www.mcasyuma.marines.mil/Commands/Branch-Health-Clinic-MCAS-Yuma/",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/mcas-yuma",
+    "region": "Arizona"
+  },
+  {
+    "name": "Marine Corps Base Camp Blaz (Guam)",
+    "zip": "",
+    "aliases": "MCB Blaz Dededo Guam USMC",
+    "source": "https://www.mcbblaz.marines.mil/About/",
+    "overseas": true
+  },
+  {
+    "name": "Marine Corps Base Camp Foster (Okinawa)",
+    "zip": "",
+    "aliases": "MCB Butler Camp Foster Okinawa Japan USMC Camp S D Butler (Camp Foster, Kinser, Courtney, Hansen, Schwab and MCAS Futenma) Japan Camp S D Butler (Camp Foster, Kinser, Courtney, Hansen, Schwab and Marine Corps Air Station Futenma) Camp S D Butler (Camp Foster, Kinser, Courtney, Hansen, Schwab and MCAS Futenma)",
+    "source": "https://www.mcbbutler.marines.mil/Camps/Camp-Foster/CO/",
+    "overseas": true,
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/camp-s-d-butler-camp-foster-kinser-courtney-hansen-schwab-and-mcas-futenma",
+    "region": "Japan"
+  },
+  {
+    "name": "Marine Corps Base Camp Lejeune",
+    "zip": "28542",
+    "aliases": "MCB Lejeune Jacksonville North Carolina USMC Camp Lejeune North Carolina Camp Lejeune Camp Lejeune",
+    "source": "https://www.lejeune.marines.mil/Portals/27/Documents/IPAC/ENCLOSURE%202%20RPAC%20SOP%2020241217.pdf?ver=h_mHOTFp8xGCnanhxCjO8Q%3D%3D",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/camp-lejeune",
+    "region": "North Carolina"
+  },
+  {
+    "name": "Marine Corps Base Camp Pendleton",
+    "zip": "92055",
+    "aliases": "MCB Pendleton Oceanside USMC Camp Pendleton California Camp Pendleton Camp Pendleton",
+    "source": "https://www.pendleton.marines.mil/Useful-Information/Useful-Addresses/",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/camp-pendleton",
+    "region": "California"
+  },
+  {
+    "name": "Marine Corps Base Hawaii (Kaneohe Bay)",
+    "zip": "96863",
+    "aliases": "MCBH Kaneohe Bay MCAS Kaneohe USMC MCB Hawaii Hawaii Marine Corps Base Hawaii MCB Hawaii",
+    "source": "https://www.mcbhawaii.marines.mil/Contact-Us/",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/mcb-hawaii",
+    "region": "Hawaii"
+  },
+  {
+    "name": "Marine Corps Base Quantico",
+    "zip": "22134",
+    "aliases": "MCB Quantico Virginia USMC Marine Corps Base Quantico Virginia Marine Corps Base Quantico Marine Corps Base Quantico",
+    "source": "https://www.quantico.marines.mil/Resources/PCS-Inbound-Outbound/Checking-Out/",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/marine-corps-base-quantico",
+    "region": "Virginia"
+  },
+  {
+    "name": "Marine Corps Logistics Base Albany",
+    "zip": "31704",
+    "aliases": "MCLB Albany Georgia USMC Marine Corps Logistics Base - Albany Georgia Marine Corps Logistics Base - Albany Marine Corps Logistics Base - Albany",
+    "source": "https://www.lejeune.marines.mil/Portals/27/Documents/IPAC/ENCLOSURE%202%20RPAC%20SOP%2020241217.pdf?ver=h_mHOTFp8xGCnanhxCjO8Q%3D%3D",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/marine-corps-logistics-base-albany",
+    "region": "Georgia"
+  },
+  {
+    "name": "Marine Corps Logistics Base Barstow",
+    "zip": "92311",
+    "aliases": "MCLB Barstow USMC MCLB Barstow California Marine Corps Logistics Base Barstow MCLB Barstow",
+    "source": "https://www.mclbbarstow.marines.mil/Agencies/Inspector-General/",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/mclb-barstow",
+    "region": "California"
+  },
+  {
+    "name": "Marine Corps Mountain Warfare Training Center (MWTC)",
+    "zip": "93517",
+    "aliases": "Marine Corps Mountain Warfare Training Center (MWTC) California Marine Corps Mountain Warfare Training Center (MWTC) Marine Corps Mountain Warfare Training Center (MWTC)",
+    "source": "https://installations.militaryonesource.mil/military-installation/marine-corps-mountain-warfare-training-center-mwtc",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/marine-corps-mountain-warfare-training-center-mwtc",
+    "region": "California",
+    "address": "Bridgeport, CA 93517"
+  },
+  {
+    "name": "Marine Corps Recruit Depot Parris Island",
+    "zip": "29905",
+    "aliases": "MCRD Parris Island South Carolina USMC MCRD Parris Island South Carolina Marine Corps Recruit Depot Parris Island MCRD Parris Island",
+    "source": "https://www.mcrdpi.marines.mil/Permanent-Personnel/Resources/Voting-Information/",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/mcrd-parris-island",
+    "region": "South Carolina"
+  },
+  {
+    "name": "Marine Corps Recruit Depot San Diego",
+    "zip": "92140",
+    "aliases": "MCRD San Diego USMC MCRD San Diego California Marine Corps Recruit Depot San Diego MCRD San Diego",
+    "source": "https://www.mcrdsd.marines.mil/Visitors/MCRDSD-Museum/",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/mcrd-san-diego",
+    "region": "California"
+  },
+  {
+    "name": "MCCS Hampton Roads",
+    "zip": "23515",
+    "aliases": "MCCS Hampton Roads Virginia MCCS Hampton Roads MCCS Hampton Roads",
+    "source": "https://installations.militaryonesource.mil/military-installation/mccs-hampton-roads",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/mccs-hampton-roads",
+    "region": "Virginia",
+    "address": "Norfolk, VA 23515-4693"
+  },
+  {
+    "name": "Naval Air Facility Atsugi",
+    "zip": "",
+    "aliases": "Naval Air Facility Atsugi Japan Naval Air Facility Atsugi NAF Atsugi",
+    "source": "https://installations.militaryonesource.mil/military-installation/naval-air-facility-atsugi",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/naval-air-facility-atsugi",
+    "region": "Japan",
+    "overseas": true
+  },
+  {
+    "name": "Naval Air Facility El Centro",
+    "zip": "92243",
+    "aliases": "Naval Air Facility El Centro California Naval Air Facility El Centro NAF El Centro",
+    "source": "https://installations.militaryonesource.mil/military-installation/naval-air-facility-el-centro",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/naval-air-facility-el-centro",
+    "region": "California",
+    "address": "El Centro, CA 92243-5001"
+  },
+  {
+    "name": "Naval Air Station Corpus Christi",
+    "zip": "78419",
+    "aliases": "Naval Air Station Corpus Christi Texas Naval Air Station Corpus Christi NAS Corpus Christi",
+    "source": "https://installations.militaryonesource.mil/military-installation/naval-air-station-corpus-christi",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/naval-air-station-corpus-christi",
+    "region": "Texas",
+    "address": "Corpus Christi, TX 78419-5021"
+  },
+  {
+    "name": "Naval Air Station Fallon",
+    "zip": "89496",
+    "aliases": "Naval Air Station Fallon Nevada Naval Air Station Fallon NAS Fallon",
+    "source": "https://installations.militaryonesource.mil/military-installation/naval-air-station-fallon",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/naval-air-station-fallon",
+    "region": "Nevada",
+    "address": "Fallon, NV 89496-5000"
+  },
+  {
+    "name": "Naval Air Station Jacksonville",
+    "zip": "32212",
+    "aliases": "Naval Air Station Jacksonville Florida Naval Air Station Jacksonville NAS Jacksonville",
+    "source": "https://installations.militaryonesource.mil/military-installation/naval-air-station-jacksonville",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/naval-air-station-jacksonville",
+    "region": "Florida",
+    "address": "Jacksonville, FL 32212"
+  },
+  {
+    "name": "Naval Air Station Joint Reserve Base Fort Worth",
+    "zip": "76127",
+    "aliases": "Naval Air Station Joint Reserve Base Fort Worth Texas Naval Air Station Joint Reserve Base Fort Worth NAS Joint Reserve Base Fort Worth",
+    "source": "https://installations.militaryonesource.mil/military-installation/naval-air-station-joint-reserve-base-fort-worth",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/naval-air-station-joint-reserve-base-fort-worth",
+    "region": "Texas",
+    "address": "Fort Worth, TX 76127-1021"
+  },
+  {
+    "name": "Naval Air Station Joint Reserve Base New Orleans",
+    "zip": "70143",
+    "aliases": "Naval Air Station Joint Reserve Base New Orleans Louisiana Naval Air Station Joint Reserve Base New Orleans NAS Joint Reserve Base New Orleans",
+    "source": "https://installations.militaryonesource.mil/military-installation/naval-air-station-joint-reserve-base-new-orleans",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/naval-air-station-joint-reserve-base-new-orleans",
+    "region": "Louisiana",
+    "address": "New Orleans, LA 70143"
+  },
+  {
+    "name": "Naval Air Station Key West",
+    "zip": "33040",
+    "aliases": "Naval Air Station Key West Florida Naval Air Station Key West NAS Key West",
+    "source": "https://installations.militaryonesource.mil/military-installation/naval-air-station-key-west",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/naval-air-station-key-west",
+    "region": "Florida",
+    "address": "Key West, FL 33040"
+  },
+  {
+    "name": "Naval Air Station Kingsville",
+    "zip": "78363",
+    "aliases": "Naval Air Station Kingsville Texas Naval Air Station Kingsville NAS Kingsville",
+    "source": "https://cnrse.cnic.navy.mil/Installations/NAS-Kingsville/Contact-Us/",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/naval-air-station-kingsville",
+    "region": "Texas"
+  },
+  {
+    "name": "Naval Air Station Lemoore",
+    "zip": "93246",
+    "aliases": "Naval Air Station Lemoore California Naval Air Station Lemoore NAS Lemoore",
+    "source": "https://installations.militaryonesource.mil/military-installation/naval-air-station-lemoore",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/naval-air-station-lemoore",
+    "region": "California",
+    "address": "Lemoore, CA 93246"
+  },
+  {
+    "name": "Naval Air Station Meridian",
+    "zip": "39309",
+    "aliases": "Naval Air Station Meridian Mississippi Naval Air Station Meridian NAS Meridian",
+    "source": "https://installations.militaryonesource.mil/military-installation/naval-air-station-meridian",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/naval-air-station-meridian",
+    "region": "Mississippi"
+  },
+  {
+    "name": "Naval Air Station Oceana",
+    "zip": "23460",
+    "aliases": "Naval Air Station Oceana Virginia Naval Air Station Oceana NAS Oceana",
+    "source": "https://installations.militaryonesource.mil/military-installation/naval-air-station-oceana",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/naval-air-station-oceana",
+    "region": "Virginia"
+  },
+  {
+    "name": "Naval Air Station Oceana Dam Neck Annex",
+    "zip": "23461",
+    "aliases": "Naval Air Station Oceana Dam Neck Annex Virginia Naval Air Station Oceana Dam Neck Annex NAS Oceana Dam Neck Annex",
+    "source": "https://installations.militaryonesource.mil/military-installation/naval-air-station-oceana-dam-neck-annex",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/naval-air-station-oceana-dam-neck-annex",
+    "region": "Virginia"
+  },
+  {
+    "name": "Naval Air Station Patuxent River",
+    "zip": "20670",
+    "aliases": "Naval Air Station Patuxent River Maryland Naval Air Station Patuxent River NAS Patuxent River",
+    "source": "https://installations.militaryonesource.mil/military-installation/naval-air-station-patuxent-river",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/naval-air-station-patuxent-river",
+    "region": "Maryland",
+    "address": "NAS Patuxent River, MD 20670-1132"
+  },
+  {
+    "name": "Naval Air Station Pensacola",
+    "zip": "32508",
+    "aliases": "Naval Air Station Pensacola Florida Naval Air Station Pensacola NAS Pensacola",
+    "source": "https://cnrse.cnic.navy.mil/Installations/NAS-Pensacola/About/Installation-Guide/RSC-Pensacola/",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/naval-air-station-pensacola",
+    "region": "Florida"
+  },
+  {
+    "name": "Naval Air Station Sigonella",
+    "zip": "",
+    "aliases": "Naval Air Station Sigonella Italy Naval Air Station Sigonella NAS Sigonella",
+    "source": "https://installations.militaryonesource.mil/military-installation/naval-air-station-sigonella",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/naval-air-station-sigonella",
+    "region": "Italy",
+    "overseas": true
+  },
+  {
+    "name": "Naval Air Station Whidbey Island",
+    "zip": "98278",
+    "aliases": "Naval Air Station Whidbey Island Washington Naval Air Station Whidbey Island NAS Whidbey Island",
+    "source": "https://installations.militaryonesource.mil/military-installation/naval-air-station-whidbey-island",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/naval-air-station-whidbey-island",
+    "region": "Washington",
+    "address": "Oak Harbor, WA 98278"
+  },
+  {
+    "name": "Naval Air Station Whiting Field",
+    "zip": "32570",
+    "aliases": "Naval Air Station Whiting Field Florida Naval Air Station Whiting Field NAS Whiting Field",
+    "source": "https://installations.militaryonesource.mil/military-installation/naval-air-station-whiting-field",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/naval-air-station-whiting-field",
+    "region": "Florida",
+    "address": "Milton, FL 32570-6013"
+  },
+  {
+    "name": "Naval Air Weapons Station China Lake",
+    "zip": "93555",
+    "aliases": "Naval Air Weapons Station China Lake California Naval Air Weapons Station China Lake Naval Air Weapons Station China Lake",
+    "source": "https://installations.militaryonesource.mil/military-installation/naval-air-weapons-station-china-lake",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/naval-air-weapons-station-china-lake",
+    "region": "California",
+    "address": "China Lake, CA 93555-6100"
+  },
+  {
+    "name": "Naval Base Coronado",
+    "zip": "92118",
+    "aliases": "Naval Base Coronado California Naval Base Coronado NB Coronado",
+    "source": "https://installations.militaryonesource.mil/military-installation/naval-base-coronado",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/naval-base-coronado",
+    "region": "California"
+  },
+  {
+    "name": "Naval Base Kitsap",
+    "zip": "",
+    "aliases": "Naval Base Kitsap Washington Naval Base Kitsap NB Kitsap",
+    "source": "https://installations.militaryonesource.mil/military-installation/naval-base-kitsap",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/naval-base-kitsap",
+    "region": "Washington",
+    "zipRequired": true
+  },
+  {
+    "name": "Naval Base Point Loma",
+    "zip": "92106",
+    "aliases": "Naval Base Point Loma California Naval Base Point Loma NB Point Loma",
+    "source": "https://installations.militaryonesource.mil/military-installation/naval-base-point-loma",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/naval-base-point-loma",
+    "region": "California",
+    "address": "San Diego, CA 92106"
   },
   {
     "name": "Naval Base San Diego",
     "zip": "92136",
-    "aliases": "32nd Street NBSD",
-    "source": "https://www.med.navy.mil/Naval-Medical-Forces-Pacific/Staff-Info/Welcome-Aboard/"
+    "aliases": "32nd Street NBSD Naval Base San Diego California Naval Base San Diego NB San Diego",
+    "source": "https://www.med.navy.mil/Naval-Medical-Forces-Pacific/Staff-Info/Welcome-Aboard/",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/naval-base-san-diego",
+    "region": "California"
   },
   {
-    "name": "Naval Hospital Camp Pendleton",
-    "zip": "92055",
-    "aliases": "NMRTC Camp Pendleton",
-    "source": "https://www.med.navy.mil/NMRTC-Camp-Pendleton-CA/"
+    "name": "Naval Base Ventura County - Point Mugu/Port Hueneme",
+    "zip": "93042",
+    "aliases": "Naval Base Ventura County - Point Mugu/Port Hueneme California Naval Base Ventura County - Point Mugu/Port Hueneme NB Ventura County - Point Mugu/Port Hueneme",
+    "source": "https://installations.militaryonesource.mil/military-installation/naval-base-ventura-county-point-mugu-port-hueneme",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/naval-base-ventura-county-point-mugu-port-hueneme",
+    "region": "California"
   },
   {
-    "name": "Naval Hospital Twentynine Palms",
-    "zip": "92278",
-    "aliases": "29 Palms NMRTC",
-    "source": "https://www.med.navy.mil/NMRTC-Twentynine-Palms-CA/index.html"
+    "name": "Naval Construction Battalion Center Gulfport",
+    "zip": "39501",
+    "aliases": "Naval Construction Battalion Center Gulfport Mississippi Naval Construction Battalion Center Gulfport Naval Construction Battalion Center Gulfport",
+    "source": "https://installations.militaryonesource.mil/military-installation/naval-construction-battalion-center-gulfport",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/naval-construction-battalion-center-gulfport",
+    "region": "Mississippi"
+  },
+  {
+    "name": "Naval Health Clinic Cherry Point",
+    "zip": "28533",
+    "aliases": "NMRTC Cherry Point",
+    "source": "https://www.med.navy.mil/Naval-Medical-Forces-Atlantic/Organization/Support-Forces/NMRTC-Cherry-Point/"
   },
   {
     "name": "Naval Health Clinic Lemoore",
     "zip": "93246",
     "aliases": "NMRTC Lemoore",
     "source": "https://www.med.navy.mil/Naval-Medical-Forces-Pacific/Contact-Us/"
+  },
+  {
+    "name": "Naval Health Clinic New England (Newport)",
+    "zip": "02841",
+    "aliases": "NMRTC Newport Rhode Island",
+    "source": "https://www.med.navy.mil/Naval-Medical-Forces-Atlantic/Organization/Support-Forces/NMRTC-New-England-RI/NMRTC-Newport-RI/"
   },
   {
     "name": "Naval Health Clinic Oak Harbor",
@@ -42,16 +506,10 @@
     "source": "https://www.med.navy.mil/NMRTC-Bremerton-WA/"
   },
   {
-    "name": "Naval Medical Center Portsmouth",
-    "zip": "23708",
-    "aliases": "NMRTC Portsmouth Virginia",
-    "source": "https://www.med.navy.mil/Naval-Medical-Forces-Atlantic/Organization/Support-Forces/NMRTC-Portsmouth/"
-  },
-  {
-    "name": "Naval Medical Center Camp Lejeune",
-    "zip": "28547",
-    "aliases": "NMRTC Camp Lejeune",
-    "source": "https://www.med.navy.mil/Naval-Medical-Forces-Atlantic/Organization/Support-Forces/NMRTC-Camp-Lejeune/"
+    "name": "Naval Hospital Camp Pendleton",
+    "zip": "92055",
+    "aliases": "NMRTC Camp Pendleton",
+    "source": "https://www.med.navy.mil/NMRTC-Camp-Pendleton-CA/"
   },
   {
     "name": "Naval Hospital Jacksonville",
@@ -60,34 +518,370 @@
     "source": "https://jacksonville.tricare.mil/About-Us/Contact-Us/"
   },
   {
-    "name": "Branch Health Clinic Mayport",
-    "zip": "32228",
-    "aliases": "Naval Station Mayport Jacksonville",
-    "source": "https://jacksonville.tricare.mil/clinics/branch-health-clinic-mayport/"
-  },
-  {
     "name": "Naval Hospital Pensacola",
     "zip": "32512",
     "aliases": "NMRTC Pensacola",
     "source": "https://www.med.navy.mil/Naval-Medical-Forces-Atlantic/Organization/Support-Forces/NMRTC-Pensacola/"
   },
   {
-    "name": "Naval Health Clinic Cherry Point",
-    "zip": "28533",
-    "aliases": "NMRTC Cherry Point",
-    "source": "https://www.med.navy.mil/Naval-Medical-Forces-Atlantic/Organization/Support-Forces/NMRTC-Cherry-Point/"
+    "name": "Naval Hospital Twentynine Palms",
+    "zip": "92278",
+    "aliases": "29 Palms NMRTC",
+    "source": "https://www.med.navy.mil/NMRTC-Twentynine-Palms-CA/index.html"
   },
   {
-    "name": "Naval Health Clinic New England (Newport)",
+    "name": "Naval Medical Center Camp Lejeune",
+    "zip": "28547",
+    "aliases": "NMRTC Camp Lejeune",
+    "source": "https://www.med.navy.mil/Naval-Medical-Forces-Atlantic/Organization/Support-Forces/NMRTC-Camp-Lejeune/"
+  },
+  {
+    "name": "Naval Medical Center Portsmouth",
+    "zip": "23708",
+    "aliases": "NMRTC Portsmouth Virginia Naval Medical Center Portsmouth Virginia Naval Medical Center Portsmouth Naval Medical Center Portsmouth",
+    "source": "https://www.med.navy.mil/Naval-Medical-Forces-Atlantic/Organization/Support-Forces/NMRTC-Portsmouth/",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/naval-medical-center-portsmouth",
+    "region": "Virginia"
+  },
+  {
+    "name": "Naval Medical Center San Diego",
+    "zip": "92134",
+    "aliases": "NMCSD Balboa NMRTC San Diego",
+    "source": "https://www.med.navy.mil/NMRTC-San-Diego-CA/contactUs/"
+  },
+  {
+    "name": "Naval Station Everett",
+    "zip": "98207",
+    "aliases": "Naval Station Everett Washington Naval Station Everett Naval Station Everett",
+    "source": "https://installations.militaryonesource.mil/military-installation/naval-station-everett",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/naval-station-everett",
+    "region": "Washington"
+  },
+  {
+    "name": "Naval Station Great Lakes",
+    "zip": "60088",
+    "aliases": "Naval Station Great Lakes Illinois Naval Station Great Lakes Naval Station Great Lakes",
+    "source": "https://installations.militaryonesource.mil/military-installation/naval-station-great-lakes",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/naval-station-great-lakes",
+    "region": "Illinois",
+    "address": "Great Lakes, IL 60088-2845"
+  },
+  {
+    "name": "Naval Station Guantanamo Bay",
+    "zip": "",
+    "aliases": "Naval Station Guantanamo Bay Cuba Naval Station Guantanamo Bay Naval Station Guantanamo Bay",
+    "source": "https://installations.militaryonesource.mil/military-installation/naval-station-guantanamo-bay",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/naval-station-guantanamo-bay",
+    "region": "Cuba",
+    "overseas": true
+  },
+  {
+    "name": "Naval Station Mayport",
+    "zip": "32228",
+    "aliases": "Naval Station Mayport Florida Naval Station Mayport Naval Station Mayport",
+    "source": "https://installations.militaryonesource.mil/military-installation/naval-station-mayport",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/naval-station-mayport",
+    "region": "Florida",
+    "address": "Mayport, FL 32228"
+  },
+  {
+    "name": "Naval Station Newport",
     "zip": "02841",
-    "aliases": "NMRTC Newport Rhode Island",
-    "source": "https://www.med.navy.mil/Naval-Medical-Forces-Atlantic/Organization/Support-Forces/NMRTC-New-England-RI/NMRTC-Newport-RI/"
+    "aliases": "Naval Station Newport Rhode Island Naval Station Newport Naval Station Newport",
+    "source": "https://cnrma.cnic.navy.mil/Installations/NAVSTA-Newport/Contact-Us/",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/naval-station-newport",
+    "region": "Rhode Island"
   },
   {
-    "name": "Walter Reed National Military Medical Center",
-    "zip": "20889",
-    "aliases": "NMRTC Bethesda Maryland",
-    "source": "https://www.dha.mil/Offices-and-Programs/ASBP/Blood-Donor-Centers"
+    "name": "Naval Station Norfolk",
+    "zip": "23511",
+    "aliases": "Naval Station Norfolk Virginia Naval Station Norfolk Naval Station Norfolk",
+    "source": "https://installations.militaryonesource.mil/military-installation/naval-station-norfolk",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/naval-station-norfolk",
+    "region": "Virginia",
+    "address": "Norfolk, VA 23511-2722"
+  },
+  {
+    "name": "Naval Station Rota",
+    "zip": "",
+    "aliases": "Naval Station Rota Spain Naval Station Rota Naval Station Rota",
+    "source": "https://installations.militaryonesource.mil/military-installation/naval-station-rota",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/naval-station-rota",
+    "region": "Spain",
+    "overseas": true
+  },
+  {
+    "name": "Naval Submarine Base Kings Bay",
+    "zip": "31547",
+    "aliases": "Naval Submarine Base Kings Bay Georgia Naval Submarine Base Kings Bay Naval Submarine Base Kings Bay",
+    "source": "https://installations.militaryonesource.mil/military-installation/naval-submarine-base-kings-bay",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/naval-submarine-base-kings-bay",
+    "region": "Georgia",
+    "address": "Kings Bay, GA 31547"
+  },
+  {
+    "name": "Naval Submarine Base New London",
+    "zip": "06349",
+    "aliases": "Naval Submarine Base New London Connecticut Naval Submarine Base New London Naval Submarine Base New London",
+    "source": "https://installations.militaryonesource.mil/military-installation/naval-submarine-base-new-london",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/naval-submarine-base-new-london",
+    "region": "Connecticut",
+    "address": "Groton, CT 06349-5093"
+  },
+  {
+    "name": "Naval Support Activity Annapolis - U.S. Naval Academy",
+    "zip": "21402",
+    "aliases": "Naval Support Activity Annapolis - U.S. Naval Academy Maryland Naval Support Activity Annapolis - U.S. Naval Academy NSA Annapolis - U.S. Naval Academy",
+    "source": "https://installations.militaryonesource.mil/military-installation/naval-support-activity-annapolis-u-s-naval-academy",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/naval-support-activity-annapolis-u-s-naval-academy",
+    "region": "Maryland",
+    "address": "Annapolis, MD 21402"
+  },
+  {
+    "name": "Naval Support Activity Bahrain",
+    "zip": "",
+    "aliases": "Naval Support Activity Bahrain Bahrain Naval Support Activity Bahrain NSA Bahrain",
+    "source": "https://installations.militaryonesource.mil/military-installation/naval-support-activity-bahrain",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/naval-support-activity-bahrain",
+    "region": "Bahrain",
+    "overseas": true
+  },
+  {
+    "name": "Naval Support Activity Bethesda Home of Walter Reed National Military Medical Center",
+    "zip": "20814",
+    "aliases": "Naval Support Activity Bethesda Home of Walter Reed National Military Medical Center Maryland Naval Support Activity Bethesda Home of Walter Reed National Military Medical Center NSA Bethesda Home of Walter Reed National Military Medical Center",
+    "source": "https://installations.militaryonesource.mil/military-installation/naval-support-activity-bethesda-home-of-walter-reed-national-military-medical-center",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/naval-support-activity-bethesda-home-of-walter-reed-national-military-medical-center",
+    "region": "Maryland",
+    "address": "Bethesda, MD 20814"
+  },
+  {
+    "name": "Naval Support Activity Crane",
+    "zip": "47522",
+    "aliases": "Naval Support Activity Crane Indiana Naval Support Activity Crane NSA Crane",
+    "source": "https://installations.militaryonesource.mil/military-installation/naval-support-activity-crane",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/naval-support-activity-crane",
+    "region": "Indiana",
+    "address": "Crane, IN 47522"
+  },
+  {
+    "name": "Naval Support Activity Hampton Roads",
+    "zip": "23551",
+    "aliases": "Naval Support Activity Hampton Roads Virginia Naval Support Activity Hampton Roads NSA Hampton Roads",
+    "source": "https://installations.militaryonesource.mil/military-installation/naval-support-activity-hampton-roads",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/naval-support-activity-hampton-roads",
+    "region": "Virginia",
+    "address": "Norfolk, VA 23551"
+  },
+  {
+    "name": "Naval Support Activity Hampton Roads Northwest Annex",
+    "zip": "23322",
+    "aliases": "Naval Support Activity Hampton Roads Northwest Annex Virginia Naval Support Activity Hampton Roads Northwest Annex NSA Hampton Roads Northwest Annex",
+    "source": "https://installations.militaryonesource.mil/military-installation/naval-support-activity-hampton-roads-northwest-annex",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/naval-support-activity-hampton-roads-northwest-annex",
+    "region": "Virginia",
+    "address": "Chesapeake, VA 23322-4102"
+  },
+  {
+    "name": "Naval Support Activity Maine",
+    "zip": "03904",
+    "aliases": "Naval Support Activity Maine Maine Naval Support Activity Maine NSA Maine",
+    "source": "https://installations.militaryonesource.mil/military-installation/portsmouth-naval-shipyard",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/portsmouth-naval-shipyard",
+    "region": "Maine",
+    "address": "Kittery, ME 03904"
+  },
+  {
+    "name": "Naval Support Activity Mechanicsburg",
+    "zip": "17050",
+    "aliases": "Naval Support Activity Mechanicsburg Pennsylvania Naval Support Activity Mechanicsburg NSA Mechanicsburg",
+    "source": "https://installations.militaryonesource.mil/military-installation/naval-support-activity-mechanicsburg",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/naval-support-activity-mechanicsburg",
+    "region": "Pennsylvania",
+    "address": "Mechanicsburg, PA 17050"
+  },
+  {
+    "name": "Naval Support Activity Mid-South",
+    "zip": "38054",
+    "aliases": "Naval Support Activity Mid-South Tennessee Naval Support Activity Mid-South NSA Mid-South",
+    "source": "https://installations.militaryonesource.mil/military-installation/naval-support-activity-mid-south",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/naval-support-activity-mid-south",
+    "region": "Tennessee",
+    "address": "Millington, TN 38054-5045"
+  },
+  {
+    "name": "Naval Support Activity Monterey",
+    "zip": "93943",
+    "aliases": "Naval Support Activity Monterey California Naval Support Activity Monterey NSA Monterey",
+    "source": "https://installations.militaryonesource.mil/military-installation/naval-support-activity-monterey",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/naval-support-activity-monterey",
+    "region": "California"
+  },
+  {
+    "name": "Naval Support Activity Naples",
+    "zip": "",
+    "aliases": "Naval Support Activity Naples Italy Naval Support Activity Naples NSA Naples",
+    "source": "https://installations.militaryonesource.mil/military-installation/naval-support-activity-naples",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/naval-support-activity-naples",
+    "region": "Italy",
+    "overseas": true
+  },
+  {
+    "name": "Naval Support Activity Naples Department Gaeta",
+    "zip": "",
+    "aliases": "Naval Support Activity Naples Department Gaeta Italy Naval Support Activity Naples Department Gaeta NSA Naples Department Gaeta",
+    "source": "https://installations.militaryonesource.mil/military-installation/naval-support-activity-naples-department-gaeta",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/naval-support-activity-naples-department-gaeta",
+    "region": "Italy",
+    "overseas": true
+  },
+  {
+    "name": "Naval Support Activity Orlando",
+    "zip": "32826",
+    "aliases": "Naval Support Activity Orlando Florida Naval Support Activity Orlando NSA Orlando",
+    "source": "https://installations.militaryonesource.mil/military-installation/naval-support-activity-orlando",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/naval-support-activity-orlando",
+    "region": "Florida",
+    "address": "Orlando, FL 32826"
+  },
+  {
+    "name": "Naval Support Activity Panama City",
+    "zip": "32407",
+    "aliases": "Naval Support Activity Panama City Florida Naval Support Activity Panama City NSA Panama City",
+    "source": "https://installations.militaryonesource.mil/military-installation/naval-support-activity-panama-city",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/naval-support-activity-panama-city",
+    "region": "Florida"
+  },
+  {
+    "name": "Naval Support Activity Philadelphia",
+    "zip": "19111",
+    "aliases": "Naval Support Activity Philadelphia Pennsylvania Naval Support Activity Philadelphia NSA Philadelphia",
+    "source": "https://installations.militaryonesource.mil/military-installation/naval-support-activity-philadelphia",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/naval-support-activity-philadelphia",
+    "region": "Pennsylvania",
+    "address": "Philadelphia, PA 19111"
+  },
+  {
+    "name": "Naval Support Activity Portsmouth",
+    "zip": "23709",
+    "aliases": "Naval Support Activity Portsmouth Virginia Naval Support Activity Portsmouth NSA Portsmouth",
+    "source": "https://installations.militaryonesource.mil/military-installation/norfolk-naval-shipyard",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/norfolk-naval-shipyard",
+    "region": "Virginia",
+    "address": "Portsmouth, VA 23709-1022"
+  },
+  {
+    "name": "Naval Support Activity Saratoga Springs",
+    "zip": "12866",
+    "aliases": "Naval Support Activity Saratoga Springs New York Naval Support Activity Saratoga Springs NSA Saratoga Springs",
+    "source": "https://ffr.cnic.navy.mil/Navy-Housing/Housing-By-Region/Mid-Atlantic/NSA-Saratoga-Springs/",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/naval-support-activity-saratoga-springs",
+    "region": "New York"
+  },
+  {
+    "name": "Naval Support Activity Singapore",
+    "zip": "",
+    "aliases": "Naval Support Activity Singapore Singapore Naval Support Activity Singapore NSA Singapore",
+    "source": "https://installations.militaryonesource.mil/military-installation/naval-support-activity-singapore",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/naval-support-activity-singapore",
+    "region": "Singapore",
+    "overseas": true
+  },
+  {
+    "name": "Naval Support Activity Souda Bay",
+    "zip": "",
+    "aliases": "Naval Support Activity Souda Bay Greece Naval Support Activity Souda Bay NSA Souda Bay",
+    "source": "https://installations.militaryonesource.mil/military-installation/naval-support-activity-souda-bay",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/naval-support-activity-souda-bay",
+    "region": "Greece",
+    "overseas": true
+  },
+  {
+    "name": "Naval Support Activity South Potomac (NSF Dahlgren)",
+    "zip": "22448",
+    "aliases": "Naval Support Activity South Potomac (NSF Dahlgren) Virginia Naval Support Activity South Potomac (NSF Dahlgren) NSA South Potomac (NSF Dahlgren)",
+    "source": "https://installations.militaryonesource.mil/military-installation/naval-support-activity-south-potomac-nsf-dahlgren",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/naval-support-activity-south-potomac-nsf-dahlgren",
+    "region": "Virginia",
+    "address": "Dahlgren, VA 22448-5108"
+  },
+  {
+    "name": "Naval Support Activity South Potomac (NSF Indian Head)",
+    "zip": "20640",
+    "aliases": "Naval Support Activity South Potomac (NSF Indian Head) Maryland Naval Support Activity South Potomac (NSF Indian Head) NSA South Potomac (NSF Indian Head)",
+    "source": "https://ndw.cnic.navy.mil/Installations/NSA-South-Potomac/Installations/NSF-Indian-Head/Contact-Us/",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/naval-support-activity-south-potomac-nsf-indian-head",
+    "region": "Maryland"
+  },
+  {
+    "name": "Naval Support Activity Stirling",
+    "zip": "",
+    "aliases": "Naval Support Activity Stirling Australia Naval Support Activity Stirling NSA Stirling",
+    "source": "https://installations.militaryonesource.mil/military-installation/naval-support-activity-stirling",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/naval-support-activity-stirling",
+    "region": "Australia",
+    "overseas": true
+  },
+  {
+    "name": "Naval Support Activity Washington",
+    "zip": "20374",
+    "aliases": "Naval Support Activity Washington District Of Columbia Naval Support Activity Washington NSA Washington",
+    "source": "https://installations.militaryonesource.mil/military-installation/naval-support-activity-washington",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/naval-support-activity-washington",
+    "region": "District Of Columbia",
+    "address": "Washington, DC 20374-5028"
+  },
+  {
+    "name": "Naval Weapons Station Earle",
+    "zip": "07722",
+    "aliases": "Naval Weapons Station Earle New Jersey Naval Weapons Station Earle NWS Earle",
+    "source": "https://installations.militaryonesource.mil/military-installation/naval-weapons-station-earle",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/naval-weapons-station-earle",
+    "region": "New Jersey",
+    "address": "Colts Neck, NJ 07722-5001"
+  },
+  {
+    "name": "Naval Weapons Station Seal Beach",
+    "zip": "90740",
+    "aliases": "Naval Weapons Station Seal Beach California Naval Weapons Station Seal Beach NWS Seal Beach",
+    "source": "https://cnrsw.cnic.navy.mil/Installations/WPNSTA-Seal-Beach/Contact-Us/",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/naval-weapons-station-seal-beach",
+    "region": "California"
+  },
+  {
+    "name": "Naval Weapons Station Yorktown",
+    "zip": "23691",
+    "aliases": "Naval Weapons Station Yorktown Virginia Naval Weapons Station Yorktown NWS Yorktown",
+    "source": "https://installations.militaryonesource.mil/military-installation/naval-weapons-station-yorktown",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/naval-weapons-station-yorktown",
+    "region": "Virginia",
+    "address": "Yorktown, VA 23691"
+  },
+  {
+    "name": "Navy Support Facility Diego Garcia",
+    "zip": "",
+    "aliases": "Navy Support Facility Diego Garcia British Indian Ocean Territory Navy Support Facility Diego Garcia Navy Support Facility Diego Garcia",
+    "source": "https://installations.militaryonesource.mil/military-installation/navy-support-facility-diego-garcia",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/navy-support-facility-diego-garcia",
+    "region": "British Indian Ocean Territory",
+    "overseas": true
+  },
+  {
+    "name": "Newport News Shipyard",
+    "zip": "23607",
+    "aliases": "Newport News Shipyard Virginia Newport News Shipyard Newport News Shipyard",
+    "source": "https://installations.militaryonesource.mil/military-installation/newport-news-shipyard",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/newport-news-shipyard",
+    "region": "Virginia",
+    "address": "Newport News, VA 23607-2787"
+  },
+  {
+    "name": "Surface Combat Systems Center Wallops Island",
+    "zip": "23337",
+    "aliases": "Surface Combat Systems Center Wallops Island Virginia Surface Combat Systems Center Wallops Island Surface Combat Systems Center Wallops Island",
+    "source": "https://www.navsea.navy.mil/Home/SCSC/Contact-Us/",
+    "directorySource": "https://installations.militaryonesource.mil/military-installation/surface-combat-systems-center-wallops-island",
+    "region": "Virginia"
   },
   {
     "name": "U.S. Naval Hospital Guam",
@@ -97,109 +891,9 @@
     "overseas": true
   },
   {
-    "name": "Marine Corps Base Camp Pendleton",
-    "zip": "92055",
-    "aliases": "MCB Pendleton Oceanside USMC",
-    "source": "https://www.pendleton.marines.mil/Useful-Information/Useful-Addresses/"
-  },
-  {
-    "name": "Marine Corps Air Station Miramar",
-    "zip": "92145",
-    "aliases": "MCAS Miramar San Diego USMC",
-    "source": "https://www.miramar.marines.mil/Arriving/ID-Center/"
-  },
-  {
-    "name": "Marine Corps Recruit Depot San Diego",
-    "zip": "92140",
-    "aliases": "MCRD San Diego USMC",
-    "source": "https://www.mcrdsd.marines.mil/Visitors/MCRDSD-Museum/"
-  },
-  {
-    "name": "Marine Corps Air Ground Combat Center Twentynine Palms",
-    "zip": "92278",
-    "aliases": "MCAGCC 29 Palms USMC",
-    "source": "https://www.29palms.marines.mil/Contact-Us/Mock/dvpTag/MCAGCC/"
-  },
-  {
-    "name": "Marine Corps Logistics Base Barstow",
-    "zip": "92311",
-    "aliases": "MCLB Barstow USMC",
-    "source": "https://www.mclbbarstow.marines.mil/Agencies/Inspector-General/"
-  },
-  {
-    "name": "Marine Corps Air Station Yuma",
-    "zip": "85369",
-    "aliases": "MCAS Yuma branch health clinic USMC",
-    "source": "https://www.mcasyuma.marines.mil/Commands/Branch-Health-Clinic-MCAS-Yuma/"
-  },
-  {
-    "name": "Marine Corps Base Hawaii (Kaneohe Bay)",
-    "zip": "96863",
-    "aliases": "MCBH Kaneohe Bay MCAS Kaneohe USMC",
-    "source": "https://www.mcbhawaii.marines.mil/Contact-Us/"
-  },
-  {
-    "name": "Marine Corps Base Camp Lejeune",
-    "zip": "28542",
-    "aliases": "MCB Lejeune Jacksonville North Carolina USMC",
-    "source": "https://www.lejeune.marines.mil/Portals/27/Documents/IPAC/ENCLOSURE%202%20RPAC%20SOP%2020241217.pdf?ver=h_mHOTFp8xGCnanhxCjO8Q%3D%3D"
-  },
-  {
-    "name": "Marine Corps Air Station New River",
-    "zip": "28545",
-    "aliases": "MCAS New River Jacksonville North Carolina USMC",
-    "source": "https://www.lejeune.marines.mil/Portals/27/Documents/IPAC/ENCLOSURE%202%20RPAC%20SOP%2020241217.pdf?ver=h_mHOTFp8xGCnanhxCjO8Q%3D%3D"
-  },
-  {
-    "name": "Marine Corps Air Station Cherry Point",
-    "zip": "28533",
-    "aliases": "MCAS Cherry Point Havelock USMC",
-    "source": "https://www.lejeune.marines.mil/Portals/27/Documents/IPAC/ENCLOSURE%202%20RPAC%20SOP%2020241217.pdf?ver=h_mHOTFp8xGCnanhxCjO8Q%3D%3D"
-  },
-  {
-    "name": "Marine Corps Air Station Beaufort",
-    "zip": "29904",
-    "aliases": "MCAS Beaufort South Carolina USMC",
-    "source": "https://www.lejeune.marines.mil/Portals/27/Documents/IPAC/ENCLOSURE%202%20RPAC%20SOP%2020241217.pdf?ver=h_mHOTFp8xGCnanhxCjO8Q%3D%3D"
-  },
-  {
-    "name": "Marine Corps Logistics Base Albany",
-    "zip": "31704",
-    "aliases": "MCLB Albany Georgia USMC",
-    "source": "https://www.lejeune.marines.mil/Portals/27/Documents/IPAC/ENCLOSURE%202%20RPAC%20SOP%2020241217.pdf?ver=h_mHOTFp8xGCnanhxCjO8Q%3D%3D"
-  },
-  {
-    "name": "Marine Corps Base Quantico",
-    "zip": "22134",
-    "aliases": "MCB Quantico Virginia USMC",
-    "source": "https://www.quantico.marines.mil/Resources/PCS-Inbound-Outbound/Checking-Out/"
-  },
-  {
-    "name": "Marine Corps Recruit Depot Parris Island",
-    "zip": "29905",
-    "aliases": "MCRD Parris Island South Carolina USMC",
-    "source": "https://www.mcrdpi.marines.mil/Permanent-Personnel/Resources/Voting-Information/"
-  },
-  {
-    "name": "Marine Corps Base Camp Blaz (Guam)",
-    "zip": "",
-    "aliases": "MCB Blaz Dededo Guam USMC",
-    "source": "https://www.mcbblaz.marines.mil/About/",
-    "overseas": true
-  },
-  {
-    "name": "Marine Corps Air Station Iwakuni (Japan)",
-    "zip": "",
-    "aliases": "MCAS Iwakuni Japan USMC",
-    "source": "https://www.mcasiwakuni.marines.mil/Organizations/Station/Postal/Mailing-Restrictions/",
-    "overseas": true
-  },
-  {
-    "name": "Marine Corps Base Camp Foster (Okinawa)",
-    "zip": "",
-    "aliases": "MCB Butler Camp Foster Okinawa Japan USMC",
-    "source": "https://www.mcbbutler.marines.mil/Camps/Camp-Foster/CO/",
-    "overseas": true
+    "name": "Walter Reed National Military Medical Center",
+    "zip": "20889",
+    "aliases": "NMRTC Bethesda Maryland",
+    "source": "https://www.dha.mil/Offices-and-Programs/ASBP/Blood-Donor-Centers"
   }
 ]
-
