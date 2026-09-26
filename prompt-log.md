@@ -191,3 +191,11 @@ I verified the omission by reviewing the DoD retirement eligibility rule, compar
 ## Editorial and analytical disclosure
 
 The opening sentence lightly corrects spelling and grammar in the author's supplied statement; the pension paragraph preserves the author's previously supplied account. The model's sensitivity conditions on completing service to 20 years and isolates the pension stream; it does not establish that every physician's overall incentive increases monotonically. Earlier AI assistance included draft prose and analytical development as well as lab construction, research, calculations, figures, and formatting. The latest revision also includes AI-assisted policy wording and a proposed evaluation design based on the author's rationale. These contributions should not be described as formatting alone. The author must review the paper's prose and course AI-use requirements before submission.
+
+
+## 2026-09-25 — Hemochromatosis manuscript editorial review
+
+- Request: add the HH manuscript as a separate GitHub project and review for further modifications. The author explicitly authorized the public repository after visibility was disclosed.
+- Inputs: current Google Doc manuscript and comment threads, two previously reviewed author-supplied articles, and earlier source checks.
+- Work: preserved source text and prior suggestions; added a focused evidence map and an additional editorial review addressing policy specificity, counterarguments, UAS applicability, evaluation outcomes, and argument structure.
+- Limits: no patient outcomes invented; current Navy guidance remains to be verified; no automated manuscript-review workflow was present. New suggestions remain proposals for author review.
