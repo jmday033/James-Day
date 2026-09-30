@@ -221,3 +221,7 @@ The author was concerned the full lab would lose users and asked AI to fix it. A
 ## 2026-09-29 — Quick Look combined into Stay or go?
 
 At the author's direction (option 2), AI moved the Quick Look's GMO-to-residency comparison and its medical-school checklist into `stay-or-go.html` behind a "What are you deciding?" selector (deep link: `stay-or-go.html?decision=gmo`). `quick-lab.html` and both older Quick Look addresses now redirect to Stay or go?; the retired page remains in git history. Navigation now shows two pages: Stay or go? and the Advanced lab.
+
+## 2026-09-29 — Sharing polish and all-specialty expansion
+
+For sharing with MCCareer's Joel Schofer and colleagues, AI added a link preview image, home-screen icons and manifest, a privacy note, and a GitHub feedback link to Stay or go?. At the author's request, the page now covers 48 specialties: FY 2026 DFAS Medical Corps incentive pay and four-year retention bonus by specialty, and Doximity 2026 national civilian averages. Specialties without their own Navy row use BUMED subspecialty categories as described on MCCareer (Category III: allergy, immunology, nephrology, hematology/oncology; Category IV: other IM/peds subspecialties); surgical subspecialties are assumed Category I and flagged for confirmation. San Diego (Marit) averages remain primary care only. The GMO residency view remains primary care only.

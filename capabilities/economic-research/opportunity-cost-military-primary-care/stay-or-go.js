@@ -53,10 +53,75 @@ export function wageTax(wages, {family, kids=0, spouseWages=0, stateCode, stateD
   return income(wages+spouse) - income(spouse) + fica + sdi;
 }
 
+// ---------- all specialties ----------
+// civ: Doximity 2026 national average compensation. ip / rb4: FY 2026 Navy
+// Medical Corps incentive pay and 4-year retention bonus (annual), DFAS table.
+// cat: Navy subspecialty category where the specialty has no row of its own;
+// category membership follows BUMED's published descriptions (Cat III: allergy,
+// immunology, nephrology, hematology/oncology; Cat IV: other IM/peds
+// subspecialties). Surgical subspecialties are assumed to be Category I.
+const I={ip:72000,rb4:110000}, III={ip:46000,rb4:48000}, IV={ip:46000,rb4:48000};
+export const specialtyTable = [
+  // group, key, label, civilian, ip, rb4, note
+  ['Primary care','im','Internal medicine',339274,43000,48000],
+  ['Primary care','fm','Family medicine',325040,43000,48000],
+  ['Primary care','peds','Pediatrics',273665,43000,35000],
+  ['Primary care','medpeds','Medicine–pediatrics',319995,43000,48000,'Navy internal medicine rates assumed'],
+  ['Medicine subspecialties','cards','Cardiology',604635,69000,76000],
+  ['Medicine subspecialties','gi','Gastroenterology',531345,54000,58000],
+  ['Medicine subspecialties','pulm','Pulmonary/critical care',441472,60000,63000],
+  ['Medicine subspecialties','hemonc','Hematology/oncology',519715,III.ip,III.rb4,'Civilian: Doximity oncology; Navy subspecialty Category III'],
+  ['Medicine subspecialties','nephro','Nephrology',385965,III.ip,III.rb4,'Navy subspecialty Category III'],
+  ['Medicine subspecialties','allergy','Allergy and immunology',335978,III.ip,III.rb4,'Navy subspecialty Category III'],
+  ['Medicine subspecialties','id','Infectious disease',337353,IV.ip,IV.rb4,'Navy subspecialty Category IV'],
+  ['Medicine subspecialties','rheum','Rheumatology',321778,IV.ip,IV.rb4,'Navy subspecialty Category IV'],
+  ['Medicine subspecialties','endo','Endocrinology',309782,IV.ip,IV.rb4,'Navy subspecialty Category IV'],
+  ['Medicine subspecialties','geri','Geriatrics',304411,IV.ip,IV.rb4,'Navy subspecialty Category IV'],
+  ['Hospital-based','em','Emergency medicine',423723,54000,76000],
+  ['Hospital-based','anes','Anesthesiology',557131,66000,105000],
+  ['Hospital-based','rads','Radiology (diagnostic)',609684,66000,76000],
+  ['Hospital-based','ir','Interventional radiology',634658,66000,76000,'Navy radiology rates assumed'],
+  ['Hospital-based','radonc','Radiation oncology',613837,66000,76000,'Navy radiology (therapeutic) rates'],
+  ['Hospital-based','path','Pathology',410039,48000,35000],
+  ['Surgery','gensurg','General surgery',501003,66000,105000],
+  ['Surgery','ortho','Orthopedic surgery',696852,66000,105000],
+  ['Surgery','neurosurg','Neurosurgery',829161,75000,150000],
+  ['Surgery','ent','Otolaryngology (ENT)',549810,60000,48000],
+  ['Surgery','uro','Urology',566740,60000,55000],
+  ['Surgery','ophtho','Ophthalmology',487438,54000,37000],
+  ['Surgery','obgyn','Obstetrics and gynecology',420859,60000,46000],
+  ['Surgery','thoracic','Cardiothoracic surgery',749707,I.ip,I.rb4,'Assumed Navy subspecialty Category I; confirm with BUMED'],
+  ['Surgery','vascular','Vascular surgery',600520,I.ip,I.rb4,'Assumed Navy subspecialty Category I; confirm with BUMED'],
+  ['Surgery','plastics','Plastic surgery',625757,I.ip,I.rb4,'Assumed Navy subspecialty Category I; confirm with BUMED'],
+  ['Surgery','pedsurg','Pediatric surgery',627126,I.ip,I.rb4,'Assumed Navy subspecialty Category I; confirm with BUMED'],
+  ['Other adult specialties','derm','Dermatology',497509,48000,43000],
+  ['Other adult specialties','neuro','Neurology',371087,48000,30000],
+  ['Other adult specialties','psych','Psychiatry',350786,48000,65000],
+  ['Other adult specialties','pmr','Physical medicine and rehabilitation',376234,43000,30000],
+  ['Other adult specialties','occmed','Occupational medicine',329380,43000,35000],
+  ['Other adult specialties','prevmed','Preventive medicine',265825,43000,35000],
+  ['Pediatric subspecialties','neonat','Neonatology',364388,50000,63000],
+  ['Pediatric subspecialties','pedcards','Pediatric cardiology',365395,69000,76000],
+  ['Pediatric subspecialties','pedem','Pediatric emergency medicine',332579,54000,76000,'Navy emergency medicine rates assumed'],
+  ['Pediatric subspecialties','childneuro','Child neurology',309593,48000,30000],
+  ['Pediatric subspecialties','pedgi','Pediatric gastroenterology',311433,54000,58000],
+  ['Pediatric subspecialties','pedpulm','Pediatric pulmonology',278452,60000,63000],
+  ['Pediatric subspecialties','pedhemonc','Pediatric hematology/oncology',271021,III.ip,III.rb4,'Navy subspecialty Category III'],
+  ['Pediatric subspecialties','pednephro','Pediatric nephrology',269825,III.ip,III.rb4,'Navy subspecialty Category III'],
+  ['Pediatric subspecialties','pedendo','Pediatric endocrinology',242274,IV.ip,IV.rb4,'Navy subspecialty Category IV'],
+  ['Pediatric subspecialties','pedid','Pediatric infectious disease',217819,IV.ip,IV.rb4,'Navy subspecialty Category IV'],
+  ['Pediatric subspecialties','pedrheum','Pediatric rheumatology',236011,IV.ip,IV.rb4,'Navy subspecialty Category IV']
+].map(([group,key,label,civ,ip,rb4,note]) => ({group,key,label,civ,ip,rb4,note:note||''}));
+export const specialtyByKey = Object.fromEntries(specialtyTable.map(r => [r.key, r]));
+export const sanDiegoAvailable = key => ['im','fm','peds'].includes(key);
+
 // ---------- defaults ----------
 export const specialties = {im:'Internal medicine', fm:'Family medicine', peds:'Pediatrics'};
 export function defaultCivilianSalary(specialty, source='national') {
-  return source === 'sandiego' ? benchmarks.marit.values[specialty] : benchmarks.doximity.values[specialty];
+  if (source === 'sandiego' && sanDiegoAvailable(specialty)) return benchmarks.marit.values[specialty];
+  const row = specialtyByKey[specialty];
+  if (!row) throw new RangeError('Unknown specialty');
+  return row.civ;
 }
 // Published averages used as starting values. See `averageNotes` for sources.
 export const averages = {
@@ -95,14 +160,16 @@ export function stayOrGo(userInput, {stateData=null, lifeTable=null, bah=null} =
   const civ = Number.isFinite(x.civilianSalary) && x.civilianSalary > 0 ? x.civilianSalary : defaultCivilianSalary(x.specialty, x.salarySource);
   const navyState = x.navyState === 'same' ? x.civilianState : x.navyState;
   const isBrs = x.retirement === 'brs';
-  const rb = x.retentionBonus ? (rbRates.FY26[x.specialty]?.['4'] ?? 0) : 0;
+  const spec = specialtyByKey[x.specialty];
+  if (!spec) throw new RangeError('Unknown specialty');
+  const rb = x.retentionBonus ? spec.rb4 : 0;
   const bahMonthly = Number.isFinite(x.bahMonthly) ? x.bahMonthly : (bah?.monthly ?? 0);   // bah = bahFor(zip, rank, deps)
   const age = Number.isFinite(x.currentAge) ? x.currentAge : averages.ageAtServiceStart + yos;
   const paymentYears = Number.isFinite(x.paymentYears) ? x.paymentYears : remainingYears(age + years, lifeTable);
 
   const cash = calculateScenario({rank:x.rank, commissionYear:2026 - yos, promotionOn:x.promotion,
     payYos:yos, base:payFor(x.rank, yos), bah:bahMonthly, bahLookup:Number.isFinite(x.bahMonthly) ? null : (bah ?? null), zip:x.zip,
-    deps:withSpouse ? 'yes' : 'no', rbRemaining:Math.min(4, years), currentBonus:rb,
+    deps:withSpouse ? 'yes' : 'no', ip:spec.ip, rbRemaining:Math.min(4, years), currentBonus:rb,
     continuationPayMultiple:x.continuationPay ? 2.5 : 0, isBrs,
     civilianSalary:civ, civilianGrowth:x.civilianGrowth, civilianFirstYearShare:x.firstYearShare,
     discount:x.cashRate, years});

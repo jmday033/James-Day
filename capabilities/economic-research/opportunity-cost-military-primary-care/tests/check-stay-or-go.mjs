@@ -39,3 +39,18 @@ const sens=sensitivity({},{stateData,lifeTable,bah});
 assert.equal(sens.length,8);
 assert.ok(sens.every((s,i)=>i===0||sens[i-1].swing>=s.swing));
 console.log('Stay-or-go checks passed');
+
+// Every specialty runs, uses its own Navy pay, and falls back to national pay outside primary care.
+{
+  const {specialtyTable, defaultCivilianSalary} = await import('../stay-or-go.js');
+  assert.ok(specialtyTable.length >= 45);
+  for (const row of specialtyTable) {
+    const r = stayOrGo({specialty:row.key},{stateData,lifeTable,bah});
+    assert.ok(Number.isFinite(r.net), row.key);
+    assert.equal(r.input.civilianSalary, row.civ);
+  }
+  assert.equal(defaultCivilianSalary('cards','sandiego'), 604635);
+  const cards = stayOrGo({specialty:'cards'},{stateData,lifeTable,bah}), im = stayOrGo({},{stateData,lifeTable,bah});
+  assert.ok(cards.rows[0].navyCash - im.rows[0].navyCash === (69000-43000) + (76000-48000));
+  console.log('All-specialty checks passed');
+}
