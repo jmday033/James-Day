@@ -258,15 +258,15 @@ export function sensitivity(input, ctx) {
   const x = {...defaults, ...input};
   const civ = Number.isFinite(x.civilianSalary) && x.civilianSalary > 0 ? x.civilianSalary : defaultCivilianSalary(x.specialty, x.salarySource);
   const tests = [
-    ['Civilian salary ±15%', {civilianSalary:civ*.85}, {civilianSalary:civ*1.15}],
-    ['Pension discount rate 2% to 5%', {pensionRate:.02}, {pensionRate:.05}],
-    ['Promotion to O-5 / none', {promotion:true}, {promotion:false}],
-    ['Navy tax state: no income tax / same as civilian', {navyState:'FL'}, {navyState:'same'}],
-    ['Retiree TRICARE: none / no employer coverage', {tricare:'none'}, {tricare:'full'}],
-    ['First civilian year at 80% / 100%', {firstYearShare:.8}, {firstYearShare:1}],
-    ['Retention bonus: renew to 20 / none', {rbMode:'renew'}, {rbMode:'none'}],
-    ['Civilian pay penalty after 20: 0% / 15%', {postTwentyPenalty:0}, {postTwentyPenalty:.15}],
-    ['Cash discount rate 3% to 7%', {cashRate:.03}, {cashRate:.07}]
+    ['Civilian salary: 15% lower or higher', {civilianSalary:civ*.85}, {civilianSalary:civ*1.15}],
+    ['How much the pension is worth today (2% to 5% discount rate)', {pensionRate:.02}, {pensionRate:.05}],
+    ['Promoted to O-5, or not', {promotion:true}, {promotion:false}],
+    ['Navy home state: no state income tax, or same state as the civilian job', {navyState:'FL'}, {navyState:'same'}],
+    ['Retiree TRICARE: counted as worth $0, or as your only health plan', {tricare:'none'}, {tricare:'full'}],
+    ['First civilian year: 80% or full pay while you ramp up', {firstYearShare:.8}, {firstYearShare:1}],
+    ['Retention bonus: keep renewing to 20, or none', {rbMode:'renew'}, {rbMode:'none'}],
+    ['Civilian job after retiring at 20: no pay cut, or 15% less', {postTwentyPenalty:0}, {postTwentyPenalty:.15}],
+    ['How much future pay is worth today (3% to 7% discount rate)', {cashRate:.03}, {cashRate:.07}]
   ];
   return tests.map(([label, a, b]) => {
     const va = stayOrGo({...input, ...a}, ctx).net - base, vb = stayOrGo({...input, ...b}, ctx).net - base;
