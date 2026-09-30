@@ -245,3 +245,32 @@ Permitted research assistance. At the author's request, AI searched for military
 ## 2026-09-29 — Revision 10 review and integration
 
 The author supplied revision 10 (.docx) and asked AI to review and integrate it. AI preserved the file byte-for-byte, added a LibreOffice review PDF and dated text snapshot, updated the project README, and wrote a critique (`paper/revision-10-review-2026-09-29.md`) covering assignment constraints, an independent recomputation of the main figures (all match within rounding), source checks (NHS ULHT, Goldin et al.), and rubric-ordered suggestions. No paper prose was written or changed. How revisions 8–10 were produced is for the author to record here.
+
+
+## 2026-09-29 — Provenance of revisions 8–10 and final submission packaging
+
+This entry supplements the earlier revision-10 integration review, which described only the separate act of importing and reviewing that file. Revisions 8–10 were produced with substantive assistance from OpenAI Codex in the preceding conversation; they were not wholly author-written submissions. This entry records the available conversation history rather than reconstructing unobserved work.
+
+| Revision | Author request | AI contribution | Verification and remaining limits |
+|---|---|---|---|
+| 8 | Apply formatting and anonymity fixes to revision 7. | Edited the Word document and figure presentation; removed identifying metadata and body identifiers. | Later review found remaining table-font and landscape-margin inconsistencies, and an overlength body. Revision 8 did not resolve those issues. |
+| 9 | Fix the issues identified in the assignment review. | Rewrote and condensed body prose to four PDF pages; reconciled gross and adjusted comparisons using the same longevity and pension assumptions; generated replacement figures; added tax, pension, and sensitivity appendices; drafted pilot decision thresholds. | Recomputed headline arithmetic and visually inspected the directly generated PDF. Corrected gross break-even to about 14.3 years versus adjusted 10.9. Word rendering was unavailable in this Codex environment, so its pagination was not independently verified here. The five-percentage-point and 25%-of-replacement-cost thresholds were AI-proposed judgments, not research results. |
+| 10 | Research military and civilian precedents, then adapt their templates into the paper. | Located NHS communication resources and military/university retirement-plan studies; rewrote supporting-evidence and recommendation sections; authored Appendix F with adapted counseling and evaluation materials. | Distinguished benefits participation from employment retention and uncontrolled NHS experience from causal evidence. Retention benefits for Navy physicians remain untested. |
+| 11 / submission package | Use the published Goldin citation, verify GAO wording, remove repeated reference headings, package files, and complete the log/reflection. | Cited Journal of Public Economics 191, Article 104247; attributed June 2026 to DOD's status update reported by GAO; removed repeated headings; assembled the PDF, editable copy, and figure exports; prepared this provenance entry and the closing reflection below. | Publisher and GAO pages checked; PDF text/layout and four-page body checked. No LMS submission or actual pilot occurred. |
+
+Sources checked for the final citation corrections:
+- Goldin et al. (2020), https://doi.org/10.1016/j.jpubeco.2020.104247
+- GAO-20-165 recommendation tracker, https://www.gao.gov/products/gao-20-165. It reports a June 2026 DOD status update and lists all three recommendations as open; DOD estimated implementation by September 2028.
+
+The AI contributions include prose, analytical framing, pilot design, calculations, research, graphics, and formatting. Disclosure does not itself resolve the course's restriction on AI-authored paper prose, analysis, or reflection. Author review and any required instructor guidance remain necessary. No claim is made that the author independently verified every output or rewrote every AI passage.
+
+## Closing reflection — AI-assisted synthesis for author review
+
+AI helped me create the lab, which is the real value of this assignment to me personally, although that value is difficult to convey through the paper. The lab lets the compensation comparison be examined across assumptions rather than reduced to one salary difference.
+
+My earlier reflection identified a limitation in the pension treatment: the model did not clearly show how the decision changes as a physician approaches 20 years of service. I described checking the retirement eligibility rule against my own service timeline. The revised comparison now shows the remaining pay gap and the conditional pension value at different service years. This is a financial comparison conditional on completing service, not evidence that every physician will respond the same way.
+
+During the revisions, I asked what the assumed 5% civilian earnings penalty meant and where the proposed education pilot came from. Those questions exposed distinctions that matter: an assumed earnings reduction is not an observed wage penalty, and a financial model does not prove that counseling will retain physicians. The supporting studies and NHS examples provide reasons to test the proposal, while actual retention remains an outcome to measure.
+
+The final files also require a clear account of authorship. Codex helped with more than formatting: it drafted and revised prose, analytical explanations, and the proposed pilot. This reflection was assembled with AI from my earlier account and the recorded conversation. It should not be presented as independently written personal reflection or as proof of compliance with the course's AI-use rules.
+
