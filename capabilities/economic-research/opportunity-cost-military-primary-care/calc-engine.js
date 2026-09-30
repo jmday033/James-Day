@@ -57,7 +57,7 @@ export function calculateScenario(input) {
     civilianBenefits=0, navyTsp=0, navyTspAuto=false, isBrs=true,
     health=0, gi=0, pensionAnnual=0, malpractice=0, discount=0.05,
     continuationPayMultiple=0, continuationPayYos=12,
-    civilianFirstYearShare=1, transitionCost=0, civilianInsurance=0,
+    civilianFirstYearShare=1, transitionCost=0, civilianInsurance=0, civilianVa=0,
     years=4} = input;
   if (!Number.isInteger(years) || years < 1 || years > 30) throw new RangeError('Comparison years must be 1–30');
   if (!Number.isFinite(discount) || discount < 0 || discount > 0.20) throw new RangeError('Real discount rate must be 0–20%');
@@ -86,7 +86,10 @@ export function calculateScenario(input) {
     // Civilian-path costs: one-time transition (moving, licensure, credentialing,
     // pay gap) in year 1, and annual private disability/life insurance premiums.
     const civilianValue = civilianCash - annualCivilianTax + civilianBenefits - malpractice
-      - (i === 0 ? transitionCost : 0) - civilianInsurance;
+      - (i === 0 ? transitionCost : 0) - civilianInsurance
+      // Tax-free VA compensation received after separation on the leave path,
+      // during years the stay path is still on active duty.
+      + civilianVa;
     const navyValue = navyCash - navyTax + health + gi + pensionAnnual + tsp;
     const gap = civilianValue - navyValue;
     const factor = 1 / Math.pow(1 + discount, i + 1);
@@ -116,16 +119,80 @@ export const pensionDiscountSourceUrl = 'https://home.treasury.gov/resource-cent
 // Present value today of the conditional stay-path pension, plus an optional
 // retiree-health value paid each year from retirement until Medicare age.
 // `discount` is the pension (low-risk) real rate, not the cash-pay rate.
+// ---- VA disability compensation, 2026 rates (effective 2025-12-01) ----
+// Monthly amounts from VA.gov: veteran alone / veteran with spouse (no children).
+// 10% and 20% ratings have no dependent differential. Ratings are in 10% steps.
+export const vaRates2026Url = 'https://www.va.gov/disability/compensation-rates/veteran-rates/';
+export const vaMonthly2026 = {
+  0:{alone:0, spouse:0},
+  20:{alone:356.66, spouse:356.66},
+  30:{alone:552.47, spouse:617.47},
+  50:{alone:1132.90, spouse:1241.90},
+  60:{alone:1435.02, spouse:1566.02},
+  100:{alone:3938.58, spouse:4158.17}
+};
+// CBO (2024) reports the average rating among compensation recipients rose to
+// about 56% by 2020; 60% is the nearest VA rating step.
+export const averageVaRating = 60;
+export function vaAnnualFor(rating, withSpouse) {
+  const row = vaMonthly2026[rating];
+  if (!row) throw new RangeError('Unsupported VA rating');
+  return 12 * (withSpouse ? row.spouse : row.alone);
+}
+// Concurrent Retirement and Disability Pay: at 50% or higher, a 20-year retiree
+// keeps full retired pay plus VA compensation. Below 50%, retired pay is reduced
+// dollar for dollar by the VA amount (the VA portion is tax-free).
+export const crdpThreshold = 50;
+
+// ---- Retiree TRICARE value before Medicare, based on published averages ----
+// KFF 2025: average employer premium $26,993 family / $9,325 single; average
+// worker contribution $6,850 family / $1,440 single. TRICARE Prime 2026 retiree
+// enrollment fee: Group A $765 family / $381.96 individual; Group B $927 / $462.96.
+export const kff2025 = {familyPremium:26993, singlePremium:9325, familyWorker:6850, singleWorker:1440};
+export const tricarePrimeRetiree2026 = {A:{family:765, individual:381.96}, B:{family:927, individual:462.96}};
+export function retireeTricareValue({family=true, mode='employer', group='A'} = {}) {
+  if (mode === 'none') return 0;
+  const fee = tricarePrimeRetiree2026[group]?.[family ? 'family' : 'individual'];
+  if (fee == null) throw new RangeError('TRICARE group must be A or B');
+  // 'employer': retiree works a civilian job with employer coverage, so TRICARE
+  // replaces the average worker premium share. 'full': no employer coverage, so
+  // TRICARE replaces the whole average premium.
+  const avoided = mode === 'full' ? (family ? kff2025.familyPremium : kff2025.singlePremium)
+    : mode === 'employer' ? (family ? kff2025.familyWorker : kff2025.singleWorker) : NaN;
+  if (!Number.isFinite(avoided)) throw new RangeError('Unknown retiree health mode');
+  return Math.max(0, avoided - fee);
+}
+
+// ---- Survivor Benefit Plan (spouse coverage, full base amount) ----
+// Premium 6.5% of the base amount, paid from gross retired pay (pre-tax), until
+// 30 years of payments and age 70; annuity to spouse 55% of the base amount.
+export const sbpPremiumRate = 0.065, sbpAnnuityRate = 0.55, sbpPaidUpYears = 30;
+
+// Present value today of the conditional stay-path pension, plus optional
+// retiree-health value, VA offset below the CRDP threshold, and SBP.
+// `discount` is the pension (low-risk) real rate, not the cash-pay rate.
 export function pensionPresentValue({activeYears, additionalYears, retirement='brs',
   pensionBase, usuYears=0, currentAge=40, paymentYears=30, pensionTax=0.22,
-  discount=defaultPensionDiscount, retireeHealthAnnual=0, medicareAge=65}) {
+  discount=defaultPensionDiscount, retireeHealthAnnual=0, medicareAge=65,
+  vaOffsetAnnual=0, sbp=false, survivorYears=7}) {
   if (!Number.isFinite(discount) || discount < 0 || discount > 0.20) throw new RangeError('Real discount rate must be 0–20%');
   if (!Number.isFinite(retireeHealthAnnual) || retireeHealthAnnual < 0) throw new RangeError('Retiree health value cannot be negative');
+  if (!Number.isFinite(vaOffsetAnnual) || vaOffsetAnnual < 0) throw new RangeError('VA offset cannot be negative');
+  if (!Number.isFinite(survivorYears) || survivorYears < 0 || survivorYears > 50) throw new RangeError('Survivor years must be 0–50');
   if (activeYears >= 20 || activeYears + additionalYears < 20) return 0;
-  const annual = annualPension({pensionBase, creditableYears:activeYears + additionalYears + usuYears, retirement}) * (1-pensionTax);
+  const gross = annualPension({pensionBase, creditableYears:activeYears + additionalYears + usuYears, retirement});
+  // Below 50%, VA replaces part of retired pay; both paths receive the VA amount
+  // after 20, so only the remaining taxable retired pay is incremental to staying.
+  const payable = Math.max(0, gross - vaOffsetAnnual);
   const annuityFactor = n => n <= 0 ? 0 : discount === 0 ? n : (1-Math.pow(1+discount,-n))/discount;
   const healthYears = Math.max(0, Math.min(paymentYears, medicareAge - (currentAge + additionalYears)));
-  const atRetirement = annual * annuityFactor(paymentYears) + retireeHealthAnnual * annuityFactor(healthYears);
+  let atRetirement = payable * (1-pensionTax) * annuityFactor(paymentYears)
+    + retireeHealthAnnual * annuityFactor(healthYears);
+  if (sbp) {
+    const premiumYears = Math.min(paymentYears, sbpPaidUpYears);
+    atRetirement -= sbpPremiumRate * gross * (1-pensionTax) * annuityFactor(premiumYears);
+    atRetirement += sbpAnnuityRate * gross * (1-pensionTax) * annuityFactor(survivorYears) / Math.pow(1+discount, paymentYears);
+  }
   return atRetirement / Math.pow(1+discount,additionalYears);
 }
 
