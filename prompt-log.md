@@ -327,3 +327,8 @@ At the author's request, Codex fixed the amber-to-red pension section in the ful
 ## 2026-09-30 — Stay or go? Reserve completion path
 
 At the author's request, after a colleague argued that finishing 20 in the Reserve is worth about $1.7M, Claude added a third path to Stay or go?: leave active duty now and finish 20 qualifying years in the Selected Reserve. The page shows all three paths against leaving outright, with inputs for Reserve points per year, pension start age, and civilian workdays missed. Assumptions and exclusions are recorded in `docs/decisions/2026-09-30-stay-or-go-reserve-path.md`. Active-path results are unchanged. New assertions cover points, equivalent years, pension size, start age, missed workdays, and obligation years; all three test files pass. The panel was rendered at phone width in headless Chromium with no page errors. Example (pulmonary/critical care, 15 years, O-5, BRS, Norfolk): Reserve about +$325k versus active duty about +$548k. Earlier the same day, Claude also rewrote the sensitivity-chart labels and caption in plain language.
+
+
+## 2026-09-30 — Stay or go? top-of-page views disclaimer
+
+At the author's request before sharing on LinkedIn, Claude added a short personal-views disclaimer under the Stay or go? introduction, matching the advanced lab's existing top-of-page disclaimer. The footer disclaimer remains. The version line now reads 1.3, September 30, 2026, reflecting the Reserve path and label changes. Calculations are unchanged. Header rendering was checked at phone width in headless Chromium with no page errors.
