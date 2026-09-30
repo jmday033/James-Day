@@ -312,3 +312,8 @@ At the author's request, Codex added the same scope statement to the main-text m
 ## 2026-09-30 — Point paper entry points to revision 16
 
 At the author's request to update the old GitHub paper, Codex found that the checked revision 16 PDF was already saved at `analysis/research-paper.pdf`, while the Stay or go? paper button still pointed to revision 5 and the project/paper indexes highlighted older versions. Updated those entry points to the existing revision 16 PDF and labeled the revision 10 Word source as historical. No paper prose, PDF bytes, calculations, or assumptions changed. Verified the relative links resolve to the existing repository PDF.
+
+
+## 2026-09-30 — Broaden lab title
+
+At the author's request, Codex renamed the advanced lab to Navy Physician Compensation Lab in the visible heading, browser title, and share title to reflect its broader specialty scope. Existing URLs, course project title, source coverage notes, and calculations remain unchanged. Verified the updated titles in the saved HTML.
