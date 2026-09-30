@@ -94,13 +94,49 @@ export function annualPension({pensionBase, creditableYears, retirement='brs'}) 
   return pensionBase * (retirement === 'brs' ? 0.02 : 0.025) * creditableYears;
 }
 
+// Default real rate for pension-type flows: an inflation-indexed, federally backed
+// annuity is closer to a TIPS than to risky civilian pay. Daily Treasury par real
+// yields on 2026-09-28 were 3.14% (20-year) and 3.28% (30-year); 3% is a rounded
+// planning default. Cash-pay comparisons keep their own discount rate.
+export const defaultPensionDiscount = 0.03;
+export const pensionDiscountSourceUrl = 'https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_real_yield_curve&field_tdr_date_value=202609';
+
+// Present value today of the conditional stay-path pension, plus an optional
+// retiree-health value paid each year from retirement until Medicare age.
+// `discount` is the pension (low-risk) real rate, not the cash-pay rate.
 export function pensionPresentValue({activeYears, additionalYears, retirement='brs',
   pensionBase, usuYears=0, currentAge=40, paymentYears=30, pensionTax=0.22,
-  discount=0.05}) {
+  discount=defaultPensionDiscount, retireeHealthAnnual=0, medicareAge=65}) {
   if (!Number.isFinite(discount) || discount < 0 || discount > 0.20) throw new RangeError('Real discount rate must be 0–20%');
+  if (!Number.isFinite(retireeHealthAnnual) || retireeHealthAnnual < 0) throw new RangeError('Retiree health value cannot be negative');
   if (activeYears >= 20 || activeYears + additionalYears < 20) return 0;
   const annual = annualPension({pensionBase, creditableYears:activeYears + additionalYears + usuYears, retirement}) * (1-pensionTax);
-  const stream = discount === 0 ? paymentYears : (1-Math.pow(1+discount,-paymentYears))/discount;
-  return annual * stream / Math.pow(1+discount,additionalYears);
+  const annuityFactor = n => n <= 0 ? 0 : discount === 0 ? n : (1-Math.pow(1+discount,-n))/discount;
+  const healthYears = Math.max(0, Math.min(paymentYears, medicareAge - (currentAge + additionalYears)));
+  const atRetirement = annual * annuityFactor(paymentYears) + retireeHealthAnnual * annuityFactor(healthYears);
+  return atRetirement / Math.pow(1+discount,additionalYears);
+}
+
+// Stay-to-20 break-even view: at each active year of service from `fromYos`
+// to 19, compare the pension value preserved by staying (pension rate) with the
+// present value of the civilian-minus-Navy cash gap still to be forgone before
+// 20 (cash rate). Positive net favors staying.
+export function stayToTwentyCurve({fromYos=10, annualCashGap, annualPension:annualPay,
+  paymentYears=30, pensionDiscount=defaultPensionDiscount, cashDiscount=0.05}) {
+  const factor = (r,n) => r === 0 ? n : (1-Math.pow(1+r,-n))/r;
+  const atRetirement = annualPay * factor(pensionDiscount, paymentYears);
+  const rows = [];
+  for (let yos = fromYos; yos < 20; yos++) {
+    const left = 20 - yos;
+    const pensionPV = atRetirement / Math.pow(1+pensionDiscount, left);
+    const cashGapPV = annualCashGap * factor(cashDiscount, left);
+    rows.push({yos, pensionPV, cashGapPV, net: pensionPV - cashGapPV});
+  }
+  let breakEven = null;
+  for (let i = 1; i < rows.length; i++) {
+    const a = rows[i-1], b = rows[i];
+    if (a.net < 0 && b.net >= 0) { breakEven = a.yos + (-a.net)/(b.net - a.net); break; }
+  }
+  return {rows, breakEven};
 }
 

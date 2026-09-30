@@ -9,7 +9,7 @@ status: working
 
 # Navy Physician Compensation, Opportunity Cost, and Retention
 
-**Latest additional draft:** [Condensed revision 2](paper/navy-physician-retention-condensed-revision-2.pdf) · [Submission review](paper/submission-readiness-review-2026-09-19.md). Preserved unchanged; not yet designated final.
+**Latest draft:** [Revision 4, September 29 (PDF)](paper/navy-physician-retention-revision-4.pdf) · [Word](paper/navy-physician-retention-revision-4.docx) · [Build files](paper/revision-4-build/README.md). Adds the stay-to-20 pension comparison and a separate 3% real pension discount rate; author-review draft, not yet designated final. Earlier: [condensed revision 2](paper/navy-physician-retention-condensed-revision-2.pdf) · [submission review](paper/submission-readiness-review-2026-09-19.md).
 
 Final course project for BUS 620 — Micro and Macro Economics. Compensation, retention, opportunity-cost analysis, pension sensitivity, staffing alternatives, source reviews, and both labs are components of this one project. The Navy is the modeled case; the project title does not imply validation for every military service.
 
@@ -31,7 +31,7 @@ Final course project for BUS 620 — Micro and Macro Economics. Compensation, re
 
 ## Reading the versions
 
-The current paper and lab use a 5% real base-case discount rate and year-end cash flows. The paper's primary example is a board-certified O-4 general internist just past 10 years, with dependents in San Diego. Previous O-5 fixed inputs and beginning-of-year present values remain historical material only.
+The current paper and lab use a 5% real discount rate for cash pay and, since September 29, a separate 3% real rate for pension and retiree-health value (near long-term Treasury real yields, because BRS retired pay is inflation-adjusted and federally backed), with year-end cash flows. The paper's primary example is a board-certified O-4 general internist just past 10 years, with dependents in San Diego. Previous O-5 fixed inputs and beginning-of-year present values remain historical material only.
 
 [Earlier package versions](archive/pre-consolidation/README.md) preserve nonidentical material that was previously duplicated in this folder. They are historical references, not alternate current deliverables. Canonical files are linked above.
 

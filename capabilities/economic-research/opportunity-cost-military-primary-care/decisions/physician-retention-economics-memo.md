@@ -11,6 +11,16 @@ audience: "Navy Medicine decision-makers"
 
 This consolidated record combines the paper-scope decision and the earlier retention economics memo. The current scope below governs the [paper draft](../paper/navy-primary-care-physician-retention-draft.md). The earlier memo is retained for its rationale, evaluation design, and research history; its communication hypothesis is one policy option, not a demonstrated best intervention.
 
+## Pension valuation revised September 29, 2026
+
+**Decision:** Value the conditional pension (and any retiree-health value) at a 3% real discount rate while keeping 5% real for cash pay. The author asked for fixes after a critique modeled on MCCareer.org (Schofer, 2016): a single 5% rate treats an inflation-adjusted, federally backed annuity like risky civilian earnings. Daily Treasury par real yields on 2026-09-28 were 3.14% (20-year) and 3.28% (30-year); 3% is a rounded planning default, adjustable in the full lab.
+
+**Effect (paper example, $48,000 BRS pension, gross cash):** at 10 active years, pension PV rises from $452,993 to $700,059; the net cash cost of staying to 20 falls from −$909,677 to −$662,608; the stay-to-20 break-even moves from about 16.1 to about 14.7 years. An O-5 High-3 (~$139,276 → $55,710 pension) lowers the 10-year net cost to about −$550,000.
+
+**Lab changes:** added `pensionDiscount` (default 3%) and an optional stay-path retiree TRICARE value until age 65 (default $0, user-entered); Reserve pensions use the pension rate. Fixed the pension annual-equivalent spread, which used a beginning-of-year annuity factor at the pension rate while the engine discounts year-end at the cash rate; it now uses the year-end cash annuity so the pension's present value is carried through exactly. Added `stayToTwentyCurve` and tests. Quick Look uses 3% for its fixed pension illustration.
+
+**Still open:** retiree-health value, continuation pay, promotion timing, and a real civilian offer are individual inputs; the paper names them but does not assign values.
+
 ## Current revision selected September 19, 2026
 
 The author selected the documented O-4 San Diego general-internist example and a 5% real rate for the paper and lab, with year-end cash flows. The current figure uses the published $459,057 San Diego mixed-employer benchmark and itemized Navy pay, conditional on entitlement. The four-year PV cash gap is $636,208.84. This supersedes the fixed O-5/4% scenario recorded below.
