@@ -317,3 +317,8 @@ At the author's request to update the old GitHub paper, Codex found that the che
 ## 2026-09-30 — Broaden lab title
 
 At the author's request, Codex renamed the advanced lab to Navy Physician Compensation Lab in the visible heading, browser title, and share title to reflect its broader specialty scope. Existing URLs, course project title, source coverage notes, and calculations remain unchanged. Verified the updated titles in the saved HTML.
+
+
+## 2026-09-30 — Mobile pension sensitivity layout
+
+At the author's request, Codex fixed the amber-to-red pension section in the full lab. Its table inherited a 630px mobile minimum from the general table stylesheet. The dedicated stylesheet now overrides that minimum and uses compact padding and typography below 560px. Dollar values and calculations are unchanged. Static cascade checks confirmed the more specific pension selector overrides the general table rule. A local viewport rendering check was attempted but could not run because the browser executable is unavailable.
