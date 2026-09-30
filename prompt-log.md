@@ -274,3 +274,6 @@ During the revisions, I asked what the assumed 5% civilian earnings penalty mean
 
 The final files also require a clear account of authorship. Codex helped with more than formatting: it drafted and revised prose, analytical explanations, and the proposed pilot. This reflection was assembled with AI from my earlier account and the recorded conversation. It should not be presented as independently written personal reflection or as proof of compliance with the course's AI-use rules.
 
+## 2026-09-29 — Appendix F illustrative counseling handout
+
+At the author's request, Codex created Figure F1, a sample compensation statement using the existing modeled O-4 case. It separates annual cash after modeled taxes and premiums, employer retirement contributions, and conditional military pension present value; includes base-case assumptions, a pension-discount sensitivity, and discussion questions. It is explicitly labeled illustrative and not a validated instrument. No personal financial records or new empirical retention claims were added. The PDF body remains four pages; the new handout is in Appendix F. The PDF and handout were visually checked. The editable Word copy contains the image, but its native pagination was not verified in this environment.
