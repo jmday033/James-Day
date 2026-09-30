@@ -61,6 +61,7 @@ details.refine .inner{padding-top:12px}
 .chart svg{width:100%;height:auto;display:block}.chart text{font-size:11px;fill:#536b7a}
 .chart .grid{stroke:#e3ebf0}
 .caption{font-size:13px;color:var(--muted);line-height:1.5;margin:6px 0 0}
+.paths{display:grid;gap:8px}.path-row{display:grid;grid-template-columns:minmax(120px,40%) 1fr auto;gap:10px;align-items:center;font-size:13.5px}.path-row b{font-variant-numeric:tabular-nums;min-width:64px;text-align:right}.path-track{height:14px;background:#f1f5f8;border-radius:4px;position:relative}.path-bar{position:absolute;top:0;bottom:0;left:0;border-radius:3px;background:var(--navy)}.path-bar.res{opacity:.6}
 .tornado{display:grid;gap:9px}
 .tor-row{display:grid;grid-template-columns:minmax(120px,40%) 1fr;gap:10px;align-items:center;font-size:13px}
 .tor-track{position:relative;height:18px;background:#f1f5f8;border-radius:4px}
@@ -77,7 +78,7 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
 .error{color:#8b331e;font-weight:650}
 .avg{display:block;font-size:12px;color:#35576c;background:#f1f7fb;border-radius:6px;padding:5px 8px;margin-top:6px;line-height:1.45}.avg b{color:#173047}.use{border:1px solid #9cc2d6;background:#fff;color:#155d80;border-radius:5px;font:inherit;font-size:11.5px;padding:1px 7px;margin-left:4px;cursor:pointer}
 [hidden]{display:none!important}
-@media(max-width:800px){.layout{display:flex;flex-direction:column}.results{position:static;order:-1}.metrics{grid-template-columns:repeat(3,1fr);gap:8px}.metric{padding:10px}.metric b{font-size:17px}.tor-row{grid-template-columns:1fr}.tor-scale{margin-left:0}}
+@media(max-width:800px){.layout{display:flex;flex-direction:column}.results{position:static;order:-1}.metrics{grid-template-columns:repeat(3,1fr);gap:8px}.metric{padding:10px}.metric b{font-size:17px}.tor-row{grid-template-columns:1fr}.path-row{grid-template-columns:1fr auto}.path-row .path-track{grid-column:1/-1;grid-row:2}.tor-scale{margin-left:0}}
 </style>
 </head>
 <body>
@@ -173,6 +174,13 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
     <small class="avg" id="avg_firstYear">First-year pay: <b>100%</b> is typical for employed jobs with a guaranteed starting salary; productivity-based jobs often pay less in year one. <button type="button" class="use" data-use="firstYearShare" data-val="100">Use</button></small><small class="avg" id="avg_growth">Real pay growth: <b>0%</b>. Physician pay rose 2% in 2025 (<a href="https://www.doximity.com/reports/physician-compensation-report/2026">Doximity 2026</a>) while prices rose 3.4% (<a href="https://www.bls.gov/news.release/cpi.nr0.htm">CPI, Aug. 2026</a>). <button type="button" class="use" data-use="civilianGrowth" data-val="0">Use</button></small><small class="avg" id="avg_transition">Cost of leaving: <b>$2,500</b> for DEA registration ($888 per 3 years), a state license, and credentialing; relocation is often paid by the employer. <button type="button" class="use" data-use="transitionCost" data-val="2500">Use</button></small><small class="avg" id="avg_insurance"></small><small class="avg" id="avg_retirement">Employer retirement: <b>4.6%</b>, the average promised match (<a href="https://www.napa-net.org/news/2025/6/modern-plan-design-helps-boost-savings-rates-to-all-time-highs-vanguard/">Vanguard, How America Saves 2025</a>). <button type="button" class="use" data-use="employerRetirement" data-val="4.6">Use</button></small><small class="avg" id="avg_malpractice"></small><small class="caption" style="display:block;margin-top:6px">Civilian family health premiums (KFF 2025 worker share) are always counted.</small>
   </div></details>
 
+  <details class="refine"><summary>Reserve option <span id="sumReserve"></span></summary><div class="inner">
+    <div class="row">
+      <div class="field"><label for="reservePoints">Reserve points per year</label><input id="reservePoints" type="number" min="50" max="130" step="1" value="77"><small>50 makes a qualifying year. 77 = 15 membership + 48 drills + 14 days of annual training.</small></div>
+      <div class="field"><label for="reserveStartAge">Pension starts at age</label><input id="reserveStartAge" type="number" min="50" max="60" step="1" value="60"><small>60 by law. Each 90 days of qualifying mobilization moves it 3 months earlier.</small></div>
+    </div>
+    <div class="field"><label for="reserveDaysMissed">Civilian workdays missed per year</label><input id="reserveDaysMissed" type="number" min="0" max="60" step="1" value="10"><small>Annual training usually takes two work weeks. Drills are usually weekends.</small></div>
+  </div></details>
   <details class="refine"><summary>Discount rate for pay <span id="sumCash"></span></summary><div class="inner">
     <div class="field"><label for="cashRate">Real discount rate for pay (%)</label><input id="cashRate" type="number" min="0" max="15" step=".5" value="5"><small>Brings future pay back to today's dollars after inflation. Try 3% and 7% to see how much it matters.</small><small class="avg" id="avg_cash">Starting value: <b>5%</b> real, the rate used in the paper. <button type="button" class="use" data-use="cashRate" data-val="5">Use</button></small></div>
   </div></details>
@@ -211,6 +219,12 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
     <div class="metric"><span>Pension and benefits kept</span><b id="mPension">—</b></div>
     <div class="metric"><span>Extra pay given up by staying</span><b id="mCost">—</b></div>
     <div class="metric"><span>Break-even</span><b id="mBreak">—</b></div>
+  </div>
+
+  <div class="panel">
+    <h3>Three paths compared</h3>
+    <div class="paths" id="paths"></div>
+    <p class="caption" id="pathsCaption" style="margin:8px 0 0"></p>
   </div>
 
   <div class="panel chart">
@@ -301,7 +315,8 @@ function readInput(){
     sbp:$('sbp').checked,survivorYears:num('survivorYears',7),tricare:$('tricare').value,tricareGroup:$('tricareGroup').value,
     vaRating:Number($('vaRating').value),firstYearShare:Math.min(1,Math.max(.5,num('firstYearShare',100)/100)),
     civilianGrowth:num('civilianGrowth',0)/100,transitionCost:num('transitionCost'),insurance:$('insurance').value===''?null:num('insurance'),
-    employerRetirement:num('employerRetirement',4.6)/100,malpractice:num('malpractice'),cashRate:num('cashRate',5)/100};
+    employerRetirement:num('employerRetirement',4.6)/100,malpractice:num('malpractice'),cashRate:num('cashRate',5)/100,
+    reservePoints:Math.min(130,Math.max(50,num('reservePoints',77))),reserveStartAge:Math.min(60,Math.max(50,num('reserveStartAge',60))),reserveDaysMissed:Math.max(0,num('reserveDaysMissed',10))};
 }
 
 function renderGmo(){
@@ -357,7 +372,7 @@ function update(){
   $('avg_age').innerHTML='Age: <b>'+f.age+'</b> (about 27 at medical-school graduation plus years served); pension years: <b>'+f.paymentYears+'</b> from the U.S. life table. Blank uses these.<button type="button" class="use" data-use="currentAge,paymentYears" data-val="">Use</button>';
   const mal=window.__malRanges?.[f.civilianState]?.[['peds','im','fm'].indexOf(x.specialty)];
   $('avg_malpractice').innerHTML='Malpractice: <b>$0</b> if the employer pays (most employed jobs).'+(mal?' If you pay your own in '+(stateData.names[f.civilianState]||f.civilianState)+': about <b>'+money(mal[0])+(mal[1]!==mal[0]?'–'+money(mal[1]):'')+'/yr</b> ($1M/$3M mature claims-made, 2026).':'')+'<button type="button" class="use" data-use="malpractice" data-val="0">Use</button>';
-  drawBreak(r);drawTornado(sens);
+  drawPaths(r,x);drawBreak(r);drawTornado(sens);
   $('rows').innerHTML=r.rows.map(w=>'<tr><td>'+w.year+'</td><td>'+w.yos+'</td><td>'+w.grade.replace('O','O-')+'</td><td>'+money(w.navy)+'</td><td>'+money(w.civilian)+'</td><td>'+money(w.gap)+'</td></tr>').join('');
 }
 
@@ -374,6 +389,15 @@ function drawBreak(r){
   $('breakChart').innerHTML='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Pension kept versus extra civilian pay still to give up, by years of service">'+svg+'</svg>';
   const now=pts[0];
   $('breakCaption').textContent='Each point asks: if you decide at this year of service, what does staying to 20 keep, and what does it still cost (including the pay cut after 20 you entered)? Where the solid line rises above the dashed line, staying wins. At '+now.yos+' years: '+money(now.pension)+' kept versus '+money(now.cost)+' given up.';
+}
+
+function drawPaths(r,x){
+  const v=r.reserve,list=[['Leave now',0,''],['Leave now, finish 20 in the Reserve',v.net,'res'],['Stay on active duty to 20',r.net,'']];
+  const m=Math.max(1,...list.map(t=>Math.abs(t[1])));
+  $('paths').innerHTML=list.map(([name,val,c])=>'<div class="path-row"><span>'+name+'</span><div class="path-track">'+(val>0?'<div class="path-bar '+c+'" style="width:'+(100*val/m)+'%"></div>':'')+'</div><b>'+(val===0?'$0':(val>0?'+':'−')+short(Math.abs(val)))+'</b></div>').join('');
+  const best=r.net>=v.net?'Staying on active duty':'The Reserve route';
+  $('pathsCaption').textContent='Compared with leaving now and never serving again, in today\'s dollars after taxes. '+best+' comes out ahead on these inputs. Reserve route: about '+v.equivalentYears.toFixed(1)+' years of credit, a pension of about '+money(Math.round(v.annualPension/100)*100)+'/yr starting at '+Math.round(v.startAge)+' (worth '+short(v.pensionValue)+' today), TRICARE from '+Math.round(v.startAge)+' to 65 ('+short(v.healthValue)+'), and drill pay minus missed civilian workdays ('+(v.drillValue>=0?'+':'−')+short(Math.abs(v.drillValue))+'). Not counted: Reserve special pays, mobilization risk, and time away from family.';
+  $('sumReserve').textContent=x.reservePoints+' pts/yr · pension at '+x.reserveStartAge;
 }
 
 function drawTornado(items){

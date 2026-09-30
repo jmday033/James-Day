@@ -142,7 +142,8 @@ export const defaults = {
   tricare:'employer', tricareGroup:'A', vaRating:0, sbp:false, survivorYears:averages.survivorYears,
   firstYearShare:1, transitionCost:averages.transitionCost, insurance:null, civilianGrowth:averages.civilianGrowth,
   rbMode:'renew', obligationYears:0, postTwentyPenalty:.05, workUntilAge:65,
-  employerRetirement:averages.employerRetirement, malpractice:0
+  employerRetirement:averages.employerRetirement, malpractice:0,
+  reservePoints:77, reserveStartAge:60, reserveDaysMissed:10
 };
 
 // Remaining life expectancy (years) at a given age, from the embedded U.S. table.
@@ -246,8 +247,39 @@ export function stayOrGo(userInput, {stateData=null, lifeTable=null, bah=null} =
     breakEven = path[k-1].yos + (-path[k-1].net)/(path[k].net - path[k-1].net); break;
   }
 
+  // Third path: leave active duty now (or when the obligation ends), take the
+  // civilian job, and finish 20 qualifying years in the Selected Reserve.
+  // Valued against leaving outright, so the civilian career cancels out except
+  // for workdays missed for annual training. Non-regular retirement (10 U.S.C.
+  // 12731-12733): points/360 x multiplier x High-3, paid from age 60 (earlier
+  // only with qualifying mobilizations, entered as the start age). TRICARE
+  // before 60 is TRICARE Retired Reserve at full cost, so only 60-65 is valued.
+  // High-3 reuses the active path's final-years basic pay in today's dollars.
+  // Not modeled: Reserve special pays, mobilization, RCSBP, VA offset.
+  const reserveYears = years - obligation;
+  const points = 365*(yos + obligation) + x.reservePoints*reserveYears;
+  const equivalentYears = points/360;
+  const reservePension = pensionBase*(isBrs?.02:.025)*equivalentYears;
+  const startAge = Math.max(age + years, x.reserveStartAge);
+  const deathAge = age + years + paymentYears;
+  const reservePayYears = Math.max(0, deathAge - startAge);
+  const toStart = Math.pow(1+x.pensionRate, startAge - age);
+  const reservePensionValue = reservePension*(1-pensionTax)*annuity(x.pensionRate, reservePayYears)/toStart;
+  const reserveHealthValue = retireeHealth*annuity(x.pensionRate, Math.max(0, Math.min(65, deathAge) - startAge))/toStart;
+  const missedLoss = civNetOf(civ) - civNetOf(civ*(1 - x.reserveDaysMissed/260));
+  const reserveCash = rows.map((r,i) => {
+    if (i < obligation) return 0;
+    const drill = r.basicMonthly*(48 + 14)/30;            // 48 drills + 14 days annual training
+    const tax = wageTax(civ + drill, {...taxCtx, stateCode:x.civilianState}) - wageTax(civ, {...taxCtx, stateCode:x.civilianState});
+    return (drill - tax + (isBrs ? .05*drill : 0) - missedLoss)*cashFactor(i);
+  });
+  const reserveDrillValue = reserveCash.reduce((a,b)=>a+b,0);
+  const reserve = {points, equivalentYears, annualPension:reservePension, startAge, payYears:reservePayYears,
+    pensionValue:reservePensionValue, healthValue:reserveHealthValue, drillValue:reserveDrillValue,
+    net:reservePensionValue + reserveHealthValue + reserveDrillValue};
+
   return {input:{...x, civilianSalary:civ, navyState, age, paymentYears, bahMonthly, insurance, pensionTax}, rows, years,
-    costOfStaying, afterTwentyCost, pensionValue, net, breakEven, path, obligation, decisionYos:yos + obligation,
+    costOfStaying, afterTwentyCost, pensionValue, net, breakEven, path, obligation, decisionYos:yos + obligation, reserve,
     parts:{retireeHealth, va, vaOffset, pensionBase, annualPension:pensionBase*(isBrs?.02:.025)*20, rb, rbMode, postYears}};
 }
 

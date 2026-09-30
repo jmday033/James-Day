@@ -38,6 +38,24 @@ assert.throws(()=>stayOrGo({yos:20},{stateData,lifeTable,bah}),RangeError);
 const sens=sensitivity({},{stateData,lifeTable,bah});
 assert.equal(sens.length,9);
 assert.ok(sens.every((s,i)=>i===0||sens[i-1].swing>=s.swing));
+// Reserve route: points-based pension from 60, smaller than a full active-duty
+// pension; more points or an earlier start raise it.
+{
+  const x={yos:15,specialty:'pulm',rank:'O5',retirement:'legacy',promotion:false};
+  const r=stayOrGo(x,{stateData,lifeTable,bah});
+  near(r.reserve.points,365*15+77*5,.001);
+  near(r.reserve.equivalentYears,(365*15+77*5)/360,1e-9);
+  near(r.reserve.annualPension,r.parts.pensionBase*.025*r.reserve.equivalentYears,.01);
+  assert.ok(r.reserve.annualPension<r.parts.annualPension);
+  assert.equal(r.reserve.startAge,60);
+  near(r.reserve.net,r.reserve.pensionValue+r.reserve.healthValue+r.reserve.drillValue,.001);
+  assert.ok(stayOrGo({...x,reservePoints:100},{stateData,lifeTable,bah}).reserve.net>r.reserve.net);
+  assert.ok(stayOrGo({...x,reserveStartAge:57},{stateData,lifeTable,bah}).reserve.pensionValue>r.reserve.pensionValue);
+  assert.ok(stayOrGo({...x,reserveDaysMissed:0},{stateData,lifeTable,bah}).reserve.drillValue>r.reserve.drillValue);
+  // An obligation keeps you on active duty first: those years earn active points.
+  const ob=stayOrGo({...x,obligationYears:2},{stateData,lifeTable,bah});
+  near(ob.reserve.points,365*17+77*3,.001);
+}
 console.log('Stay-or-go checks passed');
 
 // Every specialty runs, uses its own Navy pay, and falls back to national pay outside primary care.

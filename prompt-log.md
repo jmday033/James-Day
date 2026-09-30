@@ -322,3 +322,8 @@ At the author's request, Codex renamed the advanced lab to Navy Physician Compen
 ## 2026-09-30 — Mobile pension sensitivity layout
 
 At the author's request, Codex fixed the amber-to-red pension section in the full lab. Its table inherited a 630px mobile minimum from the general table stylesheet. The dedicated stylesheet now overrides that minimum and uses compact padding and typography below 560px. Dollar values and calculations are unchanged. Static cascade checks confirmed the more specific pension selector overrides the general table rule. A local viewport rendering check was attempted but could not run because the browser executable is unavailable.
+
+
+## 2026-09-30 — Stay or go? Reserve completion path
+
+At the author's request, after a colleague argued that finishing 20 in the Reserve is worth about $1.7M, Claude added a third path to Stay or go?: leave active duty now and finish 20 qualifying years in the Selected Reserve. The page shows all three paths against leaving outright, with inputs for Reserve points per year, pension start age, and civilian workdays missed. Assumptions and exclusions are recorded in `docs/decisions/2026-09-30-stay-or-go-reserve-path.md`. Active-path results are unchanged. New assertions cover points, equivalent years, pension size, start age, missed workdays, and obligation years; all three test files pass. The panel was rendered at phone width in headless Chromium with no page errors. Example (pulmonary/critical care, 15 years, O-5, BRS, Norfolk): Reserve about +$325k versus active duty about +$548k. Earlier the same day, Claude also rewrote the sensitivity-chart labels and caption in plain language.
