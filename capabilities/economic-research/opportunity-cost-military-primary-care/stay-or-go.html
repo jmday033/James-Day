@@ -54,7 +54,7 @@ details.refine .inner{padding-top:12px}
 .answer p{margin:6px 0 0;line-height:1.5;font-size:14.5px}
 .metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
 .metric{border:1px solid var(--line);border-radius:10px;padding:12px;background:#fff}
-.metric span{display:block;font-size:12px;color:var(--muted)}.metric b{display:block;font-size:21px;margin-top:3px}
+.metric span{display:block;font-size:12px;color:var(--muted)}.metric b{display:block;font-size:21px;margin-top:3px;line-height:1.15}
 .legend{display:flex;flex-wrap:wrap;gap:14px;font-size:12.5px;color:var(--muted);margin-bottom:6px}
 .legend i{display:inline-block;width:18px;height:0;border-top:3px solid var(--navy);vertical-align:middle;margin-right:5px}
 .legend i.civ{border-top:3px dashed var(--civ)}
@@ -84,7 +84,7 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
 <header><div class="wrap">
   <nav class="crumb" aria-label="Lab versions"><a href="stay-or-go.html" aria-current="page">Stay or go?</a><a href="physician-pay-lab.html">Advanced lab</a></nav>
   <h1>Stay or go?</h1>
-  <p>Navy physician career decisions in today's dollars: staying to 20 versus leaving for a civilian job, or Navy versus civilian residency after a GMO tour. Answer a few questions; everything else starts at published averages, shown with their sources under Refine.</p>
+  <p style="font-size:13px;color:#a9cede;margin-bottom:8px">Version 1.2 · Updated September 29, 2026 · 2026 pay, tax, and benefit data</p><p>Navy physician career decisions in today's dollars: staying to 20 versus leaving for a civilian job, or Navy versus civilian residency after a GMO tour. Answer a few questions; everything else starts at published averages, shown with their sources under Refine.</p>
 </div></header>
 
 <main class="wrap">
@@ -100,7 +100,7 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
   </div>
 
   <div class="row">
-    <div class="field"><label for="yos">Active years served</label><input id="yos" type="number" min="1" max="19" step="1" value="10"></div>
+    <div class="field"><label for="yos">Active years served</label><input id="yos" type="number" min="1" max="19" step="1" value="10"><small>Years left on obligation: <input id="obligationYears" type="number" min="0" max="10" step="1" value="0" style="width:64px;min-height:30px;padding:3px 6px;display:inline-block" aria-label="Years left on current service obligation"></small></div>
     <div class="field"><label for="specialty">Specialty</label><select id="specialty"></select></div>
   </div>
   <div class="row">
@@ -126,7 +126,7 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
   </div></details>
 
   <details class="refine"><summary>Navy pay <span id="sumNavy"></span></summary><div class="inner">
-    <label class="check"><input id="retentionBonus" type="checkbox" checked><span>Sign a 4-year retention bonus (FY 2026 rate for the specialty)</span></label>
+    <div class="field"><label for="rbMode">Retention bonus (FY 2026 rate for the specialty)</label><select id="rbMode"><option value="renew" selected>Renew 4-year agreements through 20</option><option value="one">One 4-year agreement only</option><option value="none">No retention bonus</option></select><small>Most physicians who stay to 20 sign one agreement after another.</small></div>
     <label class="check"><input id="continuationPay" type="checkbox" checked><span>Take BRS continuation pay at the 12th year (2.5 months of basic pay)</span></label>
     <div class="field"><label for="retirement">Retirement system</label><select id="retirement"><option value="brs">Blended Retirement System (2% per year)</option><option value="legacy">Legacy High-3 (2.5% per year)</option></select></div>
   </div></details>
@@ -161,6 +161,11 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
       <div class="field"><label for="transitionCost">One-time cost of leaving ($)</label><input id="transitionCost" type="number" min="0" step="500" value="2500"></div>
       <div class="field"><label for="insurance">Disability + life insurance ($/yr)</label><input id="insurance" type="number" min="0" step="500" placeholder="auto"></div>
     </div>
+    <div class="row">
+      <div class="field"><label for="postTwentyPenalty">Pay cut after retiring at 20 (%)</label><input id="postTwentyPenalty" type="number" min="0" max="50" step="1" value="5"></div>
+      <div class="field"><label for="workUntilAge">Work until age</label><input id="workUntilAge" type="number" min="45" max="80" step="1" value="65"></div>
+    </div>
+    <small class="avg" id="avg_penalty">Starting value: <b>5%</b>, a planning assumption. Someone who leaves now has years of civilian seniority, partnership, or productivity by the time a 20-year retiree starts over, and clinical skills can fade in late-career administrative jobs. 0% assumes no difference.<button type="button" class="use" data-use="postTwentyPenalty" data-val="5">Use</button></small>
     <div class="row">
       <div class="field"><label for="employerRetirement">Employer retirement (%)</label><input id="employerRetirement" type="number" min="0" max="15" step=".1" value="4.6"></div>
       <div class="field"><label for="malpractice">Malpractice you pay ($/yr)</label><input id="malpractice" type="number" min="0" step="500" value="0"></div>
@@ -200,6 +205,7 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
     <div class="kicker" id="answerTitle">Staying to 20 versus leaving now</div>
     <strong class="big" id="answerBig">—</strong>
     <p id="answerText">Loading 2026 pay and tax data…</p>
+    <p id="answerRange" style="font-size:13.5px;color:#35576c"></p>
   </div>
   <div class="metrics">
     <div class="metric"><span>Pension and benefits kept</span><b id="mPension">—</b></div>
@@ -248,9 +254,9 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
 
 <details class="panel" style="margin-top:22px"><summary style="cursor:pointer;font-weight:650;color:#155d80">Assumptions and sources</summary>
   <div class="caption" style="font-size:13px">
-  <p>Constant 2026 dollars; year-end cash flows. Navy pay: 2026 basic pay, BAH for the duty ZIP, BAS, FY 2026 incentive pay and four-year retention bonus for the specialty (one agreement, if selected), $8,000 board certification pay, BRS continuation pay if selected. Specialties without their own Navy row use the subspecialty category noted beside them; surgical subspecialties are assumed to be Category I. Civilian pay: Doximity 2026 national averages by specialty. Promotions: O-5 at 15 and O-6 at 21 years after commissioning. BAH and BAS are tax-free.</p>
+  <p>Constant 2026 dollars; year-end cash flows. Navy pay: 2026 basic pay, BAH for the duty ZIP, BAS, FY 2026 incentive pay and four-year retention bonus for the specialty (renewed through 20, one agreement, or none), $8,000 board certification pay, BRS continuation pay if selected. Specialties without their own Navy row use the subspecialty category noted beside them; surgical subspecialties are assumed to be Category I. Civilian pay: Doximity 2026 national averages by specialty. Promotions: O-5 at 15 and O-6 at 21 years after commissioning. BAH and BAS are tax-free.</p>
   <p>Taxes: 2026 federal brackets, standard deduction, and Child Tax Credit; Social Security and Medicare; 2026 state wage-tax sample; California disability insurance on civilian pay in California. The pension is taxed at the rate entered.</p>
-  <p>Pension: 2% (BRS) or 2.5% (Legacy) × 20 years × the average of the last three years of basic pay, paid for the life-table years, discounted at the pension rate. Retiree TRICARE, VA offset or concurrent receipt, and the Survivor Benefit Plan follow the settings above. The answer assumes the stay path reaches 20 and that pay after 20 is the same on both paths.</p>
+  <p>Pension: 2% (BRS) or 2.5% (Legacy) × 20 years × the average of the last three years of basic pay, paid for the life-table years, discounted at the pension rate. Retiree TRICARE, VA offset or concurrent receipt, and the Survivor Benefit Plan follow the settings above. The answer assumes the stay path reaches 20. After 20, the retiree's civilian pay is reduced by the percentage entered (default 5%) until the work-until age, compared with someone who left earlier. Years still under obligation are not counted, because both paths are in the Navy then.</p>
   <p>Sources: <a href="https://www.dfas.mil/MilitaryMembers/payentitlements/Pay-Tables/">DFAS pay tables</a> · <a href="https://www.travel.dod.mil/Allowances/Basic-Allowance-for-Housing/BAH-Rate-Lookup/">BAH</a> · <a href="https://www.doximity.com/reports/physician-compensation-report/2026">Doximity 2026</a> · <a href="https://www.marithealth.com/">Marit Health</a> · <a href="https://taxfoundation.org/data/all/federal/2026-tax-brackets/">2026 tax brackets</a> · <a href="https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_real_yield_curve&amp;field_tdr_date_value=202609">Treasury real yields</a> · <a href="https://www.va.gov/disability/compensation-rates/veteran-rates/">VA rates</a> · <a href="https://www.dfas.mil/RetiredMilitary/disability/crdp/">Concurrent receipt</a> · <a href="https://files.kff.org/attachment/Employer-Health-Benefits-Survey-2025-Annual-Survey-Summary-of-Findings.pdf">KFF 2025</a> · <a href="https://tricare.mil/-/media/Files/TRICARE/Publications/FactSheets/Costs_Fees.pdf">TRICARE fees</a> · <a href="https://militarypay.defense.gov/Pay/Retirement/">DoD retirement</a></p>
   </div>
 </details>
@@ -258,8 +264,8 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
 </main>
 
 <script type="module">
-import * as sog from './stay-or-go.js?v=20260929-allspec';
-const {stayOrGo, sensitivity, defaultCivilianSalary, loadReferenceData, bahFor, payFor, benchmarks, specialtyTable, specialtyByKey, sanDiegoAvailable}=sog;
+import * as sog from './stay-or-go.js?v=20260929-review';
+const {answerRange}=sog;const {stayOrGo, sensitivity, defaultCivilianSalary, loadReferenceData, bahFor, payFor, benchmarks, specialtyTable, specialtyByKey, sanDiegoAvailable}=sog;
 {const groups=[...new Set(specialtyTable.map(r=>r.group))];
  document.getElementById('specialty').innerHTML=groups.map(g=>'<optgroup label="'+g+'">'+specialtyTable.filter(r=>r.group===g).map(r=>'<option value="'+r.key+'"'+(r.key==='im'?' selected':'')+'>'+r.label+'</option>').join('')+'</optgroup>').join('');}
 import {calculateGmoResidency} from './gmo-residency-model.js?v=20260929-stayorgo';
@@ -289,7 +295,7 @@ function readInput(){
   return {yos:Math.round(num('yos',10)),specialty:$('specialty').value,rank:$('rank').value,promotion:$('promotion').value==='yes',
     salarySource:$('salarySource').value,civilianSalary:num('civilianSalary',NaN),family,kids:Math.max(0,Math.round(num('kids'))),
     spouseWages:num('spouseWages',65000),zip,civilianState:$('civilianState').value,navyState:$('navyState').value,
-    retentionBonus:$('retentionBonus').checked,continuationPay:$('continuationPay').checked,retirement:$('retirement').value,
+    rbMode:$('rbMode').value,obligationYears:Math.max(0,Math.round(num('obligationYears',0))),postTwentyPenalty:Math.min(.5,Math.max(0,num('postTwentyPenalty',5)/100)),workUntilAge:num('workUntilAge',65),continuationPay:$('continuationPay').checked,retirement:$('retirement').value,
     pensionRate:num('pensionRate',3)/100,pensionTax:$('pensionTax').value===''?null:num('pensionTax')/100,
     currentAge:$('currentAge').value===''?null:num('currentAge'),paymentYears:$('paymentYears').value===''?null:num('paymentYears'),
     sbp:$('sbp').checked,survivorYears:num('survivorYears',7),tricare:$('tricare').value,tricareGroup:$('tricareGroup').value,
@@ -327,18 +333,23 @@ function update(){
   const stay=r.net>=0,be=r.breakEven;
   $('answer').className='answer'+(stay?'':' go');
   $('answerBig').textContent=(stay?'Staying is worth about ':'Leaving is worth about ')+money(Math.round(Math.abs(r.net)/1000)*1000)+' more';
-  $('answerText').textContent=(stay
-    ?'On these inputs, the pension and retiree benefits you keep by reaching 20 outweigh the extra civilian pay you give up over the next '+r.years+' years.'
-    :'On these inputs, the extra civilian pay over the next '+r.years+' years outweighs the pension and retiree benefits you would keep by reaching 20.')
-    +(be!==null&&be>x.yos?' Staying starts to win at about '+be.toFixed(1)+' years of service.':'')+' Today\'s dollars, after taxes.';
+  const freeYears=r.years-r.obligation,pc=['im','fm','peds','medpeds'].includes(x.specialty);
+  const span=r.obligation?'the '+freeYears+' years after that':'the next '+r.years+' years';
+  $('answerText').textContent=(r.obligation?'Counting from when your obligation ends at '+r.decisionYos+' years, ':'On these inputs, ')+(stay
+    ?'the pension and retiree benefits you keep by reaching 20 outweigh the extra civilian pay you give up over '+span+'.'
+    :'the extra civilian pay over '+span+' outweighs the pension and retiree benefits you would keep by reaching 20.')
+    +(be!==null&&be>r.decisionYos?' Staying starts to win at about '+be.toFixed(1)+' years of service.':'')+' Today\'s dollars, after taxes.'
+    +(stay&&pc&&(be===null||be<=r.decisionYos)?' Primary care often shows staying ahead early; the common 15–16-year rule of thumb comes from higher-paid specialties.':'');
+  const sens=sensitivity(x,ctx),[lo,hi]=answerRange(r.net,sens),word=v=>(v>=0?'staying +':'leaving +')+short(Math.abs(v));
+  $('answerRange').textContent='Likely range if common assumptions change: '+word(lo)+' to '+word(hi)+'.';
   $('mPension').textContent=short(r.pensionValue);$('mCost').textContent=short(r.costOfStaying);
-  $('mBreak').textContent=be===null?'Not before 20':be<=x.yos?'Already':be.toFixed(1)+' yrs';
+  $('mBreak').textContent=be===null?'Not before 20':be<=r.decisionYos?'Staying already ahead':be.toFixed(1)+' yrs';
   const f=r.input,sn=c=>stateData.names[c]||c;
   $('sumPlace').textContent=f.civilianState+' job · Navy tax '+(x.navyState==='same'?f.civilianState:x.navyState);
-  $('sumNavy').textContent=(x.retentionBonus?'RB '+short(r.parts.rb)+'/yr':'no RB')+' · '+(x.continuationPay?'CP on':'CP off')+' · '+(x.retirement==='brs'?'BRS':'Legacy');
+  $('sumNavy').textContent=(x.rbMode==='none'?'no RB':'RB '+short(r.parts.rb)+'/yr '+(x.rbMode==='renew'?'to 20':'× 4'))+' · '+(x.continuationPay?'CP on':'CP off')+' · '+(x.retirement==='brs'?'BRS':'Legacy');
   $('sumPension').textContent=(x.pensionRate*100).toFixed(2).replace(/\.?0+$/,'')+'% · '+f.paymentYears+' yrs'+(x.sbp?' · SBP':'');
   $('sumHealth').textContent='TRICARE '+short(r.parts.retireeHealth)+'/yr · VA '+(x.vaRating?x.vaRating+'%':'none');
-  $('sumCiv').textContent=Math.round(x.firstYearShare*100)+'% first yr'+(x.transitionCost?' · '+short(x.transitionCost)+' move':'');
+  $('sumCiv').textContent=Math.round(x.postTwentyPenalty*100)+'% cut after 20 · '+Math.round(x.firstYearShare*100)+'% first yr'+(x.transitionCost?' · '+short(x.transitionCost)+' move':'');
   $('sumCash').textContent=(x.cashRate*100).toFixed(1).replace(/\.0$/,'')+'%';
   const civ=f.civilianSalary,ins=Math.round(.03*civ/100)*100;
   $('avg_insurance').innerHTML='Insurance average: <b>'+money(ins)+'/yr</b>, own-occupation disability at about 3% of salary (<a href="https://www.whitecoatinvestor.com/how-to-buy-disability-insurance/">White Coat Investor: 2–5%</a>). Add term life from a quote. Blank uses this.<button type="button" class="use" data-use="insurance" data-val="">Use</button>';
@@ -346,7 +357,7 @@ function update(){
   $('avg_age').innerHTML='Age: <b>'+f.age+'</b> (about 27 at medical-school graduation plus years served); pension years: <b>'+f.paymentYears+'</b> from the U.S. life table. Blank uses these.<button type="button" class="use" data-use="currentAge,paymentYears" data-val="">Use</button>';
   const mal=window.__malRanges?.[f.civilianState]?.[['peds','im','fm'].indexOf(x.specialty)];
   $('avg_malpractice').innerHTML='Malpractice: <b>$0</b> if the employer pays (most employed jobs).'+(mal?' If you pay your own in '+(stateData.names[f.civilianState]||f.civilianState)+': about <b>'+money(mal[0])+(mal[1]!==mal[0]?'–'+money(mal[1]):'')+'/yr</b> ($1M/$3M mature claims-made, 2026).':'')+'<button type="button" class="use" data-use="malpractice" data-val="0">Use</button>';
-  drawBreak(r);drawTornado(sensitivity(x,ctx));
+  drawBreak(r);drawTornado(sens);
   $('rows').innerHTML=r.rows.map(w=>'<tr><td>'+w.year+'</td><td>'+w.yos+'</td><td>'+w.grade.replace('O','O-')+'</td><td>'+money(w.navy)+'</td><td>'+money(w.civilian)+'</td><td>'+money(w.gap)+'</td></tr>').join('');
 }
 
@@ -362,7 +373,7 @@ function drawBreak(r){
   [0,Math.floor((n-1)/2),n-1].filter((v,i,a)=>a.indexOf(v)===i).forEach(i=>{svg+='<text x="'+X(i)+'" y="'+(B+18)+'" text-anchor="'+(i===0&&n>1?'start':i===n-1&&n>1?'end':'middle')+'">'+pts[i].yos+' yrs</text>'});
   $('breakChart').innerHTML='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Pension kept versus extra civilian pay still to give up, by years of service">'+svg+'</svg>';
   const now=pts[0];
-  $('breakCaption').textContent='Each point asks: if you decide at this year of service, what does staying to 20 keep, and what does it still cost? Where the solid line rises above the dashed line, staying wins. Now: '+money(now.pension)+' kept versus '+money(now.cost)+' given up.';
+  $('breakCaption').textContent='Each point asks: if you decide at this year of service, what does staying to 20 keep, and what does it still cost (including the pay cut after 20 you entered)? Where the solid line rises above the dashed line, staying wins. At '+now.yos+' years: '+money(now.pension)+' kept versus '+money(now.cost)+' given up.';
 }
 
 function drawTornado(items){

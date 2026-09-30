@@ -141,6 +141,7 @@ export const defaults = {
   pensionRate:.03, cashRate:.05, pensionTax:null, currentAge:null, paymentYears:null,
   tricare:'employer', tricareGroup:'A', vaRating:0, sbp:false, survivorYears:averages.survivorYears,
   firstYearShare:1, transitionCost:averages.transitionCost, insurance:null, civilianGrowth:averages.civilianGrowth,
+  rbMode:'renew', obligationYears:0, postTwentyPenalty:.05, workUntilAge:65,
   employerRetirement:averages.employerRetirement, malpractice:0
 };
 
@@ -162,23 +163,33 @@ export function stayOrGo(userInput, {stateData=null, lifeTable=null, bah=null} =
   const isBrs = x.retirement === 'brs';
   const spec = specialtyByKey[x.specialty];
   if (!spec) throw new RangeError('Unknown specialty');
-  const rb = x.retentionBonus ? spec.rb4 : 0;
+  // Retention bonus: 'renew' = successive agreements through 20, 'one' = a single
+  // 4-year agreement starting when any current obligation ends, 'none'.
+  const rbMode = x.retentionBonus === false ? 'none' : x.rbMode;
+  const rb = rbMode === 'none' ? 0 : spec.rb4;
+  const obligation = Math.max(0, Math.min(years, Math.floor(x.obligationYears || 0)));
   const bahMonthly = Number.isFinite(x.bahMonthly) ? x.bahMonthly : (bah?.monthly ?? 0);   // bah = bahFor(zip, rank, deps)
   const age = Number.isFinite(x.currentAge) ? x.currentAge : averages.ageAtServiceStart + yos;
   const paymentYears = Number.isFinite(x.paymentYears) ? x.paymentYears : remainingYears(age + years, lifeTable);
 
   const cash = calculateScenario({rank:x.rank, commissionYear:2026 - yos, promotionOn:x.promotion,
     payYos:yos, base:payFor(x.rank, yos), bah:bahMonthly, bahLookup:Number.isFinite(x.bahMonthly) ? null : (bah ?? null), zip:x.zip,
-    deps:withSpouse ? 'yes' : 'no', ip:spec.ip, rbRemaining:Math.min(4, years), currentBonus:rb,
+    deps:withSpouse ? 'yes' : 'no', ip:spec.ip, rbRemaining:years, currentBonus:rb,
     continuationPayMultiple:x.continuationPay ? 2.5 : 0, isBrs,
-    civilianSalary:civ, civilianGrowth:x.civilianGrowth, civilianFirstYearShare:x.firstYearShare,
+    civilianSalary:civ, civilianGrowth:x.civilianGrowth, civilianFirstYearShare:1,
     discount:x.cashRate, years});
 
   const va = vaAnnualFor(x.vaRating, withSpouse);
   const workerPremium = withSpouse ? kff2025.familyWorker : kff2025.singleWorker;
   const taxCtx = {family, kids, spouseWages:x.spouseWages, stateData};
   const insurance = Number.isFinite(x.insurance) ? x.insurance : averages.disabilityShare * civ;
-  const rows = cash.rows.map((r, i) => {
+  const civNetOf = s => s - wageTax(s, {...taxCtx, stateCode:x.civilianState, civilianCa:true})
+    + x.employerRetirement*Math.min(s, 360000) - averages.disabilityShare*s;
+  const rows = cash.rows.map((r0, i) => {
+    const inRb = rbMode === 'renew' || (rbMode === 'one' && i >= obligation && i < obligation + 4);
+    const bonus = inRb ? r0.bonus : 0;
+    const r = {...r0, navyCash:r0.navyCash - r0.bonus + bonus, bonus,
+      civilianCash:r0.civilianCash * (i === obligation ? x.firstYearShare : 1)};
     const navyTaxable = r.navyCash - 12*(r.bahMonthly + 328.48);           // BAH and BAS are tax-free
     const navyTax = wageTax(navyTaxable, {...taxCtx, stateCode:navyState});
     const tsp = isBrs ? .05*12*r.basicMonthly : 0;                          // BRS matching
@@ -186,14 +197,24 @@ export function stayOrGo(userInput, {stateData=null, lifeTable=null, bah=null} =
     const civilianRetirement = x.employerRetirement * Math.min(r.civilianCash, 360000);
     const navy = r.navyCash - navyTax + tsp;
     const civilian = r.civilianCash - civilianTax + civilianRetirement - workerPremium
-      - x.malpractice - insurance - (i === 0 ? x.transitionCost : 0) + va;
+      - x.malpractice - insurance - (i === obligation ? x.transitionCost : 0) + va;
+    // Still obligated: both paths are in the Navy, so the year does not count.
+    const obligated = i < obligation;
     return {year:r.year, yos:r.activeYos, grade:r.grade, navyCash:r.navyCash, civilianCash:r.civilianCash,
-      navyTax, civilianTax, navy, civilian, gap:civilian - navy, continuationPay:r.continuationPay,
+      navyTax, civilianTax, navy, civilian, gap:obligated ? 0 : civilian - navy, obligated, continuationPay:r.continuationPay,
       basicMonthly:r.basicMonthly, bonus:r.bonus};
   });
 
   const cashFactor = i => 1/Math.pow(1+x.cashRate, i+1);
-  const costOfStaying = rows.reduce((s,r,i) => s + r.gap*cashFactor(i), 0);
+  // After 20: the retiree starts a civilian job later than someone who left
+  // earlier, so may earn less (lost seniority, partnership, clinical currency).
+  const postYears = Math.max(0, Math.round(x.workUntilAge - (age + years)));
+  const annuity = (r,n) => n <= 0 ? 0 : r === 0 ? n : (1-Math.pow(1+r,-n))/r;
+  const civAt20 = civ*Math.pow(1+x.civilianGrowth, years);
+  const postLoss = civNetOf(civAt20) - civNetOf(civAt20*(1 - x.postTwentyPenalty));
+  const afterTwentyAt = k => postLoss*annuity(x.cashRate, postYears)/Math.pow(1+x.cashRate, years - k);
+  const afterTwentyCost = afterTwentyAt(0);
+  const costOfStaying = rows.reduce((s,r,i) => s + r.gap*cashFactor(i), 0) + afterTwentyCost;
 
   // High-3: average basic pay of the last three stay-path years.
   const lastThree = rows.slice(-3).map(r => 12*r.basicMonthly);
@@ -213,21 +234,21 @@ export function stayOrGo(userInput, {stateData=null, lifeTable=null, bah=null} =
 
   // Break-even path: at each future year of service, pension kept vs the
   // remaining cost of staying, both valued at that year.
-  const path = rows.map((_, k) => {
+  const path = rows.map((_, k) => k).filter(k => k >= obligation).map(k => {
     const rest = rows.slice(k);
-    const cost = rest.reduce((s,r,i) => s + r.gap/Math.pow(1+x.cashRate, i+1), 0);
+    const cost = rest.reduce((s,r,i) => s + r.gap/Math.pow(1+x.cashRate, i+1), 0) + afterTwentyAt(k);
     const pension = pensionAt(yos + k, age + k);
     return {yos:yos + k, pension, cost, net:pension - cost};
   });
   let breakEven = null;
-  if (path[0].net >= 0) breakEven = yos;
+  if (path[0].net >= 0) breakEven = path[0].yos;
   else for (let k = 1; k < path.length; k++) if (path[k-1].net < 0 && path[k].net >= 0) {
     breakEven = path[k-1].yos + (-path[k-1].net)/(path[k].net - path[k-1].net); break;
   }
 
   return {input:{...x, civilianSalary:civ, navyState, age, paymentYears, bahMonthly, insurance, pensionTax}, rows, years,
-    costOfStaying, pensionValue, net, breakEven, path,
-    parts:{retireeHealth, va, vaOffset, pensionBase, annualPension:pensionBase*(isBrs?.02:.025)*20, rb}};
+    costOfStaying, afterTwentyCost, pensionValue, net, breakEven, path, obligation, decisionYos:yos + obligation,
+    parts:{retireeHealth, va, vaOffset, pensionBase, annualPension:pensionBase*(isBrs?.02:.025)*20, rb, rbMode, postYears}};
 }
 
 // Which inputs move the answer most: change one input at a time between a
@@ -243,11 +264,21 @@ export function sensitivity(input, ctx) {
     ['Navy tax state: no income tax / same as civilian', {navyState:'FL'}, {navyState:'same'}],
     ['Retiree TRICARE: none / no employer coverage', {tricare:'none'}, {tricare:'full'}],
     ['First civilian year at 80% / 100%', {firstYearShare:.8}, {firstYearShare:1}],
-    ['Retention bonus: yes / no', {retentionBonus:true}, {retentionBonus:false}],
+    ['Retention bonus: renew to 20 / none', {rbMode:'renew'}, {rbMode:'none'}],
+    ['Civilian pay penalty after 20: 0% / 15%', {postTwentyPenalty:0}, {postTwentyPenalty:.15}],
     ['Cash discount rate 3% to 7%', {cashRate:.03}, {cashRate:.07}]
   ];
   return tests.map(([label, a, b]) => {
     const va = stayOrGo({...input, ...a}, ctx).net - base, vb = stayOrGo({...input, ...b}, ctx).net - base;
     return {label, low:Math.min(va,vb), high:Math.max(va,vb), swing:Math.abs(va - vb)};
   }).sort((p,q) => q.swing - p.swing);
+}
+
+// Likely range for the headline: combine the one-at-a-time swings in quadrature
+// (treats them as independent), so it is wider than any single swing but
+// narrower than stacking every worst case.
+export function answerRange(net, sens) {
+  const down = Math.sqrt(sens.reduce((s,t) => s + Math.min(0,t.low)**2, 0));
+  const up = Math.sqrt(sens.reduce((s,t) => s + Math.max(0,t.high)**2, 0));
+  return [net - down, net + up];
 }

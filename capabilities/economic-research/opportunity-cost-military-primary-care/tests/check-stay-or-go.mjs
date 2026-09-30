@@ -36,7 +36,7 @@ assert.ok(stayOrGo({navyState:'FL'},{stateData,lifeTable,bah}).net>base.net);
 assert.ok(stayOrGo({pensionRate:.05},{stateData,lifeTable,bah}).pensionValue<base.pensionValue);
 assert.throws(()=>stayOrGo({yos:20},{stateData,lifeTable,bah}),RangeError);
 const sens=sensitivity({},{stateData,lifeTable,bah});
-assert.equal(sens.length,8);
+assert.equal(sens.length,9);
 assert.ok(sens.every((s,i)=>i===0||sens[i-1].swing>=s.swing));
 console.log('Stay-or-go checks passed');
 
@@ -53,4 +53,25 @@ console.log('Stay-or-go checks passed');
   const cards = stayOrGo({specialty:'cards'},{stateData,lifeTable,bah}), im = stayOrGo({},{stateData,lifeTable,bah});
   assert.ok(cards.rows[0].navyCash - im.rows[0].navyCash === (69000-43000) + (76000-48000));
   console.log('All-specialty checks passed');
+}
+
+// Expert-review fixes: bonus renewals, obligation, pay after 20, range.
+{
+  const {answerRange} = await import('../stay-or-go.js');
+  const c={stateData,lifeTable,bah};
+  const renew=stayOrGo({rbMode:'renew'},c), one=stayOrGo({rbMode:'one'},c), none=stayOrGo({rbMode:'none'},c);
+  assert.ok(renew.rows.every(r=>r.bonus===48000));
+  assert.equal(one.rows.filter(r=>r.bonus>0).length,4);
+  assert.ok(renew.net>one.net && one.net>none.net);
+  // Obligation: obligated years count as zero gap, decision and break-even start after them.
+  const obl=stayOrGo({obligationYears:3,rbMode:'one'},c);
+  assert.ok(obl.rows.slice(0,3).every(r=>r.gap===0));
+  assert.equal(obl.rows.filter(r=>r.bonus>0)[0].yos, 14);
+  assert.equal(obl.path[0].yos,13); assert.equal(obl.decisionYos,13);
+  // Pay penalty after 20 raises the cost of staying; 0% removes it.
+  const p0=stayOrGo({postTwentyPenalty:0},c), p10=stayOrGo({postTwentyPenalty:.10},c);
+  assert.equal(p0.afterTwentyCost,0); assert.ok(p10.afterTwentyCost>0 && p10.net<p0.net);
+  const [lo,hi]=answerRange(renew.net,sensitivity({},c));
+  assert.ok(lo<renew.net && hi>renew.net);
+  console.log('Expert-review fix checks passed');
 }
