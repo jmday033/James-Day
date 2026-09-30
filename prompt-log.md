@@ -233,3 +233,7 @@ After an AI review written from the perspectives of military-physician and physi
 ## 2026-09-29 — Paper revision 6: after-tax and total-compensation check
 
 At the author's request, AI drafted revision 6: a new "After-Tax and Total-Compensation Check" section with Appendix Table 3 (computed with the companion calculator's model), a quantified retiree TRICARE value in Direction of Bias, a post-20 civilian pay limitation, a revised conclusion, and citations to the calculator, KFF 2025, TRICARE 2026 fees, NAPA Net (Vanguard data), and The White Coat Investor on disability insurance. This is AI-drafted analysis and prose; under AGENTS.md the author must review it, revise it into his own voice, and disclose AI use before submission. The author's private fellowship and moonlighting runs are not in the repository.
+
+## 2026-09-29 — Paper revision 7: replacement figures
+
+The author found the paper's figures unhelpful. AI evaluated them (the old Figure 1 repeated one gross-cash fact; the old Figure 2 showed a gross break-even that contradicted Table 3) and, at the author's request, replaced them: Figure 1 now shows the stay-to-20 break-even on gross and after-tax bases (about 14.7 vs 10.9 years), and Figure 2 is a waterfall from the gross-cash −$663,000 to about +$31,000 matching Table 3. Figures are numbered by first mention; figure references and captions were updated. The underlying numbers are unchanged from revision 6.
