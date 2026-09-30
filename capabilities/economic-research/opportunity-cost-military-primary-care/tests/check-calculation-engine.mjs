@@ -55,3 +55,20 @@ for (const [activeYears, expected] of [[10,452992.86839086225],[18,669276.779401
  assert.ok(Math.abs(value-expected)<.001);
 }
 console.log('Conditional pension career-stage checks passed');
+
+// Continuation pay, civilian ramp-up, transition and insurance costs (added 2026-09-29).
+{
+  const cp=calculateScenario({...shared,rbRemaining:4,currentBonus:48000,continuationPayMultiple:2.5});
+  assert.equal(cp.rows[1].activeYos,12);
+  assert.ok(Math.abs(cp.rows[1].continuationPay-23550)<.01);
+  assert.equal(cp.rows[0].continuationPay+cp.rows[2].continuationPay+cp.rows[3].continuationPay,0);
+  assert.ok(Math.abs((signedBonus.pv-cp.pv)-23550/1.05**2)<.01);
+  const legacy=calculateScenario({...shared,isBrs:false,continuationPayMultiple:2.5});
+  assert.equal(legacy.rows[1].continuationPay,0);
+  const ramp=calculateScenario({...shared,civilianFirstYearShare:.8});
+  assert.ok(Math.abs((noBonus.pv-ramp.pv)-.2*339274/1.05)<.01);
+  const costs=calculateScenario({...shared,transitionCost:20000,civilianInsurance:5000});
+  assert.ok(Math.abs((noBonus.pv-costs.pv)-(20000/1.05+5000*noBonus.annuity))<.01);
+  assert.throws(()=>calculateScenario({...shared,civilianFirstYearShare:.3}),RangeError);
+  console.log('Continuation-pay, ramp-up, and transition-cost checks passed');
+}

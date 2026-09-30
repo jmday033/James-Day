@@ -11,6 +11,10 @@ audience: "Navy Medicine decision-makers"
 
 This consolidated record combines the paper-scope decision and the earlier retention economics memo. The current scope below governs the [paper draft](../paper/navy-primary-care-physician-retention-draft.md). The earlier memo is retained for its rationale, evaluation design, and research history; its communication hypothesis is one policy option, not a demonstrated best intervention.
 
+## Practitioner variables added September 29, 2026
+
+The author asked for MCCareer.org and The White Coat Investor to be reviewed for variables the model missed. **Added to the engine and full lab:** BRS continuation pay (2.5 months of basic pay in the 12th service year, BRS only, default on in the lab), first-year civilian pay share (ramp-up, default 100%), one-time transition cost (default $0), and annual private disability and life insurance (default $0). **Added to the paper as named, partly quantified omissions:** continuation pay (about $23,550 in 2028; about $21,400 PV), an 80% first civilian year (about $87,400 PV), TRICARE for Life, VA disability concurrent receipt at 50% or higher (DFAS), SBP, own-occupation disability and life insurance, and post-20 civilian earnings. Bork (2021) reports a typical 15–16-year break-even, consistent with the model's 14.7. **Left as individual inputs:** VA rating, retiree-health value, SBP election, and insurance quotes.
+
 ## Pension valuation revised September 29, 2026
 
 **Decision:** Value the conditional pension (and any retiree-health value) at a 3% real discount rate while keeping 5% real for cash pay. The author asked for fixes after a critique modeled on MCCareer.org (Schofer, 2016): a single 5% rate treats an inflation-adjusted, federally backed annuity like risky civilian earnings. Daily Treasury par real yields on 2026-09-28 were 3.14% (20-year) and 3.28% (30-year); 3% is a rounded planning default, adjustable in the full lab.

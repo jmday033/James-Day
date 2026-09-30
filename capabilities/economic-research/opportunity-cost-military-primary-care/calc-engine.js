@@ -56,11 +56,16 @@ export function calculateScenario(input) {
     civilianSalary, civilianGrowth=0, civilianTax=0, navyTax=0, growthTax=0,
     civilianBenefits=0, navyTsp=0, navyTspAuto=false, isBrs=true,
     health=0, gi=0, pensionAnnual=0, malpractice=0, discount=0.05,
+    continuationPayMultiple=0, continuationPayYos=12,
+    civilianFirstYearShare=1, transitionCost=0, civilianInsurance=0,
     years=4} = input;
   if (!Number.isInteger(years) || years < 1 || years > 30) throw new RangeError('Comparison years must be 1–30');
   if (!Number.isFinite(discount) || discount < 0 || discount > 0.20) throw new RangeError('Real discount rate must be 0–20%');
   if (Number.isFinite(civilianSalary) && civilianSalary < 0) throw new RangeError('Civilian salary cannot be negative');
   if (!Number.isFinite(civilianGrowth) || civilianGrowth < -0.10 || civilianGrowth > 0.20) throw new RangeError('Real salary growth must be −10% to 20%');
+  if (!Number.isFinite(continuationPayMultiple) || continuationPayMultiple < 0 || continuationPayMultiple > 13) throw new RangeError('Continuation pay must be 0–13 months of basic pay');
+  if (!Number.isFinite(civilianFirstYearShare) || civilianFirstYearShare < 0.5 || civilianFirstYearShare > 1) throw new RangeError('First-year civilian pay share must be 50–100%');
+  if (!Number.isFinite(transitionCost) || transitionCost < 0 || !Number.isFinite(civilianInsurance) || civilianInsurance < 0) throw new RangeError('Transition and insurance costs cannot be negative');
   const rows = [];
   let pv = 0, annuity = 0;
   for (let i = 0; i < years; i++) {
@@ -70,18 +75,25 @@ export function calculateScenario(input) {
       ? bahFor(zip, grade, deps)?.monthly : null;
     const bahMonthly = mappedBah ?? bah;
     const bonus = i < rbRemaining ? currentBonus : 0;
-    const navyCash = 12 * (basicMonthly + bahMonthly + bas) + ip + bcp + bonus;
-    const civilianCash = civilianSalary * Math.pow(1 + civilianGrowth, i);
+    // BRS continuation pay: one-time, paid in the service year that reaches
+    // `continuationPayYos` (Navy: 12th year, 2.5 months of basic pay).
+    const continuationPay = isBrs && payYos + i + 1 === continuationPayYos ? continuationPayMultiple * basicMonthly : 0;
+    const navyCash = 12 * (basicMonthly + bahMonthly + bas) + ip + bcp + bonus + continuationPay;
+    // First civilian year may pay less while a panel or productivity ramps up.
+    const civilianCash = civilianSalary * Math.pow(1 + civilianGrowth, i) * (i === 0 ? civilianFirstYearShare : 1);
     const annualCivilianTax = Math.max(0, civilianTax + (civilianCash - civilianSalary) * growthTax);
     const tsp = navyTspAuto && isBrs ? Math.round(0.05 * 12 * basicMonthly) : navyTsp;
-    const civilianValue = civilianCash - annualCivilianTax + civilianBenefits - malpractice;
+    // Civilian-path costs: one-time transition (moving, licensure, credentialing,
+    // pay gap) in year 1, and annual private disability/life insurance premiums.
+    const civilianValue = civilianCash - annualCivilianTax + civilianBenefits - malpractice
+      - (i === 0 ? transitionCost : 0) - civilianInsurance;
     const navyValue = navyCash - navyTax + health + gi + pensionAnnual + tsp;
     const gap = civilianValue - navyValue;
     const factor = 1 / Math.pow(1 + discount, i + 1);
     annuity += factor;
     pv += gap * factor;
     rows.push({year:2027+i, activeYos:payYos+i+1, grade, basicMonthly, bahMonthly,
-      bonus, navyCash, civilianCash, grossGap:civilianCash-navyCash,
+      bonus, continuationPay, navyCash, civilianCash, grossGap:civilianCash-navyCash,
       civilianTax:annualCivilianTax, navyTax, tsp, civilianValue, navyValue, gap,
       discountedGap:gap*factor});
   }

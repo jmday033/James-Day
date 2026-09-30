@@ -22,3 +22,4 @@ These snapshots were added on September 19 from actual saved content. They do no
 - [September 19 revision 3](2026-09-19-condensed-revision-3-draft.md): author-requested substantive and mechanical edits; AI assistance disclosed; author-review draft.
 
 - [September 29 revision 4](2026-09-29-revision-4-draft.md): author-requested critique fixes, stay-to-20 pension comparison (Figure 2, Table 2), and a separate 3% real pension discount rate; AI assistance disclosed; author-review draft.
+- [September 29 revision 5](2026-09-29-revision-5-draft.md): adds continuation pay, civilian ramp-up, transition and insurance costs, VA disability concurrent receipt, SBP, TRICARE for Life, post-20 earnings, and a practitioner break-even check; AI assistance disclosed; author-review draft.
