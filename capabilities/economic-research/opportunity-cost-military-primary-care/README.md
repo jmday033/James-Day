@@ -9,7 +9,7 @@ status: working
 
 # Navy Physician Compensation, Opportunity Cost, and Retention
 
-**Latest draft:** [Revision 5, September 29 (PDF)](paper/navy-physician-retention-revision-5.pdf) · [Word](paper/navy-physician-retention-revision-5.docx) · [Build files](paper/revision-5-build/README.md). Adds practitioner-identified variables (continuation pay, civilian ramp-up, transition and insurance costs, VA disability, SBP, TRICARE for Life, post-20 earnings) to revision 4's stay-to-20 comparison and 3% pension rate; author-review draft, not yet designated final. Revision 4: [PDF](paper/navy-physician-retention-revision-4.pdf). Earlier: [condensed revision 2](paper/navy-physician-retention-condensed-revision-2.pdf) · [submission review](paper/submission-readiness-review-2026-09-19.md).
+**Latest draft:** [Revision 6, September 29 (PDF)](paper/navy-physician-retention-revision-6.pdf) · [Word](paper/navy-physician-retention-revision-6.docx) · [Build files](paper/revision-6-build/README.md). Adds an after-tax and total-compensation check (Table 3): the gross-cash net cost of staying at 10 years (about −$663,000) becomes roughly break-even to about +$100,000 for staying after taxes and benefits. Author-review draft, not yet designated final. Earlier: [revision 5](paper/navy-physician-retention-revision-5.pdf) · [revision 4](paper/navy-physician-retention-revision-4.pdf).
 
 Final course project for BUS 620 — Micro and Macro Economics. Compensation, retention, opportunity-cost analysis, pension sensitivity, staffing alternatives, source reviews, and both labs are components of this one project. The Navy is the modeled case; the project title does not imply validation for every military service.
 

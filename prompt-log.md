@@ -229,3 +229,7 @@ For sharing with MCCareer's Joel Schofer and colleagues, AI added a link preview
 ## 2026-09-29 — Expert-review fixes to Stay or go? (v1.2)
 
 After an AI review written from the perspectives of military-physician and physician-finance bloggers (not their actual views), the author asked AI to implement five fixes: retention-bonus renewals through 20 (default; one agreement or none selectable), a years-on-obligation question (obligated years excluded; decision and break-even start when it ends), a civilian pay cut after retiring at 20 (default 5% planning assumption, with work-until age 65), a likely range on the answer from the sensitivity results, a clearer "Staying already ahead" label with a primary-care rule-of-thumb note, and a version/updated line. Tests extended.
+
+## 2026-09-29 — Paper revision 6: after-tax and total-compensation check
+
+At the author's request, AI drafted revision 6: a new "After-Tax and Total-Compensation Check" section with Appendix Table 3 (computed with the companion calculator's model), a quantified retiree TRICARE value in Direction of Bias, a post-20 civilian pay limitation, a revised conclusion, and citations to the calculator, KFF 2025, TRICARE 2026 fees, NAPA Net (Vanguard data), and The White Coat Investor on disability insurance. This is AI-drafted analysis and prose; under AGENTS.md the author must review it, revise it into his own voice, and disclose AI use before submission. The author's private fellowship and moonlighting runs are not in the repository.
