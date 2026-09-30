@@ -11,43 +11,42 @@
 	<g id="group" transform="scale(1,-1) translate(0,-540)" style="clip-path: url(#clip)">
 		<g transform="">
 			<rect x="0" y="486" width="468" height="54" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(90%,93%,94%); fill-rule: evenodd;"/>
-			<text x="12" y="520" style="font-family: Times New Roman; font-size: 12px;fill: rgb(8%,23%,30%); stroke:none;" transform="translate(0,1040) scale(1,-1)">Figure F1  Sample compensation statement</text>
-			<text x="12" y="496" style="font-family: Times New Roman; font-size: 12px;fill: rgb(8%,23%,30%); stroke:none;" transform="translate(0,992) scale(1,-1)">Illustrative counseling handout—not a validated instrument</text>
-			<text x="0" y="465" style="font-family: Times New Roman; font-size: 12px;fill: rgb(8%,23%,30%); stroke:none;" transform="translate(0,930) scale(1,-1)">O-4 internist | 10 service years | Age 37 | Married, one income</text>
-			<text x="0" y="441" style="font-family: Times New Roman; font-size: 12px;fill: rgb(8%,23%,30%); stroke:none;" transform="translate(0,882) scale(1,-1)">Decision: leave when eligible or remain to 20 service years</text>
+			<text x="12" y="520" style="font-family: TNRB; font-size: 12px;fill: rgb(8%,23%,30%); stroke:none;" transform="translate(0,1040) scale(1,-1)">Figure F1  Sample compensation statement</text>
+			<text x="12" y="496" style="font-family: TNR; font-size: 12px;fill: rgb(8%,23%,30%); stroke:none;" transform="translate(0,992) scale(1,-1)">Illustrative counseling handout—not a validated instrument</text>
+			<text x="0" y="465" style="font-family: TNR; font-size: 12px;fill: rgb(8%,23%,30%); stroke:none;" transform="translate(0,930) scale(1,-1)">O-4 internist | 10 service years | Age 37 | Married, one income</text>
+			<text x="0" y="441" style="font-family: TNR; font-size: 12px;fill: rgb(8%,23%,30%); stroke:none;" transform="translate(0,882) scale(1,-1)">Decision: leave when eligible or remain to 20 service years</text>
 			<rect x="0" y="394" width="468" height="28" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(90%,93%,94%); fill-rule: evenodd;"/>
-			<text x="10" y="403" style="font-family: Times New Roman; font-size: 12px;fill: rgb(8%,23%,30%); stroke:none;" transform="translate(0,806) scale(1,-1)">Year 1 annual compensation</text>
-			<text x="291" y="403" style="font-family: Times New Roman; font-size: 12px;fill: rgb(8%,23%,30%); stroke:none;" transform="translate(0,806) scale(1,-1)">Stay</text>
-			<text x="386" y="403" style="font-family: Times New Roman; font-size: 12px;fill: rgb(8%,23%,30%); stroke:none;" transform="translate(0,806) scale(1,-1)">Leave</text>
-			<text x="10" y="375" style="font-family: Times New Roman; font-size: 12px;fill: rgb(8%,23%,30%); stroke:none;" transform="translate(0,750) scale(1,-1)">Gross cash pay</text>
-			<text x="291" y="375" style="font-family: Times New Roman; font-size: 12px;fill: rgb(8%,23%,30%); stroke:none;" transform="translate(0,750) scale(1,-1)">$276,966</text>
-			<text x="386" y="375" style="font-family: Times New Roman; font-size: 12px;fill: rgb(8%,23%,30%); stroke:none;" transform="translate(0,750) scale(1,-1)">$459,057</text>
+			<text x="10" y="403" style="font-family: TNRB; font-size: 12px;fill: rgb(8%,23%,30%); stroke:none;" transform="translate(0,806) scale(1,-1)">Year 1 annual compensation</text>
+			<text x="291" y="403" style="font-family: TNRB; font-size: 12px;fill: rgb(8%,23%,30%); stroke:none;" transform="translate(0,806) scale(1,-1)">Stay</text>
+			<text x="386" y="403" style="font-family: TNRB; font-size: 12px;fill: rgb(8%,23%,30%); stroke:none;" transform="translate(0,806) scale(1,-1)">Leave</text>
+			<text x="10" y="375" style="font-family: TNR; font-size: 12px;fill: rgb(8%,23%,30%); stroke:none;" transform="translate(0,750) scale(1,-1)">Gross cash pay</text>
+			<text x="291" y="375" style="font-family: TNR; font-size: 12px;fill: rgb(8%,23%,30%); stroke:none;" transform="translate(0,750) scale(1,-1)">$276,966</text>
+			<text x="386" y="375" style="font-family: TNR; font-size: 12px;fill: rgb(8%,23%,30%); stroke:none;" transform="translate(0,750) scale(1,-1)">$459,057</text>
 			<path d="M 0,367 L 468,367 Z" style="stroke: rgb(80%,83%,85%); stroke-linecap: butt; stroke-width: 0.5;"/>
-			<text x="10" y="349" style="font-family: Times New Roman; font-size: 12px;fill: rgb(8%,23%,30%); stroke:none;" transform="translate(0,698) scale(1,-1)">After taxes and listed premiums</text>
-			<text x="291" y="349" style="font-family: Times New Roman; font-size: 12px;fill: rgb(8%,23%,30%); stroke:none;" transform="translate(0,698) scale(1,-1)">$221,897</text>
-			<text x="386" y="349" style="font-family: Times New Roman; font-size: 12px;fill: rgb(8%,23%,30%); stroke:none;" transform="translate(0,698) scale(1,-1)">$288,445</text>
+			<text x="10" y="349" style="font-family: TNR; font-size: 12px;fill: rgb(8%,23%,30%); stroke:none;" transform="translate(0,698) scale(1,-1)">After taxes and listed premiums</text>
+			<text x="291" y="349" style="font-family: TNR; font-size: 12px;fill: rgb(8%,23%,30%); stroke:none;" transform="translate(0,698) scale(1,-1)">$221,897</text>
+			<text x="386" y="349" style="font-family: TNR; font-size: 12px;fill: rgb(8%,23%,30%); stroke:none;" transform="translate(0,698) scale(1,-1)">$288,445</text>
 			<path d="M 0,341 L 468,341 Z" style="stroke: rgb(80%,83%,85%); stroke-linecap: butt; stroke-width: 0.5;"/>
-			<text x="10" y="323" style="font-family: Times New Roman; font-size: 12px;fill: rgb(8%,23%,30%); stroke:none;" transform="translate(0,646) scale(1,-1)">Employer retirement contributions</text>
-			<text x="291" y="323" style="font-family: Times New Roman; font-size: 12px;fill: rgb(8%,23%,30%); stroke:none;" transform="translate(0,646) scale(1,-1)">$5,652</text>
-			<text x="386" y="323" style="font-family: Times New Roman; font-size: 12px;fill: rgb(8%,23%,30%); stroke:none;" transform="translate(0,646) scale(1,-1)">$16,560</text>
+			<text x="10" y="323" style="font-family: TNR; font-size: 12px;fill: rgb(8%,23%,30%); stroke:none;" transform="translate(0,646) scale(1,-1)">Employer retirement contributions</text>
+			<text x="291" y="323" style="font-family: TNR; font-size: 12px;fill: rgb(8%,23%,30%); stroke:none;" transform="translate(0,646) scale(1,-1)">$5,652</text>
+			<text x="386" y="323" style="font-family: TNR; font-size: 12px;fill: rgb(8%,23%,30%); stroke:none;" transform="translate(0,646) scale(1,-1)">$16,560</text>
 			<path d="M 0,315 L 468,315 Z" style="stroke: rgb(80%,83%,85%); stroke-linecap: butt; stroke-width: 0.5;"/>
-			<text x="10" y="297" style="font-family: Times New Roman; font-size: 12px;fill: rgb(8%,23%,30%); stroke:none;" transform="translate(0,594) scale(1,-1)">Adjusted compensation total</text>
-			<text x="291" y="297" style="font-family: Times New Roman; font-size: 12px;fill: rgb(8%,23%,30%); stroke:none;" transform="translate(0,594) scale(1,-1)">$227,549</text>
-			<text x="386" y="297" style="font-family: Times New Roman; font-size: 12px;fill: rgb(8%,23%,30%); stroke:none;" transform="translate(0,594) scale(1,-1)">$305,005</text>
+			<text x="10" y="297" style="font-family: TNRB; font-size: 12px;fill: rgb(8%,23%,30%); stroke:none;" transform="translate(0,594) scale(1,-1)">Adjusted compensation total</text>
+			<text x="291" y="297" style="font-family: TNRB; font-size: 12px;fill: rgb(8%,23%,30%); stroke:none;" transform="translate(0,594) scale(1,-1)">$227,549</text>
+			<text x="386" y="297" style="font-family: TNRB; font-size: 12px;fill: rgb(8%,23%,30%); stroke:none;" transform="translate(0,594) scale(1,-1)">$305,005</text>
 			<path d="M 0,289 L 468,289 Z" style="stroke: rgb(80%,83%,85%); stroke-linecap: butt; stroke-width: 0.5;"/>
-			<text x="0" y="262" style="font-family: Times New Roman; font-size: 12px;fill: rgb(8%,23%,30%); stroke:none;" transform="translate(0,524) scale(1,-1)">Cash excludes employee retirement saving and other spending.</text>
-			<rect x="0" y="175" width="468" height="69" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(90%,93%,94%); fill-rule: evenodd;"/>
-			<text x="12" y="225" style="font-family: Times New Roman; font-size: 12px;fill: rgb(8%,23%,30%); stroke:none;" transform="translate(0,450) scale(1,-1)">Retirement value and full-horizon result</text>
-			<text x="12" y="201" style="font-family: Times New Roman; font-size: 12px;fill: rgb(8%,23%,30%); stroke:none;" transform="translate(0,402) scale(1,-1)">Conditional military pension PV if staying: $498,595 after tax</text>
-			<text x="12" y="181" style="font-family: Times New Roman; font-size: 12px;fill: rgb(8%,23%,30%); stroke:none;" transform="translate(0,362) scale(1,-1)">Adjusted base case: leaving is ahead by $58,419 in present value.</text>
-			<text x="0" y="151" style="font-family: Times New Roman; font-size: 12px;fill: rgb(8%,23%,30%); stroke:none;" transform="translate(0,302) scale(1,-1)">Assumptions to confirm</text>
-			<text x="0" y="127" style="font-family: Times New Roman; font-size: 12px;fill: rgb(8%,23%,30%); stroke:none;" transform="translate(0,254) scale(1,-1)">Civilian pay $459,057; California wage taxes; no promotion.</text>
-			<text x="0" y="103" style="font-family: Times New Roman; font-size: 12px;fill: rgb(8%,23%,30%); stroke:none;" transform="translate(0,206) scale(1,-1)">Pension at 20 years; 32% pension tax; recurring bonus eligibility.</text>
-			<text x="0" y="79" style="font-family: Times New Roman; font-size: 12px;fill: rgb(8%,23%,30%); stroke:none;" transform="translate(0,158) scale(1,-1)">Cash discount 5%; pension discount 3%; no VA benefits.</text>
-			<text x="0" y="55" style="font-family: Times New Roman; font-size: 12px;fill: rgb(8%,23%,30%); stroke:none;" transform="translate(0,110) scale(1,-1)">Sensitivity: with a 5% pension discount, leaving leads by $234,384.</text>
-			<text x="0" y="31" style="font-family: Times New Roman; font-size: 12px;fill: rgb(8%,23%,30%); stroke:none;" transform="translate(0,62) scale(1,-1)">Discuss: workload, deployment, location, family, and offer terms.</text>
-			<text x="0" y="7" style="font-family: Times New Roman; font-size: 12px;fill: rgb(8%,23%,30%); stroke:none;" transform="translate(0,14) scale(1,-1)">Confirm: added service obligations, eligibility, and uncertain inputs.</text>
+			<text x="0" y="262" style="font-family: TNR; font-size: 12px;fill: rgb(8%,23%,30%); stroke:none;" transform="translate(0,524) scale(1,-1)">Cash excludes employee retirement saving and other spending.</text>
+			<rect x="0" y="130" width="468" height="114" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(90%,93%,94%); fill-rule: evenodd;"/>
+			<text x="12" y="225" style="font-family: TNRB; font-size: 12px;fill: rgb(8%,23%,30%); stroke:none;" transform="translate(0,450) scale(1,-1)">Retirement value and full-horizon results</text>
+			<text x="12" y="203" style="font-family: TNR; font-size: 12px;fill: rgb(8%,23%,30%); stroke:none;" transform="translate(0,406) scale(1,-1)">Conditional military pension PV if staying: $498,595 after tax</text>
+			<text x="12" y="181" style="font-family: TNR; font-size: 12px;fill: rgb(8%,23%,30%); stroke:none;" transform="translate(0,362) scale(1,-1)">Adjusted base case: leaving is ahead by $58,419 in present value.</text>
+			<text x="12" y="159" style="font-family: TNR; font-size: 12px;fill: rgb(8%,23%,30%); stroke:none;" transform="translate(0,318) scale(1,-1)">Retiree health: +$3,854; plus Navy tax domicile: +$98,456.</text>
+			<text x="12" y="139" style="font-family: TNR; font-size: 12px;fill: rgb(8%,23%,30%); stroke:none;" transform="translate(0,278) scale(1,-1)">With continuation pay: +$114,808; later pay penalty: +$29,072.</text>
+			<text x="0" y="107" style="font-family: TNR; font-size: 12px;fill: rgb(8%,23%,30%); stroke:none;" transform="translate(0,214) scale(1,-1)">Positive favors staying; cumulative scenarios, not a confidence interval.</text>
+			<text x="0" y="83" style="font-family: TNR; font-size: 12px;fill: rgb(8%,23%,30%); stroke:none;" transform="translate(0,166) scale(1,-1)">Assumptions: CA wages; pension at 20; recurring bonus eligibility.</text>
+			<text x="0" y="59" style="font-family: TNR; font-size: 12px;fill: rgb(8%,23%,30%); stroke:none;" transform="translate(0,118) scale(1,-1)">Discounts: cash 5%, pension 3%; pension tax 32%; no VA benefits.</text>
+			<text x="0" y="35" style="font-family: TNR; font-size: 12px;fill: rgb(8%,23%,30%); stroke:none;" transform="translate(0,70) scale(1,-1)">5% pension discount: -$234,384. Check offer terms and family needs.</text>
+			<text x="0" y="11" style="font-family: TNR; font-size: 12px;fill: rgb(8%,23%,30%); stroke:none;" transform="translate(0,22) scale(1,-1)">Confirm obligations, eligibility, domicile, and clinical practice needs.</text>
 		</g>
 	</g>
 </svg>
-
