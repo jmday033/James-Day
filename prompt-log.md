@@ -237,3 +237,7 @@ At the author's request, AI drafted revision 6: a new "After-Tax and Total-Compe
 ## 2026-09-29 — Paper revision 7: replacement figures
 
 The author found the paper's figures unhelpful. AI evaluated them (the old Figure 1 repeated one gross-cash fact; the old Figure 2 showed a gross break-even that contradicted Table 3) and, at the author's request, replaced them: Figure 1 now shows the stay-to-20 break-even on gross and after-tax bases (about 14.7 vs 10.9 years), and Figure 2 is a waterfall from the gross-cash −$663,000 to about +$31,000 matching Table 3. Figures are numbered by first mention; figure references and captions were updated. The underlying numbers are unchanged from revision 6.
+
+## 2026-09-29 — Source research: compensation education and retention
+
+Permitted research assistance. At the author's request, AI searched for military and civilian examples of compensation-education efforts with measured results and adaptable pilot designs, and saved `paper/compensation-education-source-review.md` (Warner & Pleeter 2001; Fitzpatrick 2015; Mastrobuoni 2011; Liebman & Luttmer 2015 and Smith 2020 via Social Security Bulletin; NHS Total Reward Statements; UK AFCAS 2025; IDA Army Menu of Incentives; RAND MG-866; Mundell 2010). Two GAO reports could not be opened (rate limit) and are marked unverified. No paper prose written.
