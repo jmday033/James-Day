@@ -217,3 +217,7 @@ At the author's request, AI added head of household and married-filing-jointly-w
 ## 2026-09-29 — Answer-first "Stay or go?" front page
 
 The author was concerned the full lab would lose users and asked AI to fix it. AI built `stay-or-go.html` with `stay-or-go.js`: six questions (years served, specialty, rank, promotion, civilian salary, family), presets, collapsible "Refine" groups whose headers show current settings, an answer card in today's after-tax dollars, a stay-to-20 break-even chart, a "what moves your answer most" sensitivity chart, and year-by-year detail. It reuses `calc-engine.js` for pay and pension rules and shares extracted 2026 state tax and life-table data (`data/state-tax-2026.json`, `data/us-life-remaining-2024.json`). Tests added in `tests/check-stay-or-go.mjs`. The Quick Look and advanced lab are unchanged except for navigation links; the paper is unchanged.
+
+## 2026-09-29 — Quick Look combined into Stay or go?
+
+At the author's direction (option 2), AI moved the Quick Look's GMO-to-residency comparison and its medical-school checklist into `stay-or-go.html` behind a "What are you deciding?" selector (deep link: `stay-or-go.html?decision=gmo`). `quick-lab.html` and both older Quick Look addresses now redirect to Stay or go?; the retired page remains in git history. Navigation now shows two pages: Stay or go? and the Advanced lab.

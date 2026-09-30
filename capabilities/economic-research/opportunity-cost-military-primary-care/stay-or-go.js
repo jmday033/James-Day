@@ -7,7 +7,7 @@
 import {calculateScenario, payFor, rbRates, benchmarks, pensionPresentValue,
   vaAnnualFor, crdpThreshold, retireeTricareValue, kff2025} from './calc-engine.js?v=20260929-stayorgo';
 // Re-exported so the page shares this module's single copy of the engine and its loaded BAH data.
-export {loadReferenceData, bahFor} from './calc-engine.js?v=20260929-stayorgo';
+export {loadReferenceData, bahFor, payFor, benchmarks} from './calc-engine.js?v=20260929-stayorgo';
 
 // ---------- 2026 federal income and payroll tax ----------
 const federalBrackets = {

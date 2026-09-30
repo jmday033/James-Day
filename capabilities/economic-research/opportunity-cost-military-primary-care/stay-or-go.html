@@ -67,15 +67,17 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
 </head>
 <body>
 <header><div class="wrap">
-  <nav class="crumb" aria-label="Lab versions"><a href="stay-or-go.html" aria-current="page">Stay or go?</a><a href="quick-lab.html">Quick Look</a><a href="physician-pay-lab.html">Advanced lab</a></nav>
+  <nav class="crumb" aria-label="Lab versions"><a href="stay-or-go.html" aria-current="page">Stay or go?</a><a href="physician-pay-lab.html">Advanced lab</a></nav>
   <h1>Stay or go?</h1>
-  <p>For a Navy physician under 20 years: what staying to 20 is worth, in today's dollars, compared with leaving now for a civilian job. Answer six questions; everything else starts at published averages you can refine.</p>
+  <p>Navy physician career decisions in today's dollars: staying to 20 versus leaving for a civilian job, or Navy versus civilian residency after a GMO tour. Answer a few questions; everything else starts at published averages you can refine.</p>
 </div></header>
 
 <main class="wrap">
 <div class="layout">
 <section class="panel inputs" aria-labelledby="inputsTitle">
   <h2 id="inputsTitle">Your situation</h2>
+  <div class="field"><label for="decision">What are you deciding?</label><select id="decision"><option value="attending" selected>Stay to 20 or leave now (attending)</option><option value="gmo">After a GMO tour: Navy or civilian residency</option><option value="prospective">Considering Navy medicine (medical school)</option></select></div>
+  <div id="attendingInputs">
   <div class="presets" aria-label="Example physicians">
     <button type="button" data-preset='{"yos":10,"specialty":"im","rank":"O4","promotion":true,"salarySource":"sandiego","family":"married","kids":1,"zip":"92134"}'>O-4 internist · 10 yrs · San Diego</button>
     <button type="button" data-preset='{"yos":15,"specialty":"fm","rank":"O5","promotion":false,"salarySource":"national","family":"married","kids":2,"zip":"92134"}'>O-5 family med · 15 yrs</button>
@@ -154,9 +156,31 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
   <details class="refine"><summary>Discount rate for pay <span id="sumCash"></span></summary><div class="inner">
     <div class="field"><label for="cashRate">Real discount rate for pay (%)</label><input id="cashRate" type="number" min="0" max="15" step=".5" value="5"><small>Brings future pay back to today's dollars after inflation.</small></div>
   </div></details>
+  </div>
+  <div id="gmoInputs" hidden>
+    <p class="caption" style="margin:0 0 12px">Compare Navy residency with civilian residency, then the attending years after training. Gross cash only: taxes, pension, TSP, health benefits, board pay, and retention bonuses are excluded.</p>
+    <div class="row">
+      <div class="field"><label for="gmoSpecialty">Specialty</label><select id="gmoSpecialty"><option value="im" selected>Internal med.</option><option value="fm">Family med.</option><option value="peds">Pediatrics</option></select></div>
+      <div class="field"><label for="gmoCredit">Intern year credited?</label><select id="gmoCredit"><option value="yes" selected>Yes: PGY-2, PGY-3</option><option value="no">No: PGY-1 to 3</option></select></div>
+    </div>
+    <div class="row">
+      <div class="field"><label for="gmoRank">Pay grade</label><select id="gmoRank"><option value="O4" selected>O-4</option><option value="O5">O-5</option><option value="O6">O-6</option></select></div>
+      <div class="field"><label for="gmoActiveYears">Active years served</label><input id="gmoActiveYears" type="number" min="0" max="35" value="4"></div>
+    </div>
+    <div class="row">
+      <div class="field"><label for="gmoServiceYears">Navy years after training</label><select id="gmoServiceYears"><option value="2">2 years</option><option value="3" selected>3 years</option><option value="4">4 years</option><option value="5">5 years</option></select></div>
+      <div class="field"><label for="gmoZip">Training duty ZIP</label><input id="gmoZip" inputmode="numeric" maxlength="5" value="92134"></div>
+    </div>
+    <div class="field"><label for="gmoBenchmark">Civilian attending salary</label><select id="gmoBenchmark"><option value="doximity" selected>Doximity national average</option><option value="medscape">Medscape national average</option><option value="salarydr">SalaryDr national median</option></select></div>
+    <small class="caption" style="display:block">Navy GME obligation is usually one year per year of training; the post-training years here are an illustration, not an official obligation. Confirm with BUMED under <a href="https://www.med.navy.mil/Portals/62/Documents/BUMED/Directives/Instructions/1524.1D.pdf?ver=eVEhcqPIO1Neu4s7m4Xskw%3D%3D">BUMEDINST 1524.1D</a>.</small>
+  </div>
+  <div id="prospectiveInputs" hidden>
+    <p class="caption" style="margin:0">This decision comes before training, so an attending-salary comparison would mislead. Use the checklist on the right to compare paths.</p>
+  </div>
 </section>
 
 <section class="results" aria-live="polite" aria-labelledby="answerTitle">
+  <div id="attendingResults" style="display:grid;gap:16px">
   <div class="answer" id="answer">
     <div class="kicker" id="answerTitle">Staying to 20 versus leaving now</div>
     <strong class="big" id="answerBig">—</strong>
@@ -187,6 +211,18 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
     <p class="caption">"After tax" includes BRS matching, employer retirement, health premiums, VA pay, and the costs you entered. The pension is not in these rows; it is counted once in the answer above.</p>
   </details>
 
+  </div>
+  <div id="gmoResults" hidden style="display:grid;gap:16px">
+    <div class="answer" id="gmoAnswer"><div class="kicker">Navy residency versus civilian residency</div><strong class="big" id="gmoBig">—</strong><p id="gmoText"></p></div>
+    <div class="panel"><h3>Year by year (gross cash)</h3><div class="tablewrap"><table><thead><tr><th>Year · stage</th><th>Navy</th><th>Civilian</th><th>Civilian − Navy</th></tr></thead><tbody id="gmoRows"></tbody></table></div>
+    <p class="caption">Civilian resident pay: <a href="https://www.aamc.org/data-reports/students-residents/report/aamc-survey-resident/fellow-stipends-and-benefits">AAMC 2025 national PGY averages</a>. Navy resident pay: basic pay, BAH, BAS, and <a href="https://www.dfas.mil/MilitaryMembers/payentitlements/Pay-Tables/HPO4/">FY 2026 resident incentive pay</a>; after training, $43,000 incentive pay. Taxes, pension, TSP, health benefits, board pay, and bonuses are excluded.</p></div>
+  </div>
+  <div id="prospectiveResults" hidden class="panel">
+    <h3>Considering Navy medicine: compare these paths</h3>
+    <ul class="caption" style="font-size:14px"><li><b>USU or HPSP:</b> school support, active-duty pay where it applies, and required service after training.</li><li><b>Civilian medical school:</b> tuition and debt, residency pay, and later civilian earnings.</li></ul>
+    <h3>Information to gather</h3>
+    <ul class="caption" style="font-size:14px"><li>School costs and financing, including the exact USU or HPSP terms offered.</li><li>Residency length, pay, and expected specialty.</li><li>Required service years and a realistic civilian job path after training.</li></ul>
+  </div>
   <div class="panel">
     <h3>Need more control?</h3>
     <p class="caption" style="margin:0 0 10px">The advanced lab adds Reserve pensions, USU credit, GI Bill transfer, malpractice tail, LES upload, and every tax setting.</p>
@@ -207,7 +243,8 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
 </main>
 
 <script type="module">
-import {stayOrGo, sensitivity, defaultCivilianSalary, loadReferenceData, bahFor} from './stay-or-go.js?v=20260929-stayorgo';
+import {stayOrGo, sensitivity, defaultCivilianSalary, loadReferenceData, bahFor, payFor, benchmarks} from './stay-or-go.js?v=20260929-stayorgo';
+import {calculateGmoResidency} from './gmo-residency-model.js?v=20260929-stayorgo';
 const $=id=>document.getElementById(id);
 const money=v=>(v<0?'−':'')+'$'+Math.round(Math.abs(v)).toLocaleString();
 const short=v=>{const a=Math.abs(v),s=v<0?'−':'';return a>=1e6?s+'$'+(a/1e6).toFixed(a>=1e7?0:1)+'M':a>=1e3?s+'$'+Math.round(a/1e3)+'k':s+'$'+Math.round(a)};
@@ -241,8 +278,24 @@ function readInput(){
     employerRetirement:num('employerRetirement',4)/100,malpractice:num('malpractice'),cashRate:num('cashRate',5)/100};
 }
 
+function renderGmo(){
+  const rank=$('gmoRank').value,zip=$('gmoZip').value.trim(),bah=bahFor(zip,rank,'yes'),sp=$('gmoSpecialty').value,src=$('gmoBenchmark').value;
+  if(!bah){$('gmoBig').textContent='—';$('gmoText').innerHTML='<span class="error">Enter a duty-station ZIP with a 2026 housing rate.</span>';$('gmoRows').innerHTML='';return}
+  let r;try{r=calculateGmoResidency({specialty:sp,rank,activeYears:Math.max(0,Math.min(35,Math.round(num('gmoActiveYears',4)))),bahMonthly:bah.monthly,payFor,civilianAttending:benchmarks[src].values[sp],creditedInternship:$('gmoCredit').value==='yes',obligationYears:Number($('gmoServiceYears').value)})}catch(e){$('gmoText').innerHTML='<span class="error">'+e.message+'</span>';return}
+  const civAhead=r.presentValueGap>=0;
+  $('gmoAnswer').className='answer'+(civAhead?' go':'');
+  $('gmoBig').textContent=(civAhead?'Civilian path ahead by about ':'Navy path ahead by about ')+money(Math.round(Math.abs(r.presentValueGap)/1000)*1000);
+  $('gmoText').textContent='Over '+(r.trainingYears+r.obligationYears)+' years ('+r.trainingYears+' in residency, '+r.obligationYears+' after), gross cash in today\'s dollars. Navy pays about '+money(Math.round(r.trainingNavyAdvantage/1000)*1000)+' more during residency; a civilian attending then earns about '+money(Math.round(r.postCivilianAdvantage/1000)*1000)+' more over the Navy years after training. '+(r.trainingNavyAdvantage<=0?'Civilian pay is already ahead during training.':r.crossover?'Civilian pay makes up the residency difference in post-training year '+r.crossover+'.':'Civilian pay does not make up the residency difference within 15 years.');
+  $('gmoRows').innerHTML=r.rows.map(w=>'<tr><td>'+w.year+' · '+(w.pgy?'PGY-'+w.pgy:'Attending')+'</td><td>'+money(w.navyCash)+'</td><td>'+money(w.civilianCash)+'</td><td>'+money(w.gap)+'</td></tr>').join('');
+}
 function update(){
   if(!ready)return;
+  const decision=$('decision').value;
+  $('attendingInputs').hidden=decision!=='attending';$('attendingResults').hidden=decision!=='attending';
+  $('gmoInputs').hidden=decision!=='gmo';$('gmoResults').hidden=decision!=='gmo';
+  $('prospectiveInputs').hidden=decision!=='prospective';$('prospectiveResults').hidden=decision!=='prospective';
+  if(decision==='gmo'){renderGmo();return}
+  if(decision==='prospective')return;
   $('spouseField').hidden=$('family').value!=='marriedTwoIncomes';$('survivorField').hidden=!$('sbp').checked;
   const x=readInput();
   if(!(x.yos>=1&&x.yos<=19)){$('answerBig').textContent='—';$('answerText').innerHTML='<span class="error">Enter 1–19 active years. At 20 or more the pension is already earned.</span>';return}
@@ -303,6 +356,7 @@ document.querySelectorAll('[data-preset]').forEach(btn=>btn.addEventListener('cl
   $('yos').value=p.yos;$('specialty').value=p.specialty;$('rank').value=p.rank;$('promotion').value=p.promotion?'yes':'no';
   $('salarySource').value=p.salarySource;$('family').value=p.family;$('kids').value=p.kids;$('zip').value=p.zip;syncSalary();update();
 }));
+const q=new URLSearchParams(location.search).get('decision');if(['attending','gmo','prospective'].includes(q))$('decision').value=q;
 syncSalary();boot();
 let resizeTimer;addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(update,150)});
 </script>
