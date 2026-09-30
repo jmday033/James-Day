@@ -7,7 +7,7 @@
 import {calculateScenario, payFor, rbRates, benchmarks, pensionPresentValue,
   vaAnnualFor, crdpThreshold, retireeTricareValue, kff2025} from './calc-engine.js?v=20260929-stayorgo';
 // Re-exported so the page shares this module's single copy of the engine and its loaded BAH data.
-export {loadReferenceData, bahFor, payFor, benchmarks} from './calc-engine.js?v=20260929-stayorgo';
+export {loadReferenceData, bahFor, payFor, benchmarks, malpracticeRanges} from './calc-engine.js?v=20260929-stayorgo';
 
 // ---------- 2026 federal income and payroll tax ----------
 const federalBrackets = {
@@ -19,6 +19,11 @@ const bracketTax = (income, brackets) => brackets.reduce((tax,[floor,rate],i) =>
   const ceiling = i+1 < brackets.length ? brackets[i+1][0] : Infinity;
   return tax + Math.max(0, Math.min(Math.max(0,income), ceiling) - floor) * rate;
 }, 0);
+
+export function marginalFederalRate(income, joint) {
+  const key = joint ? 'joint' : 'single', taxable = income - standardDeduction[key];
+  return federalBrackets[key].reduce((rate,[floor,r]) => taxable > floor ? r : rate, 0);
+}
 
 export function federalIncomeTax(income, joint, kids=0) {
   const key = joint ? 'joint' : 'single';
@@ -53,15 +58,25 @@ export const specialties = {im:'Internal medicine', fm:'Family medicine', peds:'
 export function defaultCivilianSalary(specialty, source='national') {
   return source === 'sandiego' ? benchmarks.marit.values[specialty] : benchmarks.doximity.values[specialty];
 }
+// Published averages used as starting values. See `averageNotes` for sources.
+export const averages = {
+  spouseWages:65000,        // BLS: median full-time weekly earnings $1,251 in 2026 Q2 × 52
+  employerRetirement:.046,  // Vanguard How America Saves 2025: average promised match 4.6% of pay
+  disabilityShare:.03,      // White Coat Investor: own-occupation disability ~2–5% of income
+  transitionCost:2500,      // DEA registration $888 per 3 years + state license, credentialing; moving often employer-paid
+  civilianGrowth:0,         // Doximity 2026: physician pay +2% in 2025, below 3.4% CPI (Aug 2026)
+  ageAtServiceStart:27,     // typical age at medical-school graduation, when active service usually begins
+  survivorYears:7           // planning assumption
+};
 export const defaults = {
   yos:10, specialty:'im', rank:'O4', promotion:true, salarySource:'national', civilianSalary:null,
-  family:'married', kids:0, spouseWages:80000,
+  family:'married', kids:0, spouseWages:averages.spouseWages,
   zip:'92134', bahMonthly:null, retentionBonus:true, continuationPay:true, retirement:'brs',
   navyState:'same', civilianState:'CA',
-  pensionRate:.03, cashRate:.05, pensionTax:.22, currentAge:null, paymentYears:null,
-  tricare:'employer', tricareGroup:'A', vaRating:0, sbp:false, survivorYears:7,
-  firstYearShare:1, transitionCost:0, insurance:0, civilianGrowth:0,
-  employerRetirement:.04, malpractice:0
+  pensionRate:.03, cashRate:.05, pensionTax:null, currentAge:null, paymentYears:null,
+  tricare:'employer', tricareGroup:'A', vaRating:0, sbp:false, survivorYears:averages.survivorYears,
+  firstYearShare:1, transitionCost:averages.transitionCost, insurance:null, civilianGrowth:averages.civilianGrowth,
+  employerRetirement:averages.employerRetirement, malpractice:0
 };
 
 // Remaining life expectancy (years) at a given age, from the embedded U.S. table.
@@ -82,7 +97,7 @@ export function stayOrGo(userInput, {stateData=null, lifeTable=null, bah=null} =
   const isBrs = x.retirement === 'brs';
   const rb = x.retentionBonus ? (rbRates.FY26[x.specialty]?.['4'] ?? 0) : 0;
   const bahMonthly = Number.isFinite(x.bahMonthly) ? x.bahMonthly : (bah?.monthly ?? 0);   // bah = bahFor(zip, rank, deps)
-  const age = Number.isFinite(x.currentAge) ? x.currentAge : 26 + yos; // typical: active service starts after medical school at about 26
+  const age = Number.isFinite(x.currentAge) ? x.currentAge : averages.ageAtServiceStart + yos;
   const paymentYears = Number.isFinite(x.paymentYears) ? x.paymentYears : remainingYears(age + years, lifeTable);
 
   const cash = calculateScenario({rank:x.rank, commissionYear:2026 - yos, promotionOn:x.promotion,
@@ -95,6 +110,7 @@ export function stayOrGo(userInput, {stateData=null, lifeTable=null, bah=null} =
   const va = vaAnnualFor(x.vaRating, withSpouse);
   const workerPremium = withSpouse ? kff2025.familyWorker : kff2025.singleWorker;
   const taxCtx = {family, kids, spouseWages:x.spouseWages, stateData};
+  const insurance = Number.isFinite(x.insurance) ? x.insurance : averages.disabilityShare * civ;
   const rows = cash.rows.map((r, i) => {
     const navyTaxable = r.navyCash - 12*(r.bahMonthly + 328.48);           // BAH and BAS are tax-free
     const navyTax = wageTax(navyTaxable, {...taxCtx, stateCode:navyState});
@@ -103,7 +119,7 @@ export function stayOrGo(userInput, {stateData=null, lifeTable=null, bah=null} =
     const civilianRetirement = x.employerRetirement * Math.min(r.civilianCash, 360000);
     const navy = r.navyCash - navyTax + tsp;
     const civilian = r.civilianCash - civilianTax + civilianRetirement - workerPremium
-      - x.malpractice - x.insurance - (i === 0 ? x.transitionCost : 0) + va;
+      - x.malpractice - insurance - (i === 0 ? x.transitionCost : 0) + va;
     return {year:r.year, yos:r.activeYos, grade:r.grade, navyCash:r.navyCash, civilianCash:r.civilianCash,
       navyTax, civilianTax, navy, civilian, gap:civilian - navy, continuationPay:r.continuationPay,
       basicMonthly:r.basicMonthly, bonus:r.bonus};
@@ -117,8 +133,12 @@ export function stayOrGo(userInput, {stateData=null, lifeTable=null, bah=null} =
   const pensionBase = lastThree.reduce((a,b)=>a+b,0)/lastThree.length;
   const retireeHealth = retireeTricareValue({family:withSpouse, mode:x.tricare, group:x.tricareGroup});
   const vaOffset = x.vaRating >= crdpThreshold ? 0 : va;
+  // Pension tax: if not entered, use the federal bracket the pension would fall in
+  // while the retiree works the civilian job after 20.
+  const grossPension = pensionBase*(isBrs?.02:.025)*20;
+  const pensionTax = Number.isFinite(x.pensionTax) ? x.pensionTax : marginalFederalRate(civ + grossPension, withSpouse);
   const pensionAt = (activeYears, age0) => pensionPresentValue({activeYears, additionalYears:20-activeYears,
-    retirement:x.retirement, pensionBase, currentAge:age0, paymentYears, pensionTax:x.pensionTax,
+    retirement:x.retirement, pensionBase, currentAge:age0, paymentYears, pensionTax,
     discount:x.pensionRate, retireeHealthAnnual:retireeHealth, vaOffsetAnnual:vaOffset,
     sbp:x.sbp, survivorYears:x.survivorYears});
   const pensionValue = pensionAt(yos, age);
@@ -138,7 +158,7 @@ export function stayOrGo(userInput, {stateData=null, lifeTable=null, bah=null} =
     breakEven = path[k-1].yos + (-path[k-1].net)/(path[k].net - path[k-1].net); break;
   }
 
-  return {input:{...x, civilianSalary:civ, navyState, age, paymentYears, bahMonthly}, rows, years,
+  return {input:{...x, civilianSalary:civ, navyState, age, paymentYears, bahMonthly, insurance, pensionTax}, rows, years,
     costOfStaying, pensionValue, net, breakEven, path,
     parts:{retireeHealth, va, vaOffset, pensionBase, annualPension:pensionBase*(isBrs?.02:.025)*20, rb}};
 }

@@ -61,6 +61,7 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
 .btn.ghost{background:#fff;color:#155d80;border:1px solid #9cc2d6}
 .disclaimer{margin-top:26px;border-top:1px solid #cedee7;padding-top:12px;color:var(--muted);font-size:12px;line-height:1.5}
 .error{color:#8b331e;font-weight:650}
+.avg{display:block;font-size:12px;color:#35576c;background:#f1f7fb;border-radius:6px;padding:5px 8px;margin-top:6px;line-height:1.45}.avg b{color:#173047}.use{border:1px solid #9cc2d6;background:#fff;color:#155d80;border-radius:5px;font:inherit;font-size:11.5px;padding:1px 7px;margin-left:4px;cursor:pointer}
 [hidden]{display:none!important}
 @media(max-width:800px){.layout{display:flex;flex-direction:column}.results{position:static;order:-1}.metrics{grid-template-columns:repeat(3,1fr);gap:8px}.metric{padding:10px}.metric b{font-size:17px}.tor-row{grid-template-columns:1fr}.tor-scale{margin-left:0}}
 </style>
@@ -69,7 +70,7 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
 <header><div class="wrap">
   <nav class="crumb" aria-label="Lab versions"><a href="stay-or-go.html" aria-current="page">Stay or go?</a><a href="physician-pay-lab.html">Advanced lab</a></nav>
   <h1>Stay or go?</h1>
-  <p>Navy physician career decisions in today's dollars: staying to 20 versus leaving for a civilian job, or Navy versus civilian residency after a GMO tour. Answer a few questions; everything else starts at published averages you can refine.</p>
+  <p>Navy physician career decisions in today's dollars: staying to 20 versus leaving for a civilian job, or Navy versus civilian residency after a GMO tour. Answer a few questions; everything else starts at published averages, shown with their sources under Refine.</p>
 </div></header>
 
 <main class="wrap">
@@ -107,7 +108,7 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
     <div class="field"><label for="zip">Navy duty-station ZIP</label><input id="zip" inputmode="numeric" maxlength="5" value="92134"><small id="bahNote">Sets housing allowance (BAH).</small></div>
     <div class="field"><label for="civilianState">Civilian job state</label><select id="civilianState"></select></div>
     <div class="field"><label for="navyState">Navy tax state (legal residence)</label><select id="navyState"><option value="same">Same as the civilian job state</option></select><small>Service members can keep a home-state residency while stationed elsewhere. Choosing a no-income-tax state such as Florida or Texas lowers Navy taxes.</small></div>
-    <div class="field" id="spouseField"><label for="spouseWages">Spouse annual wages ($)</label><input id="spouseWages" type="number" min="0" step="1000" value="80000"><small>Taxed on both paths; only the extra tax your pay causes is counted.</small></div>
+    <div class="field" id="spouseField"><label for="spouseWages">Spouse annual wages ($)</label><input id="spouseWages" type="number" min="0" step="1000" value="65000"><small>Taxed on both paths; only the extra tax your pay causes is counted.</small><small class="avg" id="avg_spouse">Average: <b>$65,000</b>, the U.S. median for full-time workers (<a href="https://www.bls.gov/news.release/wkyeng.nr0.htm">BLS, 2026 Q2</a>). <button type="button" class="use" data-use="spouseWages" data-val="65000">Use</button></small></div>
   </div></details>
 
   <details class="refine"><summary>Navy pay <span id="sumNavy"></span></summary><div class="inner">
@@ -119,16 +120,16 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
   <details class="refine"><summary>Pension and survivors <span id="sumPension"></span></summary><div class="inner">
     <div class="row">
       <div class="field"><label for="pensionRate">Pension discount rate (%)</label><input id="pensionRate" type="number" min="0" max="10" step=".25" value="3"></div>
-      <div class="field"><label for="pensionTax">Tax on pension (%)</label><input id="pensionTax" type="number" min="0" max="50" step="1" value="22"></div>
+      <div class="field"><label for="pensionTax">Tax on pension (%)</label><input id="pensionTax" type="number" min="0" max="50" step="1" placeholder="auto"></div>
     </div>
-    <small class="caption" style="display:block;margin:-6px 0 12px">The pension rises with inflation and is federally backed, so it is valued near Treasury real yields (3.1–3.3% on Sept. 28, 2026), not like risky pay.</small>
+    <small class="caption" style="display:block;margin:-6px 0 6px">The pension rises with inflation and is federally backed, so it is valued near Treasury real yields (3.1–3.3% on Sept. 28, 2026), not like risky pay.</small><small class="avg" id="avg_pensionRate">Pension rate average: <b>3%</b> (<a href="https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_real_yield_curve&amp;field_tdr_date_value=202609">Treasury real yields</a>). <button type="button" class="use" data-use="pensionRate" data-val="3">Use</button></small><small class="avg" id="avg_pensionTax"></small><div style="height:10px"></div>
     <div class="row">
       <div class="field"><label for="currentAge">Current age</label><input id="currentAge" type="number" min="22" max="70" step="1" placeholder="auto"></div>
       <div class="field"><label for="paymentYears">Pension years</label><input id="paymentYears" type="number" min="1" max="60" step="1" placeholder="auto"></div>
     </div>
-    <small class="caption" style="display:block;margin:-6px 0 12px">Blank uses about age 26 plus years served, and the U.S. life table for pension years.</small>
+    <small class="avg" id="avg_age"></small><div style="height:10px"></div>
     <label class="check"><input id="sbp" type="checkbox"><span>Elect the Survivor Benefit Plan (6.5% premium; spouse gets 55% for life)</span></label>
-    <div class="field" id="survivorField" hidden><label for="survivorYears">Years the spouse outlives the retiree</label><input id="survivorYears" type="number" min="0" max="50" step="1" value="7"><small>A planning assumption; set it from your ages and health.</small></div>
+    <div class="field" id="survivorField" hidden><label for="survivorYears">Years the spouse outlives the retiree</label><input id="survivorYears" type="number" min="0" max="50" step="1" value="7"><small>A planning assumption; set it from your ages and health.</small><small class="avg" id="avg_survivor">Starting value: <b>7 years</b>, a planning assumption (wives typically outlive husbands by several years). <button type="button" class="use" data-use="survivorYears" data-val="7">Use</button></small></div>
   </div></details>
 
   <details class="refine"><summary>Health and VA <span id="sumHealth"></span></summary><div class="inner">
@@ -143,18 +144,18 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
       <div class="field"><label for="civilianGrowth">Real pay growth (%/yr)</label><input id="civilianGrowth" type="number" min="-5" max="10" step=".5" value="0"></div>
     </div>
     <div class="row">
-      <div class="field"><label for="transitionCost">One-time cost of leaving ($)</label><input id="transitionCost" type="number" min="0" step="1000" value="0"></div>
-      <div class="field"><label for="insurance">Disability + life insurance ($/yr)</label><input id="insurance" type="number" min="0" step="500" value="0"></div>
+      <div class="field"><label for="transitionCost">One-time cost of leaving ($)</label><input id="transitionCost" type="number" min="0" step="500" value="2500"></div>
+      <div class="field"><label for="insurance">Disability + life insurance ($/yr)</label><input id="insurance" type="number" min="0" step="500" placeholder="auto"></div>
     </div>
     <div class="row">
-      <div class="field"><label for="employerRetirement">Employer retirement (%)</label><input id="employerRetirement" type="number" min="0" max="15" step=".5" value="4"></div>
+      <div class="field"><label for="employerRetirement">Employer retirement (%)</label><input id="employerRetirement" type="number" min="0" max="15" step=".1" value="4.6"></div>
       <div class="field"><label for="malpractice">Malpractice you pay ($/yr)</label><input id="malpractice" type="number" min="0" step="500" value="0"></div>
     </div>
-    <small class="caption" style="display:block;margin-top:-6px">Civilian family health premiums (KFF 2025 worker share) are always counted.</small>
+    <small class="avg" id="avg_firstYear">First-year pay: <b>100%</b> is typical for employed jobs with a guaranteed starting salary; productivity-based jobs often pay less in year one. <button type="button" class="use" data-use="firstYearShare" data-val="100">Use</button></small><small class="avg" id="avg_growth">Real pay growth: <b>0%</b>. Physician pay rose 2% in 2025 (<a href="https://www.doximity.com/reports/physician-compensation-report/2026">Doximity 2026</a>) while prices rose 3.4% (<a href="https://www.bls.gov/news.release/cpi.nr0.htm">CPI, Aug. 2026</a>). <button type="button" class="use" data-use="civilianGrowth" data-val="0">Use</button></small><small class="avg" id="avg_transition">Cost of leaving: <b>$2,500</b> for DEA registration ($888 per 3 years), a state license, and credentialing; relocation is often paid by the employer. <button type="button" class="use" data-use="transitionCost" data-val="2500">Use</button></small><small class="avg" id="avg_insurance"></small><small class="avg" id="avg_retirement">Employer retirement: <b>4.6%</b>, the average promised match (<a href="https://www.napa-net.org/news/2025/6/modern-plan-design-helps-boost-savings-rates-to-all-time-highs-vanguard/">Vanguard, How America Saves 2025</a>). <button type="button" class="use" data-use="employerRetirement" data-val="4.6">Use</button></small><small class="avg" id="avg_malpractice"></small><small class="caption" style="display:block;margin-top:6px">Civilian family health premiums (KFF 2025 worker share) are always counted.</small>
   </div></details>
 
   <details class="refine"><summary>Discount rate for pay <span id="sumCash"></span></summary><div class="inner">
-    <div class="field"><label for="cashRate">Real discount rate for pay (%)</label><input id="cashRate" type="number" min="0" max="15" step=".5" value="5"><small>Brings future pay back to today's dollars after inflation.</small></div>
+    <div class="field"><label for="cashRate">Real discount rate for pay (%)</label><input id="cashRate" type="number" min="0" max="15" step=".5" value="5"><small>Brings future pay back to today's dollars after inflation. Try 3% and 7% to see how much it matters.</small><small class="avg" id="avg_cash">Starting value: <b>5%</b> real, the rate used in the paper. <button type="button" class="use" data-use="cashRate" data-val="5">Use</button></small></div>
   </div></details>
   </div>
   <div id="gmoInputs" hidden>
@@ -243,7 +244,8 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
 </main>
 
 <script type="module">
-import {stayOrGo, sensitivity, defaultCivilianSalary, loadReferenceData, bahFor, payFor, benchmarks} from './stay-or-go.js?v=20260929-stayorgo';
+import * as sog from './stay-or-go.js?v=20260929-averages';
+const {stayOrGo, sensitivity, defaultCivilianSalary, loadReferenceData, bahFor, payFor, benchmarks}=sog;
 import {calculateGmoResidency} from './gmo-residency-model.js?v=20260929-stayorgo';
 const $=id=>document.getElementById(id);
 const money=v=>(v<0?'−':'')+'$'+Math.round(Math.abs(v)).toLocaleString();
@@ -253,7 +255,7 @@ let stateData=null,lifeTable=null,ready=false;
 async function boot(){
   try{
     const [s,l]=await Promise.all([fetch('data/state-tax-2026.json').then(r=>r.json()),fetch('data/us-life-remaining-2024.json').then(r=>r.json()),loadReferenceData()]);
-    stateData=s;lifeTable=l;
+    stateData=s;lifeTable=l;window.__malRanges=sog.malpracticeRanges;
     const opts=Object.keys(s.states).sort((a,b)=>s.names[a].localeCompare(s.names[b])).map(c=>'<option value="'+c+'">'+s.names[c]+'</option>').join('');
     $('civilianState').innerHTML=opts;$('civilianState').value='CA';
     $('navyState').insertAdjacentHTML('beforeend',opts);
@@ -268,14 +270,14 @@ function readInput(){
   const family=$('family').value,zip=$('zip').value.trim();
   return {yos:Math.round(num('yos',10)),specialty:$('specialty').value,rank:$('rank').value,promotion:$('promotion').value==='yes',
     salarySource:$('salarySource').value,civilianSalary:num('civilianSalary',NaN),family,kids:Math.max(0,Math.round(num('kids'))),
-    spouseWages:num('spouseWages',0),zip,civilianState:$('civilianState').value,navyState:$('navyState').value,
+    spouseWages:num('spouseWages',65000),zip,civilianState:$('civilianState').value,navyState:$('navyState').value,
     retentionBonus:$('retentionBonus').checked,continuationPay:$('continuationPay').checked,retirement:$('retirement').value,
-    pensionRate:num('pensionRate',3)/100,pensionTax:num('pensionTax',22)/100,
+    pensionRate:num('pensionRate',3)/100,pensionTax:$('pensionTax').value===''?null:num('pensionTax')/100,
     currentAge:$('currentAge').value===''?null:num('currentAge'),paymentYears:$('paymentYears').value===''?null:num('paymentYears'),
     sbp:$('sbp').checked,survivorYears:num('survivorYears',7),tricare:$('tricare').value,tricareGroup:$('tricareGroup').value,
     vaRating:Number($('vaRating').value),firstYearShare:Math.min(1,Math.max(.5,num('firstYearShare',100)/100)),
-    civilianGrowth:num('civilianGrowth',0)/100,transitionCost:num('transitionCost'),insurance:num('insurance'),
-    employerRetirement:num('employerRetirement',4)/100,malpractice:num('malpractice'),cashRate:num('cashRate',5)/100};
+    civilianGrowth:num('civilianGrowth',0)/100,transitionCost:num('transitionCost'),insurance:$('insurance').value===''?null:num('insurance'),
+    employerRetirement:num('employerRetirement',4.6)/100,malpractice:num('malpractice'),cashRate:num('cashRate',5)/100};
 }
 
 function renderGmo(){
@@ -320,6 +322,12 @@ function update(){
   $('sumHealth').textContent='TRICARE '+short(r.parts.retireeHealth)+'/yr · VA '+(x.vaRating?x.vaRating+'%':'none');
   $('sumCiv').textContent=Math.round(x.firstYearShare*100)+'% first yr'+(x.transitionCost?' · '+short(x.transitionCost)+' move':'');
   $('sumCash').textContent=(x.cashRate*100).toFixed(1).replace(/\.0$/,'')+'%';
+  const civ=f.civilianSalary,ins=Math.round(.03*civ/100)*100;
+  $('avg_insurance').innerHTML='Insurance average: <b>'+money(ins)+'/yr</b>, own-occupation disability at about 3% of salary (<a href="https://www.whitecoatinvestor.com/how-to-buy-disability-insurance/">White Coat Investor: 2–5%</a>). Add term life from a quote. Blank uses this.<button type="button" class="use" data-use="insurance" data-val="">Use</button>';
+  $('avg_pensionTax').innerHTML='Pension tax average: <b>'+Math.round(f.pensionTax*100)+'%</b>, the federal bracket the pension falls in if you work a civilian job after 20. Blank uses this.<button type="button" class="use" data-use="pensionTax" data-val="">Use</button>';
+  $('avg_age').innerHTML='Age: <b>'+f.age+'</b> (about 27 at medical-school graduation plus years served); pension years: <b>'+f.paymentYears+'</b> from the U.S. life table. Blank uses these.<button type="button" class="use" data-use="currentAge,paymentYears" data-val="">Use</button>';
+  const mal=window.__malRanges?.[f.civilianState]?.[['peds','im','fm'].indexOf(x.specialty)];
+  $('avg_malpractice').innerHTML='Malpractice: <b>$0</b> if the employer pays (most employed jobs).'+(mal?' If you pay your own in '+(stateData.names[f.civilianState]||f.civilianState)+': about <b>'+money(mal[0])+(mal[1]!==mal[0]?'–'+money(mal[1]):'')+'/yr</b> ($1M/$3M mature claims-made, 2026).':'')+'<button type="button" class="use" data-use="malpractice" data-val="0">Use</button>';
   drawBreak(r);drawTornado(sensitivity(x,ctx));
   $('rows').innerHTML=r.rows.map(w=>'<tr><td>'+w.year+'</td><td>'+w.yos+'</td><td>'+w.grade.replace('O','O-')+'</td><td>'+money(w.navy)+'</td><td>'+money(w.civilian)+'</td><td>'+money(w.gap)+'</td></tr>').join('');
 }
@@ -357,6 +365,7 @@ document.querySelectorAll('[data-preset]').forEach(btn=>btn.addEventListener('cl
   $('salarySource').value=p.salarySource;$('family').value=p.family;$('kids').value=p.kids;$('zip').value=p.zip;syncSalary();update();
 }));
 const q=new URLSearchParams(location.search).get('decision');if(['attending','gmo','prospective'].includes(q))$('decision').value=q;
+document.addEventListener('click',e=>{const b=e.target.closest('.use');if(!b)return;b.dataset.use.split(',').forEach(id=>{$(id).value=b.dataset.val});update()});
 syncSalary();boot();
 let resizeTimer;addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(update,150)});
 </script>
