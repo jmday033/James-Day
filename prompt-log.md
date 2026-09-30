@@ -209,3 +209,7 @@ The author asked for a VA rating dropdown (25%, 50%, 100%, and the average), an 
 ## 2026-09-29 — Lab chart readability, gap explanations, and break-even chart
 
 At the author's request, AI zoomed the path-value chart axis and shaded the gap, added a per-scenario "Why the bars change" note under the annual gap chart (continuation pay, promotions, longevity steps, bonus end, ramp-up, sign changes), and added a stay-to-20 break-even chart driven by the user's pension, TRICARE, VA, and SBP settings. AI also corrected the cumulative present-value chart to year-end discounting so its final point matches the headline present value, as its caption states.
+
+## 2026-09-29 — Additional tax filing examples
+
+At the author's request, AI added head of household and married-filing-jointly-with-working-spouse examples, a spouse-wage input, and a 2026 Child Tax Credit (children count, $2,200 each, phase-out above $400,000 joint / $200,000 other) to the lab's tax estimator, using 2026 federal brackets and standard deductions (Tax Foundation). A working spouse's wages are taxed on both paths and only the incremental tax from the physician's pay is counted. Head of household uses single-filer state brackets as an approximation.
