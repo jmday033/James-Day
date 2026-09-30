@@ -1,0 +1,3 @@
+# Physician counseling pilot and existing Navy services
+
+Revision 13 frames the proposal as integration, individual physician comparison, and evaluation. Existing Navy counseling and DoD materials form the delivery foundation. The pilot preserves usual services, uses a contemporaneous comparison, and measures active service 24 months after the original obligation ends. Historical surveys inform questions but do not provide the participant baseline. Implementation costs and retention gains remain to be measured. Enrollment remains within 12 months of obligation completion. Financial estimates are unchanged.

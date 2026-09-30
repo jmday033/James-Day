@@ -277,3 +277,12 @@ The final files also require a clear account of authorship. Codex helped with mo
 ## 2026-09-29 — Appendix F illustrative counseling handout
 
 At the author's request, Codex created Figure F1, a sample compensation statement using the existing modeled O-4 case. It separates annual cash after modeled taxes and premiums, employer retirement contributions, and conditional military pension present value; includes base-case assumptions, a pension-discount sensitivity, and discussion questions. It is explicitly labeled illustrative and not a validated instrument. No personal financial records or new empirical retention claims were added. The PDF body remains four pages; the new handout is in Appendix F. The PDF and handout were visually checked. The editable Word copy contains the image, but its native pagination was not verified in this environment.
+
+
+## 2026-09-29 — Revision 13 Navy service comparison and Appendix F
+
+At the author's explicit request, Codex revised the policy and recommendation sections and Appendix F to compare existing Navy/DoD services with the proposed physician counseling pilot. AI drafted the revised prose and templates, added official sources, and qualified the novelty claim. The changes cover Navy financial counseling, Beyond Basic Pay, special-pay guidance, TAP timing, DFAS guidance on Navy compensation calculations, and publicly summarized findings from a 2024 BUMED emergency-physician study. The relationship between that study and the survey announced in 2023 remains unconfirmed.
+
+The pilot now explicitly preserves usual services in both groups, records other counseling exposure, collects participant baseline measures, and defines active-service status 24 months after the original obligation ends. Historical surveys inform question design rather than acting as a control group. Costs include eligibility verification, model maintenance, administration, and evaluation. Expansion thresholds remain proposed policy judgments. Financial calculations and Figure F1 are unchanged.
+
+Verification: the four-page body and 24-page PDF were checked for layout, content consistency, citations, and a single References heading. An editable Word source was regenerated, but its native rendering could not be verified because the bundled LibreOffice executable is unavailable; use the checked PDF as the submission artifact. This entry records substantive AI authorship and does not assert independent author verification or compliance with course authorship rules.
