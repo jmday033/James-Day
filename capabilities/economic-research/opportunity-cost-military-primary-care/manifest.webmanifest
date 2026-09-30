@@ -1,0 +1,13 @@
+{
+  "name": "Stay or go? Navy physician pay and pension",
+  "short_name": "Stay or go?",
+  "start_url": "stay-or-go.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f3f7f9",
+  "theme_color": "#122e46",
+  "icons": [
+    {"src": "assets/icon-192.png", "sizes": "192x192", "type": "image/png"},
+    {"src": "assets/icon-512.png", "sizes": "512x512", "type": "image/png"}
+  ]
+}
