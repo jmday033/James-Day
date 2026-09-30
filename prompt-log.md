@@ -241,3 +241,7 @@ The author found the paper's figures unhelpful. AI evaluated them (the old Figur
 ## 2026-09-29 — Source research: compensation education and retention
 
 Permitted research assistance. At the author's request, AI searched for military and civilian examples of compensation-education efforts with measured results and adaptable pilot designs, and saved `paper/compensation-education-source-review.md` (Warner & Pleeter 2001; Fitzpatrick 2015; Mastrobuoni 2011; Liebman & Luttmer 2015 and Smith 2020 via Social Security Bulletin; NHS Total Reward Statements; UK AFCAS 2025; IDA Army Menu of Incentives; RAND MG-866; Mundell 2010). Two GAO reports could not be opened (rate limit) and are marked unverified. No paper prose written.
+
+## 2026-09-29 — Revision 10 review and integration
+
+The author supplied revision 10 (.docx) and asked AI to review and integrate it. AI preserved the file byte-for-byte, added a LibreOffice review PDF and dated text snapshot, updated the project README, and wrote a critique (`paper/revision-10-review-2026-09-29.md`) covering assignment constraints, an independent recomputation of the main figures (all match within rounding), source checks (NHS ULHT, Goldin et al.), and rubric-ordered suggestions. No paper prose was written or changed. How revisions 8–10 were produced is for the author to record here.

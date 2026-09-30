@@ -9,7 +9,7 @@ status: working
 
 # Navy Physician Compensation, Opportunity Cost, and Retention
 
-**Latest draft:** [Revision 7, September 29 (PDF)](paper/navy-physician-retention-revision-7.pdf) · [Word](paper/navy-physician-retention-revision-7.docx) · [Build files](paper/revision-7-build/README.md). New figures: stay-to-20 break-even on gross and after-tax bases (about 14.7 vs 10.9 years), and a waterfall from the gross-cash −$663,000 to about +$31,000 after taxes and benefits. Author-review draft, not yet designated final. Earlier: [revision 6](paper/navy-physician-retention-revision-6.pdf) · [revision 5](paper/navy-physician-retention-revision-5.pdf).
+**Latest draft:** [Revision 10, September 29 (Word, author-supplied)](paper/navy-physician-retention-revision-10.docx) · [review PDF](paper/navy-physician-retention-revision-10.pdf) · [review notes](paper/revision-10-review-2026-09-29.md). Four-page body, double-spaced, with Appendices A–F. Not yet designated final. Earlier: [revision 7](paper/navy-physician-retention-revision-7.pdf) · [revision 6](paper/navy-physician-retention-revision-6.pdf).
 
 Final course project for BUS 620 — Micro and Macro Economics. Compensation, retention, opportunity-cost analysis, pension sensitivity, staffing alternatives, source reviews, and both labs are components of this one project. The Navy is the modeled case; the project title does not imply validation for every military service.
 
