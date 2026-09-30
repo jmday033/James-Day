@@ -307,3 +307,8 @@ Sources added include MCCareer's December 2025 CDB program announcement, August 
 ## 2026-09-29 — Revision 16 clarify financial scope
 
 At the author's request, Codex added the same scope statement to the main-text model limitations and Appendix E: the model does not monetize job satisfaction, professional identity, family preferences, deployment stress, or commitment to service; these may outweigh the financial difference and belong in counseling. Appendix F now spells out Career Development Boards (CDBs) at first use. These are AI-authored editorial changes; calculations, assumptions, and pilot outcomes are unchanged. The 25-page PDF retains four pages of main text. Changed pages were visually checked and the content/layout checks passed. The checked PDF remains the submission artifact; native Word pagination remains unverified.
+
+
+## 2026-09-30 — Point paper entry points to revision 16
+
+At the author's request to update the old GitHub paper, Codex found that the checked revision 16 PDF was already saved at `analysis/research-paper.pdf`, while the Stay or go? paper button still pointed to revision 5 and the project/paper indexes highlighted older versions. Updated those entry points to the existing revision 16 PDF and labeled the revision 10 Word source as historical. No paper prose, PDF bytes, calculations, or assumptions changed. Verified the relative links resolve to the existing repository PDF.
