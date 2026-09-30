@@ -86,7 +86,7 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
 <header><div class="wrap">
   <nav class="crumb" aria-label="Lab versions"><a href="stay-or-go.html" aria-current="page">Stay or go?</a><a href="physician-pay-lab.html">Advanced lab</a></nav>
   <h1>Stay or go?</h1>
-  <p style="font-size:13px;color:#a9cede;margin-bottom:8px">Version 1.3 · Updated September 30, 2026 · 2026 pay, tax, and benefit data</p><p>Navy physician career decisions in today's dollars: staying to 20 versus leaving for a civilian job, or Navy versus civilian residency after a GMO tour. Answer a few questions; everything else starts at published averages, shown with their sources under Refine.</p>
+  <p style="font-size:13px;color:#a9cede;margin-bottom:8px">Version 1.4 · Updated September 30, 2026 · 2026 pay, tax, and benefit data</p><p>Navy physician career decisions in today's dollars: staying to 20 versus leaving for a civilian job, or Navy versus civilian residency after a GMO tour. Answer a few questions; everything else starts at published averages, shown with their sources under Refine.</p>
   <p class="views-note" role="note">Personal academic project by James M. Day. Views are his own and do not represent the U.S. Navy, the Department of Defense, or the U.S. government. An illustration, not financial advice.</p>
 </div></header>
 
@@ -183,6 +183,11 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
     </div>
     <div class="field"><label for="reserveDaysMissed">Civilian workdays missed per year</label><input id="reserveDaysMissed" type="number" min="0" max="60" step="1" value="10"><small>Annual training usually takes two work weeks. Drills are usually weekends.</small></div>
   </div></details>
+  <details class="refine"><summary>VA job option <span id="sumVa"></span></summary><div class="inner">
+    <div class="field"><label for="vaSalary">VA salary, base + market pay ($/yr)</label><input id="vaSalary" type="number" min="0" step="1000" placeholder="auto"><small class="avg" id="avg_vaSalary"></small></div>
+    <label class="check"><input id="vaBuyback" type="checkbox" checked><span>Buy back active-duty years for the VA pension (3% of military basic pay)</span></label>
+    <small class="caption" style="display:block;margin-top:6px">The deposit adds your active years to your FERS service. Pay it within two years of starting at the VA to avoid interest. It is not allowed for years you draw Navy retired pay on, so it applies only when you leave before 20. The VA job lasts until the work-until age under Civilian job.</small>
+  </div></details>
   <details class="refine"><summary>Discount rate for pay <span id="sumCash"></span></summary><div class="inner">
     <div class="field"><label for="cashRate">Real discount rate for pay (%)</label><input id="cashRate" type="number" min="0" max="15" step=".5" value="5"><small>Brings future pay back to today's dollars after inflation. Try 3% and 7% to see how much it matters.</small><small class="avg" id="avg_cash">Starting value: <b>5%</b> real, the rate used in the paper. <button type="button" class="use" data-use="cashRate" data-val="5">Use</button></small></div>
   </div></details>
@@ -224,7 +229,7 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
   </div>
 
   <div class="panel">
-    <h3>Three paths compared</h3>
+    <h3>Four paths compared</h3>
     <div class="paths" id="paths"></div>
     <p class="caption" id="pathsCaption" style="margin:8px 0 0"></p>
   </div>
@@ -273,14 +278,15 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
   <p>Constant 2026 dollars; year-end cash flows. Navy pay: 2026 basic pay, BAH for the duty ZIP, BAS, FY 2026 incentive pay and four-year retention bonus for the specialty (renewed through 20, one agreement, or none), $8,000 board certification pay, BRS continuation pay if selected. Specialties without their own Navy row use the subspecialty category noted beside them; surgical subspecialties are assumed to be Category I. Civilian pay: Doximity 2026 national averages by specialty. Promotions: O-5 at 15 and O-6 at 21 years after commissioning. BAH and BAS are tax-free.</p>
   <p>Taxes: 2026 federal brackets, standard deduction, and Child Tax Credit; Social Security and Medicare; 2026 state wage-tax sample; California disability insurance on civilian pay in California. The pension is taxed at the rate entered.</p>
   <p>Pension: 2% (BRS) or 2.5% (Legacy) × 20 years × the average of the last three years of basic pay, paid for the life-table years, discounted at the pension rate. Retiree TRICARE, VA offset or concurrent receipt, and the Survivor Benefit Plan follow the settings above. The answer assumes the stay path reaches 20. After 20, the retiree's civilian pay is reduced by the percentage entered (default 5%) until the work-until age, compared with someone who left earlier. Years still under obligation are not counted, because both paths are in the Navy then.</p>
-  <p>Sources: <a href="https://www.dfas.mil/MilitaryMembers/payentitlements/Pay-Tables/">DFAS pay tables</a> · <a href="https://www.travel.dod.mil/Allowances/Basic-Allowance-for-Housing/BAH-Rate-Lookup/">BAH</a> · <a href="https://www.doximity.com/reports/physician-compensation-report/2026">Doximity 2026</a> · <a href="https://www.marithealth.com/">Marit Health</a> · <a href="https://taxfoundation.org/data/all/federal/2026-tax-brackets/">2026 tax brackets</a> · <a href="https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_real_yield_curve&amp;field_tdr_date_value=202609">Treasury real yields</a> · <a href="https://www.va.gov/disability/compensation-rates/veteran-rates/">VA rates</a> · <a href="https://www.dfas.mil/RetiredMilitary/disability/crdp/">Concurrent receipt</a> · <a href="https://files.kff.org/attachment/Employer-Health-Benefits-Survey-2025-Annual-Survey-Summary-of-Findings.pdf">KFF 2025</a> · <a href="https://tricare.mil/-/media/Files/TRICARE/Publications/FactSheets/Costs_Fees.pdf">TRICARE fees</a> · <a href="https://militarypay.defense.gov/Pay/Retirement/">DoD retirement</a></p>
+  <p>VA route: leave active duty for a VA staff-physician job until the work-until age, compared with the private job. VA pay (base plus market pay) starts at the private salary capped at the 2026 Tier 1 maximum for the specialty's VA pay table; it counts toward the FERS High-3. VA pay is taxed in the civilian job state without California disability insurance; the VA adds 5% TSP contributions, takes a 4.4% FERS contribution (employees hired after 2013), and covers malpractice under the Federal Tort Claims Act. Health premiums, disability insurance, and VA disability pay are treated as equal on both jobs. FERS pension: 1% (1.1% if leaving at 62 or later with 20 years) × creditable years × High-3, paid at once if leaving at 62, at 60 with 20 years, or at 57 with 30 years, otherwise from 62; at least 5 VA years are required. The buyback deposit is 3% of military basic pay, estimated from the 2026 pay table (slightly high for earlier years), paid in the first VA year. The pension is discounted at the pension rate plus 0.5% a year because FERS cost-of-living raises trail inflation. Not counted: retiree federal health coverage, the FERS supplement before 62, survivor annuities, and VA performance pay.</p>
+  <p>Sources: <a href="https://www.dfas.mil/MilitaryMembers/payentitlements/Pay-Tables/">DFAS pay tables</a> · <a href="https://www.va.gov/OHRM/Pay/2026/PDOP/PayTables.pdf">VA 2026 physician pay tables</a> · <a href="https://www.opm.gov/retirement-center/fers-information/service-credit/">OPM FERS service credit</a> · <a href="https://www.opm.gov/faq/retire/is-physician-quotmarket-payquot-included-in-the-high-3-calculation-for.ashx">OPM: market pay in High-3</a> · <a href="https://www.travel.dod.mil/Allowances/Basic-Allowance-for-Housing/BAH-Rate-Lookup/">BAH</a> · <a href="https://www.doximity.com/reports/physician-compensation-report/2026">Doximity 2026</a> · <a href="https://www.marithealth.com/">Marit Health</a> · <a href="https://taxfoundation.org/data/all/federal/2026-tax-brackets/">2026 tax brackets</a> · <a href="https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_real_yield_curve&amp;field_tdr_date_value=202609">Treasury real yields</a> · <a href="https://www.va.gov/disability/compensation-rates/veteran-rates/">VA rates</a> · <a href="https://www.dfas.mil/RetiredMilitary/disability/crdp/">Concurrent receipt</a> · <a href="https://files.kff.org/attachment/Employer-Health-Benefits-Survey-2025-Annual-Survey-Summary-of-Findings.pdf">KFF 2025</a> · <a href="https://tricare.mil/-/media/Files/TRICARE/Publications/FactSheets/Costs_Fees.pdf">TRICARE fees</a> · <a href="https://militarypay.defense.gov/Pay/Retirement/">DoD retirement</a></p>
   </div>
 </details>
 <p class="disclaimer">Your entries stay in your browser; nothing is sent or stored. Personal academic project. Views are solely those of James M. Day and do not represent the U.S. Navy, the Department of Defense, or the U.S. government. This is an illustration, not an individual financial recommendation.</p>
 </main>
 
 <script type="module">
-import * as sog from './stay-or-go.js?v=20260929-review';
+import * as sog from './stay-or-go.js?v=20260930-va';
 const {answerRange}=sog;const {stayOrGo, sensitivity, defaultCivilianSalary, loadReferenceData, bahFor, payFor, benchmarks, specialtyTable, specialtyByKey, sanDiegoAvailable}=sog;
 {const groups=[...new Set(specialtyTable.map(r=>r.group))];
  document.getElementById('specialty').innerHTML=groups.map(g=>'<optgroup label="'+g+'">'+specialtyTable.filter(r=>r.group===g).map(r=>'<option value="'+r.key+'"'+(r.key==='im'?' selected':'')+'>'+r.label+'</option>').join('')+'</optgroup>').join('');}
@@ -318,7 +324,8 @@ function readInput(){
     vaRating:Number($('vaRating').value),firstYearShare:Math.min(1,Math.max(.5,num('firstYearShare',100)/100)),
     civilianGrowth:num('civilianGrowth',0)/100,transitionCost:num('transitionCost'),insurance:$('insurance').value===''?null:num('insurance'),
     employerRetirement:num('employerRetirement',4.6)/100,malpractice:num('malpractice'),cashRate:num('cashRate',5)/100,
-    reservePoints:Math.min(130,Math.max(50,num('reservePoints',77))),reserveStartAge:Math.min(60,Math.max(50,num('reserveStartAge',60))),reserveDaysMissed:Math.max(0,num('reserveDaysMissed',10))};
+    reservePoints:Math.min(130,Math.max(50,num('reservePoints',77))),reserveStartAge:Math.min(60,Math.max(50,num('reserveStartAge',60))),reserveDaysMissed:Math.max(0,num('reserveDaysMissed',10)),
+    vaSalary:$('vaSalary').value===''?null:num('vaSalary'),vaBuyback:$('vaBuyback').checked};
 }
 
 function renderGmo(){
@@ -394,12 +401,16 @@ function drawBreak(r){
 }
 
 function drawPaths(r,x){
-  const v=r.reserve,list=[['Leave now',0,''],['Leave now, finish 20 in the Reserve',v.net,'res'],['Stay on active duty to 20',r.net,'']];
+  const v=r.reserve,w=r.va,list=[['Leave now',0,''],['Leave now, finish 20 in the Reserve',v.net,'res'],['Leave now for a VA job'+(w.buyback?', buy back years':''),w.net,'res'],['Stay on active duty to 20',r.net,'']];
   const m=Math.max(1,...list.map(t=>Math.abs(t[1])));
   $('paths').innerHTML=list.map(([name,val,c])=>'<div class="path-row"><span>'+name+'</span><div class="path-track">'+(val>0?'<div class="path-bar '+c+'" style="width:'+(100*val/m)+'%"></div>':'')+'</div><b>'+(val===0?'$0':(val>0?'+':'−')+short(Math.abs(val)))+'</b></div>').join('');
-  const best=r.net>=v.net?'Staying on active duty':'The Reserve route';
-  $('pathsCaption').textContent='Compared with leaving now and never serving again, in today\'s dollars after taxes. '+best+' comes out ahead on these inputs. Reserve route: about '+v.equivalentYears.toFixed(1)+' years of credit, a pension of about '+money(Math.round(v.annualPension/100)*100)+'/yr starting at '+Math.round(v.startAge)+' (worth '+short(v.pensionValue)+' today), TRICARE from '+Math.round(v.startAge)+' to 65 ('+short(v.healthValue)+'), and drill pay minus missed civilian workdays ('+(v.drillValue>=0?'+':'−')+short(Math.abs(v.drillValue))+'). Not counted: Reserve special pays, mobilization risk, and time away from family.';
+  const best=[['Staying on active duty',r.net],['The Reserve route',v.net],['The VA route',w.net],['Leaving for the private job',0]].sort((a,b)=>b[1]-a[1])[0][0];
+  const p=w.pension;
+  const vaText=w.years<5?' VA route: fewer than 5 VA years before the work-until age, so no FERS pension is earned.':' VA route: '+money(Math.round(w.salary/1000)*1000)+'/yr for '+w.years+' years (salary, TSP, and FERS contributions versus the private job: '+(w.salaryGapValue>=0?'+':'−')+short(Math.abs(w.salaryGapValue))+'), then a FERS pension of about '+money(Math.round(p.annual/100)*100)+'/yr from '+Math.round(p.startAge)+' ('+(p.multiplier*100).toFixed(1)+'% × '+(w.buyback?w.years+w.militaryYears:w.years)+' years, worth '+short(p.value)+' today).'+(w.buyback?' Buying back '+w.militaryYears+' active years costs about '+money(Math.round(w.deposit/100)*100)+' and adds '+short(w.buybackGain)+' net.':' Buying back '+w.militaryYears+' active years would add '+short(w.buybackGain)+' net.');
+  $('pathsCaption').textContent='Compared with leaving now for the private job and never serving again, in today\'s dollars after taxes. '+best+' comes out ahead on these inputs. Reserve route: about '+v.equivalentYears.toFixed(1)+' years of credit, a pension of about '+money(Math.round(v.annualPension/100)*100)+'/yr starting at '+Math.round(v.startAge)+' (worth '+short(v.pensionValue)+' today), TRICARE from '+Math.round(v.startAge)+' to 65 ('+short(v.healthValue)+'), and drill pay minus missed civilian workdays ('+(v.drillValue>=0?'+':'−')+short(Math.abs(v.drillValue))+').'+vaText+' Not counted: Reserve special pays, mobilization risk, retiree federal health coverage, the FERS supplement, and time away from family.';
   $('sumReserve').textContent=x.reservePoints+' pts/yr · pension at '+x.reserveStartAge;
+  $('sumVa').textContent=short(w.salary)+'/yr · '+(x.vaBuyback?'buyback on':'no buyback');
+  $('avg_vaSalary').innerHTML='Starting value: <b>'+money(Math.min(r.input.civilianSalary,w.cap))+'</b>, the private salary capped at the 2026 VA staff-physician maximum for this specialty ('+money(w.cap)+', <a href="https://www.va.gov/OHRM/Pay/2026/PDOP/PayTables.pdf">VA Pay Table '+(w.cap>315000?'2':'1')+', Tier 1</a>). Many offers are lower; enter yours. Market pay counts toward the pension; performance pay does not. Blank uses this.<button type="button" class="use" data-use="vaSalary" data-val="">Use</button>';
 }
 
 function drawTornado(items){

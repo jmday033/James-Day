@@ -115,6 +115,19 @@ export const specialtyTable = [
 export const specialtyByKey = Object.fromEntries(specialtyTable.map(r => [r.key, r]));
 export const sanDiegoAvailable = key => ['im','fm','peds'].includes(key);
 
+// ---------- VA staff physician and FERS (2026) ----------
+// VA pay: Title 38 Pay Table 1 or 2, Tier 1 (staff physician) maximum, effective
+// Jan. 11, 2026 (va.gov/OHRM/Pay/2026/PDOP/PayTables.pdf). Table 2 lists the
+// surgical, procedural, and hospital-based specialties below; all others are Table 1.
+const vaTable2 = new Set(['anes','cards','pulm','derm','em','gi','obgyn','hemonc','nephro','ophtho','ent',
+  'path','rads','ir','radonc','gensurg','ortho','neurosurg','uro','thoracic','vascular','plastics','pedsurg']);
+export const vaPayCap = key => vaTable2.has(key) ? 400000 : 315000;
+// FERS: 3% military deposit (OPM Service Credit, post-2000 service), FERS-FRAE
+// employee contribution 4.4% (hired after 2013), TSP agency 1% + 4% match,
+// minimum retirement age 57. colaGap: FERS COLA is CPI minus up to 1 point
+// ("diet COLA"), so the annuity loses about 0.5% a year in real terms.
+export const fers = {depositRate:.03, employeeRate:.044, tspAgency:.05, mra:57, colaGap:.005};
+
 // ---------- defaults ----------
 export const specialties = {im:'Internal medicine', fm:'Family medicine', peds:'Pediatrics'};
 export function defaultCivilianSalary(specialty, source='national') {
@@ -143,7 +156,8 @@ export const defaults = {
   firstYearShare:1, transitionCost:averages.transitionCost, insurance:null, civilianGrowth:averages.civilianGrowth,
   rbMode:'renew', obligationYears:0, postTwentyPenalty:.05, workUntilAge:65,
   employerRetirement:averages.employerRetirement, malpractice:0,
-  reservePoints:77, reserveStartAge:60, reserveDaysMissed:10
+  reservePoints:77, reserveStartAge:60, reserveDaysMissed:10,
+  vaSalary:null, vaBuyback:true
 };
 
 // Remaining life expectancy (years) at a given age, from the embedded U.S. table.
@@ -278,8 +292,62 @@ export function stayOrGo(userInput, {stateData=null, lifeTable=null, bah=null} =
     pensionValue:reservePensionValue, healthValue:reserveHealthValue, drillValue:reserveDrillValue,
     net:reservePensionValue + reserveHealthValue + reserveDrillValue};
 
+  // Fourth path: leave active duty now (or when the obligation ends) for a VA
+  // staff physician job and pay the FERS military service deposit to credit the
+  // active years (5 U.S.C. 8411(c); OPM Service Credit). Valued against leaving
+  // for the private civilian job, until the work-until age.
+  const vaCap = vaPayCap(x.specialty);
+  const vaSalary = Number.isFinite(x.vaSalary) && x.vaSalary > 0 ? x.vaSalary : Math.min(civ, vaCap);
+  const militaryYears = yos + obligation;
+  const decisionAge = age + obligation;
+  const vaYears = Math.max(0, Math.round(x.workUntilAge - decisionAge));
+  // Deposit: 3% of military basic pay (post-2000 rate). Past years use the
+  // 2026 table at the grade held then (O-4 from commissioning, O-5 at 15,
+  // O-6 at 21, capped at current rank), which overstates the deposit slightly.
+  const ranks = ['O4','O5','O6'];
+  const pastGrade = s => ranks[Math.min(ranks.indexOf(x.rank), s >= 21 ? 2 : s >= 15 ? 1 : 0)];
+  const pastBasic = Array.from({length:yos}, (_, s) => 12*payFor(pastGrade(s), s)).reduce((a,b)=>a+b,0)
+    + rows.slice(0, obligation).reduce((a,r)=>a + 12*r.basicMonthly, 0);
+  const deposit = fers.depositRate*pastBasic;
+  // Salary difference each year: VA pay after tax, TSP agency contributions and
+  // the FERS-FRAE employee contribution, with FTCA malpractice coverage, versus
+  // the private job as elsewhere on the page. Health premiums, disability
+  // insurance, VA disability pay, and the cost of leaving are the same on both.
+  let vaSalaryGap = 0;
+  for (let k = 0; k < vaYears; k++) {
+    const i = obligation + k, grow = Math.pow(1+x.civilianGrowth, i);
+    const s = civ*grow*(k === 0 ? x.firstYearShare : 1), v = vaSalary*grow;
+    const civNet = s - wageTax(s, {...taxCtx, stateCode:x.civilianState, civilianCa:true})
+      + x.employerRetirement*Math.min(s, 360000) - x.malpractice;
+    const vaNet = v - wageTax(v, {...taxCtx, stateCode:x.civilianState})
+      + fers.tspAgency*v - fers.employeeRate*v;
+    vaSalaryGap += (vaNet - civNet)*cashFactor(i);
+  }
+  const high3 = vaSalary*Math.pow(1+x.civilianGrowth, Math.max(0, obligation + vaYears - 2));
+  const fersPension = creditYears => {
+    const sepAge = decisionAge + vaYears;
+    if (vaYears < 5) return {annual:0, startAge:sepAge, multiplier:0, value:0};   // not vested
+    const immediate = (sepAge >= 62) || (sepAge >= 60 && creditYears >= 20) || (sepAge >= fers.mra && creditYears >= 30);
+    const startAge = immediate ? sepAge : 62;                                     // otherwise deferred to 62
+    const multiplier = startAge >= 62 && sepAge >= 62 && creditYears >= 20 ? .011 : .010;
+    const annual = multiplier*creditYears*high3;
+    const tax = Number.isFinite(x.pensionTax) ? x.pensionTax : marginalFederalRate(annual, withSpouse);
+    const payYears = Math.max(0, deathAge - startAge);
+    const eroded = (1+x.pensionRate)*(1+fers.colaGap) - 1;                     // FERS COLA trails CPI
+    const value = annual*(1-tax)*annuity(eroded, payYears)/Math.pow(1+x.pensionRate, startAge - age);
+    return {annual, startAge, multiplier, value};
+  };
+  const withBuyback = fersPension(vaYears + militaryYears), noBuyback = fersPension(vaYears);
+  const depositValue = deposit*cashFactor(obligation);
+  const buyback = x.vaBuyback !== false && vaYears >= 5;
+  const vaPath = {salary:vaSalary, cap:vaCap, years:vaYears, militaryYears, salaryGapValue:vaSalaryGap,
+    deposit, depositValue, withBuyback, noBuyback, buyback,
+    buybackGain:withBuyback.value - noBuyback.value - depositValue,
+    pension:buyback ? withBuyback : noBuyback,
+    net:vaSalaryGap + (buyback ? withBuyback.value - depositValue : noBuyback.value)};
+
   return {input:{...x, civilianSalary:civ, navyState, age, paymentYears, bahMonthly, insurance, pensionTax}, rows, years,
-    costOfStaying, afterTwentyCost, pensionValue, net, breakEven, path, obligation, decisionYos:yos + obligation, reserve,
+    costOfStaying, afterTwentyCost, pensionValue, net, breakEven, path, obligation, decisionYos:yos + obligation, reserve, va:vaPath,
     parts:{retireeHealth, va, vaOffset, pensionBase, annualPension:pensionBase*(isBrs?.02:.025)*20, rb, rbMode, postYears}};
 }
 

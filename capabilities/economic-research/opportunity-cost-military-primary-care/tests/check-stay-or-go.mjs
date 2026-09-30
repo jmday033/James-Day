@@ -56,6 +56,34 @@ assert.ok(sens.every((s,i)=>i===0||sens[i-1].swing>=s.swing));
   const ob=stayOrGo({...x,obligationYears:2},{stateData,lifeTable,bah});
   near(ob.reserve.points,365*17+77*3,.001);
 }
+// VA route: FERS deposit buys back active years; valued against the private job.
+{
+  const c={stateData,lifeTable,bah};
+  const r=stayOrGo({},c), w=r.va;
+  assert.equal(w.salary,315000);                         // IM: private $339,274 capped at Table 1 Tier 1 max
+  assert.equal(stayOrGo({specialty:'cards'},c).va.salary,400000);
+  assert.equal(stayOrGo({vaSalary:280000},c).va.salary,280000);
+  assert.equal(w.militaryYears,10); assert.equal(w.years,65-37);
+  assert.equal(w.withBuyback.multiplier,.011);             // leaves at 65 with 20+ years
+  near(w.withBuyback.annual,.011*(28+10)*315000,.01);
+  near(w.noBuyback.annual,.011*28*315000,.01);
+  assert.ok(w.deposit>20000 && w.deposit<35000);           // 3% of ~$1M military basic pay
+  near(w.net,w.salaryGapValue+w.withBuyback.value-w.depositValue,.001);
+  assert.ok(w.buybackGain>0);
+  const off=stayOrGo({vaBuyback:false},c).va;
+  assert.ok(!off.buyback && off.net<w.net);
+  near(off.net,off.salaryGapValue+off.noBuyback.value,.001);
+  // Buyback reaches 30 years at 57, so the pension starts at once; without it, deferred to 62.
+  const early=stayOrGo({workUntilAge:57},c).va;
+  assert.equal(early.withBuyback.startAge,57); assert.equal(early.noBuyback.startAge,62);
+  // Fewer than 5 VA years: not vested.
+  assert.equal(stayOrGo({yos:19,workUntilAge:49},c).va.pension.annual,0);
+  // Higher VA pay raises the VA route.
+  assert.ok(stayOrGo({vaSalary:340000},c).va.net>w.net);
+  // Active-duty and Reserve results are unchanged by VA inputs.
+  assert.equal(stayOrGo({vaSalary:200000,vaBuyback:false},c).net,r.net);
+  console.log('VA route checks passed');
+}
 console.log('Stay-or-go checks passed');
 
 // Every specialty runs, uses its own Navy pay, and falls back to national pay outside primary care.
