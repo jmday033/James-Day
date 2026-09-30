@@ -3,13 +3,13 @@ type: project
 engagement: opportunity-cost-military-primary-care
 capability: economic-research
 project: "Opportunity Cost for Military Primary Care"
-updated: 2026-09-19
+updated: 2026-09-30
 status: working
 ---
 
 # Navy Physician Compensation, Opportunity Cost, and Retention
 
-**Latest draft:** [Revision 10, September 29 (Word, author-supplied)](paper/navy-physician-retention-revision-10.docx) · [review PDF](paper/navy-physician-retention-revision-10.pdf) · [review notes](paper/revision-10-review-2026-09-29.md). Four-page body, double-spaced, with Appendices A–F. Not yet designated final. Earlier: [revision 7](paper/navy-physician-retention-revision-7.pdf) · [revision 6](paper/navy-physician-retention-revision-6.pdf).
+**Current paper:** [Revision 16 PDF, September 29](../../../analysis/research-paper.pdf). Checked 25-page PDF with four pages of main text, incorporating the Medical Corps Career Development Board proposal and financial-scope limitations. [Revision 10 Word source](paper/navy-physician-retention-revision-10.docx) and [review notes](paper/revision-10-review-2026-09-29.md) are historical development materials; the Word source does not include the later revisions.
 
 Final course project for BUS 620 — Micro and Macro Economics. Compensation, retention, opportunity-cost analysis, pension sensitivity, staffing alternatives, source reviews, and both labs are components of this one project. The Navy is the modeled case; the project title does not imply validation for every military service.
 
