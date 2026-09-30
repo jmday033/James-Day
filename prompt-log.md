@@ -213,3 +213,7 @@ At the author's request, AI zoomed the path-value chart axis and shaded the gap,
 ## 2026-09-29 — Additional tax filing examples
 
 At the author's request, AI added head of household and married-filing-jointly-with-working-spouse examples, a spouse-wage input, and a 2026 Child Tax Credit (children count, $2,200 each, phase-out above $400,000 joint / $200,000 other) to the lab's tax estimator, using 2026 federal brackets and standard deductions (Tax Foundation). A working spouse's wages are taxed on both paths and only the incremental tax from the physician's pay is counted. Head of household uses single-filer state brackets as an approximation.
+
+## 2026-09-29 — Answer-first "Stay or go?" front page
+
+The author was concerned the full lab would lose users and asked AI to fix it. AI built `stay-or-go.html` with `stay-or-go.js`: six questions (years served, specialty, rank, promotion, civilian salary, family), presets, collapsible "Refine" groups whose headers show current settings, an answer card in today's after-tax dollars, a stay-to-20 break-even chart, a "what moves your answer most" sensitivity chart, and year-by-year detail. It reuses `calc-engine.js` for pay and pension rules and shares extracted 2026 state tax and life-table data (`data/state-tax-2026.json`, `data/us-life-remaining-2024.json`). Tests added in `tests/check-stay-or-go.mjs`. The Quick Look and advanced lab are unchanged except for navigation links; the paper is unchanged.

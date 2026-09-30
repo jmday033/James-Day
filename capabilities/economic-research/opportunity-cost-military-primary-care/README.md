@@ -22,7 +22,8 @@ Final course project for BUS 620 — Micro and Macro Economics. Compensation, re
 
 - [Dated draft chain](../../../drafts/README.md) · [Current internal-medicine figure](figures/internal-medicine-san-diego.svg) · [Scenario calculation audit](analysis/internal-medicine-scenario.md)
 
-- [Quick Look lab](quick-lab.html) · [Full compensation lab](physician-pay-lab.html)
+- **[Stay or go? — start here](stay-or-go.html)**: answer-first page with six questions, a break-even chart, and a "what moves your answer" chart; every other setting defaults to published averages.
+- [Quick Look lab](quick-lab.html) · [Full compensation lab](physician-pay-lab.html) (advanced)
 - [Research brief](research-brief.md) · [Model specification](spec.md)
 - [Paper draft](paper/navy-primary-care-physician-retention-draft.md) · [Source review](paper/navy-physician-source-review.md)
 - [Consolidated decision record](decisions/physician-retention-economics-memo.md)
@@ -42,6 +43,7 @@ Keep the HTML pages, calculation modules, reference data, tests, and PDF library
 ```sh
 node tests/check-calculation-engine.mjs
 node tests/check-special-pay-and-pension.mjs
+node tests/check-stay-or-go.mjs
 ```
 
 The older `economic-research/quick-lab.html` and `economic-research/physician-pay-lab.html` addresses redirect here. Course-required brief/spec entry points outside the project are links only. The root prompt log remains the course-wide session record.
