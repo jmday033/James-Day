@@ -205,3 +205,7 @@ The author asked AI to scan MCCareer.org and The White Coat Investor for stay-or
 ## 2026-09-29 — VA rating selector, average retiree TRICARE value, and SBP toggle
 
 The author asked for a VA rating dropdown (25%, 50%, 100%, and the average), an average-based retiree TRICARE value, and a Survivor Benefit Plan toggle. AI added them to `calc-engine.js` and the full lab with tests, using VA 2026 rates, CBO's reported average rating (~56%, modeled as the 60% step), KFF 2025 premiums, TRICARE 2026 retiree fees, DFAS concurrent-receipt rules, and Navy Mutual's SBP summary. 25% is not a VA rating step, so 20% and 30% are offered. The 7-year survivor period is an explicit planning assumption. Paper base case unchanged.
+
+## 2026-09-29 — Lab chart readability, gap explanations, and break-even chart
+
+At the author's request, AI zoomed the path-value chart axis and shaded the gap, added a per-scenario "Why the bars change" note under the annual gap chart (continuation pay, promotions, longevity steps, bonus end, ramp-up, sign changes), and added a stay-to-20 break-even chart driven by the user's pension, TRICARE, VA, and SBP settings. AI also corrected the cumulative present-value chart to year-end discounting so its final point matches the headline present value, as its caption states.
