@@ -164,3 +164,17 @@ console.log('Stay-or-go checks passed');
   assert.equal(ob.windows[0].yos,12); assert.ok(ob.windows[0].free);
 }
 console.log('stay-or-go goals and exit-window checks passed');
+
+// ---------- savings needed to match the pension ----------
+{
+  const {annualSavingsFor}=await import('../stay-or-go.js');
+  // Future value check: saving P a year for n years at r builds the target.
+  const P=annualSavingsFor(1e6,10,.05);near(P*(Math.pow(1.05,10)-1)/.05,1e6,.01);
+  near(annualSavingsFor(1e6,10,0),1e5,1e-9);
+  const g=goalCoverage(stayOrGo({},{stateData,lifeTable,bah}));
+  near(g.savingsPerYear,annualSavingsFor(g.savingsEquivalent,10),.001);
+  assert.deepEqual(g.savingsTable.map(t=>t.yos),[4,8,10,12,16]);
+  assert.ok(g.savingsTable.find(t=>t.current).yos===10);
+  assert.ok(g.savingsTable.every((t,i,a)=>i===0||a[i-1].perYear<t.perYear)); // fewer years left, more per year
+}
+console.log('savings-equivalent checks passed');

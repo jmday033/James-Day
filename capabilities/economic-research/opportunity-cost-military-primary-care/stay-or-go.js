@@ -361,6 +361,12 @@ export const collegeBudgets2025 = {public:30990, private:65470};
 export const withdrawalRate = .04;
 export const goalDefaults = {annualSpending:120000, collegePerYear:collegeBudgets2025.public,
   collegeKids:null, debt:0, secondHome:0};
+// Savings needed each year, at a real after-tax return, to build `target` in n
+// years (future value of an annuity). Follows Dahle's WCI table (2012), which
+// asked the same question at 5% after inflation, expenses, and taxes.
+export const savingsReturn = .05;
+export const annualSavingsFor = (target, n, rate=savingsReturn) =>
+  n <= 0 ? target : rate === 0 ? target/n : target*rate/(Math.pow(1+rate, n) - 1);
 
 export function goalCoverage(r, goals={}) {
   const g = {...goalDefaults, ...goals};
@@ -377,10 +383,16 @@ export function goalCoverage(r, goals={}) {
   const cashBefore20 = r.costOfStaying - r.afterTwentyCost;
   const pensionGross = r.parts.annualPension, pensionNet = pensionGross*(1 - r.input.pensionTax);
   const pensionStartAge = r.input.age + r.years;
+  // Matching the pension by saving instead: the target is the same at 20,
+  // so only the years left to save change with years already served.
+  const savingsEquivalent = pensionGross/withdrawalRate;
+  const yos = r.input.yos, savingsTable = [...new Set([4, 8, 12, 16, Math.floor(yos)])].sort((a,b) => a - b)
+    .map(y => ({yos:y, yearsLeft:20 - y, perYear:annualSavingsFor(savingsEquivalent, 20 - y), current:y === Math.floor(yos)}));
   return {value, stayWins, kids, items, spendingYears:g.annualSpending > 0 ? value/g.annualSpending : null,
+    savingsReturn, savingsPerYear:annualSavingsFor(savingsEquivalent, r.years), savingsTable,
     cashBefore20, pensionGross, pensionNet, pensionStartAge,
     pensionShareOfSpending:g.annualSpending > 0 ? pensionNet/g.annualSpending : null,
-    savingsEquivalent:pensionGross/withdrawalRate, goals:{...g, collegeKids:kids}};
+    savingsEquivalent, goals:{...g, collegeKids:kids}};
 }
 
 // ---------- can you change your mind later? ----------

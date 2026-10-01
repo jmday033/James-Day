@@ -93,7 +93,7 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
 <header><div class="wrap">
   <nav class="crumb" aria-label="Lab versions"><a href="stay-or-go.html" aria-current="page">Stay or go?</a><a href="physician-pay-lab.html">Advanced lab</a></nav>
   <h1>Stay or go?</h1>
-  <p style="font-size:13px;color:#a9cede;margin-bottom:8px">Version 1.6 · Updated October 1, 2026 · 2026 pay, tax, and benefit data</p><p>Navy physician career decisions in today's dollars: staying to 20 versus leaving for a civilian job, or Navy versus civilian residency after a GMO tour. Answer a few questions; everything else starts at published averages, shown with their sources under Refine.</p>
+  <p style="font-size:13px;color:#a9cede;margin-bottom:8px">Version 1.7 · Updated October 1, 2026 · 2026 pay, tax, and benefit data</p><p>Navy physician career decisions in today's dollars: staying to 20 versus leaving for a civilian job, or Navy versus civilian residency after a GMO tour. Answer a few questions; everything else starts at published averages, shown with their sources under Refine.</p>
   <p class="views-note" role="note">Personal academic project by James M. Day. Views are his own and do not represent the U.S. Navy, the Department of Defense, or the U.S. government. An illustration, not financial advice.</p>
 </div></header>
 
@@ -264,7 +264,11 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
 
   <details class="panel fold" id="goalsPanel"><summary><span class="fold-title">Does the difference change your plans?</span><span class="fold-chip" id="chipGoals"></span></summary><div class="fold-body">    <p class="caption" id="goalsLead" style="margin:0 0 10px"></p>
     <div class="goals" id="goals"></div>
-    <p class="caption" id="goalsTiming" style="margin:10px 0 0"></p>
+    <div class="caption" id="goalsTiming" style="margin:10px 0 0"></div>
+    <details class="refine" style="margin-top:8px"><summary>Matching the pension by saving, by years already served</summary><div class="inner">
+      <div class="tablewrap"><table><thead><tr><th>Years in now</th><th>Years left to 20</th><th>Save each year</th></tr></thead><tbody id="saveRows"></tbody></table></div>
+      <p class="caption" id="saveCaption"></p>
+    </div></details>
     <p class="caption" style="margin:8px 0 0">Try this before you decide, not only after. If the difference does not change any goal that matters to your family, the parts this page cannot price, such as the work, location, deployments, and family, should carry the decision.</p>
   </div></details>
 
@@ -321,7 +325,7 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
 </main>
 
 <script type="module">
-import * as sog from './stay-or-go.js?v=20261001-goals';
+import * as sog from './stay-or-go.js?v=20261001-savings';
 const {answerRange,goalCoverage,exitWindows}=sog;const {stayOrGo, sensitivity, defaultCivilianSalary, loadReferenceData, bahFor, payFor, benchmarks, specialtyTable, specialtyByKey, sanDiegoAvailable}=sog;
 {const groups=[...new Set(specialtyTable.map(r=>r.group))];
  document.getElementById('specialty').innerHTML=groups.map(g=>'<optgroup label="'+g+'">'+specialtyTable.filter(r=>r.group===g).map(r=>'<option value="'+r.key+'"'+(r.key==='im'?' selected':'')+'>'+r.label+'</option>').join('')+'</optgroup>').join('');}
@@ -458,8 +462,14 @@ function drawGoals(r){
   $('goalsLead').textContent='On these inputs, '+who+' comes out about '+val+' ahead in today\'s dollars after tax. Here is how far that goes toward your goals.';
   const show=v=>v>=10?Math.round(v)+'×':v>=1?v.toFixed(1)+'×':Math.round(v*100)+'%';
   $('goals').innerHTML=g.items.length?g.items.map(t=>'<div class="goal-row"><span>'+(t.key==='spending'?'Household spending ('+money(t.need)+'/yr)':t.label+' ('+short(t.need)+')')+'</span><div class="goal-track"><div class="goal-bar'+(g.stayWins?'':' go')+'" style="width:'+Math.min(100,100*t.share)+'%"></div></div><b>'+(t.key==='spending'?(g.spendingYears>=1?g.spendingYears.toFixed(1)+' yrs':Math.round(g.spendingYears*12)+' mo'):show(t.share))+'</b></div>').join(''):'<p class="caption" style="margin:0">Add goals under Refine → Your goals.</p>';
-  const before=g.cashBefore20,age=Math.round(g.pensionStartAge);
-  $('goalsTiming').textContent='Timing matters as much as the total. '+(before>0?'Before 20, leaving brings in about '+short(before)+' more cash (today\'s dollars), which is what pays for college or a house in the next few years. ':before<0?'Before 20, staying already pays about '+short(-before)+' more cash after tax. ':'')+'Staying to 20 pays a pension of about '+money(Math.round(g.pensionNet/100)*100)+' a year after tax from age '+age+(g.pensionShareOfSpending!==null?', about '+Math.round(100*g.pensionShareOfSpending)+'% of your yearly spending,':'')+' for life. Producing the same income from savings would take about '+short(g.savingsEquivalent)+' at a 4% withdrawal rate. The pension is income, not a lump sum: it helps most with early or partial retirement and least with costs that come before '+age+'.';
+  const before=g.cashBefore20,age=Math.round(g.pensionStartAge),li=t=>'<li>'+t+'</li>';
+  $('goalsTiming').innerHTML='<b>Timing matters as much as the total.</b><ul style="margin:6px 0 0;padding-left:18px;display:grid;gap:4px">'
+    +li('<b>Before 20:</b> '+(before>0?'leaving brings in about '+short(before)+' more take-home pay. That is the money for college or a house in the next few years.':before<0?'staying already brings in about '+short(-before)+' more take-home pay, so you give up no cash now.':'take-home pay is about the same either way.'))
+    +li('<b>After 20 (age '+age+'):</b> the Navy pays about '+money(Math.round(g.pensionNet/100)*100)+' a year after tax, for life'+(g.pensionShareOfSpending!==null?', about '+Math.round(100*g.pensionShareOfSpending)+'% of your yearly spending':'')+'.')
+    +li('<b>What it is worth:</b> to get the same income on your own, you would need about '+short(g.savingsEquivalent)+' saved by '+age+'. That means saving about '+money(Math.round(g.savingsPerYear/1000)*1000)+' a year, every year until then.')
+    +li('<b>The catch:</b> it is a paycheck, not a pile of cash. It helps you retire early or work less. It does not pay for things you need before '+age+'.')+'</ul>';
+  $('saveRows').innerHTML=g.savingsTable.map(t=>'<tr'+(t.current?' style="font-weight:650"':'')+'><td>'+t.yos+(t.current?' (you)':'')+'</td><td>'+t.yearsLeft+'</td><td>'+money(Math.round(t.perYear/1000)*1000)+'</td></tr>').join('');
+  $('saveCaption').innerHTML='Savings needed each year to build '+short(g.savingsEquivalent)+' by 20, earning '+Math.round(g.savingsReturn*100)+'% a year after inflation, fees, and taxes, a return that is not easy to get. Leaving early means fewer years to save, so the yearly amount climbs fast. Same idea as <a href="https://www.whitecoatinvestor.com/should-i-stay-or-should-i-go-financial-implications-of-military-separation/">Dahle\'s White Coat Investor table</a>, recalculated for your pension; his 2012 figures used a larger legacy O-6 pension priced as an annuity.';
   $('chipGoals').textContent=g.spendingYears!==null?'≈ '+(g.spendingYears>=1?g.spendingYears.toFixed(1)+' yrs':Math.round(g.spendingYears*12)+' months')+' of spending':short(g.value);
   const kids=g.kids;$('sumGoals').textContent=(g.goals.annualSpending?short(g.goals.annualSpending)+'/yr':'no spending')+(kids?' · '+kids+' to college':'');
 }

@@ -349,3 +349,8 @@ The paper PDF was not changed. Claude drafted a proposed one-sentence main-text 
 ## 2026-10-01 — Stay or go? collapsible result sections
 
 At the author's request, Claude made each result section below the answer collapsible. The answer and three headline numbers stay visible. "Four paths compared" opens by default. Goals, break-even, change-your-mind, sensitivity, and year-by-year sections start closed, and each header shows its key result (for example, "Next exit: 18 yrs"). The break-even chart redraws at full width when opened. Calculations are unchanged. Rendered at phone and desktop widths in headless Chromium with no page errors or horizontal overflow. Version line now reads 1.6.
+
+
+## 2026-10-01 — Stay or go? savings needed to match the pension
+
+At the author's request, after asking whether The White Coat Investor already tabulates what a departing physician would need to save, Claude found Dahle's 2012 WCI table (required annual savings by years left to retirement, $100,000 at 16 years to $550,000 at 4, using a legacy O-6 pension priced as a $2.489M inflation-indexed annuity and a 5% real after-tax return). Rather than reuse the dated figures, the goals section now calculates the same idea from the user's own pension: the 4%-rule savings equivalent, the yearly savings needed to build it by 20 at 5% real, and a small table by years already served (4, 8, 12, 16, and the user's own). The timing text was rewritten in simpler language at the author's request. The proposed paper insert adds one sentence and cites Dahle (2012) and Schofer (2016). Assertions cover the annuity formula and table; all test files pass. Rendered at phone width with no page errors or overflow. Version line now reads 1.7.
