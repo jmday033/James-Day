@@ -178,3 +178,12 @@ console.log('stay-or-go goals and exit-window checks passed');
   assert.ok(g.savingsTable.every((t,i,a)=>i===0||a[i-1].perYear<t.perYear)); // fewer years left, more per year
 }
 console.log('savings-equivalent checks passed');
+
+// ---------- one live version ----------
+{
+  const html=await fs.readFile(new URL('../stay-or-go.html',import.meta.url),'utf8');
+  const v=JSON.parse(await fs.readFile(new URL('../version.json',import.meta.url),'utf8')).version;
+  assert.ok(html.includes('var PAGE_VERSION="'+v+'"'),'PAGE_VERSION must match version.json');
+  assert.ok(html.includes('Version '+v+' ·'),'visible version line must match version.json');
+}
+console.log('version-sync checks passed');

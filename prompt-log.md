@@ -359,3 +359,8 @@ At the author's request, after asking whether The White Coat Investor already ta
 ## 2026-10-01 — Stay or go? goals section shows numbers instead of bars
 
 At the author's request, after he noted the goals bar carried no information (a single full bar once the difference exceeded one year of spending), Claude replaced the bars with three number tiles: the difference in years of household spending, the after-tax pension per year and its start age, and the yearly savings needed to replace it. Entered goals (college, debt, second home) now appear as short "fully covered" or "covers X%" lines. The timing text was shortened to one "catch is timing" note. Calculations are unchanged; tests pass; rendered at phone width with no errors or overflow. Version line now reads 1.8.
+
+
+## 2026-10-01 — Stay or go? always shows the current version
+
+At the author's request, after a phone kept showing an older cached copy and he worried shared links were out of date, Claude confirmed there is one live copy of the page: every older address (Quick Look and the former navy-physician-compensation folder) already redirects to it. Because GitHub Pages lets browsers cache pages for about 10 minutes, the page now checks a small `version.json` without caching and, if the saved copy is older, reloads once with a version tag. A test keeps `version.json`, the page's version constant, and the visible version line in sync. Tested in headless Chromium: same version stays put; a newer version reloads once without looping. Version line now reads 1.9.

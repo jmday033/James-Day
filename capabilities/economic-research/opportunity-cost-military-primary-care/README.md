@@ -47,6 +47,8 @@ node tests/check-special-pay-and-pension.mjs
 node tests/check-stay-or-go.mjs
 ```
 
+When you change Stay or go?, update the version in both `version.json` and the page (`PAGE_VERSION` and the visible version line); the test checks they match. Open copies of the page compare themselves with `version.json` and reload once if they are out of date, so a shared link always shows the current version.
+
 The older `economic-research/quick-lab.html` and `economic-research/physician-pay-lab.html` addresses redirect here. Course-required brief/spec entry points outside the project are links only. The root prompt log remains the course-wide session record.
 
 `build_comparison.py` retains the earlier bonus-comparison scenarios and writes generated files into this project's `outputs/` directory; those outputs do not replace the paper's fixed scenario.

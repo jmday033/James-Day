@@ -93,7 +93,7 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
 <header><div class="wrap">
   <nav class="crumb" aria-label="Lab versions"><a href="stay-or-go.html" aria-current="page">Stay or go?</a><a href="physician-pay-lab.html">Advanced lab</a></nav>
   <h1>Stay or go?</h1>
-  <p style="font-size:13px;color:#a9cede;margin-bottom:8px">Version 1.8 · Updated October 1, 2026 · 2026 pay, tax, and benefit data</p><p>Navy physician career decisions in today's dollars: staying to 20 versus leaving for a civilian job, or Navy versus civilian residency after a GMO tour. Answer a few questions; everything else starts at published averages, shown with their sources under Refine.</p>
+  <p style="font-size:13px;color:#a9cede;margin-bottom:8px">Version 1.9 · Updated October 1, 2026 · 2026 pay, tax, and benefit data</p><p>Navy physician career decisions in today's dollars: staying to 20 versus leaving for a civilian job, or Navy versus civilian residency after a GMO tour. Answer a few questions; everything else starts at published averages, shown with their sources under Refine.</p>
   <p class="views-note" role="note">Personal academic project by James M. Day. Views are his own and do not represent the U.S. Navy, the Department of Defense, or the U.S. government. An illustration, not financial advice.</p>
 </div></header>
 
@@ -324,6 +324,16 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
 <p class="disclaimer">Your entries stay in your browser; nothing is sent or stored. Personal academic project. Views are solely those of James M. Day and do not represent the U.S. Navy, the Department of Defense, or the U.S. government. This is an illustration, not an individual financial recommendation.</p>
 </main>
 
+<script>
+// One live version: if the server has a newer page than this saved copy,
+// reload it with a version tag so phone and browser caches are bypassed.
+(function(){var PAGE_VERSION="1.9";
+  try{fetch("version.json",{cache:"no-store"}).then(function(r){return r.json()}).then(function(d){
+    if(!d||!d.version||d.version===PAGE_VERSION)return;
+    var u=new URL(location.href);if(u.searchParams.get("v")===d.version)return;   // already tried once
+    u.searchParams.set("v",d.version);location.replace(u.toString());
+  }).catch(function(){})}catch(e){}})();
+</script>
 <script type="module">
 import * as sog from './stay-or-go.js?v=20261001-savings';
 const {answerRange,goalCoverage,exitWindows}=sog;const {stayOrGo, sensitivity, defaultCivilianSalary, loadReferenceData, bahFor, payFor, benchmarks, specialtyTable, specialtyByKey, sanDiegoAvailable}=sog;
