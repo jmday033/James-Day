@@ -1,0 +1,18 @@
+input,baseline_value,unit,status,notes
+analysis_horizon,5,years,selected,User selected
+uber_fare,50,dollars per one-way ride,provided,User provided
+miles_per_one_way_ride,10,miles,selected,User selected
+purchase_prices,"5000;10000;15000",dollars,provided,User provided
+sales_tax_and_purchase_fees_rate,0.04712,share of price,placeholder,Replace with actual transaction cost
+title_and_initial_fees,300,dollars,placeholder,Replace with actual estimate
+annual_insurance,1500,dollars per year,input needed,Quote specific vehicles
+annual_registration_and_safety,500,dollars per year,input needed,Use actual vehicle fees
+annual_fixed_maintenance_repairs,1000,dollars per year,input needed,Estimate by age and model
+fuel_price,5,dollars per gallon,input needed,Replace with local expected price
+fuel_economy,25,miles per gallon,input needed,Use candidate vehicle
+maintenance_wear_per_mile,0.15,dollars per mile,placeholder,Tires oil and mileage wear
+parking,0,dollars per year,input needed,Include home and paid parking
+resale_value_rate,0.30,share of price,placeholder,Expected five-year proceeds
+cash_opportunity_cost_rate,0.05,annual rate,input needed,After-tax alternative return
+loan_apr,0,annual rate,input needed,Baseline assumes cash
+monthly_one_way_rides,,rides per month,input needed,Use three months of ride history
