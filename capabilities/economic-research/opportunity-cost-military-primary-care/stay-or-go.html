@@ -65,6 +65,11 @@ details.refine .inner{padding-top:12px}
 .goal-row{display:grid;grid-template-columns:minmax(120px,40%) 1fr auto;gap:10px;align-items:center;font-size:13.5px}.goal-row b{font-variant-numeric:tabular-nums;min-width:64px;text-align:right}.goal-track{height:14px;background:#f1f5f8;border-radius:4px;position:relative;overflow:hidden}.goal-bar{position:absolute;top:0;bottom:0;left:0;border-radius:3px;background:var(--navy)}.goal-bar.go{background:var(--civ)}.goals{display:grid;gap:8px}
 .exit-free{color:#1c6d8b;font-weight:650}.exit-locked{color:var(--muted)}tr.exit-now td,tr.exit-20 td{font-weight:650}
 .tornado{display:grid;gap:9px}
+details.fold{padding:0}details.fold>summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:12px;padding:16px 20px;border-radius:12px}
+details.fold>summary::-webkit-details-marker{display:none}details.fold>summary:hover{background:#f6fafc}
+details.fold>summary::after{content:"＋";color:#155d80;font-weight:650;flex:none}details.fold[open]>summary::after{content:"−"}
+.fold-title{font-weight:700;font-size:16px;color:#173047}.fold-chip{margin-left:auto;font-size:12.5px;color:var(--muted);text-align:right;font-variant-numeric:tabular-nums}
+details.fold[open] .fold-chip{visibility:hidden}.fold-body{padding:0 20px 20px}
 .tor-row{display:grid;grid-template-columns:minmax(120px,40%) 1fr;gap:10px;align-items:center;font-size:13px}
 .tor-track{position:relative;height:18px;background:#f1f5f8;border-radius:4px}
 .tor-bar{position:absolute;top:2px;height:14px;border-radius:3px}
@@ -88,7 +93,7 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
 <header><div class="wrap">
   <nav class="crumb" aria-label="Lab versions"><a href="stay-or-go.html" aria-current="page">Stay or go?</a><a href="physician-pay-lab.html">Advanced lab</a></nav>
   <h1>Stay or go?</h1>
-  <p style="font-size:13px;color:#a9cede;margin-bottom:8px">Version 1.5 · Updated October 1, 2026 · 2026 pay, tax, and benefit data</p><p>Navy physician career decisions in today's dollars: staying to 20 versus leaving for a civilian job, or Navy versus civilian residency after a GMO tour. Answer a few questions; everything else starts at published averages, shown with their sources under Refine.</p>
+  <p style="font-size:13px;color:#a9cede;margin-bottom:8px">Version 1.6 · Updated October 1, 2026 · 2026 pay, tax, and benefit data</p><p>Navy physician career decisions in today's dollars: staying to 20 versus leaving for a civilian job, or Navy versus civilian residency after a GMO tour. Answer a few questions; everything else starts at published averages, shown with their sources under Refine.</p>
   <p class="views-note" role="note">Personal academic project by James M. Day. Views are his own and do not represent the U.S. Navy, the Department of Defense, or the U.S. government. An illustration, not financial advice.</p>
 </div></header>
 
@@ -253,45 +258,35 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
     <div class="metric"><span>Break-even</span><b id="mBreak">—</b></div>
   </div>
 
-  <div class="panel">
-    <h3>Four paths compared</h3>
-    <div class="paths" id="paths"></div>
+  <details class="panel fold" open><summary><span class="fold-title">Four paths compared</span><span class="fold-chip" id="chipPaths"></span></summary><div class="fold-body">    <div class="paths" id="paths"></div>
     <p class="caption" id="pathsCaption" style="margin:8px 0 0"></p>
-  </div>
+  </div></details>
 
-  <div class="panel" id="goalsPanel">
-    <h3>Does the difference change your plans?</h3>
-    <p class="caption" id="goalsLead" style="margin:0 0 10px"></p>
+  <details class="panel fold" id="goalsPanel"><summary><span class="fold-title">Does the difference change your plans?</span><span class="fold-chip" id="chipGoals"></span></summary><div class="fold-body">    <p class="caption" id="goalsLead" style="margin:0 0 10px"></p>
     <div class="goals" id="goals"></div>
     <p class="caption" id="goalsTiming" style="margin:10px 0 0"></p>
     <p class="caption" style="margin:8px 0 0">Try this before you decide, not only after. If the difference does not change any goal that matters to your family, the parts this page cannot price, such as the work, location, deployments, and family, should carry the decision.</p>
-  </div>
+  </div></details>
 
-  <div class="panel chart">
-    <h3>When does staying pay off?</h3>
-    <div class="legend"><span><i></i>Pension and benefits kept by staying</span><span><i class="civ"></i>Extra civilian pay still to give up before 20</span></div>
+  <details class="panel fold chart" id="breakPanel"><summary><span class="fold-title">When does staying pay off?</span><span class="fold-chip" id="chipBreak"></span></summary><div class="fold-body">    <div class="legend"><span><i></i>Pension and benefits kept by staying</span><span><i class="civ"></i>Extra civilian pay still to give up before 20</span></div>
     <div id="breakChart"></div>
     <p class="caption" id="breakCaption"></p>
-  </div>
+  </div></details>
 
-  <div class="panel" id="exitPanel">
-    <h3>Can you change your mind later?</h3>
-    <p class="caption" id="exitLead" style="margin:0 0 10px"></p>
+  <details class="panel fold" id="exitPanel"><summary><span class="fold-title">Can you change your mind later?</span><span class="fold-chip" id="chipExit"></span></summary><div class="fold-body">    <p class="caption" id="exitLead" style="margin:0 0 10px"></p>
     <div class="tablewrap"><table><thead><tr><th>Leave at</th><th>Free to leave?</th><th>Versus leaving now</th></tr></thead><tbody id="exitRows"></tbody></table></div>
     <p class="caption" id="exitCaption"></p>
-  </div>
+  </div></details>
 
-  <div class="panel">
-    <h3>What moves your answer most</h3>
-    <p class="caption" style="margin:0 0 10px">Each row tries one of your guesses at a lower and a higher value and shows how far the bottom line shifts. Longer bars matter more. Blue means that change makes staying look better; orange means it makes leaving look better. The top one or two are worth double-checking.</p>
+  <details class="panel fold"><summary><span class="fold-title">What moves your answer most</span><span class="fold-chip" id="chipTornado"></span></summary><div class="fold-body">    <p class="caption" style="margin:0 0 10px">Each row tries one of your guesses at a lower and a higher value and shows how far the bottom line shifts. Longer bars matter more. Blue means that change makes staying look better; orange means it makes leaving look better. The top one or two are worth double-checking.</p>
     <div class="tornado" id="tornado"></div>
     <div class="tor-scale" id="torScale"></div>
-  </div>
+  </div></details>
 
-  <details class="panel"><summary style="cursor:pointer;font-weight:650;color:#155d80">Year-by-year detail</summary>
-    <div class="tablewrap" style="margin-top:10px"><table><thead><tr><th>Year</th><th>Service yr</th><th>Grade</th><th>Navy after tax</th><th>Civilian after tax</th><th>Gap</th></tr></thead><tbody id="rows"></tbody></table></div>
+  <details class="panel fold"><summary><span class="fold-title">Year-by-year detail</span><span class="fold-chip" id="chipRows"></span></summary><div class="fold-body">
+    <div class="tablewrap"><table><thead><tr><th>Year</th><th>Service yr</th><th>Grade</th><th>Navy after tax</th><th>Civilian after tax</th><th>Gap</th></tr></thead><tbody id="rows"></tbody></table></div>
     <p class="caption">"After tax" includes BRS matching, employer retirement, health premiums, VA pay, and the costs you entered. The pension is not in these rows; it is counted once in the answer above.</p>
-  </details>
+  </div></details>
 
   </div>
   <div id="gmoResults" hidden style="display:grid;gap:16px">
@@ -422,6 +417,9 @@ function update(){
   const mal=window.__malRanges?.[f.civilianState]?.[['peds','im','fm'].indexOf(x.specialty)];
   $('avg_malpractice').innerHTML='Malpractice: <b>$0</b> if the employer pays (most employed jobs).'+(mal?' If you pay your own in '+(stateData.names[f.civilianState]||f.civilianState)+': about <b>'+money(mal[0])+(mal[1]!==mal[0]?'–'+money(mal[1]):'')+'/yr</b> ($1M/$3M mature claims-made, 2026).':'')+'<button type="button" class="use" data-use="malpractice" data-val="0">Use</button>';
   drawPaths(r,x);drawBreak(r);drawTornado(sens);drawGoals(r);drawExits(x,ctx);
+  $('chipBreak').textContent=be===null?'Not before 20':be<=r.decisionYos?'Staying already ahead':'Break-even ≈ '+be.toFixed(1)+' yrs';
+  $('chipTornado').textContent='Biggest: '+sens[0].label.split(/[:(]/)[0].trim().toLowerCase();
+  $('chipRows').textContent=r.rows.length+' years';
   $('rows').innerHTML=r.rows.map(w=>'<tr><td>'+w.year+'</td><td>'+w.yos+'</td><td>'+w.grade.replace('O','O-')+'</td><td>'+money(w.navy)+'</td><td>'+money(w.civilian)+'</td><td>'+money(w.gap)+'</td></tr>').join('');
 }
 
@@ -446,6 +444,7 @@ function drawPaths(r,x){
   $('paths').innerHTML=list.map(([name,val,c])=>'<div class="path-row"><span>'+name+'</span><div class="path-track">'+(val>0?'<div class="path-bar '+c+'" style="width:'+(100*val/m)+'%"></div>':'')+'</div><b>'+(val===0?'$0':(val>0?'+':'−')+short(Math.abs(val)))+'</b></div>').join('');
   const best=[['Staying on active duty',r.net],['The Reserve route',v.net],['The VA route',w.net],['Leaving for the private job',0]].sort((a,b)=>b[1]-a[1])[0][0];
   const p=w.pension;
+  $('chipPaths').textContent='Best: '+({'Staying on active duty':'stay to 20','The Reserve route':'Reserve route','The VA route':'VA route','Leaving for the private job':'leave now'})[best];
   const vaText=w.years<5?' VA route: fewer than 5 VA years before the work-until age, so no FERS pension is earned.':' VA route: '+money(Math.round(w.salary/1000)*1000)+'/yr for '+w.years+' years (salary, TSP, and FERS contributions versus the private job: '+(w.salaryGapValue>=0?'+':'−')+short(Math.abs(w.salaryGapValue))+'), then a FERS pension of about '+money(Math.round(p.annual/100)*100)+'/yr from '+Math.round(p.startAge)+' ('+(p.multiplier*100).toFixed(1)+'% × '+(w.buyback?w.years+w.militaryYears:w.years)+' years, worth '+short(p.value)+' today).'+(w.buyback?' Buying back '+w.militaryYears+' active years costs about '+money(Math.round(w.deposit/100)*100)+' and adds '+short(w.buybackGain)+' net.':' Buying back '+w.militaryYears+' active years would add '+short(w.buybackGain)+' net.');
   $('pathsCaption').textContent='Compared with leaving now for the private job and never serving again, in today\'s dollars after taxes. '+best+' comes out ahead on these inputs. Reserve route: about '+v.equivalentYears.toFixed(1)+' years of credit, a pension of about '+money(Math.round(v.annualPension/100)*100)+'/yr starting at '+Math.round(v.startAge)+' (worth '+short(v.pensionValue)+' today), TRICARE from '+Math.round(v.startAge)+' to 65 ('+short(v.healthValue)+'), and drill pay minus missed civilian workdays ('+(v.drillValue>=0?'+':'−')+short(Math.abs(v.drillValue))+').'+vaText+' Not counted: Reserve special pays, mobilization risk, retiree federal health coverage, the FERS supplement, and time away from family.';
   $('sumReserve').textContent=x.reservePoints+' pts/yr · pension at '+x.reserveStartAge;
@@ -461,6 +460,7 @@ function drawGoals(r){
   $('goals').innerHTML=g.items.length?g.items.map(t=>'<div class="goal-row"><span>'+(t.key==='spending'?'Household spending ('+money(t.need)+'/yr)':t.label+' ('+short(t.need)+')')+'</span><div class="goal-track"><div class="goal-bar'+(g.stayWins?'':' go')+'" style="width:'+Math.min(100,100*t.share)+'%"></div></div><b>'+(t.key==='spending'?(g.spendingYears>=1?g.spendingYears.toFixed(1)+' yrs':Math.round(g.spendingYears*12)+' mo'):show(t.share))+'</b></div>').join(''):'<p class="caption" style="margin:0">Add goals under Refine → Your goals.</p>';
   const before=g.cashBefore20,age=Math.round(g.pensionStartAge);
   $('goalsTiming').textContent='Timing matters as much as the total. '+(before>0?'Before 20, leaving brings in about '+short(before)+' more cash (today\'s dollars), which is what pays for college or a house in the next few years. ':before<0?'Before 20, staying already pays about '+short(-before)+' more cash after tax. ':'')+'Staying to 20 pays a pension of about '+money(Math.round(g.pensionNet/100)*100)+' a year after tax from age '+age+(g.pensionShareOfSpending!==null?', about '+Math.round(100*g.pensionShareOfSpending)+'% of your yearly spending,':'')+' for life. Producing the same income from savings would take about '+short(g.savingsEquivalent)+' at a 4% withdrawal rate. The pension is income, not a lump sum: it helps most with early or partial retirement and least with costs that come before '+age+'.';
+  $('chipGoals').textContent=g.spendingYears!==null?'≈ '+(g.spendingYears>=1?g.spendingYears.toFixed(1)+' yrs':Math.round(g.spendingYears*12)+' months')+' of spending':short(g.value);
   const kids=g.kids;$('sumGoals').textContent=(g.goals.annualSpending?short(g.goals.annualSpending)+'/yr':'no spending')+(kids?' · '+kids+' to college':'');
 }
 
@@ -469,6 +469,7 @@ function drawExits(x,ctx){
   let e;try{e=exitWindows(x,ctx,{laterSalary:ls,laterFromYos:lf})}catch(err){$('exitRows').innerHTML='';$('exitLead').textContent='';return}
   const r=e.result,changed=e.laterSalary!==r.input.civilianSalary;
   const sign=v=>Math.abs(v)<500?'$0':(v>0?'+':'−')+short(Math.abs(v));
+  $('chipExit').textContent=e.nextExit?'Next exit: '+e.nextExit.yos+' yrs':'Locked to 20';
   $('exitRows').innerHTML=e.windows.map((w,i)=>'<tr class="'+(i===0?'exit-now':w.atTwenty?'exit-20':'')+'"><td>'+w.yos+' yrs'+(i===0?' (now)':w.atTwenty?' (retire)':'')+'</td><td class="'+(w.free?'exit-free':'exit-locked')+'">'+(w.free?'Yes':'No: '+w.lockedBy.join(', '))+'</td><td>'+(i===0?'—':sign(w.net))+'</td></tr>').join('');
   const nx=e.nextExit,worst=e.windows.filter(w=>w.free&&!w.atTwenty&&w.index>r.obligation).reduce((m,w)=>Math.min(m,w.net),0);
   $('exitLead').textContent=nx?'If you stay, your next chance to leave without breaking an agreement is at '+nx.yos+' years. '+(worst<-500?'Changing your mind at any open window before 20 costs at most about '+short(-worst)+' compared with leaving now, and the pension is not earned.':'On these inputs, leaving at an open window before 20 leaves you no worse off than leaving now; you give up only the pension.'):'If you stay, the agreements entered here lock you in until 20. Shorter bonus agreements, or skipping continuation pay, open earlier windows.';
@@ -496,6 +497,7 @@ document.querySelectorAll('[data-preset]').forEach(btn=>btn.addEventListener('cl
 }));
 const q=new URLSearchParams(location.search).get('decision');if(['attending','gmo','prospective'].includes(q))$('decision').value=q;
 document.addEventListener('click',e=>{const b=e.target.closest('.use');if(!b)return;b.dataset.use.split(',').forEach(id=>{$(id).value=b.dataset.val});update()});
+$('breakPanel').addEventListener('toggle',()=>{if($('breakPanel').open)update()});
 syncSalary();boot();
 let resizeTimer;addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(update,150)});
 </script>
