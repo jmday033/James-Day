@@ -22,7 +22,8 @@ Final course project for BUS 620 — Micro and Macro Economics. Compensation, re
 
 - [Dated draft chain](../../../drafts/README.md) · [Current internal-medicine figure](figures/internal-medicine-san-diego.svg) · [Scenario calculation audit](analysis/internal-medicine-scenario.md)
 
-- **[Stay or go? — start here](stay-or-go.html)**: answer-first page with six questions, a break-even chart, and a "what moves your answer" chart; every other setting defaults to published averages.
+- **[Stay or go? — start here](stay-or-go.html)**: answer-first page with six questions, a break-even chart, and a "what moves your answer" chart; every other setting defaults to published averages. Since October 1 it also translates the difference into household goals and shows when the decision could be reversed ([decision record](../../../docs/decisions/2026-10-01-stay-or-go-goals-and-exit-windows.md)).
+- [Proposed revision 17 insert](paper/revision-17-proposed-insert-goals-and-reversibility.md): draft Appendix G on goals and reversibility for author review; not yet in the paper.
 - [Advanced lab](physician-pay-lab.html). The former Quick Look (`quick-lab.html`) now redirects to Stay or go?, which includes its GMO-to-residency comparison; the old version remains in git history.
 - [Research brief](research-brief.md) · [Model specification](spec.md)
 - [Paper draft](paper/navy-primary-care-physician-retention-draft.md) · [Source review](paper/navy-physician-source-review.md)

@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
-import {stayOrGo, sensitivity, federalIncomeTax, wageTax, loadReferenceData, bahFor} from '../stay-or-go.js';
+import {stayOrGo, sensitivity, federalIncomeTax, wageTax, loadReferenceData, bahFor, goalCoverage, exitWindows, collegeBudgets2025} from '../stay-or-go.js';
 
 globalThis.fetch=async url=>({ok:true,json:async()=>JSON.parse(await fs.readFile(url,'utf8'))});
 await loadReferenceData();
@@ -121,3 +121,46 @@ console.log('Stay-or-go checks passed');
   assert.ok(lo<renew.net && hi>renew.net);
   console.log('Expert-review fix checks passed');
 }
+
+// ---------- goals translation ----------
+{
+  const c={stateData,lifeTable,bah};
+  const r=stayOrGo({kids:2},c), g=goalCoverage(r,{annualSpending:100000,debt:200000});
+  near(g.value,Math.abs(r.net),.001);
+  near(g.spendingYears,Math.abs(r.net)/100000,1e-9);
+  const college=g.items.find(t=>t.key==='college');
+  assert.equal(college.need,2*4*collegeBudgets2025.public);
+  near(g.items.find(t=>t.key==='debt').share,Math.abs(r.net)/200000,1e-9);
+  assert.ok(!g.items.some(t=>t.key==='home'));                 // zero goals are hidden
+  near(g.cashBefore20+r.afterTwentyCost,r.costOfStaying,.001);  // timing split adds back up
+  near(g.pensionNet,r.parts.annualPension*(1-r.input.pensionTax),.001);
+  near(g.savingsEquivalent,r.parts.annualPension/.04,.001);
+  assert.equal(goalCoverage(stayOrGo({family:'single'},c)).kids,0);
+}
+
+// ---------- exit windows ----------
+{
+  const c={stateData,lifeTable,bah};
+  const e=exitWindows({},c), w=e.windows;
+  assert.equal(w[0].yos,10); assert.equal(w.at(-1).yos,20);
+  assert.ok(w[0].free); near(w[0].net,0);
+  near(w.at(-1).net,e.result.net,.001);                          // stay to 20 equals the headline
+  // Renewed 4-year bonuses from 10 open windows at 14 and 18; continuation pay (12 to 16) closes 14.
+  assert.deepEqual(w.filter(x=>x.free&&!x.atTwenty).map(x=>x.yos),[10,18]);
+  assert.ok(w.find(x=>x.yos===14).lockedBy.includes('continuation pay obligation'));
+  // Without bonus or continuation pay, every year is a window.
+  const open=exitWindows({rbMode:'none',continuationPay:false},c);
+  assert.ok(open.windows.every(x=>x.free));
+  // Cost so far is the running present value of the yearly gaps.
+  const r=e.result;let s=0;for(let i=0;i<4;i++)s+=r.rows[i].gap/Math.pow(1.05,i+1);
+  near(w.find(x=>x.yos===14).costSoFar,s,.001);
+  // A higher later salary (e.g., after a fellowship) helps only from the chosen year.
+  const fel=exitWindows({yos:6},c,{laterSalary:604635,laterFromYos:12});
+  assert.equal(fel.windows.find(x=>x.yos===11).laterGain,0);
+  assert.ok(fel.windows.find(x=>x.yos===12).laterGain>0);
+  assert.equal(fel.windows[0].net,0);                            // leaving now forgoes it
+  // Obligation years are not exit windows.
+  const ob=exitWindows({obligationYears:2},c);
+  assert.equal(ob.windows[0].yos,12); assert.ok(ob.windows[0].free);
+}
+console.log('stay-or-go goals and exit-window checks passed');

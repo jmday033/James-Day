@@ -351,6 +351,98 @@ export function stayOrGo(userInput, {stateData=null, lifeTable=null, bah=null} =
     parts:{retireeHealth, va, vaOffset, pensionBase, annualPension:pensionBase*(isBrs?.02:.025)*20, rb, rbMode, postYears}};
 }
 
+// ---------- what the difference buys ----------
+// Translates the headline (today's dollars, after tax) into household goals.
+// College: College Board, Trends in College Pricing and Student Aid 2025,
+// average 2025-26 full budgets (tuition, fees, housing, food, books, transport).
+export const collegeBudgets2025 = {public:30990, private:65470};
+// 4% initial withdrawal rate (Bengen, 1994) used only to express the pension
+// as the savings that would produce the same gross income.
+export const withdrawalRate = .04;
+export const goalDefaults = {annualSpending:120000, collegePerYear:collegeBudgets2025.public,
+  collegeKids:null, debt:0, secondHome:0};
+
+export function goalCoverage(r, goals={}) {
+  const g = {...goalDefaults, ...goals};
+  const value = Math.abs(r.net), stayWins = r.net >= 0;
+  const kids = Number.isFinite(g.collegeKids) ? g.collegeKids : r.input.family === 'single' ? 0 : r.input.kids;
+  const items = [
+    {key:'spending', label:'Years of household spending', need:g.annualSpending},
+    {key:'college', label:kids + (kids === 1 ? ' child' : ' children') + ' through 4 years of college', need:kids*4*g.collegePerYear},
+    {key:'debt', label:'Mortgage or other debt paid off', need:g.debt},
+    {key:'home', label:'Second home', need:g.secondHome}
+  ].filter(t => t.need > 0).map(t => ({...t, share:value/t.need}));
+  // Timing: before 20 the civilian path pays more cash; after 20 the stay path
+  // pays a pension for life. The pension is income, not a lump sum.
+  const cashBefore20 = r.costOfStaying - r.afterTwentyCost;
+  const pensionGross = r.parts.annualPension, pensionNet = pensionGross*(1 - r.input.pensionTax);
+  const pensionStartAge = r.input.age + r.years;
+  return {value, stayWins, kids, items, spendingYears:g.annualSpending > 0 ? value/g.annualSpending : null,
+    cashBefore20, pensionGross, pensionNet, pensionStartAge,
+    pensionShareOfSpending:g.annualSpending > 0 ? pensionNet/g.annualSpending : null,
+    savingsEquivalent:pensionGross/withdrawalRate, goals:{...g, collegeKids:kids}};
+}
+
+// ---------- can you change your mind later? ----------
+// When could someone who stays now still leave, and what would it cost by then?
+// Obligations: the current obligation, 4-year retention-bonus agreements, and
+// BRS continuation pay, which in the Navy obligates 4 years from the 12th year
+// and runs concurrently with other obligations (MCCareer guest post, 2020;
+// confirm with BUMED Special Pays). Shorter 2- or 3-year bonus agreements pay
+// less per year but open more exit windows; only 4-year rates are modeled.
+export const cpObligationYears = 4;
+
+export function exitWindows(userInput, ctx={}, {laterSalary=null, laterFromYos=null}={}) {
+  const r = stayOrGo(userInput, ctx);
+  const f = r.input, yos = Math.floor(f.yos), years = r.years, ob = r.obligation;
+  const rbMode = f.retentionBonus === false ? 'none' : f.rbMode;
+  const cf = i => 1/Math.pow(1+f.cashRate, i+1);
+  const civ = f.civilianSalary, later = Number.isFinite(laterSalary) && laterSalary > 0 ? laterSalary : civ;
+  const taxCtx = {family:f.family, kids:f.family === 'single' ? 0 : f.kids, spouseWages:f.spouseWages, stateData:ctx.stateData};
+  const civNetOf = s => s - wageTax(s, {...taxCtx, stateCode:f.civilianState, civilianCa:true})
+    + f.employerRetirement*Math.min(s, 360000) - averages.disabilityShare*s;
+  // Present value, at today's date, of earning `later` instead of `civ` from
+  // year index i until the work-until age (pay cut p applies to both).
+  // The later salary (e.g., after a Navy fellowship) is available only to
+  // someone who stays at least until `laterFromYos`; leaving now forgoes it.
+  const laterFrom = Number.isFinite(laterFromYos) ? laterFromYos : yos + ob + 1;
+  const laterGainAt = (i, p) => {
+    if (later === civ || yos + i < laterFrom) return 0;
+    const n = Math.max(0, Math.round(f.workUntilAge - (f.age + i)));
+    let s = 0;
+    for (let k = 0; k < n; k++) {
+      const j = i + k, grow = Math.pow(1+f.civilianGrowth, j);
+      s += (civNetOf(later*grow*(1-p)) - civNetOf(civ*grow*(1-p)))*cf(j);
+    }
+    return s;
+  };
+  const cpIndex = f.retirement === 'brs' && f.continuationPay && yos < 12 ? 12 - yos : null;
+  // The decision point itself (now, or when the current obligation ends) is
+  // always a window: a physician who leaves then signs no new agreement.
+  const lockedBy = i => {
+    const why = [];
+    if (i === ob) return why;
+    if (i < ob) why.push('current obligation');
+    if (rbMode === 'renew' && i > ob && (i - ob) % 4 !== 0) why.push('retention bonus agreement');
+    if (rbMode === 'one' && i > ob && i < ob + 4) why.push('retention bonus agreement');
+    if (cpIndex !== null && i >= cpIndex && i < cpIndex + cpObligationYears) why.push('continuation pay obligation');
+    return why;
+  };
+  let costSoFar = 0;
+  const windows = [];
+  for (let i = 0; i <= years; i++) {
+    if (i > 0) costSoFar += r.rows[i-1].gap*cf(i-1);
+    if (i < ob) continue;
+    const atTwenty = i === years, why = atTwenty ? [] : lockedBy(i);
+    const laterGain = laterGainAt(i, atTwenty ? f.postTwentyPenalty : 0);
+    const net = atTwenty ? r.net + laterGain : -costSoFar + laterGain;
+    windows.push({yos:yos + i, index:i, free:why.length === 0, lockedBy:why, costSoFar, laterGain, net, atTwenty});
+  }
+  const freeBefore20 = windows.filter(w => w.free && !w.atTwenty && w.index > ob);
+  return {result:r, windows, laterSalary:later, laterFromYos:laterFrom, nextExit:freeBefore20[0] ?? null,
+    lastExit:freeBefore20.at(-1) ?? null, freeCount:freeBefore20.length};
+}
+
 // Which inputs move the answer most: change one input at a time between a
 // low and a high plausible value and record the net value of staying.
 export function sensitivity(input, ctx) {
