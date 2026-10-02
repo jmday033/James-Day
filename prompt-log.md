@@ -372,3 +372,7 @@ After reader feedback that the tool looked specific to a 10-year internist in Sa
 ## 2026-10-02 — Stay or go? quick-pick chips for specialties and Navy hospitals
 
 At the author's request, Claude added one-tap chips for ten common specialties (internal medicine, family medicine, pediatrics, emergency medicine, general surgery, orthopedics, anesthesiology, OB/GYN, psychiatry, radiology) and nine Navy hospitals from the sourced `data/duty-stations.json` list (San Diego, Portsmouth, Walter Reed, Camp Lejeune, Jacksonville, Bremerton, Camp Pendleton, Pensacola, Kaneohe Bay). A hospital chip fills the ZIP and sets the civilian job state only if none is chosen. All nine ZIPs return 2026 BAH; tests pass; no script errors. Version 2.1.
+
+## 2026-10-02 — Stay or go? examples placed in DC and Seattle areas
+
+At the author's request, the family-medicine example now uses Walter Reed (ZIP 20889, Maryland job) and the pediatrics example uses Naval Hospital Bremerton (ZIP 98312, Washington job), so each example names a major Navy Medicine area. Version 2.2.

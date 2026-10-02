@@ -99,7 +99,7 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
 <header><div class="wrap">
   <nav class="crumb" aria-label="Lab versions"><a href="stay-or-go.html" aria-current="page">Stay or go?</a><a href="physician-pay-lab.html">Advanced lab</a></nav>
   <h1>Stay or go?</h1>
-  <p style="font-size:13px;color:#a9cede;margin-bottom:8px">Version 2.1 · Updated October 2, 2026 · 2026 pay, tax, and benefit data</p><p>Navy physician career decisions in today's dollars: staying to 20 versus leaving for a civilian job, or Navy versus civilian residency after a GMO tour. Start with six questions about you, for any specialty or duty station; everything else starts at published averages, shown with their sources under Refine.</p>
+  <p style="font-size:13px;color:#a9cede;margin-bottom:8px">Version 2.2 · Updated October 2, 2026 · 2026 pay, tax, and benefit data</p><p>Navy physician career decisions in today's dollars: staying to 20 versus leaving for a civilian job, or Navy versus civilian residency after a GMO tour. Start with six questions about you, for any specialty or duty station; everything else starts at published averages, shown with their sources under Refine.</p>
   <p class="views-note" role="note">Personal academic project by James M. Day. Views are his own and do not represent the U.S. Navy, the Department of Defense, or the U.S. government. An illustration, not financial advice.</p>
 </div></header>
 
@@ -135,8 +135,8 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
   <p class="refine-title" style="margin-top:4px">Or load an example</p>
   <div class="presets" aria-label="Example physicians">
     <button type="button" data-preset='{"yos":10,"specialty":"im","rank":"O4","promotion":true,"salarySource":"sandiego","family":"married","kids":1,"zip":"92134","civilianState":"CA"}'>O-4 internist · 10 yrs · San Diego</button>
-    <button type="button" data-preset='{"yos":15,"specialty":"fm","rank":"O5","promotion":false,"salarySource":"national","family":"married","kids":2,"zip":"92134","civilianState":"CA"}'>O-5 family med · 15 yrs</button>
-    <button type="button" data-preset='{"yos":8,"specialty":"peds","rank":"O4","promotion":true,"salarySource":"national","family":"single","kids":0,"zip":"92134","civilianState":"CA"}'>O-4 pediatrician · 8 yrs</button>
+    <button type="button" data-preset='{"yos":15,"specialty":"fm","rank":"O5","promotion":false,"salarySource":"national","family":"married","kids":2,"zip":"20889","civilianState":"MD"}'>O-5 family med · 15 yrs · Walter Reed (DC)</button>
+    <button type="button" data-preset='{"yos":8,"specialty":"peds","rank":"O4","promotion":true,"salarySource":"national","family":"single","kids":0,"zip":"98312","civilianState":"WA"}'>O-4 pediatrician · 8 yrs · Bremerton (Seattle)</button>
     <button type="button" data-preset='{"yos":12,"specialty":"anes","rank":"O5","promotion":true,"salarySource":"national","family":"married","kids":2,"zip":"23708","civilianState":"VA"}'>O-5 anesthesiologist · 12 yrs · Portsmouth</button>
   </div>
 
@@ -340,7 +340,7 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
 <script>
 // One live version: if the server has a newer page than this saved copy,
 // reload it with a version tag so phone and browser caches are bypassed.
-(function(){var PAGE_VERSION="2.1";
+(function(){var PAGE_VERSION="2.2";
   try{fetch("version.json",{cache:"no-store"}).then(function(r){return r.json()}).then(function(d){
     if(!d||!d.version||d.version===PAGE_VERSION)return;
     var u=new URL(location.href);if(u.searchParams.get("v")===d.version)return;   // already tried once
