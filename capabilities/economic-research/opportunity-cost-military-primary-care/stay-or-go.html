@@ -34,6 +34,10 @@ h2{font-size:18px;margin:0 0 14px}h3{font-size:16px;margin:0 0 8px}
 .presets{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
 .presets button{border:1px solid #adc6d5;background:#f4f9fc;color:#173047;border-radius:999px;padding:7px 12px;font:inherit;font-size:13px;cursor:pointer}
 .presets button:hover{background:#e3f0f7}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:-4px 0 14px}
+.chips button{border:1px solid #cfdde6;background:#fff;color:#35576c;border-radius:999px;padding:4px 10px;font:inherit;font-size:12.5px;cursor:pointer;min-height:28px}
+.chips button:hover{background:#eef6fa}
+.chips button[aria-pressed="true"]{background:#155d80;border-color:#155d80;color:#fff}
 .field{margin-bottom:14px}.field label{display:block;font-weight:650;font-size:14px;margin-bottom:5px}
 .field small{display:block;color:var(--muted);font-size:12.5px;line-height:1.45;margin-top:5px}
 input,select{width:100%;min-height:42px;border:1px solid #adc6d5;border-radius:8px;padding:8px 11px;background:#fff;color:#173047;font:inherit}
@@ -95,7 +99,7 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
 <header><div class="wrap">
   <nav class="crumb" aria-label="Lab versions"><a href="stay-or-go.html" aria-current="page">Stay or go?</a><a href="physician-pay-lab.html">Advanced lab</a></nav>
   <h1>Stay or go?</h1>
-  <p style="font-size:13px;color:#a9cede;margin-bottom:8px">Version 2.0 · Updated October 2, 2026 · 2026 pay, tax, and benefit data</p><p>Navy physician career decisions in today's dollars: staying to 20 versus leaving for a civilian job, or Navy versus civilian residency after a GMO tour. Start with six questions about you, for any specialty or duty station; everything else starts at published averages, shown with their sources under Refine.</p>
+  <p style="font-size:13px;color:#a9cede;margin-bottom:8px">Version 2.1 · Updated October 2, 2026 · 2026 pay, tax, and benefit data</p><p>Navy physician career decisions in today's dollars: staying to 20 versus leaving for a civilian job, or Navy versus civilian residency after a GMO tour. Start with six questions about you, for any specialty or duty station; everything else starts at published averages, shown with their sources under Refine.</p>
   <p class="views-note" role="note">Personal academic project by James M. Day. Views are his own and do not represent the U.S. Navy, the Department of Defense, or the U.S. government. An illustration, not financial advice.</p>
 </div></header>
 
@@ -109,6 +113,7 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
     <div class="field"><label for="yos">Active years served</label><input id="yos" type="number" min="1" max="19" step="1" placeholder="1–19" required><small>Years left on obligation: <input id="obligationYears" type="number" min="0" max="10" step="1" value="0" style="width:64px;min-height:30px;padding:3px 6px;display:inline-block" aria-label="Years left on current service obligation"></small></div>
     <div class="field"><label for="specialty">Specialty</label><select id="specialty" required></select></div>
   </div>
+  <div class="chips" aria-label="Common specialties"><button type="button" data-spec="im" aria-pressed="false">Internal med</button><button type="button" data-spec="fm" aria-pressed="false">Family med</button><button type="button" data-spec="peds" aria-pressed="false">Pediatrics</button><button type="button" data-spec="em" aria-pressed="false">Emergency med</button><button type="button" data-spec="gensurg" aria-pressed="false">General surgery</button><button type="button" data-spec="ortho" aria-pressed="false">Orthopedics</button><button type="button" data-spec="anes" aria-pressed="false">Anesthesiology</button><button type="button" data-spec="obgyn" aria-pressed="false">OB/GYN</button><button type="button" data-spec="psych" aria-pressed="false">Psychiatry</button><button type="button" data-spec="rads" aria-pressed="false">Radiology</button></div>
   <div class="row">
     <div class="field"><label for="rank">Current rank</label><select id="rank" required><option value="" selected>Choose rank…</option><option value="O4">O-4</option><option value="O5">O-5</option><option value="O6">O-6</option></select></div>
     <div class="field"><label for="promotion">Expect promotion?</label><select id="promotion"><option value="yes">Yes, on time</option><option value="no">No</option></select></div>
@@ -126,6 +131,7 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
     <div class="field"><label for="zip">Navy duty-station ZIP</label><input id="zip" inputmode="numeric" maxlength="5" placeholder="5 digits" required><small id="bahNote">Sets housing allowance (BAH).</small></div>
     <div class="field"><label for="civilianState">Civilian job state</label><select id="civilianState" required><option value="">Loading…</option></select><small>Where you would work after leaving; sets state tax.</small></div>
   </div>
+  <div class="chips" aria-label="Navy hospitals"><button type="button" data-zip="92134" data-state="CA" aria-pressed="false">San Diego</button><button type="button" data-zip="23708" data-state="VA" aria-pressed="false">Portsmouth</button><button type="button" data-zip="20889" data-state="MD" aria-pressed="false">Walter Reed</button><button type="button" data-zip="28547" data-state="NC" aria-pressed="false">Camp Lejeune</button><button type="button" data-zip="32214" data-state="FL" aria-pressed="false">Jacksonville</button><button type="button" data-zip="98312" data-state="WA" aria-pressed="false">Bremerton</button><button type="button" data-zip="92055" data-state="CA" aria-pressed="false">Camp Pendleton</button><button type="button" data-zip="32512" data-state="FL" aria-pressed="false">Pensacola</button><button type="button" data-zip="96863" data-state="HI" aria-pressed="false">Kaneohe Bay, HI</button></div>
   <p class="refine-title" style="margin-top:4px">Or load an example</p>
   <div class="presets" aria-label="Example physicians">
     <button type="button" data-preset='{"yos":10,"specialty":"im","rank":"O4","promotion":true,"salarySource":"sandiego","family":"married","kids":1,"zip":"92134","civilianState":"CA"}'>O-4 internist · 10 yrs · San Diego</button>
@@ -334,7 +340,7 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
 <script>
 // One live version: if the server has a newer page than this saved copy,
 // reload it with a version tag so phone and browser caches are bypassed.
-(function(){var PAGE_VERSION="2.0";
+(function(){var PAGE_VERSION="2.1";
   try{fetch("version.json",{cache:"no-store"}).then(function(r){return r.json()}).then(function(d){
     if(!d||!d.version||d.version===PAGE_VERSION)return;
     var u=new URL(location.href);if(u.searchParams.get("v")===d.version)return;   // already tried once
@@ -395,6 +401,7 @@ function renderGmo(){
   $('gmoRows').innerHTML=r.rows.map(w=>'<tr><td>'+w.year+' · '+(w.pgy?'PGY-'+w.pgy:'Attending')+'</td><td>'+money(w.navyCash)+'</td><td>'+money(w.civilianCash)+'</td><td>'+money(w.gap)+'</td></tr>').join('');
 }
 function update(){
+  syncChips();
   if(!ready)return;
   const decision=$('decision').value;
   $('attendingInputs').hidden=decision!=='attending';$('attendingResults').hidden=decision!=='attending';
@@ -531,6 +538,13 @@ document.querySelectorAll('input,select').forEach(el=>el.addEventListener(el.tag
   if(el.id==='specialty'||el.id==='salarySource')syncSalary();
   update();
 }));
+function syncChips(){
+  document.querySelectorAll('[data-spec]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.spec===$('specialty').value)));
+  document.querySelectorAll('[data-zip]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.zip===$('zip').value.trim())));
+}
+document.querySelectorAll('[data-spec]').forEach(b=>b.addEventListener('click',()=>{$('specialty').value=b.dataset.spec;syncSalary();update()}));
+// A hospital fills the ZIP; it sets the civilian job state only if none is chosen yet.
+document.querySelectorAll('[data-zip]').forEach(b=>b.addEventListener('click',()=>{$('zip').value=b.dataset.zip;if(!$('civilianState').value)$('civilianState').value=b.dataset.state;update()}));
 document.querySelectorAll('[data-preset]').forEach(btn=>btn.addEventListener('click',()=>{
   const p=JSON.parse(btn.dataset.preset);
   $('yos').value=p.yos;$('specialty').value=p.specialty;$('rank').value=p.rank;$('promotion').value=p.promotion?'yes':'no';

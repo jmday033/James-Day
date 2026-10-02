@@ -368,3 +368,7 @@ At the author's request, after a phone kept showing an older cached copy and he 
 ## 2026-10-02 — Stay or go? blank start for any specialty and duty station
 
 After reader feedback that the tool looked specific to a 10-year internist in San Diego, the author asked Claude to start from a blank slate. Claude made six inputs required and empty (years served, specialty, rank, family, duty-station ZIP, civilian job state), moved ZIP and civilian state out of Refine, hid results until those are filled, kept the San Diego case as an optional example, added an O-5 anesthesiologist (Portsmouth, VA) example, and explained in the pay discount-rate help why it exceeds the pension rate. Engine, defaults, and tests unchanged; all three test files pass and the page loads without script errors. Decision note: `docs/decisions/2026-10-02-stay-or-go-blank-start.md`. Version 2.0.
+
+## 2026-10-02 — Stay or go? quick-pick chips for specialties and Navy hospitals
+
+At the author's request, Claude added one-tap chips for ten common specialties (internal medicine, family medicine, pediatrics, emergency medicine, general surgery, orthopedics, anesthesiology, OB/GYN, psychiatry, radiology) and nine Navy hospitals from the sourced `data/duty-stations.json` list (San Diego, Portsmouth, Walter Reed, Camp Lejeune, Jacksonville, Bremerton, Camp Pendleton, Pensacola, Kaneohe Bay). A hospital chip fills the ZIP and sets the civilian job state only if none is chosen. All nine ZIPs return 2026 BAH; tests pass; no script errors. Version 2.1.
