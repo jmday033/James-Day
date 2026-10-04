@@ -396,3 +396,8 @@ The author pointed out that the advanced lab already has a Google feedback form.
 ## 2026-10-04 — Creator header on Stay or go?
 
 At the author’s request, Codex reused the full lab’s project label, creator credit, header layout, and responsive creator-link styling on Stay or go? Added the supplied email address, existing public RESUME.html under the requested CV label, verified LinkedIn URL from the full lab, and project repository. Preserved the Stay or go? title and description. Version 2.6; no calculator changes.
+
+
+## 2026-10-04 — Redundancy scrub before MCCareer sharing
+
+At the author’s request, Codex tightened Stay or go? copy, consolidated feedback routes and disclaimers, moved long Reserve/VA route details into an expandable section, corrected the advanced-model feature list, and labeled the sensitivity range accurately. Inputs, IDs, sources, and financial engine preserved. Existing stay-or-go checks and inline JavaScript syntax passed; visual browser validation unavailable because no executable is installed. Version 2.7. See docs/decisions/2026-10-04-stay-or-go-public-copy-review.md.
