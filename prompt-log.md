@@ -386,3 +386,8 @@ At the author’s request, Codex added a FormSubmit email feedback form with req
 ## 2026-10-04 — Remove email form; prefer Google Form on advanced lab
 
 The author requested removal of the FormSubmit feedback form and prefers an anonymous Google Form on the full Navy lab. Codex removed the form and restored the calculator privacy statement (version 2.4). Google Form creation is not available through the connected tools; embedding awaits a published form URL or browser access authorized for this task.
+
+
+## 2026-10-04 — Share existing Google feedback form on both labs
+
+The author pointed out that the advanced lab already has a Google feedback form. Codex verified the existing link in physician-pay-lab.html and reused that exact URL in a bottom-of-page feedback section on Stay or go? (version 2.5). No new form or service; no calculator data is added to the URL. Verified one feedback section and no FormSubmit endpoint. Google respondent sign-in settings could not be verified through web retrieval.
