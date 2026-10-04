@@ -391,3 +391,8 @@ The author requested removal of the FormSubmit feedback form and prefers an anon
 ## 2026-10-04 — Share existing Google feedback form on both labs
 
 The author pointed out that the advanced lab already has a Google feedback form. Codex verified the existing link in physician-pay-lab.html and reused that exact URL in a bottom-of-page feedback section on Stay or go? (version 2.5). No new form or service; no calculator data is added to the URL. Verified one feedback section and no FormSubmit endpoint. Google respondent sign-in settings could not be verified through web retrieval.
+
+
+## 2026-10-04 — Creator header on Stay or go?
+
+At the author’s request, Codex reused the full lab’s project label, creator credit, header layout, and responsive creator-link styling on Stay or go? Added the supplied email address, existing public RESUME.html under the requested CV label, verified LinkedIn URL from the full lab, and project repository. Preserved the Stay or go? title and description. Version 2.6; no calculator changes.
