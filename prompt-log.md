@@ -406,3 +406,8 @@ At the author’s request, Codex tightened Stay or go? copy, consolidated feedba
 ## 2026-10-04 — Second redundancy pass on Stay or go?
 
 At the author's request, Claude removed remaining duplicate copy: header instruction repeated by the empty answer state, Treasury source stated twice for the pension rate, pension rationale repeated under the pay discount rate, GMO exclusions repeated under the results table, feedback privacy line repeated by the footer, exit-window caption repeating its lead and the Four paths panel, and a tornado sentence restating the sort order. Also replaced "on the right" (wrong on phones) in the prospective note. Copy only; inputs, IDs, sources, and calculations unchanged. Existing stay-or-go checks and module syntax passed. See docs/decisions/2026-10-04-stay-or-go-public-copy-review.md.
+
+
+## 2026-10-04 — Contact address on Stay or go?
+
+At the author's request, Claude changed the header Email button to jday6@hawaii.edu and added the address as copyable text under the creator credit, so phone readers whose default mail app is unset or unwanted can copy it. The button still uses mailto so it opens each reader's own default mail app. Version 2.9; no calculator changes; checks passed.
