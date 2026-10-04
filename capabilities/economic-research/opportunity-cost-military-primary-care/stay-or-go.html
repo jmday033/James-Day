@@ -87,7 +87,6 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
 .btn.ghost{background:#fff;color:#155d80;border:1px solid #9cc2d6}
 .views-note{margin:10px 0 0;padding:8px 11px;border-left:3px solid #8fd0e6;background:rgba(255,255,255,.07);border-radius:4px;font-size:12px;line-height:1.45;color:#d7eaf4}
 .disclaimer{margin-top:26px;border-top:1px solid #cedee7;padding-top:12px;color:var(--muted);font-size:12px;line-height:1.5}
-.feedback{margin-top:26px}.feedback textarea{resize:vertical;min-height:140px}.feedback button{border:0;font:inherit;cursor:pointer}.feedback .caption{margin-bottom:16px}
 .error{color:#8b331e;font-weight:650}
 .missing{margin:8px 0 0;padding-left:20px;font-size:14.5px;line-height:1.6}
 .answer.empty{background:#f6f8fa;border-color:#d5dee6}
@@ -100,7 +99,7 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
 <header><div class="wrap">
   <nav class="crumb" aria-label="Lab versions"><a href="stay-or-go.html" aria-current="page">Stay or go?</a><a href="physician-pay-lab.html">Advanced lab</a></nav>
   <h1>Stay or go?</h1>
-  <p style="font-size:13px;color:#a9cede;margin-bottom:8px">Version 2.3 · Updated October 4, 2026 · 2026 pay, tax, and benefit data</p><p>Navy physician career decisions in today's dollars: staying to 20 versus leaving for a civilian job, or Navy versus civilian residency after a GMO tour. Start with six questions about you, for any specialty or duty station; everything else starts at published averages, shown with their sources under Refine.</p>
+  <p style="font-size:13px;color:#a9cede;margin-bottom:8px">Version 2.4 · Updated October 4, 2026 · 2026 pay, tax, and benefit data</p><p>Navy physician career decisions in today's dollars: staying to 20 versus leaving for a civilian job, or Navy versus civilian residency after a GMO tour. Start with six questions about you, for any specialty or duty station; everything else starts at published averages, shown with their sources under Refine.</p>
   <p class="views-note" role="note">Personal academic project by James M. Day. Views are his own and do not represent the U.S. Navy, the Department of Defense, or the U.S. government. An illustration, not financial advice.</p>
 </div></header>
 
@@ -335,29 +334,13 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
   <p>Sources: <a href="https://www.dfas.mil/MilitaryMembers/payentitlements/Pay-Tables/">DFAS pay tables</a> · <a href="https://www.va.gov/OHRM/Pay/2026/PDOP/PayTables.pdf">VA 2026 physician pay tables</a> · <a href="https://www.opm.gov/retirement-center/fers-information/service-credit/">OPM FERS service credit</a> · <a href="https://www.opm.gov/faq/retire/is-physician-quotmarket-payquot-included-in-the-high-3-calculation-for.ashx">OPM: market pay in High-3</a> · <a href="https://www.travel.dod.mil/Allowances/Basic-Allowance-for-Housing/BAH-Rate-Lookup/">BAH</a> · <a href="https://www.doximity.com/reports/physician-compensation-report/2026">Doximity 2026</a> · <a href="https://www.marithealth.com/">Marit Health</a> · <a href="https://taxfoundation.org/data/all/federal/2026-tax-brackets/">2026 tax brackets</a> · <a href="https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_real_yield_curve&amp;field_tdr_date_value=202609">Treasury real yields</a> · <a href="https://www.va.gov/disability/compensation-rates/veteran-rates/">VA rates</a> · <a href="https://www.dfas.mil/RetiredMilitary/disability/crdp/">Concurrent receipt</a> · <a href="https://files.kff.org/attachment/Employer-Health-Benefits-Survey-2025-Annual-Survey-Summary-of-Findings.pdf">KFF 2025</a> · <a href="https://tricare.mil/-/media/Files/TRICARE/Publications/FactSheets/Costs_Fees.pdf">TRICARE fees</a> · <a href="https://militarypay.defense.gov/Pay/Retirement/">DoD retirement</a></p>
   </div>
 </details>
-<section class="panel feedback" id="feedback" aria-labelledby="feedbackTitle">
-  <h2 id="feedbackTitle">Help improve Stay or go?</h2>
-  <p class="caption">What was useful, confusing, or missing? Share a suggestion or flag a calculation that looks wrong. No account required; name and email are optional.</p>
-  <form action="https://formsubmit.co/jmday033@gmail.com" method="POST">
-    <input type="hidden" name="_subject" value="Stay or go? — reader feedback">
-    <input type="hidden" name="_template" value="table">
-    <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
-    <div class="field"><label for="feedbackMessage">Your feedback (required)</label><textarea id="feedbackMessage" name="message" rows="5" maxlength="10000" required placeholder="What would make this tool more helpful?"></textarea></div>
-    <div class="row">
-      <div class="field"><label for="feedbackName">Name (optional)</label><input id="feedbackName" name="name" autocomplete="name" maxlength="100"></div>
-      <div class="field"><label for="feedbackEmail">Email (optional, for a reply)</label><input id="feedbackEmail" name="email" type="email" autocomplete="email" maxlength="254"></div>
-    </div>
-    <p class="caption">Only the feedback you enter here is sent through FormSubmit to James M. Day. Your calculator entries are not included. Please leave out patient information and sensitive military details.</p>
-    <button class="btn" type="submit">Send feedback</button>
-  </form>
-</section>
-<p class="disclaimer">Your calculator entries stay in your browser; they are not sent with feedback. Personal academic project. Views are solely those of James M. Day and do not represent the U.S. Navy, the Department of Defense, or the U.S. government. This is an illustration, not an individual financial recommendation.</p>
+<p class="disclaimer">Your entries stay in your browser; nothing is sent or stored. Personal academic project. Views are solely those of James M. Day and do not represent the U.S. Navy, the Department of Defense, or the U.S. government. This is an illustration, not an individual financial recommendation.</p>
 </main>
 
 <script>
 // One live version: if the server has a newer page than this saved copy,
 // reload it with a version tag so phone and browser caches are bypassed.
-(function(){var PAGE_VERSION="2.3";
+(function(){var PAGE_VERSION="2.4";
   try{fetch("version.json",{cache:"no-store"}).then(function(r){return r.json()}).then(function(d){
     if(!d||!d.version||d.version===PAGE_VERSION)return;
     var u=new URL(location.href);if(u.searchParams.get("v")===d.version)return;   // already tried once
