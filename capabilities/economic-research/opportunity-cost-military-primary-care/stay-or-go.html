@@ -100,7 +100,7 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
 <header><div class="wrap">
   <nav class="crumb" aria-label="Lab versions"><a href="stay-or-go.html" aria-current="page">Stay or go?</a><a href="physician-pay-lab.html">Advanced lab</a></nav>
   <div class="header-top"><div><span class="project-label">Navy physician pay and pension</span><h1>Stay or go?</h1><p class="creator-credit">Created by James M. Day for a graduate school economics project.</p></div><nav class="creator-links" aria-label="Creator and project links"><a href="mailto:jmday033@gmail.com">Email</a><a href="https://jmday033.github.io/James-Day/RESUME.html" target="_blank" rel="noopener noreferrer">CV</a><a href="https://www.linkedin.com/in/james-day-21103b169" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://github.com/jmday033/James-Day" target="_blank" rel="noopener noreferrer">Project repository</a></nav></div>
-  <p class="header-version" style="font-size:13px;color:#a9cede;margin-bottom:8px">Version 2.7 · Updated October 4, 2026 · 2026 pay, tax, and benefit data</p><p>Compare staying to 20 with civilian practice, or Navy with civilian residency after a GMO tour. Enter your situation or load an example, then adjust the defaults under Refine.</p>
+  <p class="header-version" style="font-size:13px;color:#a9cede;margin-bottom:8px">Version 2.7 · Updated October 4, 2026 · 2026 pay, tax, and benefit data</p><p>Compare staying to 20 with civilian practice, or Navy with civilian residency after a GMO tour.</p>
   <p class="views-note" role="note">Views are the author’s own and do not represent the U.S. Navy, the Department of Defense, or the U.S. government.</p>
 </div></header>
 
@@ -159,7 +159,7 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
       <div class="field"><label for="pensionRate">Pension discount rate (%)</label><input id="pensionRate" type="number" min="0" max="10" step=".25" value="3"></div>
       <div class="field"><label for="pensionTax">Tax on pension (%)</label><input id="pensionTax" type="number" min="0" max="50" step="1" placeholder="auto"></div>
     </div>
-    <small class="caption" style="display:block;margin:-6px 0 6px">The pension rises with inflation and is federally backed, so it is valued near Treasury real yields (3.1–3.3% on Sept. 28, 2026), not like risky pay.</small><small class="avg" id="avg_pensionRate">Pension rate average: <b>3%</b> (<a href="https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_real_yield_curve&amp;field_tdr_date_value=202609">Treasury real yields</a>). <button type="button" class="use" data-use="pensionRate" data-val="3">Use</button></small><small class="avg" id="avg_pensionTax"></small><div style="height:10px"></div>
+    <small class="avg" id="avg_pensionRate">Pension rate: <b>3%</b>. The pension rises with inflation and is federally backed, so it is valued near <a href="https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_real_yield_curve&amp;field_tdr_date_value=202609">Treasury real yields</a> (3.1–3.3% on Sept. 28, 2026). <button type="button" class="use" data-use="pensionRate" data-val="3">Use</button></small><small class="avg" id="avg_pensionTax"></small><div style="height:10px"></div>
     <div class="row">
       <div class="field"><label for="currentAge">Current age</label><input id="currentAge" type="number" min="22" max="70" step="1" placeholder="auto"></div>
       <div class="field"><label for="paymentYears">Pension years</label><input id="paymentYears" type="number" min="1" max="60" step="1" placeholder="auto"></div>
@@ -232,7 +232,7 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
     <small class="caption" style="display:block;margin-top:6px">Rough: Navy pay in the years before you leave uses your current specialty, not fellowship pay, and any fellowship obligation is not added. Enter fellowship payback under years left on obligation only if it applies now.</small>
   </div></details>
   <details class="refine"><summary>Discount rate for pay <span id="sumCash"></span></summary><div class="inner">
-    <div class="field"><label for="cashRate">Real discount rate for pay (%)</label><input id="cashRate" type="number" min="0" max="15" step=".5" value="5"><small>Brings future pay back to today's dollars after inflation. It is higher than the pension rate because future salaries, especially a civilian job's, are less certain than an inflation-adjusted, federally backed pension. Try 3% and 7% to see how much it matters.</small><small class="avg" id="avg_cash">Starting value: <b>5%</b> real, the rate used in the paper. <button type="button" class="use" data-use="cashRate" data-val="5">Use</button></small></div>
+    <div class="field"><label for="cashRate">Real discount rate for pay (%)</label><input id="cashRate" type="number" min="0" max="15" step=".5" value="5"><small>Brings future pay back to today's dollars after inflation. It is higher than the pension rate because future salaries, especially a civilian job's, are less certain. Try 3% and 7% to see how much it matters.</small><small class="avg" id="avg_cash">Starting value: <b>5%</b> real, the rate used in the paper. <button type="button" class="use" data-use="cashRate" data-val="5">Use</button></small></div>
   </div></details>
   </div>
   <div id="gmoInputs" hidden>
@@ -253,7 +253,7 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
     <small class="caption" style="display:block">Navy GME obligation is usually one year per year of training; the post-training years here are an illustration, not an official obligation. Confirm with BUMED under <a href="https://www.med.navy.mil/Portals/62/Documents/BUMED/Directives/Instructions/1524.1D.pdf?ver=eVEhcqPIO1Neu4s7m4Xskw%3D%3D">BUMEDINST 1524.1D</a>.</small>
   </div>
   <div id="prospectiveInputs" hidden>
-    <p class="caption" style="margin:0">This decision comes before training, so an attending-salary comparison would mislead. Use the checklist on the right to compare paths.</p>
+    <p class="caption" style="margin:0">This decision comes before training, so an attending-salary comparison would mislead. Use the checklist to compare paths.</p>
   </div>
 </section>
 
@@ -296,7 +296,7 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
     <p class="caption" id="exitCaption"></p>
   </div></details>
 
-  <details class="panel fold"><summary><span class="fold-title">What moves your answer most</span><span class="fold-chip" id="chipTornado"></span></summary><div class="fold-body">    <p class="caption" style="margin:0 0 10px">Each row changes one assumption. Longer bars have more impact: blue favors staying, orange favors leaving. Check the largest effects first.</p>
+  <details class="panel fold"><summary><span class="fold-title">What moves your answer most</span><span class="fold-chip" id="chipTornado"></span></summary><div class="fold-body">    <p class="caption" style="margin:0 0 10px">Each row changes one assumption. Longer bars have more impact: blue favors staying, orange favors leaving.</p>
     <div class="tornado" id="tornado"></div>
     <div class="tor-scale" id="torScale"></div>
   </div></details>
@@ -310,7 +310,7 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
   <div id="gmoResults" hidden style="display:grid;gap:16px">
     <div class="answer" id="gmoAnswer"><div class="kicker">Navy residency versus civilian residency</div><strong class="big" id="gmoBig">—</strong><p id="gmoText"></p></div>
     <div class="panel"><h3>Year by year (gross cash)</h3><div class="tablewrap"><table><thead><tr><th>Year · stage</th><th>Navy</th><th>Civilian</th><th>Civilian − Navy</th></tr></thead><tbody id="gmoRows"></tbody></table></div>
-    <p class="caption">Civilian resident pay: <a href="https://www.aamc.org/data-reports/students-residents/report/aamc-survey-resident/fellow-stipends-and-benefits">AAMC 2025 national PGY averages</a>. Navy resident pay: basic pay, BAH, BAS, and <a href="https://www.dfas.mil/MilitaryMembers/payentitlements/Pay-Tables/HPO4/">FY 2026 resident incentive pay</a>; after training, $43,000 incentive pay. Taxes, pension, TSP, health benefits, board pay, and bonuses are excluded.</p></div>
+    <p class="caption">Civilian resident pay: <a href="https://www.aamc.org/data-reports/students-residents/report/aamc-survey-resident/fellow-stipends-and-benefits">AAMC 2025 national PGY averages</a>. Navy resident pay: basic pay, BAH, BAS, and <a href="https://www.dfas.mil/MilitaryMembers/payentitlements/Pay-Tables/HPO4/">FY 2026 resident incentive pay</a>; after training, $43,000 incentive pay.</p></div>
   </div>
   <div id="prospectiveResults" hidden class="panel">
     <h3>Considering Navy medicine: compare these paths</h3>
@@ -339,7 +339,7 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
   <h2 id="feedbackHeading">Suggest an improvement</h2>
   <p class="caption" style="margin-bottom:14px">Share a correction, missing source, or suggestion.</p>
   <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLScHnRTI9AZFjOgV_0hTnnLKNYC7bMRgFaiu6x0tp8LGyLfnTQ/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer">Open feedback form</a>
-  <p class="caption" style="margin-top:10px">Opens in a new tab without your calculator entries. Please omit LES documents, personal identifiers, and patient information.</p>
+  <p class="caption" style="margin-top:10px">Please omit LES documents, personal identifiers, and patient information.</p>
 </section>
 <p class="disclaimer">Calculator entries stay in your browser and are not submitted. This model is an illustration, not an individual financial recommendation.</p>
 </main>
@@ -527,7 +527,7 @@ function drawExits(x,ctx){
   $('exitRows').innerHTML=e.windows.map((w,i)=>'<tr class="'+(i===0?'exit-now':w.atTwenty?'exit-20':'')+'"><td>'+w.yos+' yrs'+(i===0?' (now)':w.atTwenty?' (retire)':'')+'</td><td class="'+(w.free?'exit-free':'exit-locked')+'">'+(w.free?'Yes':'No: '+w.lockedBy.join(', '))+'</td><td>'+(i===0?'—':sign(w.net))+'</td></tr>').join('');
   const nx=e.nextExit,worst=e.windows.filter(w=>w.free&&!w.atTwenty&&w.index>r.obligation).reduce((m,w)=>Math.min(m,w.net),0);
   $('exitLead').textContent=nx?'If you stay, your next chance to leave without breaking an agreement is at '+nx.yos+' years. '+(worst<-500?'Changing your mind at any open window before 20 costs at most about '+short(-worst)+' compared with leaving now, and the pension is not earned.':'On these inputs, leaving at an open window before 20 leaves you no worse off than leaving now; you give up only the pension.'):'If you stay, the agreements entered here lock you in until 20. Shorter bonus agreements, or skipping continuation pay, open earlier windows.';
-  $('exitCaption').textContent='Each row: stay until that year, then leave for the civilian job, compared with leaving now, in today\'s dollars after tax. Locks come from your obligation, 4-year retention-bonus agreements, and BRS continuation pay (4 more years from the 12th year in the Navy, served at the same time as other obligations; confirm with BUMED Special Pays). Shorter 2- or 3-year bonus agreements pay less a year but open more windows: that lower rate is the price of flexibility.'+(changed?' From '+e.laterFromYos+' years, leaving uses the later civilian salary you entered ('+money(e.laterSalary)+').':'')+' A physician who leaves before 20 can still finish in the Reserve (see Four paths).';
+  $('exitCaption').textContent='Each row: stay until that year, then leave for the civilian job, compared with leaving now, in today\'s dollars after tax. Locks come from your obligation, 4-year retention-bonus agreements, and BRS continuation pay (4 more years from the 12th year in the Navy, served at the same time as other obligations; confirm with BUMED Special Pays). Shorter 2- or 3-year bonus agreements pay less a year but open more windows.'+(changed?' From '+e.laterFromYos+' years, leaving uses the later civilian salary you entered ('+money(e.laterSalary)+').':'')
   $('avg_later').innerHTML='Example: cardiology averages <b>$604,635</b> (Doximity 2026). Blank keeps your current civilian salary. Service year: blank uses the first year after your decision point.<button type="button" class="use" data-use="laterSalary,laterFromYos" data-val="">Use</button>';
   $('sumLater').textContent=changed?short(e.laterSalary)+' from '+e.laterFromYos+' yrs':'same salary';
 }

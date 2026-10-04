@@ -401,3 +401,8 @@ At the author’s request, Codex reused the full lab’s project label, creator 
 ## 2026-10-04 — Redundancy scrub before MCCareer sharing
 
 At the author’s request, Codex tightened Stay or go? copy, consolidated feedback routes and disclaimers, moved long Reserve/VA route details into an expandable section, corrected the advanced-model feature list, and labeled the sensitivity range accurately. Inputs, IDs, sources, and financial engine preserved. Existing stay-or-go checks and inline JavaScript syntax passed; visual browser validation unavailable because no executable is installed. Version 2.7. See docs/decisions/2026-10-04-stay-or-go-public-copy-review.md.
+
+
+## 2026-10-04 — Second redundancy pass on Stay or go?
+
+At the author's request, Claude removed remaining duplicate copy: header instruction repeated by the empty answer state, Treasury source stated twice for the pension rate, pension rationale repeated under the pay discount rate, GMO exclusions repeated under the results table, feedback privacy line repeated by the footer, exit-window caption repeating its lead and the Four paths panel, and a tornado sentence restating the sort order. Also replaced "on the right" (wrong on phones) in the prospective note. Copy only; inputs, IDs, sources, and calculations unchanged. Existing stay-or-go checks and module syntax passed. See docs/decisions/2026-10-04-stay-or-go-public-copy-review.md.
