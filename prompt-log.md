@@ -381,3 +381,8 @@ At the author's request, the family-medicine example now uses Walter Reed (ZIP 2
 ## 2026-10-04 — Public feedback form for Stay or go?
 
 At the author’s request, Codex added a FormSubmit email feedback form with required feedback and optional name/contact fields. Calculator entries are excluded and feedback controls do not trigger calculation updates. HTML/form structure and JavaScript syntax checked. Email delivery requires recipient activation via FormSubmit’s first-use confirmation email.
+
+
+## 2026-10-04 — Remove email form; prefer Google Form on advanced lab
+
+The author requested removal of the FormSubmit feedback form and prefers an anonymous Google Form on the full Navy lab. Codex removed the form and restored the calculator privacy statement (version 2.4). Google Form creation is not available through the connected tools; embedding awaits a published form URL or browser access authorized for this task.
