@@ -99,9 +99,9 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
 <body>
 <header><div class="wrap">
   <nav class="crumb" aria-label="Lab versions"><a href="stay-or-go.html" aria-current="page">Stay or go?</a><a href="physician-pay-lab.html">Advanced lab</a></nav>
-  <div class="header-top"><div><span class="project-label">Independent graduate school project</span><h1>Stay or go?</h1><p class="creator-credit">Created by James M. Day for a graduate school economics project.</p></div><nav class="creator-links" aria-label="Creator and project links"><a href="mailto:jmday033@gmail.com">Email</a><a href="https://jmday033.github.io/James-Day/RESUME.html" target="_blank" rel="noopener noreferrer">CV</a><a href="https://www.linkedin.com/in/james-day-21103b169" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://github.com/jmday033/James-Day" target="_blank" rel="noopener noreferrer">Project repository</a></nav></div>
-  <p class="header-version" style="font-size:13px;color:#a9cede;margin-bottom:8px">Version 2.6 · Updated October 4, 2026 · 2026 pay, tax, and benefit data</p><p>Navy physician career decisions in today's dollars: staying to 20 versus leaving for a civilian job, or Navy versus civilian residency after a GMO tour. Start with six questions about you, for any specialty or duty station; everything else starts at published averages, shown with their sources under Refine.</p>
-  <p class="views-note" role="note">Personal academic project by James M. Day. Views are his own and do not represent the U.S. Navy, the Department of Defense, or the U.S. government. An illustration, not financial advice.</p>
+  <div class="header-top"><div><span class="project-label">Navy physician pay and pension</span><h1>Stay or go?</h1><p class="creator-credit">Created by James M. Day for a graduate school economics project.</p></div><nav class="creator-links" aria-label="Creator and project links"><a href="mailto:jmday033@gmail.com">Email</a><a href="https://jmday033.github.io/James-Day/RESUME.html" target="_blank" rel="noopener noreferrer">CV</a><a href="https://www.linkedin.com/in/james-day-21103b169" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://github.com/jmday033/James-Day" target="_blank" rel="noopener noreferrer">Project repository</a></nav></div>
+  <p class="header-version" style="font-size:13px;color:#a9cede;margin-bottom:8px">Version 2.7 · Updated October 4, 2026 · 2026 pay, tax, and benefit data</p><p>Compare staying to 20 with civilian practice, or Navy with civilian residency after a GMO tour. Enter your situation or load an example, then adjust the defaults under Refine.</p>
+  <p class="views-note" role="note">Views are the author’s own and do not represent the U.S. Navy, the Department of Defense, or the U.S. government.</p>
 </div></header>
 
 <main class="wrap">
@@ -122,7 +122,7 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
   <div class="field"><label for="salarySource">Civilian salary</label>
     <select id="salarySource"><option value="national">National average (Doximity 2026)</option><option value="sandiego">San Diego average (Marit 2026, primary care)</option><option value="own">My own offer</option></select>
     <input id="civilianSalary" type="number" min="0" step="1000" style="margin-top:8px" placeholder="Pick a specialty, or type an offer" aria-label="Annual civilian salary in dollars">
-    <small>A real offer beats any average. Typing a number switches to "My own offer." San Diego averages cover primary care only.</small><small id="specNote"></small></div>
+    <small>Enter an actual offer when available; typing a salary selects "My own offer."</small><small id="specNote"></small></div>
   <div class="row">
     <div class="field"><label for="family">Family</label><select id="family" required><option value="" selected>Choose…</option><option value="single">Single</option><option value="married">Married, 1 income</option><option value="marriedTwoIncomes">Married, 2 incomes</option></select></div>
     <div class="field"><label for="kids">Children under 17</label><input id="kids" type="number" min="0" max="8" step="1" value="0"></div>
@@ -149,7 +149,7 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
   </div></details>
 
   <details class="refine"><summary>Navy pay <span id="sumNavy"></span></summary><div class="inner">
-    <div class="field"><label for="rbMode">Retention bonus (FY 2026 rate for the specialty)</label><select id="rbMode"><option value="renew" selected>Renew 4-year agreements through 20</option><option value="one">One 4-year agreement only</option><option value="none">No retention bonus</option></select><small>Most physicians who stay to 20 sign one agreement after another.</small></div>
+    <div class="field"><label for="rbMode">Retention bonus (FY 2026 rate for the specialty)</label><select id="rbMode"><option value="renew" selected>Renew 4-year agreements through 20</option><option value="one">One 4-year agreement only</option><option value="none">No retention bonus</option></select><small>Choose whether to assume renewed agreements, one agreement, or no bonus.</small></div>
     <label class="check"><input id="continuationPay" type="checkbox" checked><span>Take BRS continuation pay at the 12th year (2.5 months of basic pay)</span></label>
     <div class="field"><label for="retirement">Retirement system</label><select id="retirement"><option value="brs">Blended Retirement System (2% per year)</option><option value="legacy">Legacy High-3 (2.5% per year)</option></select></div>
   </div></details>
@@ -209,7 +209,7 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
     <small class="caption" style="display:block;margin-top:6px">The deposit adds your active years to your FERS service. Pay it within two years of starting at the VA to avoid interest. It is not allowed for years you draw Navy retired pay on, so it applies only when you leave before 20. The VA job lasts until the work-until age under Civilian job.</small>
   </div></details>
   <details class="refine"><summary>Your goals <span id="sumGoals"></span></summary><div class="inner">
-    <p class="caption" style="margin:0 0 10px">Turns the bottom line into what it could pay for. Leave a goal at 0 to hide it.</p>
+    <p class="caption" style="margin:0 0 10px">Enter household goals to put the financial difference in context. Set a goal to 0 to hide it.</p>
     <div class="row">
       <div class="field"><label for="annualSpending">Household spending ($/yr)</label><input id="annualSpending" type="number" min="0" step="5000" value="120000"></div>
       <div class="field"><label for="collegeKids">Children to put through college</label><input id="collegeKids" type="number" min="0" max="8" step="1" placeholder="auto"></div>
@@ -273,7 +273,7 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
   </div>
 
   <details class="panel fold" open><summary><span class="fold-title">Four paths compared</span><span class="fold-chip" id="chipPaths"></span></summary><div class="fold-body">    <div class="paths" id="paths"></div>
-    <p class="caption" id="pathsCaption" style="margin:8px 0 0"></p>
+    <p class="caption" style="margin:8px 0 0">Compared with leaving for private practice, in today’s dollars after tax. Adjust Reserve and VA assumptions under Refine.</p><details class="refine" style="margin-top:10px"><summary>Reserve and VA calculation details</summary><div class="inner"><p class="caption" id="pathsCaption" style="margin:0"></p></div></details>
   </div></details>
 
   <details class="panel fold" id="goalsPanel"><summary><span class="fold-title">Does the difference change your plans?</span><span class="fold-chip" id="chipGoals"></span></summary><div class="fold-body">    <p class="caption" id="goalsLead" style="margin:0 0 10px"></p>
@@ -283,7 +283,7 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
       <div class="tablewrap"><table><thead><tr><th>Years in now</th><th>Years left to 20</th><th>Save each year</th></tr></thead><tbody id="saveRows"></tbody></table></div>
       <p class="caption" id="saveCaption"></p>
     </div></details>
-    <p class="caption" style="margin:8px 0 0">Try this before you decide, not only after. If the difference does not change any goal that matters to your family, the parts this page cannot price, such as the work, location, deployments, and family, should carry the decision.</p>
+    <p class="caption" style="margin:8px 0 0">Weigh the financial difference alongside the work, location, deployments, and family priorities this model cannot price.</p>
   </div></details>
 
   <details class="panel fold chart" id="breakPanel"><summary><span class="fold-title">When does staying pay off?</span><span class="fold-chip" id="chipBreak"></span></summary><div class="fold-body">    <div class="legend"><span><i></i>Pension and benefits kept by staying</span><span><i class="civ"></i>Extra civilian pay still to give up before 20</span></div>
@@ -296,7 +296,7 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
     <p class="caption" id="exitCaption"></p>
   </div></details>
 
-  <details class="panel fold"><summary><span class="fold-title">What moves your answer most</span><span class="fold-chip" id="chipTornado"></span></summary><div class="fold-body">    <p class="caption" style="margin:0 0 10px">Each row tries one of your guesses at a lower and a higher value and shows how far the bottom line shifts. Longer bars matter more. Blue means that change makes staying look better; orange means it makes leaving look better. The top one or two are worth double-checking.</p>
+  <details class="panel fold"><summary><span class="fold-title">What moves your answer most</span><span class="fold-chip" id="chipTornado"></span></summary><div class="fold-body">    <p class="caption" style="margin:0 0 10px">Each row changes one assumption. Longer bars have more impact: blue favors staying, orange favors leaving. Check the largest effects first.</p>
     <div class="tornado" id="tornado"></div>
     <div class="tor-scale" id="torScale"></div>
   </div></details>
@@ -320,8 +320,8 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
   </div>
   <div class="panel">
     <h3>Need more control?</h3>
-    <p class="caption" style="margin:0 0 10px">The advanced lab adds Reserve pensions, USU credit, GI Bill transfer, malpractice tail, LES upload, and every tax setting.</p>
-    <div class="advanced"><a class="btn" href="physician-pay-lab.html">Open the advanced lab</a><a class="btn ghost" href="../../../analysis/research-paper.pdf">Read the paper</a><a class="btn ghost" href="https://github.com/jmday033/James-Day/issues/new?title=Stay%20or%20go%3F%20feedback&body=What%20I%20tried%20(years%2C%20specialty%2C%20settings)%3A%0A%0AWhat%20looked%20wrong%20or%20confusing%3A%0A%0ASuggestion%3A" target="_blank" rel="noopener">Send feedback</a></div><p class="caption" style="margin-top:10px">Feedback opens a GitHub form (free account needed). Please do not include personal details such as your name, unit, or medical information. On a phone, use your browser's "Add to Home Screen" to keep this page like an app.</p>
+    <p class="caption" style="margin:0 0 10px">Explore USU service credit, GI Bill transfer, malpractice tail costs, LES upload, and more detailed tax settings in the full model.</p>
+    <div class="advanced"><a class="btn" href="physician-pay-lab.html">Open the advanced lab</a><a class="btn ghost" href="../../../analysis/research-paper.pdf">Read the paper</a></div>
   </div>
 </section>
 </div>
@@ -337,17 +337,17 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
 </details>
 <section class="panel feedback" aria-labelledby="feedbackHeading" style="margin-top:26px">
   <h2 id="feedbackHeading">Suggest an improvement</h2>
-  <p class="caption" style="margin-bottom:14px">Share a correction, missing source, or idea through the same short Google Form used by the full Navy lab.</p>
+  <p class="caption" style="margin-bottom:14px">Share a correction, missing source, or suggestion.</p>
   <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLScHnRTI9AZFjOgV_0hTnnLKNYC7bMRgFaiu6x0tp8LGyLfnTQ/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer">Open feedback form</a>
-  <p class="caption" style="margin-top:10px">The form opens in a new tab. Your calculator entries are not included. Do not include an LES, personal identifiers, or patient information. Suggestions are reviewed before any site change.</p>
+  <p class="caption" style="margin-top:10px">Opens in a new tab without your calculator entries. Please omit LES documents, personal identifiers, and patient information.</p>
 </section>
-<p class="disclaimer">Your entries stay in your browser; nothing is sent or stored. Personal academic project. Views are solely those of James M. Day and do not represent the U.S. Navy, the Department of Defense, or the U.S. government. This is an illustration, not an individual financial recommendation.</p>
+<p class="disclaimer">Calculator entries stay in your browser and are not submitted. This model is an illustration, not an individual financial recommendation.</p>
 </main>
 
 <script>
 // One live version: if the server has a newer page than this saved copy,
 // reload it with a version tag so phone and browser caches are bypassed.
-(function(){var PAGE_VERSION="2.6";
+(function(){var PAGE_VERSION="2.7";
   try{fetch("version.json",{cache:"no-store"}).then(function(r){return r.json()}).then(function(d){
     if(!d||!d.version||d.version===PAGE_VERSION)return;
     var u=new URL(location.href);if(u.searchParams.get("v")===d.version)return;   // already tried once
@@ -427,7 +427,7 @@ function update(){
   $('missingList').hidden=!missing.length;if(!missing.length)$('missingList').innerHTML='';
   if(missing.length){
     $('answer').className='answer empty';$('answerBig').textContent='Your answer appears here';
-    $('answerText').textContent=missing.length===7||missing.length===6?'Fill in the questions on the left, or load an example. Works for '+specialtyTable.length+' specialties and any duty station with a 2026 BAH rate.':'Still needed:';
+    $('answerText').textContent=missing.length===7||missing.length===6?'Enter your situation or load an example. Supports '+specialtyTable.length+' specialties and any duty station with a 2026 BAH rate.':'Still needed:';
     $('missingList').innerHTML=missing.length>=6?'':missing.map(m=>'<li>'+m+'</li>').join('');$('missingList').hidden=missing.length>=6;
     $('answerRange').textContent='';$('bahNote').textContent='Sets housing allowance (BAH).';return}
   const x=readInput();
@@ -445,10 +445,10 @@ function update(){
   $('answerText').textContent=(r.obligation?'Counting from when your obligation ends at '+r.decisionYos+' years, ':'On these inputs, ')+(stay
     ?'the pension and retiree benefits you keep by reaching 20 outweigh the extra civilian pay you give up over '+span+'.'
     :'the extra civilian pay over '+span+' outweighs the pension and retiree benefits you would keep by reaching 20.')
-    +(be!==null&&be>r.decisionYos?' Staying starts to win at about '+be.toFixed(1)+' years of service.':'')+' Today\'s dollars, after taxes.'
+    +' Today\'s dollars, after taxes.'
     +(stay&&pc&&(be===null||be<=r.decisionYos)?' Primary care often shows staying ahead early; the common 15–16-year rule of thumb comes from higher-paid specialties.':'');
   const sens=sensitivity(x,ctx),[lo,hi]=answerRange(r.net,sens),word=v=>(v>=0?'staying +':'leaving +')+short(Math.abs(v));
-  $('answerRange').textContent='Likely range if common assumptions change: '+word(lo)+' to '+word(hi)+'.';
+  $('answerRange').textContent='Sensitivity range when assumptions change: '+word(lo)+' to '+word(hi)+'.';
   $('mPension').textContent=short(r.pensionValue);$('mCost').textContent=short(r.costOfStaying);
   $('mBreak').textContent=be===null?'Not before 20':be<=r.decisionYos?'Staying already ahead':be.toFixed(1)+' yrs';
   const f=r.input,sn=c=>stateData.names[c]||c;
@@ -494,7 +494,7 @@ function drawPaths(r,x){
   const p=w.pension;
   $('chipPaths').textContent='Best: '+({'Staying on active duty':'stay to 20','The Reserve route':'Reserve route','The VA route':'VA route','Leaving for the private job':'leave now'})[best];
   const vaText=w.years<5?' VA route: fewer than 5 VA years before the work-until age, so no FERS pension is earned.':' VA route: '+money(Math.round(w.salary/1000)*1000)+'/yr for '+w.years+' years (salary, TSP, and FERS contributions versus the private job: '+(w.salaryGapValue>=0?'+':'−')+short(Math.abs(w.salaryGapValue))+'), then a FERS pension of about '+money(Math.round(p.annual/100)*100)+'/yr from '+Math.round(p.startAge)+' ('+(p.multiplier*100).toFixed(1)+'% × '+(w.buyback?w.years+w.militaryYears:w.years)+' years, worth '+short(p.value)+' today).'+(w.buyback?' Buying back '+w.militaryYears+' active years costs about '+money(Math.round(w.deposit/100)*100)+' and adds '+short(w.buybackGain)+' net.':' Buying back '+w.militaryYears+' active years would add '+short(w.buybackGain)+' net.');
-  $('pathsCaption').textContent='Compared with leaving now for the private job and never serving again, in today\'s dollars after taxes. '+best+' comes out ahead on these inputs. Reserve route: about '+v.equivalentYears.toFixed(1)+' years of credit, a pension of about '+money(Math.round(v.annualPension/100)*100)+'/yr starting at '+Math.round(v.startAge)+' (worth '+short(v.pensionValue)+' today), TRICARE from '+Math.round(v.startAge)+' to 65 ('+short(v.healthValue)+'), and drill pay minus missed civilian workdays ('+(v.drillValue>=0?'+':'−')+short(Math.abs(v.drillValue))+').'+vaText+' Not counted: Reserve special pays, mobilization risk, retiree federal health coverage, the FERS supplement, and time away from family.';
+  $('pathsCaption').textContent='Reserve route: about '+v.equivalentYears.toFixed(1)+' years of credit, a pension of about '+money(Math.round(v.annualPension/100)*100)+'/yr starting at '+Math.round(v.startAge)+' (worth '+short(v.pensionValue)+' today), TRICARE from '+Math.round(v.startAge)+' to 65 ('+short(v.healthValue)+'), and drill pay minus missed civilian workdays ('+(v.drillValue>=0?'+':'−')+short(Math.abs(v.drillValue))+').'+vaText+' Not counted: Reserve special pays, mobilization risk, retiree federal health coverage, the FERS supplement, and time away from family.';
   $('sumReserve').textContent=x.reservePoints+' pts/yr · pension at '+x.reserveStartAge;
   $('sumVa').textContent=short(w.salary)+'/yr · '+(x.vaBuyback?'buyback on':'no buyback');
   $('avg_vaSalary').innerHTML='Starting value: <b>'+money(Math.min(r.input.civilianSalary,w.cap))+'</b>, the private salary capped at the 2026 VA staff-physician maximum for this specialty ('+money(w.cap)+', <a href="https://www.va.gov/OHRM/Pay/2026/PDOP/PayTables.pdf">VA Pay Table '+(w.cap>315000?'2':'1')+', Tier 1</a>). Many offers are lower; enter yours. Market pay counts toward the pension; performance pay does not. Blank uses this.<button type="button" class="use" data-use="vaSalary" data-val="">Use</button>';
@@ -502,9 +502,8 @@ function drawPaths(r,x){
 
 function drawGoals(r){
   const g=goalCoverage(r,{annualSpending:num('annualSpending',0),collegeKids:$('collegeKids').value===''?null:Math.max(0,Math.round(num('collegeKids'))),collegePerYear:num('collegePerYear',30990),debt:num('debt'),secondHome:num('secondHome')});
-  const who=g.stayWins?'staying':'leaving',val=money(Math.round(g.value/1000)*1000);
   const age=Math.round(g.pensionStartAge),before=g.cashBefore20,yrs=v=>v>=1?v.toFixed(1)+' yrs':Math.round(v*12)+' months';
-  $('goalsLead').textContent=(g.stayWins?'Staying':'Leaving')+' comes out about '+val+' ahead (today\'s dollars, after tax). In plain terms:';
+  $('goalsLead').textContent='What the financial difference could mean for your household:';
   const tile=(label,big,sub)=>'<div class="metric"><span>'+label+'</span><b>'+big+'</b><span>'+sub+'</span></div>';
   const extra=g.items.filter(t=>t.key!=='spending').map(t=>'<li>'+t.label.charAt(0).toUpperCase()+t.label.slice(1)+' ('+short(t.need)+'): '+(t.share>=1?'fully covered'+(t.share>=1.5?' ('+(t.share>=10?Math.round(t.share):t.share.toFixed(1))+'×)':''):'covers '+Math.round(100*t.share)+'%')+'</li>').join('');
   $('goals').innerHTML='<div class="metrics">'
