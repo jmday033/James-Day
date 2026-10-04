@@ -376,3 +376,8 @@ At the author's request, Claude added one-tap chips for ten common specialties (
 ## 2026-10-02 — Stay or go? examples placed in DC and Seattle areas
 
 At the author's request, the family-medicine example now uses Walter Reed (ZIP 20889, Maryland job) and the pediatrics example uses Naval Hospital Bremerton (ZIP 98312, Washington job), so each example names a major Navy Medicine area. Version 2.2.
+
+
+## 2026-10-04 — Public feedback form for Stay or go?
+
+At the author’s request, Codex added a FormSubmit email feedback form with required feedback and optional name/contact fields. Calculator entries are excluded and feedback controls do not trigger calculation updates. HTML/form structure and JavaScript syntax checked. Email delivery requires recipient activation via FormSubmit’s first-use confirmation email.
