@@ -411,3 +411,8 @@ At the author's request, Claude removed remaining duplicate copy: header instruc
 ## 2026-10-04 — Contact address on Stay or go?
 
 At the author's request, Claude changed the header Email button to jday6@hawaii.edu and added the address as copyable text under the creator credit, so phone readers whose default mail app is unset or unwanted can copy it. The button still uses mailto so it opens each reader's own default mail app. Version 2.9; no calculator changes; checks passed.
+
+
+## 2026-10-04 — Hospitalist note and charge review
+
+At the author's request, Codex created a browser-only clinical-informatics tool for de-identified note review, clinician-confirmed MDM/time coding candidates, documentation prompts, and charge/payment checks. Added local import of private reference guidance; internal correspondence and attachments remain outside the public repository. Synthetic regression and JavaScript syntax checks passed. Browser visual validation was unavailable because the runtime lacks a Chromium executable. See docs/decisions/2026-10-04-hospitalist-note-review.md.
