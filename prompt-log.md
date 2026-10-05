@@ -416,3 +416,8 @@ At the author's request, Claude changed the header Email button to jday6@hawaii.
 ## 2026-10-04 — Hospitalist note and charge review
 
 At the author's request, Codex created a browser-only clinical-informatics tool for de-identified note review, clinician-confirmed MDM/time coding candidates, documentation prompts, and charge/payment checks. Added local import of private reference guidance; internal correspondence and attachments remain outside the public repository. Synthetic regression and JavaScript syntax checks passed. Browser visual validation was unavailable because the runtime lacks a Chromium executable. See docs/decisions/2026-10-04-hospitalist-note-review.md.
+
+
+## 2026-10-04 — Nocturnist admission capture
+
+At the author's request, Claude extended the hospitalist note and charge review for overnight admissions: next-level gap report, uncredited-work detectors, prolonged services, advance care planning, same-date critical care after admission, midnight/same-group date logic, and an in-memory shift log with work-RVU estimates. Evidence-quote requirements unchanged. Existing and new synthetic checks passed; UI exercised in jsdom. See docs/decisions/2026-10-04-hospitalist-nocturnist-capture.md.
