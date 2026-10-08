@@ -3,11 +3,28 @@ type: brief
 engagement: opportunity-cost-military-primary-care
 capability: economic-research
 date: 2026-09-19
-status: revised
-research_question: "What is the financial opportunity cost of continued Navy service for family medicine, internal medicine, and pediatrics physicians over the next four years?"
+status: amended
+amended: 2026-10-08
+research_question: "What is the financial opportunity cost to a board-certified O-4 general internist at 10 years of active service, married and stationed in San Diego, of remaining in the Navy to 20-year retirement rather than leaving for a civilian position?"
+original_research_question: "What is the financial opportunity cost of continued Navy service for family medicine, internal medicine, and pediatrics physicians over the next four years?"
 ---
 
 # Opportunity Cost for Military Primary Care — research brief
+
+## Amendment — October 8, 2026: the question the paper answers
+
+The submitted paper ([revision 16](../../../analysis/research-paper.pdf)) answers a narrower and longer question than this brief first set out. This amendment records that change; the original brief below is kept unchanged so the history shows how the question moved.
+
+- **Question:** What is the financial opportunity cost to a board-certified O-4 general internist at 10 years of active service, married and stationed in San Diego, of remaining in the Navy to 20-year retirement rather than leaving for a civilian position?
+- **Why it changed:** the paper notes that a four-year comparison "stops before pension eligibility," so it leaves out the pension, which is the main financial reason to stay. The paper compares leaving at 10 years with staying to 20 (ten comparison years).
+- **Scope:** one general-internist case, not three specialties. Family medicine and pediatrics remain in the lab, not the paper.
+- **Discounting:** compensation gaps at 5% real; pension and retiree-health value at an illustrative 3% real, with 5% tested as a sensitivity (Appendix E).
+- **Pension tax:** a flat illustrative 32% federal rate, with 41.3% tested as a sensitivity.
+- **Comparisons:** gross cash and pension (net −$615,968), then taxes and current benefits (net −$58,419), then the scenario steps in Appendix D.
+- **Verification:** [`paper/appendix_calculations.py`](paper/appendix_calculations.py) reproduces every figure in Appendices B–E from these assumptions.
+
+Requested by the instructor's October 2 review ([PR #6](https://github.com/jmday033/James-Day/pull/6)). Drafted with AI from the paper's own text at the author's request; the author should confirm the wording.
+
 
 ## The problem
 
@@ -30,7 +47,7 @@ The economic concepts are **opportunity cost**, **marginal choice**, and **choic
 
 The current paper uses a documented O-4 general-internist scenario just past 10 years of service, with dependents at San Diego ZIP 92134, against Marit's published $459,057 all-employer internist benchmark. Itemized Navy cash is $276,965.76 in years 1–2 and $282,585.36 in years 3–4, conditional on the stated pay eligibility and $48,000 annual RB agreement. All current base-case calculations use 5% real discounting with year-end payments. The four-year PV cash gap is $636,208.84; taxes, pension, and other benefit differences are excluded. The old $239,000 O-5 inputs are superseded. The local benchmark is not a matched civilian offer, and BAH and the Navy agreement still require final verification.
 
-Frank et al.'s *Principles of Economics* (4th ed., 2022) makes the course link more precise: the next agreement is a **marginal choice**, so compare future consequences and exclude sunk training costs (pp. 5–8); the labor market responds to wages and alternatives, but a gap alone cannot reveal a retention elasticity (pp. 73–80, 376–385); and future pay and pension must be put in consistent real dollars before comparing them (pp. 324, 407–414). The [course economics crosswalk](course-economics-crosswalk.md) shows how the textbook applies to the project.
+Frank et al.'s *Principles of Economics* (4th ed., 2019) makes the course link more precise: the next agreement is a **marginal choice**, so compare future consequences and exclude sunk training costs (pp. 5–8); the labor market responds to wages and alternatives, but a gap alone cannot reveal a retention elasticity (pp. 73–80, 376–385); and future pay and pension must be put in consistent real dollars before comparing them (pp. 324, 407–414). The [course economics crosswalk](course-economics-crosswalk.md) shows how the textbook applies to the project.
 
 The proposed chain is: local civilian alternatives affect a physician's stay-or-leave choice; those choices may affect Navy medical staffing; staffing may affect the force's ability to provide care and deploy. The model measures only the first link. Testing later links requires specialty-level vacancies, fill times, clinical capacity, deployability, and assignment data rather than assuming a pay gap is a readiness loss.
 
