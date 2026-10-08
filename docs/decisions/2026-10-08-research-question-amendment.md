@@ -4,7 +4,7 @@
 
 **Why:** the instructor's October 2 review (PR #6) found the brief and spec still asked the September question. A four-year comparison stops before pension eligibility, so it omits the pension, the main financial reason to stay. Amending the brief and spec keeps the paper's stronger result; rewriting the paper back to four years would discard it.
 
-**Evidence added:** `paper/appendix_calculations.py` reproduces all 56 checked figures in Appendices B–E from the stated assumptions. `paper/lab_reconciliation.mjs` shows that the lab returns the paper's −$58,419 under the paper's assumptions. The lab's −$8,042 base case comes from two of its defaults: pension paid for remaining life expectancy, not 30 years (+$47,996), and a $2,500 cost of leaving (+$2,381).
+**Evidence added:** `paper/appendix_calculations.py` reproduces all 56 checked figures in Appendices B–E from the stated assumptions. `paper/lab_reconciliation.mjs` shows that the lab returns the paper's −$58,419 under the paper's assumptions. The historical two-change lab scenario of −$8,042 comes from two of its defaults: pension paid for remaining life expectancy, not 30 years (+$47,996), and a $2,500 cost of leaving (+$2,381).
 
 **Also corrected:** Frank et al., 4th edition, is 2019, not 2022. This is fixed in the paper PDF (two places, same character widths, no layout change) and in the brief, spec, memo, crosswalk and analysis. Dated drafts and earlier builds keep their original text as history. The revision 3 draft snapshot was re-extracted after its original extraction failed on a text-encoding error.
 

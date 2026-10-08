@@ -69,3 +69,6 @@ The [interactive Physician Pay Gap Lab](physician-pay-lab.html) is a supplementa
 The operational link is documented in the [Naval Medical Forces Pacific region](https://www.med.navy.mil/Naval-Medical-Forces-Pacific/Region/) and [mission](https://www.med.navy.mil/Naval-Medical-Forces-Pacific/Region/Mission/) pages; the project still needs specialty-level staffing and deployment outcomes before claiming a readiness effect.
 
 The [consolidated decision record](decisions/physician-retention-economics-memo.md) connects the pay-gap analysis to opportunity cost, incentives, marginal analysis, present value, compensating wage differentials, and labor-supply elasticity.
+
+
+**October 8 review follow-up:** The current PDF preserves the four-page body and compensation calculations, revises the recommendation to require a knowledge and feasibility gate, and extends Appendix F with benchmark checks and illustrative trial-size and cost assumptions. The corrected Frank (2019) citation is retained. See [planning calculation](paper/pilot_feasibility.py). The proposed revision 17 Appendix G remains excluded.

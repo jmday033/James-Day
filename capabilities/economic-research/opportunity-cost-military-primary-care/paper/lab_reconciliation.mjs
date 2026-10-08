@@ -3,6 +3,7 @@
 // Step 0 sets the lab to the paper's assumptions. Each later step switches one input back to the lab's
 // own default, so the printed changes attribute the gap between the two results. Read-only; no files written.
 import fs from 'node:fs/promises';
+import assert from 'node:assert/strict';
 import {stayOrGo, loadReferenceData, bahFor} from '../stay-or-go.js';
 
 globalThis.fetch = async url => ({ok: true, json: async () => JSON.parse(await fs.readFile(url, 'utf8'))});
@@ -46,3 +47,15 @@ for (const r of rows) {
     + (r.change === null ? '' : `   change ${fmt(r.change).padStart(10)}`)
     + `   (pension tax ${(r.pensionTax * 100).toFixed(0)}%, ${r.paymentYears} payments)`);
 }
+
+// A separate two-change scenario explains the historical -$8,042 comparison.
+// It is NOT the result with all current defaults restored in the sequence above.
+const paperResult = run(paper);
+const lifeOnly = run({...paper, paymentYears: null});
+const historical = run({...paper, paymentYears: null, transitionCost: 2500});
+assert.equal(Math.round(paperResult.net), -58419);
+assert.equal(Math.round(lifeOnly.net - paperResult.net), 47996);
+assert.equal(Math.round(historical.net - lifeOnly.net), 2381);
+assert.equal(Math.round(historical.net), -8042);
+console.log(`Historical two-change scenario: ${fmt(historical.net)} = ${fmt(paperResult.net)} + ${fmt(lifeOnly.net-paperResult.net)} + ${fmt(historical.net-lifeOnly.net)}`);
+console.log('This historical scenario keeps the other paper assumptions; it is not the current all-default lab result.');
