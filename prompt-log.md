@@ -427,3 +427,8 @@ At the author's request, Claude (Anthropic) worked through the instructor's Octo
 3. **Citation and snapshot.** Changed Frank et al. to 2019 in the paper PDF's in-text citation and reference entry, by editing the text stream with the same character widths. Every other page renders identically, and text extraction differs only in the two years. Also changed it in the brief, spec, memo, crosswalk and analysis. Dated drafts and earlier builds were left as history. Re-extracted the revision 3 draft snapshot as UTF-8 from its unchanged PDF; the September 19 extraction had saved a Windows encoding error instead of the text.
 
 No paper prose or analysis changed other than the citation year. Item 4, the revision 17 decision, is the author's. The updated PDF must be uploaded to Lamaku to replace the copy there.
+
+
+## 2026-10-08 — Mock-grader review follow-up
+
+At the author's explicit request, Codex corrected the remaining submission pointer, added asserted historical-scenario reconciliation, and drafted a revised recommendation plus Appendix F feasibility, benchmark, and cost notes. Planning inputs are illustrative, not observed Navy data or approved costs. The Marit source was checked; its public breakdown supports a cash reading but does not validate an employee-only matched offer. The four-page body and Appendices A-E calculations are preserved; the proposed revision 17 is excluded. This is substantive AI drafting and calculation assistance. All three existing test suites and the historical-scenario assertions passed; the planning calculation passed and the rendered PDF was inspected. Actual command availability, matched offers, and costs remain to be verified.

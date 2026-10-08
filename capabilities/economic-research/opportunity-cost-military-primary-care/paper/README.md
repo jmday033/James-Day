@@ -17,10 +17,13 @@ status: working
 - **[Appendix B–E reproduction](appendix-calculations.md)**: [`appendix_calculations.py`](appendix_calculations.py) recomputes every figure in Appendices B–E from the stated assumptions; all 56 checked figures match. [`lab_reconciliation.mjs`](lab_reconciliation.mjs) shows that the lab returns the paper's −$58,419 under the paper's assumptions and explains its −$8,042 base case.
 - [Dated draft chain](../../../../drafts/README.md).
 
-The submission is `analysis/research-paper.pdf` at repository root, with figures under `figures/`. Its Frank et al. citation year was corrected to 2019 on October 8; no other wording changed.
+The submission is `analysis/research-paper.pdf` at repository root, with figures under `figures/`. Its Frank et al. citation year was corrected to 2019 on October 8; the later review follow-up is described below.
 
 **AI assistance.** AI contributed substantively to this paper, including drafted prose, analytical framing, the proposed pilot, calculations, research, figures, and formatting. Each contribution is disclosed session by session in the root [`prompt-log.md`](../../../../prompt-log.md). The instructor confirmed on October 2, 2026 that disclosed AI work is not a deduction on this paper ([pre-deadline read](https://github.com/jmday033/James-Day/pull/6)).
 
 ## Earlier review version — revision 3
 
 [Revised PDF](navy-physician-retention-condensed-revision-3.pdf): four-page body, separate enlarged figure, double-spaced references, pay table appendix, qualified policy rationale and WCI-supported salary sensitivity. AI-assisted wording and proposed evaluation design require author review against course policy; no final submission is implied. Earlier drafts remain preserved.
+
+
+**October 8 review follow-up:** The current PDF preserves the four-page body and compensation calculations, revises the recommendation to require a knowledge and feasibility gate, and extends Appendix F with benchmark checks and illustrative trial-size and cost assumptions. The corrected Frank (2019) citation is retained. See [planning calculation](pilot_feasibility.py). The proposed revision 17 Appendix G remains excluded.
