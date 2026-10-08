@@ -3,7 +3,7 @@ type: project
 engagement: opportunity-cost-military-primary-care
 capability: economic-research
 project: "Opportunity Cost for Military Primary Care"
-updated: 2026-09-30
+updated: 2026-10-08
 status: working
 ---
 
@@ -15,10 +15,9 @@ Final course project for BUS 620 — Micro and Macro Economics. Compensation, re
 
 ## Start here
 
-- [Earlier condensed draft (PDF)](paper/navy-physician-retention-condensed.pdf) — received September 19; draft only. Formatting, an evidence-bearing graph, and citation checks remain before submission.
-- [Condensed draft text extraction](../../../drafts/2026-09-19-condensed-draft.md) — searchable record; the PDF governs formatting and equations.
-
-- [Formatted working PDF](paper/navy-physician-working-draft.pdf) — long version for author review and shortening; not a four-page final submission
+- **[Current paper — revision 16 PDF](../../../analysis/research-paper.pdf)**: the submitted paper. Earlier drafts below are historical.
+- Historical: [earlier condensed draft (PDF)](paper/navy-physician-retention-condensed.pdf), received September 19, and its [text extraction](../../../drafts/2026-09-19-condensed-draft.md).
+- Historical: [formatted long working PDF](paper/navy-physician-working-draft.pdf), the September development version that the condensed paper replaced.
 
 - [Dated draft chain](../../../drafts/README.md) · [Current internal-medicine figure](figures/internal-medicine-san-diego.svg) · [Scenario calculation audit](analysis/internal-medicine-scenario.md)
 
@@ -26,7 +25,7 @@ Final course project for BUS 620 — Micro and Macro Economics. Compensation, re
 - [Proposed revision 17 insert](paper/revision-17-proposed-insert-goals-and-reversibility.md): draft Appendix G on goals and reversibility for author review; not yet in the paper.
 - [Advanced lab](physician-pay-lab.html). The former Quick Look (`quick-lab.html`) now redirects to Stay or go?, which includes its GMO-to-residency comparison; the old version remains in git history.
 - [Research brief](research-brief.md) · [Model specification](spec.md)
-- [Paper draft](paper/navy-primary-care-physician-retention-draft.md) · [Source review](paper/navy-physician-source-review.md)
+- [Historical long Markdown draft](paper/navy-primary-care-physician-retention-draft.md) · [Source review](paper/navy-physician-source-review.md)
 - [Consolidated decision record](decisions/physician-retention-economics-memo.md)
 - [Analysis](analysis/physician-retention-analysis.md) · [Comparison data](data/physician-retention-12-row-comparison.csv) · [Figure](figures/physician-retention-cumulative-gap.svg)
 - [Course economics crosswalk](course-economics-crosswalk.md) · [Repository AI log](../../../prompt-log.md)

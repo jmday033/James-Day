@@ -416,3 +416,14 @@ At the author's request, Claude changed the header Email button to jday6@hawaii.
 ## 2026-10-04 — Hospitalist note and charge review
 
 At the author's request, Codex created a browser-only clinical-informatics tool for de-identified note review, clinician-confirmed MDM/time coding candidates, documentation prompts, and charge/payment checks. Added local import of private reference guidance; internal correspondence and attachments remain outside the public repository. Synthetic regression and JavaScript syntax checks passed. Browser visual validation was unavailable because the runtime lacks a Chromium executable. See docs/decisions/2026-10-04-hospitalist-note-review.md.
+
+
+## 2026-10-08 — Address the instructor's October 2 pre-deadline review
+
+At the author's request, Claude (Anthropic) worked through the instructor's October 2 list (PR #6) in a pull request for the author's review:
+
+1. **Brief and spec.** Added dated amendment sections recording the question the paper answers: an O-4 internist leaving at 10 years versus staying to 20, 5% cash and 3% pension discounting, and a 32% pension tax. The original text stays below each amendment. Updated the stale pointers in `analysis/README.md` and the project README. Made `paper/README.md` match this log: AI contributed substantively, each contribution is disclosed here, and the instructor confirmed on October 2 that disclosed AI work is not a deduction. The amendment wording was drafted with AI from the paper's own text, and the author should confirm it.
+2. **Appendix calculations.** Added `paper/appendix_calculations.py`, which recomputes Appendices B–E from the paper's stated assumptions and checks each figure against the PDF: all 56 match, including both salary sensitivities ($201,025 and $436,422) and both break-even points (14.27 and 10.90 years). Added `paper/lab_reconciliation.mjs`, which shows the lab returns −$58,419 under the paper's assumptions. Corrected the revision 17 note: the paper's pension is $50,274.24 (the $48,000 was the retention bonus), and the lab's −$8,042 comes from life-expectancy pension payments (+$47,996) and a $2,500 cost of leaving (+$2,381).
+3. **Citation and snapshot.** Changed Frank et al. to 2019 in the paper PDF's in-text citation and reference entry, by editing the text stream with the same character widths. Every other page renders identically, and text extraction differs only in the two years. Also changed it in the brief, spec, memo, crosswalk and analysis. Dated drafts and earlier builds were left as history. Re-extracted the revision 3 draft snapshot as UTF-8 from its unchanged PDF; the September 19 extraction had saved a Windows encoding error instead of the text.
+
+No paper prose or analysis changed other than the citation year. Item 4, the revision 17 decision, is the author's. The updated PDF must be uploaded to Lamaku to replace the copy there.

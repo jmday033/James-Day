@@ -3,10 +3,25 @@ type: spec
 capability: economic-research
 engagement: opportunity-cost-military-primary-care
 date: 2026-09-16
+amended: 2026-10-08
 status: built
 ---
 
 # Opportunity Cost for Military Primary Care — model specification
+
+## Amendment — October 8, 2026: assumptions in the submitted paper
+
+Where this amendment and the September sections below differ, this amendment governs. The earlier text is kept unchanged as history.
+
+- **Scenario and horizon:** one board-certified O-4 general internist leaving at 10 active-service years versus staying to 20 (ten comparison years), married, one income, San Diego ZIP 92134, against Marit Health's $459,057 benchmark. No promotion is assumed. This replaces the four-year, three-specialty paper scenario selected September 19.
+- **Discounting:** compensation gaps at 5% real; pension and retiree-health value at 3% real. The paper no longer applies 5% to pensions; 5% is a sensitivity.
+- **Pension:** BRS, 2% × 20 years × High-3 ($125,685.60) = $50,274.24 a year; 30 payments starting one year after retirement; a flat illustrative 32% federal pension tax, with 41.3% as a sensitivity. This replaces the 22% pension-tax default described for the lab below.
+- **Taxes and benefits:** 2026 federal married-filing-jointly brackets, 2025 California Schedule Y as a proxy, payroll tax, and civilian SDI; a 5% BRS contribution; a 4.6% employer match; a $6,850 health premium; and 3% disability insurance (paper Appendices A–C).
+- **Acceptance checks:** [`paper/appendix_calculations.py`](paper/appendix_calculations.py) must reproduce all 56 checked figures in Appendices B–E (result in [`paper/appendix-calculations.md`](paper/appendix-calculations.md)). [`paper/lab_reconciliation.mjs`](paper/lab_reconciliation.mjs) shows that the lab, given these assumptions, returns the paper's −$58,419, and attributes the lab's own defaults step by step.
+- **Lab defaults today:** the lab now uses 3% for pensions and the marginal federal rate for pension tax (32% in this case). It pays the pension over remaining life expectancy rather than 30 years, and by default it adds retiree TRICARE, continuation pay and promotion.
+
+Requested by the instructor's October 2 review ([PR #6](https://github.com/jmday033/James-Day/pull/6)). Drafted with AI from the paper's appendices at the author's request; the author should confirm it.
+
 
 ## Final paper scenario selected September 19, 2026
 
@@ -72,7 +87,7 @@ The [2019 White Coat Investor interview with Joel Schofer](https://www.whitecoat
 
 ## Economics and evaluation
 
-Frank et al.'s *Principles of Economics* (4th ed., 2022) supports three calculation rules: compare the next agreement with the best feasible alternative rather than money already spent (pp. 5–8); use constant-dollar projections and a real discount rate for future cash and pension streams (pp. 324, 407–414); and distinguish an incentive from a measured response to it (pp. 73–80, 376–385). These principles do not supply a retention coefficient, an FY26 pay rate, or a civilian benchmark. See the [course crosswalk](course-economics-crosswalk.md) for the chapter-by-chapter application.
+Frank et al.'s *Principles of Economics* (4th ed., 2019) supports three calculation rules: compare the next agreement with the best feasible alternative rather than money already spent (pp. 5–8); use constant-dollar projections and a real discount rate for future cash and pension streams (pp. 324, 407–414); and distinguish an incentive from a measured response to it (pp. 73–80, 376–385). These principles do not supply a retention coefficient, an FY26 pay rate, or a civilian benchmark. See the [course crosswalk](course-economics-crosswalk.md) for the chapter-by-chapter application.
 
 The civilian path is the opportunity cost of another Navy agreement. The choice involves a bundle of pay and nonpay attributes, so a gross cash gap does not identify indifference between jobs. Current retention-bonus payments affect the marginal reward from staying; sunk training costs cannot justify future pay. A compensating wage differential may be needed for unwanted moves or loss of clinical autonomy. Labor-supply elasticity requires observed behavior after a compensation change, not a salary comparison alone.
 

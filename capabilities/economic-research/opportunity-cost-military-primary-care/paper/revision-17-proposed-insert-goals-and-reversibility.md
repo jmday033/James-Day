@@ -14,7 +14,7 @@ base: analysis/research-paper.pdf (revision 16)
 
 **Why an appendix:** the main text is already at the four-page limit. The proposal adds one sentence to the main text and a short Appendix G.
 
-**Number check needed before use:** the exit-window figures below come from the Stay or go? lab (version 1.5) run with the paper's inputs. The lab's current pension and tax treatment differs slightly from the paper's fixed calculation (lab BRS pension $50,274 versus the paper's $48,000; lab base case −$8,042 versus the paper's −$58,419). Either rerun them under the paper's assumptions or present them as lab illustrations, as drafted here.
+**Number check needed before use:** the exit-window figures below come from the Stay or go? lab (version 1.5) run with the paper's inputs. The lab and the paper use the same BRS pension, $50,274.24 a year (an earlier version of this note misstated the paper's pension as $48,000, which is the annual retention bonus). Given the paper's assumptions, the lab reproduces the paper's adjusted base case exactly, −$58,419 ([`lab_reconciliation.mjs`](lab_reconciliation.mjs)). The lab base case of −$8,042 differs because of two lab defaults: it pays the pension for remaining life expectancy (35 years from age 47) instead of the paper's 30 payments (+$47,996), and it counts a $2,500 cost of leaving (+$2,381). Either rerun the figures below under the paper's assumptions or present them as lab illustrations, as drafted here.
 
 ## 1. Main-text sentence
 

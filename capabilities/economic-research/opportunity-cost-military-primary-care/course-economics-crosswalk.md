@@ -1,6 +1,6 @@
 # Course economics in the Navy physician comparison
 
-Source: Robert H. Frank, Ben S. Bernanke, Kate Antonovics, and Ori Heffetz, *Principles of Economics: A Streamlined Approach*, 4th ed. (McGraw Hill, 2022). Page numbers below refer to the **printed book pages**. The textbook explains economic concepts; it does not provide Navy retention rates or current pay.
+Source: Robert H. Frank, Ben S. Bernanke, Kate Antonovics, and Ori Heffetz, *Principles of Economics: A Streamlined Approach*, 4th ed. (McGraw Hill, 2019). Page numbers below refer to the **printed book pages**. The textbook explains economic concepts; it does not provide Navy retention rates or current pay.
 
 | Textbook reading | Application to this project |
 | --- | --- |

@@ -3,7 +3,7 @@ type: index
 engagement: opportunity-cost-military-primary-care
 capability: economic-research
 project: "Opportunity Cost for Military Primary Care"
-updated: 2026-09-30
+updated: 2026-10-08
 status: working
 ---
 
@@ -14,9 +14,12 @@ status: working
 - [Earlier supplied condensed draft](navy-physician-retention-condensed.pdf): the author's uploaded PDF, preserved byte for byte. Not yet a final submission.
 - [Earlier long working PDF](navy-physician-working-draft.pdf) and [long Markdown draft](navy-primary-care-physician-retention-draft.md): supporting development versions, not the current condensed prose.
 - [Source review](navy-physician-source-review.md).
+- **[Appendix B–E reproduction](appendix-calculations.md)**: [`appendix_calculations.py`](appendix_calculations.py) recomputes every figure in Appendices B–E from the stated assumptions; all 56 checked figures match. [`lab_reconciliation.mjs`](lab_reconciliation.mjs) shows that the lab returns the paper's −$58,419 under the paper's assumptions and explains its −$8,042 base case.
 - [Dated draft chain](../../../../drafts/README.md).
 
-The assignment's final target is `analysis/research-paper.pdf` at repository root, with figures under `figures/`. Do not label an unfinished draft as that submission. Preserve the author's prose; AI assistance is limited to research, critique, verification, figures from the author's specification, and mechanical formatting.
+The submission is `analysis/research-paper.pdf` at repository root, with figures under `figures/`. Its Frank et al. citation year was corrected to 2019 on October 8; no other wording changed.
+
+**AI assistance.** AI contributed substantively to this paper, including drafted prose, analytical framing, the proposed pilot, calculations, research, figures, and formatting. Each contribution is disclosed session by session in the root [`prompt-log.md`](../../../../prompt-log.md). The instructor confirmed on October 2, 2026 that disclosed AI work is not a deduction on this paper ([pre-deadline read](https://github.com/jmday033/James-Day/pull/6)).
 
 ## Earlier review version — revision 3
 
