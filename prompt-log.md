@@ -427,3 +427,5 @@ At the author's request, Claude (Anthropic) worked through the instructor's Octo
 3. **Citation and snapshot.** Changed Frank et al. to 2019 in the paper PDF's in-text citation and reference entry, by editing the text stream with the same character widths. Every other page renders identically, and text extraction differs only in the two years. Also changed it in the brief, spec, memo, crosswalk and analysis. Dated drafts and earlier builds were left as history. Re-extracted the revision 3 draft snapshot as UTF-8 from its unchanged PDF; the September 19 extraction had saved a Windows encoding error instead of the text.
 
 No paper prose or analysis changed other than the citation year. Item 4, the revision 17 decision, is the author's. The updated PDF must be uploaded to Lamaku to replace the copy there.
+
+**Follow-up, same day.** At the author's request, Claude added `vendor/pdfjs/README.md` explaining why the folder stays (the September 22 read asked for its removal; the advanced lab's pay-statement upload depends on it). The author decided against the revision 17 insert, so the paper body stays at four pages and the PDF is unchanged beyond the citation year.
