@@ -41,3 +41,15 @@ AI may help organize, critique, edit, or mechanically assemble portfolio materia
 - Keep course-required entry points at `docs/briefs/research-brief.md`, `capabilities/economic-research/spec.md`, and the shared root `prompt-log.md`; use links rather than competing copies.
 - Keep genuine dated snapshots in `drafts/`; do not rewrite previous sessions or invent dates. Shared skills and career documents remain portfolio resources.
 - The research-paper assignment reserves paper prose, analysis, and reflection for the author. Assist with source research, critique, verification, figures from the author's specifications, and mechanical formatting.
+
+## Course house rules (BUS 620)
+
+- **Writing:** American English spelling (quoted titles keep their original spelling); open with a 100–150 word executive summary; active voice; cite figures and tables in the text; every figure shows units, labels and sources.
+- **Numbers:** every figure needs a source and an access date. A plausible number without a source is not evidence. Treat any number supplied by AI as a draft until checked.
+- **Shared inputs:** pay tables, BAH, tax, malpractice and life-table values live in `capabilities/economic-research/opportunity-cost-military-primary-care/data/`, with vintage and source in its README. The labs and paper read from there; do not copy values into a page or script.
+- **Models:** spreadsheet cells that calculate use formulas; only raw source data is typed in.
+- **Draft first, critique second:** I write the paper, memos and reflection. Critique asks you to find the flaw, not to confirm the work is good.
+- **Prompt log:** add a new dated row after each session that changes a file. Never edit past rows.
+- **Paths:** ask before creating a file or folder; never invent a path or filename.
+- **Scope:** do only the requested change and report other issues instead of fixing them unasked.
+- **Publishing:** this repository is public and the Stay or go? page is shared outside the course. Work on a branch and open a pull request; do not push to `main` directly.
