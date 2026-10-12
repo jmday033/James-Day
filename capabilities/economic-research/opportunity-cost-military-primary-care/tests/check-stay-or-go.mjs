@@ -179,6 +179,23 @@ console.log('stay-or-go goals and exit-window checks passed');
 }
 console.log('savings-equivalent checks passed');
 
+// ---------- USU medical-school credit ----------
+{
+  const plain=stayOrGo({},{stateData,lifeTable,bah});
+  const usu=stayOrGo({usuYears:4},{stateData,lifeTable,bah});
+  // Four USU years add 4/20 to the gross multiplier on the same High-3 base.
+  near(usu.parts.annualPension, plain.parts.annualPension*24/20, .01);
+  assert.ok(usu.pensionValue>plain.pensionValue);
+  // They raise the pension but do not change eligibility, pay, or cash rows.
+  near(usu.costOfStaying, plain.costOfStaying, .001);
+  assert.equal(usu.years, plain.years);
+  assert.ok(usu.net>plain.net);
+  // Out-of-range entries are clamped to 0–8 years.
+  near(stayOrGo({usuYears:12},{stateData,lifeTable,bah}).parts.annualPension, plain.parts.annualPension*28/20, .01);
+  near(stayOrGo({usuYears:-3},{stateData,lifeTable,bah}).parts.annualPension, plain.parts.annualPension, .01);
+}
+console.log('USU credit checks passed');
+
 // ---------- one live version ----------
 {
   const html=await fs.readFile(new URL('../stay-or-go.html',import.meta.url),'utf8');
