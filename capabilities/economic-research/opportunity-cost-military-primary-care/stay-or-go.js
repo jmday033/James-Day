@@ -54,7 +54,8 @@ export function wageTax(wages, {family, kids=0, spouseWages=0, stateCode, stateD
 }
 
 // ---------- all specialties ----------
-// civ: Doximity 2026 national average compensation. ip / rb4: FY 2026 Navy
+// civ: Doximity 2026 national average compensation unless the row names
+// another source (src). ip / rb4: FY 2026 Navy
 // Medical Corps incentive pay and 4-year retention bonus (annual), DFAS table.
 // cat: Navy subspecialty category where the specialty has no row of its own;
 // category membership follows BUMED's published descriptions (Cat III: allergy,
@@ -67,6 +68,10 @@ export const specialtyTable = [
   ['Primary care','fm','Family medicine',325040,43000,48000],
   ['Primary care','peds','Pediatrics',273665,43000,35000],
   ['Primary care','medpeds','Medicine–pediatrics',319995,43000,48000,'Navy internal medicine rates assumed'],
+  // Doximity 2026 has no sports medicine row. MGMA 2025, Family Medicine: Sports
+  // Medicine, U.S., non-academic, average total compensation (summary shared by a
+  // Navy sports medicine physician, Oct. 12, 2026). No separate FY 2026 Navy rate.
+  ['Primary care','sportsmed','Sports medicine (primary care)',382000,43000,48000,'Navy family medicine rates assumed','reported MGMA 2025 figure, non-academic average total compensation'],
   ['Medicine subspecialties','cards','Cardiology',604635,69000,76000],
   ['Medicine subspecialties','gi','Gastroenterology',531345,54000,58000],
   ['Medicine subspecialties','pulm','Pulmonary/critical care',441472,60000,63000],
@@ -111,7 +116,7 @@ export const specialtyTable = [
   ['Pediatric subspecialties','pedendo','Pediatric endocrinology',242274,IV.ip,IV.rb4,'Navy subspecialty Category IV'],
   ['Pediatric subspecialties','pedid','Pediatric infectious disease',217819,IV.ip,IV.rb4,'Navy subspecialty Category IV'],
   ['Pediatric subspecialties','pedrheum','Pediatric rheumatology',236011,IV.ip,IV.rb4,'Navy subspecialty Category IV']
-].map(([group,key,label,civ,ip,rb4,note]) => ({group,key,label,civ,ip,rb4,note:note||''}));
+].map(([group,key,label,civ,ip,rb4,note,src]) => ({group,key,label,civ,ip,rb4,note:note||'',src:src||'Doximity 2026 national average'}));
 export const specialtyByKey = Object.fromEntries(specialtyTable.map(r => [r.key, r]));
 export const sanDiegoAvailable = key => ['im','fm','peds'].includes(key);
 
