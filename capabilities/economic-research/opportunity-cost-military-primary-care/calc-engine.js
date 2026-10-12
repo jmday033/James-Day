@@ -43,15 +43,23 @@ export function bahFor(zip,rank,deps){
 export const payFor=(rank,y)=>paySteps[rank].reduce((v,[at,p])=>y>=at?p:v,paySteps[rank][0][1]);
 
 // One accounting engine powers both views. Monetary values remain exact until display.
-export function gradeForYear({rank, commissionYear, promotionOn}, index) {
+// Optional `nextPromotionIn`: years left at the current rank (from a reader's
+// date of rank). Row i ends i+1 years from now, so the next grade starts at
+// i = n-1 and the one after it 6 years later (the O-5 to O-6 gap used here).
+export function gradeForYear({rank, commissionYear, promotionOn, nextPromotionIn}, index) {
   if (!promotionOn) return rank;
+  const order = ['O4','O5','O6'];
+  if (Number.isFinite(nextPromotionIn) && nextPromotionIn >= 1) {
+    const steps = (index + 1 >= nextPromotionIn ? 1 : 0) + (index + 1 >= nextPromotionIn + 6 ? 1 : 0);
+    return order[Math.min(2, order.indexOf(rank) + steps)];
+  }
   const commissionedYears = 2027 + index - commissionYear;
   const target = commissionedYears >= 21 ? 'O6' : commissionedYears >= 15 ? 'O5' : 'O4';
   return ['O4','O5','O6'][Math.max(['O4','O5','O6'].indexOf(rank), ['O4','O5','O6'].indexOf(target))];
 }
 
 export function calculateScenario(input) {
-  const {rank, commissionYear, promotionOn, payYos, base, bah, bahLookup, zip, deps,
+  const {rank, commissionYear, promotionOn, nextPromotionIn, payYos, base, bah, bahLookup, zip, deps,
     bas=328.48, ip=43000, bcp=boardCertificationPay, rbRemaining=0, currentBonus=0,
     civilianSalary, civilianGrowth=0, civilianTax=0, navyTax=0, growthTax=0,
     civilianBenefits=0, navyTsp=0, navyTspAuto=false, isBrs=true,
@@ -69,7 +77,7 @@ export function calculateScenario(input) {
   const rows = [];
   let pv = 0, annuity = 0;
   for (let i = 0; i < years; i++) {
-    const grade = gradeForYear({rank, commissionYear, promotionOn}, i);
+    const grade = gradeForYear({rank, commissionYear, promotionOn, nextPromotionIn}, i);
     const basicMonthly = i === 0 && grade === rank ? base : payFor(grade, payYos + i);
     const mappedBah = grade !== rank && bahLookup && Math.abs(bah - bahLookup.monthly) <= 1
       ? bahFor(zip, grade, deps)?.monthly : null;

@@ -197,6 +197,7 @@ export function stayOrGo(userInput, {stateData=null, lifeTable=null, bah=null} =
   const paymentYears = Number.isFinite(x.paymentYears) ? x.paymentYears : remainingYears(age + years, lifeTable);
 
   const cash = calculateScenario({rank:x.rank, commissionYear:2026 - yos, promotionOn:x.promotion,
+    nextPromotionIn:Number.isFinite(x.yearsAtRank) ? x.yearsAtRank : null,
     payYos:yos, base:payFor(x.rank, yos), bah:bahMonthly, bahLookup:Number.isFinite(x.bahMonthly) ? null : (bah ?? null), zip:x.zip,
     deps:withSpouse ? 'yes' : 'no', ip:spec.ip, rbRemaining:years, currentBonus:rb,
     continuationPayMultiple:x.continuationPay ? 2.5 : 0, isBrs,
