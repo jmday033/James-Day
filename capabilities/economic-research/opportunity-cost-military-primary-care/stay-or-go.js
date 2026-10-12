@@ -395,13 +395,18 @@ export function goalCoverage(r, goals={}) {
   // Matching the pension by saving instead: the target is the same at 20,
   // so only the years left to save change with years already served.
   const savingsEquivalent = pensionGross/withdrawalRate;
+  // Buying the same income instead: price an inflation-indexed annuity at the
+  // pension real rate (Treasury real yields) for the life-table payment years.
+  // No insurer load and no mortality weighting, so read it as a floor.
+  const n = r.input.paymentYears, ar = r.input.pensionRate;
+  const annuityPrice = pensionGross*(n <= 0 ? 0 : ar === 0 ? n : (1 - Math.pow(1 + ar, -n))/ar);
   const yos = r.input.yos, savingsTable = [...new Set([4, 8, 12, 16, Math.floor(yos)])].sort((a,b) => a - b)
     .map(y => ({yos:y, yearsLeft:20 - y, perYear:annualSavingsFor(savingsEquivalent, 20 - y), current:y === Math.floor(yos)}));
   return {value, stayWins, kids, items, spendingYears:g.annualSpending > 0 ? value/g.annualSpending : null,
     savingsReturn, savingsPerYear:annualSavingsFor(savingsEquivalent, r.years), savingsTable,
     cashBefore20, pensionGross, pensionNet, pensionStartAge,
     pensionShareOfSpending:g.annualSpending > 0 ? pensionNet/g.annualSpending : null,
-    savingsEquivalent, goals:{...g, collegeKids:kids}};
+    savingsEquivalent, annuityPrice, annuityYears:n, annuityRate:ar, goals:{...g, collegeKids:kids}};
 }
 
 // ---------- can you change your mind later? ----------
