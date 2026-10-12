@@ -177,7 +177,16 @@ console.log('stay-or-go goals and exit-window checks passed');
   assert.ok(g.savingsTable.find(t=>t.current).yos===10);
   assert.ok(g.savingsTable.every((t,i,a)=>i===0||a[i-1].perYear<t.perYear)); // fewer years left, more per year
 }
-console.log('savings-equivalent checks passed');
+// Purchased-annuity price: level real annuity at the pension rate for life-table years.
+{
+  const r=stayOrGo({},{stateData,lifeTable,bah}), g=goalCoverage(r), n=r.input.paymentYears, k=r.input.pensionRate;
+  near(g.annuityPrice, g.pensionGross*(1-Math.pow(1+k,-n))/k, .01);
+  assert.ok(g.annuityPrice<g.savingsEquivalent); // at 3% real, below the 4%-rule target
+  const lo=goalCoverage(stayOrGo({pensionRate:.02},{stateData,lifeTable,bah}));
+  assert.ok(lo.annuityPrice>g.annuityPrice); // lower real yields make the annuity cost more
+  near(goalCoverage(stayOrGo({pensionRate:0},{stateData,lifeTable,bah})).annuityPrice, g.pensionGross*n, .01);
+}
+console.log('savings-equivalent and annuity-price checks passed');
 
 // ---------- USU medical-school credit ----------
 {
