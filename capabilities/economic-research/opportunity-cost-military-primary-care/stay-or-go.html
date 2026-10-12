@@ -101,7 +101,7 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
 <header><div class="wrap">
   <nav class="crumb" aria-label="Lab versions"><a href="stay-or-go.html" aria-current="page">Stay or go?</a><a href="physician-pay-lab.html">Advanced lab</a></nav>
   <div class="header-top"><div><span class="project-label">Navy physician pay and pension</span><h1>Stay or go?</h1><p class="creator-credit">Created by James M. Day for a graduate school economics project.</p><p class="creator-contact">Contact: <span>jday6@hawaii.edu</span></p></div><nav class="creator-links" aria-label="Creator and project links"><a href="mailto:jday6@hawaii.edu">Email</a><a href="https://jmday033.github.io/James-Day/RESUME.html" target="_blank" rel="noopener noreferrer">CV</a><a href="https://www.linkedin.com/in/james-day-21103b169" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://github.com/jmday033/James-Day" target="_blank" rel="noopener noreferrer">Project repository</a></nav></div>
-  <p class="header-version" style="font-size:13px;color:#a9cede;margin-bottom:8px">Version 3.3 · Updated October 12, 2026 · 2026 pay, tax, and benefit data</p><p>Compare staying to 20 with civilian practice, or Navy with civilian residency after a GMO tour.</p>
+  <p class="header-version" style="font-size:13px;color:#a9cede;margin-bottom:8px">Version 3.4 · Updated October 12, 2026 · 2026 pay, tax, and benefit data</p><p>Compare staying to 20 with civilian practice, or Navy with civilian residency after a GMO tour.</p>
   <p class="views-note" role="note">Views are the author’s own and do not represent the U.S. Navy, the Department of Defense, or the U.S. government.</p>
 </div></header>
 
@@ -281,7 +281,7 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
   <details class="panel fold" id="goalsPanel"><summary><span class="fold-title">Does the difference change your plans?</span><span class="fold-chip" id="chipGoals"></span></summary><div class="fold-body">    <p class="caption" id="goalsLead" style="margin:0 0 10px"></p>
     <div class="goals" id="goals"></div>
     <div class="caption" id="goalsTiming" style="margin:10px 0 0"></div>
-    <details class="refine" style="margin-top:8px"><summary>Matching the pension by saving, by years already served</summary><div class="inner">
+    <details class="refine" style="margin-top:8px"><summary>Buying or saving to match the pension</summary><div class="inner">
       <div class="tablewrap"><table><thead><tr><th>Years in now</th><th>Years left to 20</th><th>Save each year</th></tr></thead><tbody id="saveRows"></tbody></table></div>
       <p class="caption" id="saveCaption"></p>
     </div></details>
@@ -349,7 +349,7 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
 <script>
 // One live version: if the server has a newer page than this saved copy,
 // reload it with a version tag so phone and browser caches are bypassed.
-(function(){var PAGE_VERSION="3.3";
+(function(){var PAGE_VERSION="3.4";
   try{fetch("version.json",{cache:"no-store"}).then(function(r){return r.json()}).then(function(d){
     if(!d||!d.version||d.version===PAGE_VERSION)return;
     var u=new URL(location.href);if(u.searchParams.get("v")===d.version)return;   // already tried once
@@ -511,7 +511,7 @@ function drawGoals(r){
   $('goals').innerHTML='<div class="metrics">'
     +tile('The difference',g.spendingYears!==null?yrs(g.spendingYears):short(g.value),g.spendingYears!==null?'of household spending':'today\'s dollars')
     +tile('Pension after tax',short(g.pensionNet)+'/yr','from age '+age+', for life')
-    +tile('To replace it',short(g.savingsPerYear)+'/yr','saved for '+r.years+' yrs')
+    +tile('To buy it',short(g.annuityPrice),'as an annuity at '+age)
     +'</div>'+(extra?'<ul class="caption" style="margin:10px 0 0;padding-left:18px;font-size:13.5px">'+extra+'</ul>':'<p class="caption" style="margin:8px 0 0">Add college, debt, or a second home under Refine → Your spending.</p>');
   $('goalsTiming').innerHTML='<b>The catch is timing.</b> '+(before>0?'Before 20, leaving brings in about '+short(before)+' more take-home pay; that is what pays for college or a house in the next few years. ':before<0?'Before 20, staying already brings in about '+short(-before)+' more take-home pay, so you give up no cash now. ':'')+'The pension is a paycheck, not a pile of cash: it helps you retire early or work less, not pay for things before '+age+'.';
   $('saveRows').innerHTML=g.savingsTable.map(t=>'<tr'+(t.current?' style="font-weight:650"':'')+'><td>'+t.yos+(t.current?' (you)':'')+'</td><td>'+t.yearsLeft+'</td><td>'+money(Math.round(t.perYear/1000)*1000)+'</td></tr>').join('');
