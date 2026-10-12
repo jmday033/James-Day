@@ -439,3 +439,7 @@ At the author's request, Claude (Anthropic) simplified the physician pay lab's l
 ## 2026-10-12 — Stay or go? "Your goals" renamed "Your spending"
 
 At the author's request, Claude (Anthropic) renamed the Refine section "Your goals" to "Your spending" on Stay or go?, updated the one hint that pointed to it, and reworded its intro to "household spending and big expenses." Labels only; no calculations changed. All test suites pass.
+
+## 2026-10-12 — Stay or go? adds USU medical-school credit (version 3.0)
+
+A reader asked for a USUHS modifier. At the author's request, Claude (Anthropic) added a "USU medical-school years" field (default 0, clamped 0–8) to Stay or go? and passed it to the existing engine's `usuYears` input. Following 10 U.S.C. 2114(b) and 2126, DoD FMR Vol 7B ch 1, and USU service-credit guidance, the years raise the active-duty retired-pay multiplier only. They do not change 20-year eligibility, basic-pay longevity, or cash rows. The pension-tax bracket estimate and the methods note now include them. The full lab's footer pointer to USU credit was removed, since the page now models it. Added USU tests; all test suites pass. On the default O-4 internist case (BRS), 4 USU years raise the gross annual pension from about $55,700 to $66,900. Not changed: the Reserve and VA buyback paths, where USU credit follows different rules.

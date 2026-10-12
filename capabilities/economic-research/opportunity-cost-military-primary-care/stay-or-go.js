@@ -157,7 +157,7 @@ export const defaults = {
   rbMode:'renew', obligationYears:0, postTwentyPenalty:.05, workUntilAge:65,
   employerRetirement:averages.employerRetirement, malpractice:0,
   reservePoints:77, reserveStartAge:60, reserveDaysMissed:10,
-  vaSalary:null, vaBuyback:true
+  vaSalary:null, vaBuyback:true, usuYears:0
 };
 
 // Remaining life expectancy (years) at a given age, from the embedded U.S. table.
@@ -185,6 +185,10 @@ export function stayOrGo(userInput, {stateData=null, lifeTable=null, bah=null} =
   const obligation = Math.max(0, Math.min(years, Math.floor(x.obligationYears || 0)));
   const bahMonthly = Number.isFinite(x.bahMonthly) ? x.bahMonthly : (bah?.monthly ?? 0);   // bah = bahFor(zip, rank, deps)
   const age = Number.isFinite(x.currentAge) ? x.currentAge : averages.ageAtServiceStart + yos;
+  // USU medical-student years: not counted toward the 20-year eligibility or
+  // basic-pay longevity, but added to the retired-pay multiplier once eligible
+  // (10 U.S.C. 2114(b), 2126; DoD FMR Vol 7B, ch 1). HPSP time earns no credit.
+  const usuYears = Number.isFinite(x.usuYears) ? Math.max(0, Math.min(8, x.usuYears)) : 0;
   const paymentYears = Number.isFinite(x.paymentYears) ? x.paymentYears : remainingYears(age + years, lifeTable);
 
   const cash = calculateScenario({rank:x.rank, commissionYear:2026 - yos, promotionOn:x.promotion,
@@ -238,10 +242,10 @@ export function stayOrGo(userInput, {stateData=null, lifeTable=null, bah=null} =
   const vaOffset = x.vaRating >= crdpThreshold ? 0 : va;
   // Pension tax: if not entered, use the federal bracket the pension would fall in
   // while the retiree works the civilian job after 20.
-  const grossPension = pensionBase*(isBrs?.02:.025)*20;
+  const grossPension = pensionBase*(isBrs?.02:.025)*(20 + usuYears);
   const pensionTax = Number.isFinite(x.pensionTax) ? x.pensionTax : marginalFederalRate(civ + grossPension, withSpouse);
   const pensionAt = (activeYears, age0) => pensionPresentValue({activeYears, additionalYears:20-activeYears,
-    retirement:x.retirement, pensionBase, currentAge:age0, paymentYears, pensionTax,
+    retirement:x.retirement, pensionBase, usuYears, currentAge:age0, paymentYears, pensionTax,
     discount:x.pensionRate, retireeHealthAnnual:retireeHealth, vaOffsetAnnual:vaOffset,
     sbp:x.sbp, survivorYears:x.survivorYears});
   const pensionValue = pensionAt(yos, age);
@@ -346,9 +350,9 @@ export function stayOrGo(userInput, {stateData=null, lifeTable=null, bah=null} =
     pension:buyback ? withBuyback : noBuyback,
     net:vaSalaryGap + (buyback ? withBuyback.value - depositValue : noBuyback.value)};
 
-  return {input:{...x, civilianSalary:civ, navyState, age, paymentYears, bahMonthly, insurance, pensionTax}, rows, years,
+  return {input:{...x, civilianSalary:civ, navyState, age, paymentYears, bahMonthly, insurance, pensionTax, usuYears}, rows, years,
     costOfStaying, afterTwentyCost, pensionValue, net, breakEven, path, obligation, decisionYos:yos + obligation, reserve, va:vaPath,
-    parts:{retireeHealth, va, vaOffset, pensionBase, annualPension:pensionBase*(isBrs?.02:.025)*20, rb, rbMode, postYears}};
+    parts:{retireeHealth, va, vaOffset, pensionBase, annualPension:grossPension, rb, rbMode, postYears}};
 }
 
 // ---------- what the difference buys ----------
