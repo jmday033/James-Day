@@ -71,7 +71,7 @@ export const specialtyTable = [
   // Doximity 2026 has no sports medicine row. MGMA 2025, Family Medicine: Sports
   // Medicine, U.S., non-academic, average total compensation (summary shared by a
   // Navy sports medicine physician, Oct. 12, 2026). No separate FY 2026 Navy rate.
-  ['Primary care','sportsmed','Sports medicine (primary care)',382000,43000,48000,'Navy family medicine rates assumed','MGMA 2025 non-academic average total compensation'],
+  ['Primary care','sportsmed','Sports medicine (primary care)',382000,43000,48000,'Navy family medicine rates assumed','reported MGMA 2025 figure, non-academic average total compensation'],
   ['Medicine subspecialties','cards','Cardiology',604635,69000,76000],
   ['Medicine subspecialties','gi','Gastroenterology',531345,54000,58000],
   ['Medicine subspecialties','pulm','Pulmonary/critical care',441472,60000,63000],
