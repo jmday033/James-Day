@@ -10,5 +10,5 @@ The two lab views load these files in the browser. The data are public reference
 
 The BAH file has one ZIP mapping per line so changes can be reviewed. On refresh, update the vintage label in both lab views, source notes, and any fixed paper scenario before publishing. Run `node tests/check-calculation-engine.mjs` and `node tests/check-special-pay-and-pension.mjs`; compare the fixed outputs before accepting a new rate year.
 
-The full lab's **Share lab** button sends only the fixed page URL. **Mark comparison complete** calls a third-party counter endpoint with a counter key; no form inputs are placed in that request. Browser session storage remembers that a comparison was counted in that session. The counter is an activity count, not a count of unique people or favorable career outcomes.
+The full lab's **Share lab** button sends only the fixed page URL. Stay or go? and the full lab count page views with GoatCounter (jmday033.goatcounter.com), a cookie-free counter. It receives the page address, referring site, and standard network metadata, never form inputs. Counts are visible only to the site owner.
 
