@@ -105,6 +105,29 @@ export function calculateScenario(input) {
     grossGap:rows[0].grossGap, adjustedGap:rows[0].gap};
 }
 
+// Household spending. Only the part of a pay gap that is saved becomes a wealth
+// difference. `extraSpendShare` is the share of the civilian path's extra
+// current take-home value that the household spends (lifestyle creep, a
+// marginal propensity to consume). The pension annual equivalent is excluded
+// from that spendable amount because it is not paid while working.
+// The break-even is the constant extra amount the civilian household could
+// spend each year before the Navy path comes out ahead: pv / annuity.
+export function spendingAdjustment({rows, discount, pensionAnnual=0, extraSpendShare=0, annualSpending=0}) {
+  if (!Number.isFinite(extraSpendShare) || extraSpendShare < 0 || extraSpendShare > 1) throw new RangeError('Share of extra pay spent must be 0–100%');
+  if (!Number.isFinite(annualSpending) || annualSpending < 0) throw new RangeError('Household spending cannot be negative');
+  let pv = 0, savedPv = 0, extraSpendingPv = 0, annuity = 0;
+  rows.forEach((row, i) => {
+    const factor = 1 / Math.pow(1 + discount, i + 1);
+    const extraSpending = extraSpendShare * Math.max(0, row.gap + pensionAnnual);
+    pv += row.gap * factor;
+    extraSpendingPv += extraSpending * factor;
+    savedPv += (row.gap - extraSpending) * factor;
+    annuity += factor;
+  });
+  return {savedPv, extraSpendingPv, breakEvenExtraSpending: pv / annuity,
+    yearsOfSpending: annualSpending > 0 ? savedPv / annualSpending : null};
+}
+
 export function annualPension({pensionBase, creditableYears, retirement='brs'}) {
   return pensionBase * (retirement === 'brs' ? 0.02 : 0.025) * creditableYears;
 }

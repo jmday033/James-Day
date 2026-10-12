@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
-import {bahFor,calculateScenario,loadReferenceData,payFor,pensionPresentValue} from '../calc-engine.js';
+import {bahFor,calculateScenario,loadReferenceData,payFor,pensionPresentValue,spendingAdjustment} from '../calc-engine.js';
 
 // Load the published JSON in Node, using the same URL paths as the browser.
 globalThis.fetch=async url=>({ok:true,json:async()=>JSON.parse(await fs.readFile(url,'utf8'))});
@@ -71,4 +71,27 @@ console.log('Conditional pension career-stage checks passed');
   assert.ok(Math.abs((noBonus.pv-costs.pv)-(20000/1.05+5000*noBonus.annuity))<.01);
   assert.throws(()=>calculateScenario({...shared,civilianFirstYearShare:.3}),RangeError);
   console.log('Continuation-pay, ramp-up, and transition-cost checks passed');
+}
+
+{
+  // Household spending: saving all extra pay leaves the present value unchanged;
+  // spending half of the civilian path's extra take-home value halves it when
+  // there is no pension; the break-even extra spending is the annual equivalent.
+  const none=spendingAdjustment({rows:noBonus.rows,discount:.05,annualSpending:120000});
+  assert.ok(Math.abs(none.savedPv-noBonus.pv)<.01);
+  assert.ok(Math.abs(none.breakEvenExtraSpending-noBonus.annualGap)<.01);
+  assert.ok(Math.abs(none.yearsOfSpending-noBonus.pv/120000)<1e-9);
+  const half=spendingAdjustment({rows:noBonus.rows,discount:.05,extraSpendShare:.5});
+  assert.ok(Math.abs(half.savedPv-noBonus.pv/2)<.01);
+  assert.equal(half.yearsOfSpending,null);
+  // The pension annual equivalent is not spendable while working.
+  const pensioned=calculateScenario({...shared,pensionAnnual:30000});
+  const p=spendingAdjustment({rows:pensioned.rows,discount:.05,pensionAnnual:30000,extraSpendShare:.5});
+  assert.ok(Math.abs(p.savedPv-(pensioned.pv-.5*(pensioned.pv+30000*pensioned.annuity)))<.01);
+  // Navy ahead: no extra civilian spending is modeled.
+  const navyAhead=calculateScenario({...shared,civilianSalary:100000});
+  const n=spendingAdjustment({rows:navyAhead.rows,discount:.05,extraSpendShare:.5});
+  assert.ok(Math.abs(n.savedPv-navyAhead.pv)<.01);
+  assert.throws(()=>spendingAdjustment({rows:noBonus.rows,discount:.05,extraSpendShare:1.5}),RangeError);
+  console.log('Household spending checks passed');
 }
