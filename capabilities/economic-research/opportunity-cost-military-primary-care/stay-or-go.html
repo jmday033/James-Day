@@ -101,7 +101,7 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
 <header><div class="wrap">
   <nav class="crumb" aria-label="Lab versions"><a href="stay-or-go.html" aria-current="page">Stay or go?</a><a href="physician-pay-lab.html">Advanced lab</a></nav>
   <div class="header-top"><div><span class="project-label">Navy physician pay and pension</span><h1>Stay or go?</h1><p class="creator-credit">Created by James M. Day for a graduate school economics project.</p><p class="creator-contact">Contact: <span>jday6@hawaii.edu</span></p></div><nav class="creator-links" aria-label="Creator and project links"><a href="mailto:jday6@hawaii.edu">Email</a><a href="https://jmday033.github.io/James-Day/RESUME.html" target="_blank" rel="noopener noreferrer">CV</a><a href="https://www.linkedin.com/in/james-day-21103b169" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://github.com/jmday033/James-Day" target="_blank" rel="noopener noreferrer">Project repository</a></nav></div>
-  <p class="header-version" style="font-size:13px;color:#a9cede;margin-bottom:8px">Version 3.4 · Updated October 12, 2026 · 2026 pay, tax, and benefit data</p><p>Compare staying to 20 with civilian practice, or Navy with civilian residency after a GMO tour.</p>
+  <p class="header-version" style="font-size:13px;color:#a9cede;margin-bottom:8px">Version 3.5 · Updated October 12, 2026 · 2026 pay, tax, and benefit data</p><p>Compare staying to 20 with civilian practice, or Navy with civilian residency after a GMO tour.</p>
   <p class="views-note" role="note">Views are the author’s own and do not represent the U.S. Navy, the Department of Defense, or the U.S. government.</p>
 </div></header>
 
@@ -121,6 +121,7 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
     <div class="field"><label for="rank">Current rank</label><select id="rank" required><option value="" selected>Choose rank…</option><option value="O4">O-4</option><option value="O5">O-5</option><option value="O6">O-6</option></select></div>
     <div class="field"><label for="promotion">Expect promotion?</label><select id="promotion"><option value="yes">Yes, on time</option><option value="no">No</option></select></div>
   </div>
+  <div class="field" id="yearsAtRankField"><label for="yearsAtRank">Years left at current rank (optional)</label><input id="yearsAtRank" type="number" inputmode="numeric" min="1" max="10" step="1" placeholder="On time"><small id="yearsAtRankNote">From your date of rank. Blank uses on-time promotion: O-5 at 15 and O-6 at 21 years of service. If set, the next promotion comes then and the one after 6 years later.</small></div>
   <div class="field"><label for="salarySource">Civilian salary</label>
     <select id="salarySource"><option value="national">National average (Doximity 2026)</option><option value="sandiego">San Diego average (Marit 2026, primary care)</option><option value="own">My own offer</option></select>
     <input id="civilianSalary" type="number" min="0" step="1000" style="margin-top:8px" placeholder="Pick a specialty, or type an offer" aria-label="Annual civilian salary in dollars">
@@ -349,7 +350,7 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
 <script>
 // One live version: if the server has a newer page than this saved copy,
 // reload it with a version tag so phone and browser caches are bypassed.
-(function(){var PAGE_VERSION="3.4";
+(function(){var PAGE_VERSION="3.5";
   try{fetch("version.json",{cache:"no-store"}).then(function(r){return r.json()}).then(function(d){
     if(!d||!d.version||d.version===PAGE_VERSION)return;
     var u=new URL(location.href);if(u.searchParams.get("v")===d.version)return;   // already tried once
@@ -385,7 +386,7 @@ function syncSalary(){const sp=$('specialty').value;if(!sp){if($('salarySource')
 
 function readInput(){
   const family=$('family').value,zip=$('zip').value.trim();
-  return {yos:Math.round(num('yos',NaN)),specialty:$('specialty').value,rank:$('rank').value,promotion:$('promotion').value==='yes',
+  return {yos:Math.round(num('yos',NaN)),specialty:$('specialty').value,rank:$('rank').value,promotion:$('promotion').value==='yes',yearsAtRank:$('yearsAtRank').value===''?null:Math.max(1,Math.round(num('yearsAtRank'))),
     salarySource:$('salarySource').value,civilianSalary:num('civilianSalary',NaN),family,kids:Math.max(0,Math.round(num('kids'))),
     spouseWages:num('spouseWages',65000),zip,civilianState:$('civilianState').value,navyState:$('navyState').value,
     rbMode:$('rbMode').value,obligationYears:Math.max(0,Math.round(num('obligationYears',0))),postTwentyPenalty:Math.min(.5,Math.max(0,num('postTwentyPenalty',5)/100)),workUntilAge:num('workUntilAge',65),continuationPay:$('continuationPay').checked,retirement:$('retirement').value,
@@ -411,6 +412,7 @@ function renderGmo(){
 }
 function update(){
   syncChips();
+  $('yearsAtRankField').hidden=$('promotion').value!=='yes'||$('rank').value==='O6';
   if(!ready)return;
   const decision=$('decision').value;
   $('attendingInputs').hidden=decision!=='attending';$('attendingResults').hidden=decision!=='attending';
@@ -555,6 +557,7 @@ document.querySelectorAll('[data-spec]').forEach(b=>b.addEventListener('click',(
 document.querySelectorAll('[data-zip]').forEach(b=>b.addEventListener('click',()=>{$('zip').value=b.dataset.zip;if(!$('civilianState').value)$('civilianState').value=b.dataset.state;update()}));
 document.querySelectorAll('[data-preset]').forEach(btn=>btn.addEventListener('click',()=>{
   const p=JSON.parse(btn.dataset.preset);
+  $('yearsAtRank').value='';
   $('yos').value=p.yos;$('specialty').value=p.specialty;$('rank').value=p.rank;$('promotion').value=p.promotion?'yes':'no';
   $('salarySource').value=p.salarySource;$('family').value=p.family;$('kids').value=p.kids;$('zip').value=p.zip;if(p.civilianState)$('civilianState').value=p.civilianState;syncSalary();update();
 }));

@@ -95,3 +95,16 @@ console.log('Conditional pension career-stage checks passed');
   assert.throws(()=>spendingAdjustment({rows:noBonus.rows,discount:.05,extraSpendShare:1.5}),RangeError);
   console.log('Household spending checks passed');
 }
+
+// Years left at current rank (date-of-rank option).
+{
+  const {gradeForYear}=await import('../calc-engine.js');
+  const g=n=>Array.from({length:12},(_,i)=>gradeForYear({rank:'O4',commissionYear:2016,promotionOn:true,nextPromotionIn:n},i));
+  // 3 years left as O-4: rows 2027-2028 at O-4, O-5 from 2029, O-6 six years later (2035).
+  assert.deepEqual(g(3).slice(0,9),['O4','O4','O5','O5','O5','O5','O5','O5','O6']);
+  // Blank keeps the on-time schedule: 10 years in, O-5 at 15 (row 4), O-6 at 21 (row 10).
+  assert.deepEqual(g(null).slice(0,11),['O4','O4','O4','O4','O5','O5','O5','O5','O5','O5','O6']);
+  assert.equal(gradeForYear({rank:'O4',commissionYear:2016,promotionOn:false,nextPromotionIn:3},5),'O4');
+  assert.equal(gradeForYear({rank:'O6',commissionYear:2000,promotionOn:true,nextPromotionIn:1},3),'O6');
+  console.log('years-at-rank checks passed');
+}
