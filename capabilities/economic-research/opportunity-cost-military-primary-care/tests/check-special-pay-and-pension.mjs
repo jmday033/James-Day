@@ -72,3 +72,23 @@ assert.equal(retireeTricareValue({mode:'none'}), 0);
   near(va.pv-noVa.pv, vaAnnualFor(60,true)*noVa.annuity, .01);
 }
 console.log('VA, retiree TRICARE, and SBP checks passed');
+
+// Leave-path VA (FERS) pension with military buyback (added 2026-10-13).
+import {fersLeavePathValue} from '../calc-engine.js';
+const f0={vaStartAge:40,currentAge:40,high3:315000,pensionRate:.03,cashRate:.05,inflation:.025,pensionTax:.22,paymentYearsAt:()=>25};
+// 5 VA + 4 academy + 5 active = 14 creditable years: deferred to 62, 1.0%.
+const fa=fersLeavePathValue({...f0,vaYears:5,academyYears:4,activeYearsCredited:5,deposit:9300});
+assert.equal(fa.creditYears,14); assert.equal(fa.startAge,62); assert.equal(fa.multiplier,.01);
+near(fa.annualAtSeparation,44100); near(fa.annualAtStart,44100/Math.pow(1.025,17));
+// Deferred annuity loses real value between leaving the VA and payment start.
+assert.ok(fa.annualAtStart<fa.annualAtSeparation);
+// 20 creditable years moves the start to 60.
+const fb=fersLeavePathValue({...f0,vaYears:11,academyYears:4,activeYearsCredited:5});
+assert.equal(fb.creditYears,20); assert.equal(fb.startAge,60);
+// Fewer than five VA years: no annuity, only FERS employee contributions as a cost.
+const fc=fersLeavePathValue({...f0,vaYears:4,academyYears:4,activeYearsCredited:10});
+assert.equal(fc.vested,false); assert.equal(fc.pensionValue,0); assert.ok(fc.net<0);
+// Leaving at 62+ with 20 years earns the 1.1% multiplier at once.
+const fd=fersLeavePathValue({...f0,vaStartAge:52,vaYears:10,activeYearsCredited:10});
+assert.equal(fd.startAge,62); assert.equal(fd.multiplier,.011); near(fd.annualAtStart,fd.annualAtSeparation);
+console.log('FERS leave-path checks passed');

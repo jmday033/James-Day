@@ -228,6 +228,50 @@ export function pensionPresentValue({activeYears, additionalYears, retirement='b
   return atRetirement / Math.pow(1+discount,additionalYears);
 }
 
+// Leave-path VA (FERS) pension with a military service deposit, valued today.
+// Can be combined with a Reserve (non-regular, chapter 1223) pension: 5 U.S.C.
+// 8411(c)(2)(B) lets the same active-duty years count toward FERS while chapter
+// 1223 retired pay is drawn, provided the 3% deposit is paid (8411(c)(1)).
+// Active (regular) retired pay bars the credit, so this applies only on the
+// leave path. Rules (OPM FERS): five years of civilian service vest the
+// annuity; bought-back military years do not count toward the five. Start age:
+// at separation if 62+, MRA (57) with 30 creditable years, 60 with 20, else
+// deferred to 62. MRA+10 reduced annuity is not modeled. Multiplier 1.1% only
+// when leaving at 62+ with 20 years. A deferred annuity is fixed in dollars at
+// separation, so `inflation` erodes it until payments begin; afterward the
+// FERS "diet COLA" trails CPI by about 0.5% a year. FERS-FRAE (4.4%) is an
+// after-tax employee cost during VA years; basis recovery on the annuity is
+// ignored, which slightly understates its after-tax value. Money inputs are
+// today's dollars; `high3` is VA base plus market pay (market pay counts).
+export const fersRules = {vestYears:5, mra:57, frae:.044, colaGap:.005, depositRate:.03};
+export function fersLeavePathValue({vaYears, vaStartAge, currentAge, high3, academyYears=0,
+  activeYearsCredited=0, deposit=0, payGapAnnual=0, inflation=0.025, pensionTax=0.22,
+  pensionRate=defaultPensionDiscount, cashRate=0.05, paymentYearsAt=()=>25}) {
+  for (const [k,v] of Object.entries({vaYears, vaStartAge, currentAge, high3, academyYears, activeYearsCredited, deposit, payGapAnnual, inflation}))
+    if (!Number.isFinite(v) || (k !== 'payGapAnnual' && v < 0)) throw new RangeError('Invalid FERS input: ' + k);
+  if (vaStartAge < currentAge) throw new RangeError('VA start age cannot precede current age');
+  const factor = (r,n) => n <= 0 ? 0 : r === 0 ? n : (1-Math.pow(1+r,-n))/r;
+  const creditYears = vaYears + academyYears + activeYearsCredited;
+  const sepAge = vaStartAge + vaYears;
+  const toVa = Math.pow(1+cashRate, vaStartAge - currentAge);
+  const fraeValue = fersRules.frae*high3*factor(cashRate, vaYears)/toVa;
+  const payGapValue = payGapAnnual*factor(cashRate, vaYears)/toVa;
+  if (vaYears < fersRules.vestYears) return {vested:false, creditYears, sepAge, startAge:null, multiplier:0,
+    annualAtSeparation:0, annualAtStart:0, payYears:0, pensionValue:0, depositValue:0, fraeValue, payGapValue,
+    net:-fraeValue - payGapValue};
+  const startAge = sepAge >= 62 ? sepAge : creditYears >= 30 ? Math.max(sepAge, fersRules.mra)
+    : creditYears >= 20 ? Math.max(sepAge, 60) : 62;
+  const multiplier = sepAge >= 62 && creditYears >= 20 ? .011 : .010;
+  const annualAtSeparation = multiplier*creditYears*high3;
+  const annualAtStart = annualAtSeparation/Math.pow(1+inflation, startAge - sepAge);
+  const payYears = Math.max(1, paymentYearsAt(startAge));
+  const eroded = (1+pensionRate)*(1+fersRules.colaGap) - 1;
+  const pensionValue = annualAtStart*(1-pensionTax)*factor(eroded, payYears)/Math.pow(1+pensionRate, startAge - currentAge);
+  const depositValue = deposit/toVa;            // paid in the first VA year, before interest accrues
+  return {vested:true, creditYears, sepAge, startAge, multiplier, annualAtSeparation, annualAtStart, payYears,
+    pensionValue, depositValue, fraeValue, payGapValue, net:pensionValue - depositValue - fraeValue - payGapValue};
+}
+
 // Stay-to-20 break-even view: at each active year of service from `fromYos`
 // to 19, compare the pension value preserved by staying (pension rate) with the
 // present value of the civilian-minus-Navy cash gap still to be forgone before
