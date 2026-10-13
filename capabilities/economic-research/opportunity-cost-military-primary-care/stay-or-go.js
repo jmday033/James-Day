@@ -54,100 +54,123 @@ export function wageTax(wages, {family, kids=0, spouseWages=0, stateCode, stateD
 }
 
 // ---------- all specialties ----------
-// civ: Doximity 2026 national average compensation unless the row names
-// another source (src). ip / rb4: FY 2026 Navy
-// Medical Corps incentive pay and 4-year retention bonus (annual), DFAS table.
-// cat: Navy subspecialty category where the specialty has no row of its own;
-// category membership follows BUMED's published descriptions (Cat III: allergy,
-// immunology, nephrology, hematology/oncology; Cat IV: other IM/peds
-// subspecialties). Surgical subspecialties are assumed to be Category I.
-// FY 2026 DFAS Medical Corps rows (IP; 4-year RB): Category I 72,000/110,000;
-// II 51,000/32,000; III and IV 46,000/48,000; V 66,000/55,000; Residency in
-// Aerospace Medicine (RAM) 43,000/45,000. DoD notes: Category I = general-surgery
-// subspecialties (incl. colorectal, surgical oncology, transplant, trauma/critical
-// care, fellowship-trained orthopedics); II = internal medicine and nuclear
-// medicine; V = ophthalmology, otolaryngology, OB/GYN and urology subspecialties.
-const I={ip:72000,rb4:110000}, II={ip:51000,rb4:32000}, III={ip:46000,rb4:48000}, IV={ip:46000,rb4:48000},
-  V={ip:66000,rb4:55000}, RAM={ip:43000,rb4:45000};
+// civ: Doximity 2026 national average compensation unless the row names another
+// source (src). Navy pay: FY 2027 Navy Active Component Medical Corps Special Pay
+// Guidance (BUMED, announced by NAVADMIN 233/26), Table 2. Each rate is
+// [incentive pay, RB 2-year, 3-year, 4-year, 6-year] in annual dollars; null =
+// no RB at that length. ip / rb4 below are the IP and 4-year RB.
+// Table 2 notes: Category I = general surgery or cardiothoracic, colon-rectal,
+// oncology, pediatric, plastic, organ transplant, trauma/critical care, vascular
+// surgery, and fellowship-trained orthopedics; II = internal medicine nuclear
+// medicine physicians only; III = internal medicine/pediatric fellowship
+// subspecialties not listed separately; IV = family medicine fellowships;
+// V = ophthalmology, otolaryngology, OB/GYN, and urology fellowships.
+const rate = (ip, rb2, rb3, rb4, rb6, extra={}) => ({ip, rb:{'2':rb2,'3':rb3,'4':rb4,'6':rb6}, ...extra});
+export const fy27Rates = {
+  ram:rate(43000,25000,35000,50000,70000), anes:rate(66000,40000,55000,105000,125000),
+  cards:rate(69000,26000,39000,76000,95000), critcare:rate(60000,27000,37000,63000,78000),
+  derm:rate(48000,17000,25000,43000,60000), em:rate(54000,26000,39000,76000,95000),
+  fm:rate(43000,20000,28000,48000,60000), gi:rate(54000,25000,36000,58000,68000),
+  im:rate(43000,20000,28000,48000,60000), gensurg:rate(66000,50000,65000,105000,125000),
+  obgyn:rate(60000,20000,30000,46000,58000), neonat:rate(50000,24000,34000,63000,78000),
+  neuro:rate(48000,13000,19000,30000,40000),
+  // Neurosurgery IP rises to $102,000 under a 4-year RB and $120,000 under a 6-year RB.
+  neurosurg:rate(75000,75000,100000,150000,150000,{ipWithRb:{'4':102000,'6':120000}}),
+  ophtho:rate(54000,20000,25000,37000,50000), ortho:rate(66000,50000,65000,105000,125000),
+  ent:rate(60000,25000,35000,48000,65000), path:rate(54000,15000,20000,35000,40000),
+  peds:rate(43000,15000,25000,35000,40000), pmr:rate(43000,12000,13000,20000,null),
+  prevocc:rate(43000,15000,30000,35000,40000), psych:rate(48000,19000,31000,65000,85000),
+  pulm:rate(60000,27000,37000,63000,78000), rads:rate(66000,34000,49000,76000,null),
+  uro:rate(60000,20000,30000,55000,65000),
+  I:rate(72000,50000,65000,110000,130000), II:rate(51000,12000,18000,32000,null),
+  III:rate(46000,20000,28000,48000,60000), IV:rate(46000,20000,28000,48000,60000),
+  V:rate(66000,26000,36000,55000,70000)
+};
+// FY 2026 4-year RB where it differed from FY 2027, for agreements signed under FY26.
+export const fy26Rb4 = {pmr:30000, aeromed:45000};
+const R = fy27Rates;
 // Civilian stand-in where Doximity 2026 publishes no row for the subspecialty.
 const proxy = parent => 'Proxy: Doximity 2026 '+parent+' average (no published figure for this subspecialty)';
 export const specialtyTable = [
-  // group, key, label, civilian, ip, rb4, note
-  ['Primary care','im','Internal medicine',339274,43000,48000],
-  ['Primary care','fm','Family medicine',325040,43000,48000],
-  ['Primary care','peds','Pediatrics',273665,43000,35000],
-  ['Primary care','medpeds','Medicine–pediatrics',319995,43000,48000,'Navy internal medicine rates assumed'],
+  // group, key, label, civilian, Navy rate, note, civilian source
+  ['Primary care','im','Internal medicine',339274,R.im],
+  ['Primary care','fm','Family medicine',325040,R.fm],
+  ['Primary care','peds','Pediatrics',273665,R.peds],
+  ['Primary care','medpeds','Medicine–pediatrics',319995,R.im,'Navy internal medicine rates assumed'],
   // Doximity 2026 has no sports medicine row. MGMA 2025, Family Medicine: Sports
   // Medicine, U.S., non-academic, average total compensation (summary shared by a
-  // Navy sports medicine physician, Oct. 12, 2026). No separate FY 2026 Navy rate.
-  ['Primary care','sportsmed','Sports medicine (primary care)',382000,43000,48000,'Navy family medicine rates assumed','reported MGMA 2025 figure, non-academic average total compensation'],
-  ['Medicine subspecialties','cards','Cardiology',604635,69000,76000],
-  ['Medicine subspecialties','gi','Gastroenterology',531345,54000,58000],
-  ['Medicine subspecialties','pulm','Pulmonary/critical care',441472,60000,63000],
-  ['Medicine subspecialties','hemonc','Hematology/oncology',519715,III.ip,III.rb4,'Civilian: Doximity oncology; Navy subspecialty Category III'],
-  ['Medicine subspecialties','nephro','Nephrology',385965,III.ip,III.rb4,'Navy subspecialty Category III'],
-  ['Medicine subspecialties','allergy','Allergy and immunology',335978,III.ip,III.rb4,'Navy subspecialty Category III'],
-  ['Medicine subspecialties','id','Infectious disease',337353,IV.ip,IV.rb4,'Navy subspecialty Category IV'],
-  ['Medicine subspecialties','rheum','Rheumatology',321778,IV.ip,IV.rb4,'Navy subspecialty Category IV'],
-  ['Medicine subspecialties','endo','Endocrinology',309782,IV.ip,IV.rb4,'Navy subspecialty Category IV'],
-  ['Medicine subspecialties','geri','Geriatrics',304411,IV.ip,IV.rb4,'Navy subspecialty Category IV'],
-  ['Hospital-based','em','Emergency medicine',423723,54000,76000],
-  ['Hospital-based','anes','Anesthesiology',557131,66000,105000],
-  ['Hospital-based','rads','Radiology (diagnostic)',609684,66000,76000],
-  ['Hospital-based','ir','Interventional radiology',634658,66000,76000,'Navy radiology rates assumed'],
-  ['Hospital-based','radonc','Radiation oncology',613837,66000,76000,'Navy radiology (therapeutic) rates'],
-  ['Hospital-based','path','Pathology',410039,48000,35000],
-  ['Hospital-based','nucmed','Nuclear medicine',609684,II.ip,II.rb4,'Navy subspecialty Category II; no FY26 retention bonus at 6 years',proxy('radiology')+'; likely overstates nuclear medicine pay'],
-  ['Surgery','gensurg','General surgery',501003,66000,105000],
-  ['Surgery','ortho','Orthopedic surgery',696852,66000,105000],
-  ['Surgery','neurosurg','Neurosurgery',829161,75000,150000],
-  ['Surgery','ent','Otolaryngology (ENT)',549810,60000,48000],
-  ['Surgery','uro','Urology',566740,60000,55000],
-  ['Surgery','ophtho','Ophthalmology',487438,54000,37000],
-  ['Surgery','obgyn','Obstetrics and gynecology',420859,60000,46000],
-  ['Surgery','thoracic','Cardiothoracic surgery',749707,I.ip,I.rb4,'Assumed Navy subspecialty Category I; confirm with BUMED'],
-  ['Surgery','vascular','Vascular surgery',600520,I.ip,I.rb4,'Assumed Navy subspecialty Category I; confirm with BUMED'],
-  ['Surgery','plastics','Plastic surgery',625757,I.ip,I.rb4,'Assumed Navy subspecialty Category I; confirm with BUMED'],
-  ['Surgery','pedsurg','Pediatric surgery',627126,I.ip,I.rb4,'Assumed Navy subspecialty Category I; confirm with BUMED'],
-  ['Surgery','colorectal','Colon and rectal surgery',492802,I.ip,I.rb4,'Navy subspecialty Category I'],
-  ['Surgery','surgonc','Surgical oncology',501003,I.ip,I.rb4,'Navy subspecialty Category I',proxy('general surgery')],
-  ['Surgery','transplant','Transplant surgery',501003,I.ip,I.rb4,'Navy subspecialty Category I',proxy('general surgery')],
-  ['Surgery','trauma','Trauma/surgical critical care',501003,I.ip,I.rb4,'Navy subspecialty Category I',proxy('general surgery')],
-  ['Surgery','orthofellow','Orthopedic surgery (fellowship-trained)',696852,I.ip,I.rb4,'Navy subspecialty Category I',proxy('orthopaedic surgery')],
-  ['Surgery','ophthosub','Ophthalmology subspecialty (fellowship-trained)',487438,V.ip,V.rb4,'Navy subspecialty Category V',proxy('ophthalmology')],
-  ['Surgery','entsub','Otolaryngology subspecialty (fellowship-trained)',549810,V.ip,V.rb4,'Navy subspecialty Category V',proxy('otolaryngology')],
-  ['Surgery','obgynsub','OB/GYN subspecialty (MFM, gyn onc, REI, urogyn)',420859,V.ip,V.rb4,'Navy subspecialty Category V',proxy('OB/GYN')],
-  ['Surgery','urosub','Urology subspecialty (fellowship-trained)',566740,V.ip,V.rb4,'Navy subspecialty Category V',proxy('urology')],
-  ['Other adult specialties','derm','Dermatology',497509,48000,43000],
-  ['Other adult specialties','neuro','Neurology',371087,48000,30000],
-  ['Other adult specialties','psych','Psychiatry',350786,48000,65000],
-  ['Other adult specialties','pmr','Physical medicine and rehabilitation',376234,43000,30000],
-  ['Other adult specialties','occmed','Occupational medicine',329380,43000,35000],
-  ['Other adult specialties','prevmed','Preventive medicine',265825,43000,35000],
-  ['Other adult specialties','aeromed','Aerospace medicine (RAM)',329380,RAM.ip,RAM.rb4,'Navy Residency in Aerospace Medicine rates',proxy('occupational medicine')],
-  ['Other adult specialties','genetics','Medical genetics',273826,III.ip,III.rb4,'Assumed Navy subspecialty Category III; confirm with BUMED'],
-  ['Pediatric subspecialties','neonat','Neonatology',364388,50000,63000],
-  ['Pediatric subspecialties','pedcards','Pediatric cardiology',365395,69000,76000],
-  ['Pediatric subspecialties','pedem','Pediatric emergency medicine',332579,54000,76000,'Navy emergency medicine rates assumed'],
-  ['Pediatric subspecialties','childneuro','Child neurology',309593,48000,30000],
-  ['Pediatric subspecialties','pedgi','Pediatric gastroenterology',311433,54000,58000],
-  ['Pediatric subspecialties','pedpulm','Pediatric pulmonology',278452,60000,63000],
-  ['Pediatric subspecialties','pedhemonc','Pediatric hematology/oncology',271021,III.ip,III.rb4,'Navy subspecialty Category III'],
-  ['Pediatric subspecialties','pednephro','Pediatric nephrology',269825,III.ip,III.rb4,'Navy subspecialty Category III'],
-  ['Pediatric subspecialties','pedendo','Pediatric endocrinology',242274,IV.ip,IV.rb4,'Navy subspecialty Category IV'],
-  ['Pediatric subspecialties','pedid','Pediatric infectious disease',217819,IV.ip,IV.rb4,'Navy subspecialty Category IV'],
-  ['Pediatric subspecialties','pedrheum','Pediatric rheumatology',236011,IV.ip,IV.rb4,'Navy subspecialty Category IV']
-].map(([group,key,label,civ,ip,rb4,note,src]) => ({group,key,label,civ,ip,rb4,note:note||'',src:src||'Doximity 2026 national average'}));
+  // Navy sports medicine physician, Oct. 12, 2026).
+  ['Primary care','sportsmed','Sports medicine (primary care)',382000,R.IV,'Navy subspecialty Category IV (family medicine fellowship)','reported MGMA 2025 figure, non-academic average total compensation'],
+  ['Medicine subspecialties','cards','Cardiology',604635,R.cards],
+  ['Medicine subspecialties','gi','Gastroenterology',531345,R.gi],
+  ['Medicine subspecialties','pulm','Pulmonary/critical care',441472,R.pulm],
+  ['Medicine subspecialties','critcare','Critical care medicine',441472,R.critcare,'Navy critical care rates',proxy('pulmonology')],
+  ['Medicine subspecialties','hemonc','Hematology/oncology',519715,R.III,'Civilian: Doximity oncology; Navy subspecialty Category III'],
+  ['Medicine subspecialties','nephro','Nephrology',385965,R.III,'Navy subspecialty Category III'],
+  ['Medicine subspecialties','allergy','Allergy and immunology',335978,R.III,'Navy subspecialty Category III'],
+  ['Medicine subspecialties','id','Infectious disease',337353,R.III,'Navy subspecialty Category III'],
+  ['Medicine subspecialties','rheum','Rheumatology',321778,R.III,'Navy subspecialty Category III'],
+  ['Medicine subspecialties','endo','Endocrinology',309782,R.III,'Navy subspecialty Category III'],
+  ['Medicine subspecialties','geri','Geriatrics',304411,R.III,'Navy subspecialty Category III'],
+  ['Hospital-based','em','Emergency medicine',423723,R.em],
+  ['Hospital-based','anes','Anesthesiology',557131,R.anes],
+  ['Hospital-based','rads','Radiology (diagnostic)',609684,R.rads],
+  ['Hospital-based','ir','Interventional radiology',634658,R.rads,'Navy radiology rates'],
+  ['Hospital-based','radonc','Radiation oncology',613837,R.rads,'Navy radiology (oncology) rates'],
+  ['Hospital-based','path','Pathology',410039,R.path],
+  ['Hospital-based','nucmed','Nuclear medicine',609684,R.II,'Navy subspecialty Category II (internal medicine nuclear medicine physicians only)',proxy('radiology')+'; likely overstates nuclear medicine pay'],
+  ['Surgery','gensurg','General surgery',501003,R.gensurg],
+  ['Surgery','ortho','Orthopedic surgery',696852,R.ortho],
+  ['Surgery','orthofellow','Orthopedic surgery (fellowship-trained)',696852,R.I,'Navy subspecialty Category I',proxy('orthopaedic surgery')],
+  ['Surgery','neurosurg','Neurosurgery',829161,R.neurosurg,'Incentive pay is $102,000 under a 4-year bonus and $120,000 under a 6-year bonus'],
+  ['Surgery','thoracic','Cardiothoracic surgery',749707,R.I,'Navy subspecialty Category I'],
+  ['Surgery','vascular','Vascular surgery',600520,R.I,'Navy subspecialty Category I'],
+  ['Surgery','plastics','Plastic surgery',625757,R.I,'Navy subspecialty Category I'],
+  ['Surgery','pedsurg','Pediatric surgery',627126,R.I,'Navy subspecialty Category I'],
+  ['Surgery','colorectal','Colon and rectal surgery',492802,R.I,'Navy subspecialty Category I'],
+  ['Surgery','surgonc','Surgical oncology',501003,R.I,'Navy subspecialty Category I',proxy('general surgery')],
+  ['Surgery','transplant','Transplant surgery',501003,R.I,'Navy subspecialty Category I',proxy('general surgery')],
+  ['Surgery','trauma','Trauma/surgical critical care',501003,R.I,'Navy subspecialty Category I',proxy('general surgery')],
+  ['Surgery','ent','Otolaryngology (ENT)',549810,R.ent],
+  ['Surgery','entsub','Otolaryngology subspecialty (fellowship-trained)',549810,R.V,'Navy subspecialty Category V',proxy('otolaryngology')],
+  ['Surgery','uro','Urology',566740,R.uro],
+  ['Surgery','urosub','Urology subspecialty (fellowship-trained)',566740,R.V,'Navy subspecialty Category V',proxy('urology')],
+  ['Surgery','ophtho','Ophthalmology',487438,R.ophtho],
+  ['Surgery','ophthosub','Ophthalmology subspecialty (fellowship-trained)',487438,R.V,'Navy subspecialty Category V',proxy('ophthalmology')],
+  ['Surgery','obgyn','Obstetrics and gynecology',420859,R.obgyn],
+  ['Surgery','obgynsub','OB/GYN subspecialty (MFM, gyn onc, REI, urogyn)',420859,R.V,'Navy subspecialty Category V',proxy('OB/GYN')],
+  ['Other adult specialties','derm','Dermatology',497509,R.derm],
+  ['Other adult specialties','neuro','Neurology',371087,R.neuro],
+  ['Other adult specialties','psych','Psychiatry',350786,R.psych],
+  ['Other adult specialties','pmr','Physical medicine and rehabilitation',376234,R.pmr],
+  ['Other adult specialties','occmed','Occupational medicine',329380,R.prevocc],
+  ['Other adult specialties','prevmed','Preventive medicine',265825,R.prevocc],
+  ['Other adult specialties','aeromed','Aerospace medicine (RAM)',329380,R.ram,'Navy Residency in Aerospace Medicine rates',proxy('occupational medicine')],
+  ['Other adult specialties','genetics','Medical genetics',273826,R.III,'Assumed Navy subspecialty Category III; confirm with BUMED'],
+  ['Pediatric subspecialties','neonat','Neonatology',364388,R.neonat],
+  ['Pediatric subspecialties','pedcards','Pediatric cardiology',365395,R.cards],
+  ['Pediatric subspecialties','pedem','Pediatric emergency medicine',332579,R.em,'Navy emergency medicine rates assumed'],
+  ['Pediatric subspecialties','childneuro','Child neurology',309593,R.neuro],
+  ['Pediatric subspecialties','pedgi','Pediatric gastroenterology',311433,R.gi],
+  ['Pediatric subspecialties','pedpulm','Pediatric pulmonology',278452,R.pulm],
+  ['Pediatric subspecialties','pedhemonc','Pediatric hematology/oncology',271021,R.III,'Navy subspecialty Category III'],
+  ['Pediatric subspecialties','pednephro','Pediatric nephrology',269825,R.III,'Navy subspecialty Category III'],
+  ['Pediatric subspecialties','pedendo','Pediatric endocrinology',242274,R.III,'Navy subspecialty Category III'],
+  ['Pediatric subspecialties','pedid','Pediatric infectious disease',217819,R.III,'Navy subspecialty Category III'],
+  ['Pediatric subspecialties','pedrheum','Pediatric rheumatology',236011,R.III,'Navy subspecialty Category III']
+].map(([group,key,label,civ,r,note,src]) => ({group,key,label,civ,ip:r.ip,rb4:r.rb['4'],rb:{...r.rb},
+  ipWithRb:r.ipWithRb||null,note:note||'',src:src||'Doximity 2026 national average'}));
 export const specialtyByKey = Object.fromEntries(specialtyTable.map(r => [r.key, r]));
-// Operational training on top of a primary specialty, FY 2026 DFAS Medical Corps
-// notes 3 and 5: +$3,000 to IP and RB for the Aerospace Medicine Primary course
-// (flight surgeon) or Undersea Medical Officer training; +$5,000 for a Residency in
-// Aerospace Medicine completed after another residency. Not stacked with the
-// aerospace medicine (RAM) specialty row, which already carries RAM rates.
+// Operational add-ons on top of a primary specialty, FY 2027 guidance Table 2
+// notes 5-7: +$3,000 to IP and RB for a designated Navy flight surgeon or a UMO
+// who provides that support beyond primary duties (privileged, with an annual
+// minimum of 40 aviation medicine hours or 70 undersea encounters); +$5,000 for a
+// Residency in Aerospace Medicine on top of another specialty, while in a RAM
+// billet. Not stacked with the aerospace medicine (RAM) specialty row.
 export const opQuals = {
   none:{label:'None', ip:0, rb:0},
-  amp:{label:'Flight surgeon (AMP) or undersea medical officer', ip:3000, rb:3000},
-  ram:{label:'Residency in Aerospace Medicine after another residency', ip:5000, rb:5000}
+  amp:{label:'Navy flight surgeon or undersea medical officer duties', ip:3000, rb:3000},
+  ram:{label:'Residency in Aerospace Medicine plus another specialty, in a RAM billet', ip:5000, rb:5000}
 };
 export function opQualFor(key, specialty) {
   const q = opQuals[key] || opQuals.none;
@@ -161,7 +184,7 @@ export const sanDiegoAvailable = key => ['im','fm','peds'].includes(key);
 // surgical, procedural, and hospital-based specialties below; all others are Table 1.
 const vaTable2 = new Set(['anes','cards','pulm','derm','em','gi','obgyn','hemonc','nephro','ophtho','ent',
   'path','rads','ir','radonc','gensurg','ortho','neurosurg','uro','thoracic','vascular','plastics','pedsurg',
-  'colorectal','surgonc','transplant','trauma','orthofellow','ophthosub','entsub','obgynsub','urosub','nucmed']);
+  'colorectal','surgonc','transplant','trauma','orthofellow','ophthosub','entsub','obgynsub','urosub','nucmed','critcare']);
 export const vaPayCap = key => vaTable2.has(key) ? 400000 : 315000;
 // FERS: 3% military deposit (OPM Service Credit, post-2000 service), FERS-FRAE
 // employee contribution 4.4% (hired after 2013), TSP agency 1% + 4% match,
@@ -236,7 +259,7 @@ export function stayOrGo(userInput, {stateData=null, lifeTable=null, bah=null} =
   const cash = calculateScenario({rank:x.rank, commissionYear:2026 - yos, promotionOn:x.promotion,
     nextPromotionIn:Number.isFinite(x.yearsAtRank) ? x.yearsAtRank : null,
     payYos:yos, base:payFor(x.rank, yos), bah:bahMonthly, bahLookup:Number.isFinite(x.bahMonthly) ? null : (bah ?? null), zip:x.zip,
-    deps:withSpouse ? 'yes' : 'no', ip:spec.ip + qual.ip, rbRemaining:years, currentBonus:rb,
+    deps:withSpouse ? 'yes' : 'no', ip:(rb > 0 && spec.ipWithRb ? spec.ipWithRb['4'] : spec.ip) + qual.ip, rbRemaining:years, currentBonus:rb,
     continuationPayMultiple:x.continuationPay ? 2.5 : 0, isBrs,
     civilianSalary:civ, civilianGrowth:x.civilianGrowth, civilianFirstYearShare:1,
     discount:x.cashRate, years});

@@ -220,7 +220,7 @@ console.log('USU credit checks passed');
 }
 console.log('version-sync checks passed');
 
-// FY26 pay-plan coverage: added subspecialty categories and operational training add-ons.
+// FY27 pay-plan coverage: added subspecialty categories and operational training add-ons.
 {
   const {specialtyByKey, opQualFor} = await import('../stay-or-go.js');
   for (const k of ['colorectal','surgonc','transplant','trauma','orthofellow','ophthosub','entsub','obgynsub','urosub','nucmed','aeromed','genetics'])
@@ -228,11 +228,20 @@ console.log('version-sync checks passed');
   assert.equal(specialtyByKey.colorectal.civ, 492802);
   assert.deepEqual([specialtyByKey.obgynsub.ip, specialtyByKey.obgynsub.rb4], [66000, 55000]);
   assert.deepEqual([specialtyByKey.nucmed.ip, specialtyByKey.nucmed.rb4], [51000, 32000]);
-  assert.deepEqual([specialtyByKey.aeromed.ip, specialtyByKey.aeromed.rb4], [43000, 45000]);
+  assert.deepEqual([specialtyByKey.aeromed.ip, specialtyByKey.aeromed.rb4], [43000, 50000]);
+  // FY27 changes from the FY26 table, and full RB term rates on every row.
+  assert.equal(specialtyByKey.path.ip, 54000);
+  assert.deepEqual(specialtyByKey.pmr.rb, {2:12000, 3:13000, 4:20000, 6:null});
+  assert.equal(specialtyByKey.sportsmed.ip, 46000);
+  assert.deepEqual(specialtyByKey.critcare.rb, {2:27000, 3:37000, 4:63000, 6:78000});
+  for (const row of Object.values(specialtyByKey)) assert.equal(row.rb['4'], row.rb4, row.key);
   const ctx = {stateData,lifeTable,bah};
   const im = stayOrGo({}, ctx), fs = stayOrGo({opQual:'amp'}, ctx), ram = stayOrGo({opQual:'ram'}, ctx);
   assert.equal(fs.rows[0].navyCash - im.rows[0].navyCash, 6000);
   assert.equal(ram.rows[0].navyCash - im.rows[0].navyCash, 10000);
   assert.equal(opQualFor('ram','aeromed').ip, 0);
+  // Neurosurgery IP is $102,000 while under a 4-year RB, $75,000 without one.
+  const ns = stayOrGo({specialty:'neurosurg'}, ctx), nsNo = stayOrGo({specialty:'neurosurg', rbMode:'none'}, ctx);
+  assert.equal(ns.rows[0].navyCash - nsNo.rows[0].navyCash, (102000-75000) + 150000);
   console.log('Pay-plan coverage checks passed');
 }

@@ -1,11 +1,12 @@
-export const boardCertificationPay = 8000; // FY26 paid BCP, not the $15,000 statutory ceiling.
+export const boardCertificationPay = 8000; // FY26 and FY27 paid BCP, not the $15,000 statutory ceiling.
 export const fy26SpecialPayTableUrl = 'https://www.dfas.mil/MilitaryMembers/payentitlements/Pay-Tables/HPO4/';
 export function bonusStatusAllowsRate(status) { return status === 'signed' || status === 'eligible'; }
 export const rbRates={
  FY25:{peds:{'2':15000,'3':20000,'4':35000,'6':null},im:{'2':13000,'3':23000,'4':40000,'6':null},fm:{'2':20000,'3':28000,'4':48000,'6':60000}},
- FY26:{peds:{'2':15000,'3':25000,'4':35000,'6':40000},im:{'2':20000,'3':28000,'4':48000,'6':60000},fm:{'2':20000,'3':28000,'4':48000,'6':60000}}
+ FY26:{peds:{'2':15000,'3':25000,'4':35000,'6':40000},im:{'2':20000,'3':28000,'4':48000,'6':60000},fm:{'2':20000,'3':28000,'4':48000,'6':60000}},
+ FY27:{peds:{'2':15000,'3':25000,'4':35000,'6':40000},im:{'2':20000,'3':28000,'4':48000,'6':60000},fm:{'2':20000,'3':28000,'4':48000,'6':60000}}
 };
-export const rbSourceUrls={FY25:'https://www.med.navy.mil/Portals/62/Documents/BUMED/Special%20Pays/FY25/FY25%20MC%20SPECIAL%20PAY%20GUIDANCE-Correction.pdf?ver=Fu3zLzlHCUzEu0ynrllaAQ%3D%3D',FY26:'https://www.med.navy.mil/Portals/62/Documents/BUMED/Special%20Pays/FY26/FY26%20MC%20SPECIAL%20PAY%20GUIDANCE.pdf?ver=rucne9MfWLwappLSef4R3w%3D%3D'};
+export const rbSourceUrls={FY25:'https://www.med.navy.mil/Portals/62/Documents/BUMED/Special%20Pays/FY25/FY25%20MC%20SPECIAL%20PAY%20GUIDANCE-Correction.pdf?ver=Fu3zLzlHCUzEu0ynrllaAQ%3D%3D',FY26:'https://www.med.navy.mil/Portals/62/Documents/BUMED/Special%20Pays/FY26/FY26%20MC%20SPECIAL%20PAY%20GUIDANCE.pdf?ver=rucne9MfWLwappLSef4R3w%3D%3D',FY27:'https://www.med.navy.mil/Special-Pays/'};
 
 export const benchmarks={
  doximity:{label:'Doximity',scope:'U.S. · 2026 report, 2025 compensation',values:{peds:273665,im:339274,fm:325040}},
