@@ -186,7 +186,13 @@ console.log('stay-or-go goals and exit-window checks passed');
   assert.ok(lo.annuityPrice>g.annuityPrice); // lower real yields make the annuity cost more
   near(goalCoverage(stayOrGo({pensionRate:0},{stateData,lifeTable,bah})).annuityPrice, g.pensionGross*n, .01);
 }
-console.log('savings-equivalent and annuity-price checks passed');
+// Invested difference: pre-20 take-home gap (today's dollars) carried forward at the pay rate.
+{
+  const r=stayOrGo({specialty:'anes',yos:8},{stateData,lifeTable,bah}), g=goalCoverage(r);
+  near(g.investedAtPensionStart, g.cashBefore20*Math.pow(1+r.input.cashRate, r.years), .01);
+  assert.ok(g.cashBefore20>0 && g.investedAtPensionStart>g.cashBefore20);
+}
+console.log('savings-equivalent and annuity-price and invested-difference checks passed');
 
 // ---------- USU medical-school credit ----------
 {
