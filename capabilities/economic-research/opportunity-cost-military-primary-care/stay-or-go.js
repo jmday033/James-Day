@@ -391,6 +391,10 @@ export function goalCoverage(r, goals={}) {
   // Timing: before 20 the civilian path pays more cash; after 20 the stay path
   // pays a pension for life. The pension is income, not a lump sum.
   const cashBefore20 = r.costOfStaying - r.afterTwentyCost;
+  // The same extra take-home, invested each year at the pay real rate, carried
+  // forward to the pension start age. This restates cashBefore20 (already in
+  // today's dollars at that rate), so it adds no value of its own.
+  const investedAtPensionStart = cashBefore20*Math.pow(1 + r.input.cashRate, r.years);
   const pensionGross = r.parts.annualPension, pensionNet = pensionGross*(1 - r.input.pensionTax);
   const pensionStartAge = r.input.age + r.years;
   // Matching the pension by saving instead: the target is the same at 20,
@@ -407,7 +411,7 @@ export function goalCoverage(r, goals={}) {
     savingsReturn, savingsPerYear:annualSavingsFor(savingsEquivalent, r.years), savingsTable,
     cashBefore20, pensionGross, pensionNet, pensionStartAge,
     pensionShareOfSpending:g.annualSpending > 0 ? pensionNet/g.annualSpending : null,
-    savingsEquivalent, annuityPrice, annuityYears:n, annuityRate:ar, goals:{...g, collegeKids:kids}};
+    savingsEquivalent, investedAtPensionStart, annuityPrice, annuityYears:n, annuityRate:ar, goals:{...g, collegeKids:kids}};
 }
 
 // ---------- can you change your mind later? ----------
