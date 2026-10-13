@@ -219,3 +219,20 @@ console.log('USU credit checks passed');
   assert.ok(html.includes('Version '+v+' ·'),'visible version line must match version.json');
 }
 console.log('version-sync checks passed');
+
+// FY26 pay-plan coverage: added subspecialty categories and operational training add-ons.
+{
+  const {specialtyByKey, opQualFor} = await import('../stay-or-go.js');
+  for (const k of ['colorectal','surgonc','transplant','trauma','orthofellow','ophthosub','entsub','obgynsub','urosub','nucmed','aeromed','genetics'])
+    assert.ok(specialtyByKey[k] && specialtyByKey[k].civ > 0, k);
+  assert.equal(specialtyByKey.colorectal.civ, 492802);
+  assert.deepEqual([specialtyByKey.obgynsub.ip, specialtyByKey.obgynsub.rb4], [66000, 55000]);
+  assert.deepEqual([specialtyByKey.nucmed.ip, specialtyByKey.nucmed.rb4], [51000, 32000]);
+  assert.deepEqual([specialtyByKey.aeromed.ip, specialtyByKey.aeromed.rb4], [43000, 45000]);
+  const ctx = {stateData,lifeTable,bah};
+  const im = stayOrGo({}, ctx), fs = stayOrGo({opQual:'amp'}, ctx), ram = stayOrGo({opQual:'ram'}, ctx);
+  assert.equal(fs.rows[0].navyCash - im.rows[0].navyCash, 6000);
+  assert.equal(ram.rows[0].navyCash - im.rows[0].navyCash, 10000);
+  assert.equal(opQualFor('ram','aeromed').ip, 0);
+  console.log('Pay-plan coverage checks passed');
+}

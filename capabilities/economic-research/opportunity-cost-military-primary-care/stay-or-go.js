@@ -61,7 +61,16 @@ export function wageTax(wages, {family, kids=0, spouseWages=0, stateCode, stateD
 // category membership follows BUMED's published descriptions (Cat III: allergy,
 // immunology, nephrology, hematology/oncology; Cat IV: other IM/peds
 // subspecialties). Surgical subspecialties are assumed to be Category I.
-const I={ip:72000,rb4:110000}, III={ip:46000,rb4:48000}, IV={ip:46000,rb4:48000};
+// FY 2026 DFAS Medical Corps rows (IP; 4-year RB): Category I 72,000/110,000;
+// II 51,000/32,000; III and IV 46,000/48,000; V 66,000/55,000; Residency in
+// Aerospace Medicine (RAM) 43,000/45,000. DoD notes: Category I = general-surgery
+// subspecialties (incl. colorectal, surgical oncology, transplant, trauma/critical
+// care, fellowship-trained orthopedics); II = internal medicine and nuclear
+// medicine; V = ophthalmology, otolaryngology, OB/GYN and urology subspecialties.
+const I={ip:72000,rb4:110000}, II={ip:51000,rb4:32000}, III={ip:46000,rb4:48000}, IV={ip:46000,rb4:48000},
+  V={ip:66000,rb4:55000}, RAM={ip:43000,rb4:45000};
+// Civilian stand-in where Doximity 2026 publishes no row for the subspecialty.
+const proxy = parent => 'Proxy: Doximity 2026 '+parent+' average (no published figure for this subspecialty)';
 export const specialtyTable = [
   // group, key, label, civilian, ip, rb4, note
   ['Primary care','im','Internal medicine',339274,43000,48000],
@@ -88,6 +97,7 @@ export const specialtyTable = [
   ['Hospital-based','ir','Interventional radiology',634658,66000,76000,'Navy radiology rates assumed'],
   ['Hospital-based','radonc','Radiation oncology',613837,66000,76000,'Navy radiology (therapeutic) rates'],
   ['Hospital-based','path','Pathology',410039,48000,35000],
+  ['Hospital-based','nucmed','Nuclear medicine',609684,II.ip,II.rb4,'Navy subspecialty Category II; no FY26 retention bonus at 6 years',proxy('radiology')+'; likely overstates nuclear medicine pay'],
   ['Surgery','gensurg','General surgery',501003,66000,105000],
   ['Surgery','ortho','Orthopedic surgery',696852,66000,105000],
   ['Surgery','neurosurg','Neurosurgery',829161,75000,150000],
@@ -99,12 +109,23 @@ export const specialtyTable = [
   ['Surgery','vascular','Vascular surgery',600520,I.ip,I.rb4,'Assumed Navy subspecialty Category I; confirm with BUMED'],
   ['Surgery','plastics','Plastic surgery',625757,I.ip,I.rb4,'Assumed Navy subspecialty Category I; confirm with BUMED'],
   ['Surgery','pedsurg','Pediatric surgery',627126,I.ip,I.rb4,'Assumed Navy subspecialty Category I; confirm with BUMED'],
+  ['Surgery','colorectal','Colon and rectal surgery',492802,I.ip,I.rb4,'Navy subspecialty Category I'],
+  ['Surgery','surgonc','Surgical oncology',501003,I.ip,I.rb4,'Navy subspecialty Category I',proxy('general surgery')],
+  ['Surgery','transplant','Transplant surgery',501003,I.ip,I.rb4,'Navy subspecialty Category I',proxy('general surgery')],
+  ['Surgery','trauma','Trauma/surgical critical care',501003,I.ip,I.rb4,'Navy subspecialty Category I',proxy('general surgery')],
+  ['Surgery','orthofellow','Orthopedic surgery (fellowship-trained)',696852,I.ip,I.rb4,'Navy subspecialty Category I',proxy('orthopaedic surgery')],
+  ['Surgery','ophthosub','Ophthalmology subspecialty (fellowship-trained)',487438,V.ip,V.rb4,'Navy subspecialty Category V',proxy('ophthalmology')],
+  ['Surgery','entsub','Otolaryngology subspecialty (fellowship-trained)',549810,V.ip,V.rb4,'Navy subspecialty Category V',proxy('otolaryngology')],
+  ['Surgery','obgynsub','OB/GYN subspecialty (MFM, gyn onc, REI, urogyn)',420859,V.ip,V.rb4,'Navy subspecialty Category V',proxy('OB/GYN')],
+  ['Surgery','urosub','Urology subspecialty (fellowship-trained)',566740,V.ip,V.rb4,'Navy subspecialty Category V',proxy('urology')],
   ['Other adult specialties','derm','Dermatology',497509,48000,43000],
   ['Other adult specialties','neuro','Neurology',371087,48000,30000],
   ['Other adult specialties','psych','Psychiatry',350786,48000,65000],
   ['Other adult specialties','pmr','Physical medicine and rehabilitation',376234,43000,30000],
   ['Other adult specialties','occmed','Occupational medicine',329380,43000,35000],
   ['Other adult specialties','prevmed','Preventive medicine',265825,43000,35000],
+  ['Other adult specialties','aeromed','Aerospace medicine (RAM)',329380,RAM.ip,RAM.rb4,'Navy Residency in Aerospace Medicine rates',proxy('occupational medicine')],
+  ['Other adult specialties','genetics','Medical genetics',273826,III.ip,III.rb4,'Assumed Navy subspecialty Category III; confirm with BUMED'],
   ['Pediatric subspecialties','neonat','Neonatology',364388,50000,63000],
   ['Pediatric subspecialties','pedcards','Pediatric cardiology',365395,69000,76000],
   ['Pediatric subspecialties','pedem','Pediatric emergency medicine',332579,54000,76000,'Navy emergency medicine rates assumed'],
@@ -118,6 +139,20 @@ export const specialtyTable = [
   ['Pediatric subspecialties','pedrheum','Pediatric rheumatology',236011,IV.ip,IV.rb4,'Navy subspecialty Category IV']
 ].map(([group,key,label,civ,ip,rb4,note,src]) => ({group,key,label,civ,ip,rb4,note:note||'',src:src||'Doximity 2026 national average'}));
 export const specialtyByKey = Object.fromEntries(specialtyTable.map(r => [r.key, r]));
+// Operational training on top of a primary specialty, FY 2026 DFAS Medical Corps
+// notes 3 and 5: +$3,000 to IP and RB for the Aerospace Medicine Primary course
+// (flight surgeon) or Undersea Medical Officer training; +$5,000 for a Residency in
+// Aerospace Medicine completed after another residency. Not stacked with the
+// aerospace medicine (RAM) specialty row, which already carries RAM rates.
+export const opQuals = {
+  none:{label:'None', ip:0, rb:0},
+  amp:{label:'Flight surgeon (AMP) or undersea medical officer', ip:3000, rb:3000},
+  ram:{label:'Residency in Aerospace Medicine after another residency', ip:5000, rb:5000}
+};
+export function opQualFor(key, specialty) {
+  const q = opQuals[key] || opQuals.none;
+  return specialty === 'aeromed' ? opQuals.none : q;
+}
 export const sanDiegoAvailable = key => ['im','fm','peds'].includes(key);
 
 // ---------- VA staff physician and FERS (2026) ----------
@@ -125,7 +160,8 @@ export const sanDiegoAvailable = key => ['im','fm','peds'].includes(key);
 // Jan. 11, 2026 (va.gov/OHRM/Pay/2026/PDOP/PayTables.pdf). Table 2 lists the
 // surgical, procedural, and hospital-based specialties below; all others are Table 1.
 const vaTable2 = new Set(['anes','cards','pulm','derm','em','gi','obgyn','hemonc','nephro','ophtho','ent',
-  'path','rads','ir','radonc','gensurg','ortho','neurosurg','uro','thoracic','vascular','plastics','pedsurg']);
+  'path','rads','ir','radonc','gensurg','ortho','neurosurg','uro','thoracic','vascular','plastics','pedsurg',
+  'colorectal','surgonc','transplant','trauma','orthofellow','ophthosub','entsub','obgynsub','urosub','nucmed']);
 export const vaPayCap = key => vaTable2.has(key) ? 400000 : 315000;
 // FERS: 3% military deposit (OPM Service Credit, post-2000 service), FERS-FRAE
 // employee contribution 4.4% (hired after 2013), TSP agency 1% + 4% match,
@@ -159,7 +195,7 @@ export const defaults = {
   pensionRate:.03, cashRate:.05, pensionTax:null, currentAge:null, paymentYears:null,
   tricare:'employer', tricareGroup:'A', vaRating:0, sbp:false, survivorYears:averages.survivorYears,
   firstYearShare:1, transitionCost:averages.transitionCost, insurance:null, civilianGrowth:averages.civilianGrowth,
-  rbMode:'renew', obligationYears:0, postTwentyPenalty:.05, workUntilAge:65,
+  rbMode:'renew', opQual:'none', obligationYears:0, postTwentyPenalty:.05, workUntilAge:65,
   employerRetirement:averages.employerRetirement, malpractice:0,
   reservePoints:77, reserveStartAge:60, reserveDaysMissed:10,
   vaSalary:null, vaBuyback:true, usuYears:0
@@ -186,7 +222,8 @@ export function stayOrGo(userInput, {stateData=null, lifeTable=null, bah=null} =
   // Retention bonus: 'renew' = successive agreements through 20, 'one' = a single
   // 4-year agreement starting when any current obligation ends, 'none'.
   const rbMode = x.retentionBonus === false ? 'none' : x.rbMode;
-  const rb = rbMode === 'none' ? 0 : spec.rb4;
+  const qual = opQualFor(x.opQual, x.specialty);
+  const rb = rbMode === 'none' ? 0 : spec.rb4 + qual.rb;
   const obligation = Math.max(0, Math.min(years, Math.floor(x.obligationYears || 0)));
   const bahMonthly = Number.isFinite(x.bahMonthly) ? x.bahMonthly : (bah?.monthly ?? 0);   // bah = bahFor(zip, rank, deps)
   const age = Number.isFinite(x.currentAge) ? x.currentAge : averages.ageAtServiceStart + yos;
@@ -199,7 +236,7 @@ export function stayOrGo(userInput, {stateData=null, lifeTable=null, bah=null} =
   const cash = calculateScenario({rank:x.rank, commissionYear:2026 - yos, promotionOn:x.promotion,
     nextPromotionIn:Number.isFinite(x.yearsAtRank) ? x.yearsAtRank : null,
     payYos:yos, base:payFor(x.rank, yos), bah:bahMonthly, bahLookup:Number.isFinite(x.bahMonthly) ? null : (bah ?? null), zip:x.zip,
-    deps:withSpouse ? 'yes' : 'no', ip:spec.ip, rbRemaining:years, currentBonus:rb,
+    deps:withSpouse ? 'yes' : 'no', ip:spec.ip + qual.ip, rbRemaining:years, currentBonus:rb,
     continuationPayMultiple:x.continuationPay ? 2.5 : 0, isBrs,
     civilianSalary:civ, civilianGrowth:x.civilianGrowth, civilianFirstYearShare:1,
     discount:x.cashRate, years});
