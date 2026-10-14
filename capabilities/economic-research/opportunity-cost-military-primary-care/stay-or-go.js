@@ -101,6 +101,14 @@ export const specialtyTable = [
   // Medicine, U.S., non-academic, average total compensation (summary shared by a
   // Navy sports medicine physician, Oct. 12, 2026).
   ['Primary care','sportsmed','Sports medicine (primary care)',382000,R.IV,'Navy subspecialty Category IV (family medicine fellowship)','reported MGMA 2025 figure, non-academic average total compensation'],
+  // Doximity 2026 has no family medicine-obstetrics row. Reader feedback (Oct. 13,
+  // 2026) reports starting offers near $500,000 for FM-OB physicians who perform
+  // cesarean sections and D&Cs; job postings for C-section-capable FM-OB list
+  // roughly $450,000-$600,000 (e.g., AAFP job board, "Family Medicine Obstetrics
+  // C-sections $515K Year 1", Minnesota, accessed Oct. 13, 2026). A starting-offer
+  // level, mostly rural markets, not a survey average. Navy rate assumes the
+  // FM-OB fellowship falls in Category IV (family medicine fellowships).
+  ['Primary care','fmob','Family medicine–obstetrics (C-sections)',500000,R.IV,'Navy subspecialty Category IV (family medicine fellowship); confirm with BUMED','reported starting offers near $500K for C-section-capable FM-OB (reader feedback, Oct. 2026); job postings list about $450K–$600K; not a survey average'],
   ['Medicine subspecialties','cards','Cardiology',604635,R.cards],
   ['Medicine subspecialties','gi','Gastroenterology',531345,R.gi],
   ['Medicine subspecialties','pulm','Pulmonary/critical care',441472,R.pulm],
