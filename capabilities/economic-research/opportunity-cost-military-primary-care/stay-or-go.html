@@ -101,8 +101,8 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
 <header><div class="wrap">
   <nav class="crumb" aria-label="Lab versions"><a href="stay-or-go.html" aria-current="page">Stay or go?</a><a href="physician-pay-lab.html">Advanced lab</a></nav>
   <div class="header-top"><div><span class="project-label">Navy physician pay and pension</span><h1>Stay or go?</h1><p class="creator-credit">Created by James M. Day for a graduate school economics project.</p><p class="creator-contact">Contact: <span>jday6@hawaii.edu</span></p></div><nav class="creator-links" aria-label="Creator and project links"><a href="mailto:jday6@hawaii.edu">Email</a><a href="https://jmday033.github.io/James-Day/RESUME.html" target="_blank" rel="noopener noreferrer">CV</a><a href="https://www.linkedin.com/in/james-day-21103b169" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://github.com/jmday033/James-Day" target="_blank" rel="noopener noreferrer">Project repository</a></nav></div>
-  <p class="header-version" style="font-size:13px;color:#a9cede;margin-bottom:8px">Version 3.9 · Updated October 12, 2026 · 2026 pay, tax, and benefit data</p><p>Compare staying to 20 with civilian practice, or Navy with civilian residency after a GMO tour.</p>
-  <p class="whats-new" role="status"><strong>New</strong> Now covers all 62 Navy Medical Corps specialties and subspecialties, with <a href="https://www.med.navy.mil/Special-Pays/" target="_blank" rel="noopener noreferrer">FY 2027</a> incentive pay and retention bonus rates and a flight surgeon, undersea medical officer, or aerospace medicine add-on.</p>
+  <p class="header-version" style="font-size:13px;color:#a9cede;margin-bottom:8px">Version 3.10 · Updated October 13, 2026 · 2026 pay, tax, and benefit data</p><p>Compare staying to 20 with civilian practice, or Navy with civilian residency after a GMO tour.</p>
+  <p class="whats-new" role="status"><strong>New</strong> Now covers all 63 Navy Medical Corps specialties and subspecialties, with <a href="https://www.med.navy.mil/Special-Pays/" target="_blank" rel="noopener noreferrer">FY 2027</a> incentive pay and retention bonus rates and a flight surgeon, undersea medical officer, or aerospace medicine add-on.</p>
   <p class="views-note" role="note">Views are the author’s own and do not represent the U.S. Navy, the Department of Defense, or the U.S. government.</p>
 </div></header>
 
@@ -113,8 +113,12 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
   <div class="field"><label for="decision">What are you deciding?</label><select id="decision"><option value="attending" selected>Stay to 20 or leave now (attending)</option><option value="gmo">After a GMO tour: Navy or civilian residency</option><option value="prospective">Considering Navy medicine (medical school)</option></select></div>
   <div id="attendingInputs">
   <div class="row">
-    <div class="field"><label for="yos">Active years served</label><input id="yos" type="number" min="1" max="19" step="1" placeholder="1–19" required><small>Years left on obligation: <input id="obligationYears" type="number" min="0" max="10" step="1" value="0" style="width:64px;min-height:30px;padding:3px 6px;display:inline-block" aria-label="Years left on current service obligation"></small></div>
+    <div class="field"><label for="yos">Active years served</label><input id="yos" type="number" min="1" max="19" step="1" placeholder="1–19" required></div>
     <div class="field"><label for="specialty">Specialty</label><select id="specialty" required></select></div>
+  </div>
+  <div class="row">
+    <div class="field"><label for="obligationYears">Years left on service obligation</label><input id="obligationYears" type="number" inputmode="numeric" min="0" max="10" step="1" value="0"><small>Count to the latest end date for residency or fellowship payback, USU or HPSP payback, or a signed bonus. Use 0 if you could leave now. Check the dates in your personnel record; GME payback is often one year per year of training.</small></div>
+    <div class="field"><label for="rbMode">Retention bonus once free to leave</label><select id="rbMode"><option value="renew" selected>Yes, renew 4-year agreements through 20</option><option value="one">Yes, one 4-year agreement</option><option value="none">No, stay without a bonus</option></select><small>Uses the FY 2027 four-year rate for your specialty. A bonus adds Navy pay but locks in four more years.</small></div>
   </div>
   <div class="field"><label for="opQual">Operational training</label><select id="opQual"><option value="none" selected>None</option><option value="amp">Navy flight surgeon or undersea medical officer duties</option><option value="ram">Aerospace medicine residency plus another specialty</option></select><small>FY 2027 adds $3,000 a year to incentive pay and the retention bonus for flight surgeon or undersea medical officer work beyond your primary duties, or $5,000 for an aerospace medicine residency on top of another specialty while in a RAM billet.</small></div>
   <div class="field"><label for="usuYears">USU medical-school years</label><input id="usuYears" type="number" min="0" max="8" step="1" value="0"><small>USU graduates usually enter 4; HPSP or civilian school, 0. Leave school years out of active years served. They don't count toward 20, but once you reach 20 they raise the pension. <a href="https://www.usuhs.edu/sites/default/files/media/documents/ip_-_usuhs_service_credit_for_retirement_pay_acc.pdf" target="_blank" rel="noopener noreferrer">USU guidance</a></small></div>
@@ -154,7 +158,6 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
   </div></details>
 
   <details class="refine"><summary>Navy pay <span id="sumNavy"></span></summary><div class="inner">
-    <div class="field"><label for="rbMode">Retention bonus (FY 2027 rate for the specialty)</label><select id="rbMode"><option value="renew" selected>Renew 4-year agreements through 20</option><option value="one">One 4-year agreement only</option><option value="none">No retention bonus</option></select><small>Choose whether to assume renewed agreements, one agreement, or no bonus.</small></div>
     <label class="check"><input id="continuationPay" type="checkbox" checked><span>Take BRS continuation pay at the 12th year (2.5 months of basic pay)</span></label>
     <div class="field"><label for="retirement">Retirement system</label><select id="retirement"><option value="brs">Blended Retirement System (2% per year)</option><option value="legacy">Legacy High-3 (2.5% per year)</option></select></div>
   </div></details>
@@ -352,7 +355,7 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
 <script>
 // One live version: if the server has a newer page than this saved copy,
 // reload it with a version tag so phone and browser caches are bypassed.
-(function(){var PAGE_VERSION="3.9";
+(function(){var PAGE_VERSION="3.10";
   try{fetch("version.json",{cache:"no-store"}).then(function(r){return r.json()}).then(function(d){
     if(!d||!d.version||d.version===PAGE_VERSION)return;
     var u=new URL(location.href);if(u.searchParams.get("v")===d.version)return;   // already tried once
@@ -360,7 +363,7 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 5px;b
   }).catch(function(){})}catch(e){}})();
 </script>
 <script type="module">
-import * as sog from './stay-or-go.js?v=20261012-fy27';
+import * as sog from './stay-or-go.js?v=20261013-fmob';
 const {answerRange,goalCoverage,exitWindows}=sog;const {stayOrGo, sensitivity, defaultCivilianSalary, loadReferenceData, bahFor, payFor, benchmarks, specialtyTable, specialtyByKey, sanDiegoAvailable}=sog;
 {const groups=[...new Set(specialtyTable.map(r=>r.group))];
  document.getElementById('specialty').innerHTML='<option value="" selected>Choose specialty…</option>'+groups.map(g=>'<optgroup label="'+g+'">'+specialtyTable.filter(r=>r.group===g).map(r=>'<option value="'+r.key+'">'+r.label+'</option>').join('')+'</optgroup>').join('');}
