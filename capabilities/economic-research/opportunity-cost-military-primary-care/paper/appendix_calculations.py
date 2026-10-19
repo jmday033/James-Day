@@ -10,8 +10,14 @@ if any figure differs. It is a verification of the paper's arithmetic, not a new
 assumptions beyond what the appendices state.
 """
 import argparse
+import json
+import re
 import sys
 from decimal import ROUND_HALF_UP, Decimal as D
+from pathlib import Path
+
+HERE = Path(__file__).resolve().parent
+DATA = HERE.parent / "data"
 
 # ---------------------------------------------------------------- Appendix A inputs
 # O-4 monthly basic pay, 2026 (DFAS 2026a), by completed years; held constant in 2026 dollars.
@@ -178,6 +184,126 @@ def compute():
     return r
 
 
+# ---------------------------------------------------------------- reviewer sensitivities (after revision 16)
+# Two assumptions a reviewer questioned: no promotion, and exactly 30 pension payments. These checks
+# change only those inputs; everything else is the revision-16 model above. Inputs come from the shared
+# repository data rather than being retyped: O-5 basic pay from calc-engine.js (DFAS 2026a), O-5 BAH
+# from data/bah-2026.json, and remaining life expectancy from data/us-life-remaining-2024.json.
+def _o5_monthly_basic():
+    text = (HERE.parent / "calc-engine.js").read_text()
+    steps = re.search(r"O5:\[(.*?)\]\],", text).group(1)
+    return {int(y): D(v) for y, v in re.findall(r"\[(\d+),([\d.]+)\]", steps)}
+
+
+def _o5_bah_annual():
+    bah = json.loads((DATA / "bah-2026.json").read_text())
+    return D(bah["areas"][bah["zipToMha"]["92134"]]["rates"]["O5"]["yes"]) * 12
+
+
+def _life_remaining():
+    return json.loads((DATA / "us-life-remaining-2024.json").read_text())["remaining"]
+
+
+RETIREMENT_AGE = 47                 # age 37 at 10 years of service, retiring at 20 (Appendix A)
+O5_PROMOTION_SERVICE_YEAR = 15      # illustrative on-time O-5, the midpoint the lab uses; not a forecast
+
+
+def survival_annuity(age, rate, life=None):
+    """Expected PV of 1 per year paid at the end of each year survived after `age`.
+
+    One-year survival p_x is recovered from the life table's complete life expectancies using the
+    curtate approximation e_x - 0.5 = p_x * (1 + e_(x+1) - 0.5)."""
+    life = life or _life_remaining()
+    curtate = [x - 0.5 for x in life]
+    survive, total = 1.0, 0.0
+    for t in range(1, len(curtate) - age):
+        a = age + t - 1
+        survive *= min(curtate[a] / (1 + curtate[a + 1]), 1.0)
+        total += survive / (1 + float(rate)) ** t
+    return D(str(total))
+
+
+def sensitivity(promote_at=None, pension_factor=None):
+    """Net value of staying (gross and adjusted) and break-evens under a promotion and pension horizon."""
+    o5, bah5 = _o5_monthly_basic(), _o5_bah_annual()
+
+    def grade(y):
+        return "O5" if promote_at is not None and 9 + y >= promote_at else "O4"
+
+    def basic(y):
+        completed = 9 + y
+        table = o5 if grade(y) == "O5" else MONTHLY_BASIC
+        return table[completed - completed % 2] * 12
+
+    def gross(y):
+        return basic(y) + (bah5 if grade(y) == "O5" else BAH) + BAS + SPECIAL_PAYS
+
+    def value(y):
+        wages = gross(y) - (bah5 if grade(y) == "O5" else BAH) - BAS
+        tax = federal_tax(wages) + california_tax(wages) + payroll_tax(wages)
+        return gross(y) - tax + BRS_CONTRIBUTION * basic(y)
+
+    factor = pension_factor if pension_factor is not None else annuity(PENSION_RATE, PENSION_YEARS)
+    annual = BRS_MULTIPLIER * 20 * sum(basic(y) for y in (8, 9, 10)) / 3
+    civ = civilian_value()[0]
+    gaps = {"gross": [CIVILIAN_PAY - gross(y) for y in range(1, YEARS + 1)],
+            "adjusted": [civ - value(y) for y in range(1, YEARS + 1)]}
+    taxes = {"gross": D("0"), "adjusted": PENSION_TAX}
+
+    def net(kind, k):
+        return annual * (1 - taxes[kind]) * factor / (1 + PENSION_RATE) ** (YEARS - k) - pv(gaps[kind][k:], CASH_RATE)
+
+    def crossing(kind):
+        vals = [net(kind, k) for k in range(YEARS)]
+        if vals[0] >= 0:
+            return "already positive at 10"
+        for k in range(1, YEARS):
+            if vals[k - 1] < 0 <= vals[k]:
+                return f"{10 + (k - 1) + float(-vals[k - 1] / (vals[k] - vals[k - 1])):.1f}"
+        return "not within 20"
+    return {"annual_pension": annual, "gross": net("gross", 0), "adjusted": net("adjusted", 0),
+            "be_gross": crossing("gross"), "be_adjusted": crossing("adjusted")}
+
+
+def reviewer_sensitivities():
+    life = _life_remaining()
+    le = life[RETIREMENT_AGE]
+    fixed_le = annuity(PENSION_RATE, round(le))
+    surv = survival_annuity(RETIREMENT_AGE, PENSION_RATE, life)
+    cases = [
+        ("Revision 16: no promotion, 30 payments", None, None),
+        (f"O-5 at {O5_PROMOTION_SERVICE_YEAR} years, 30 payments", O5_PROMOTION_SERVICE_YEAR, None),
+        ("No promotion, life-table survival from age 47", None, surv),
+        (f"No promotion, {round(le)} payments (life expectancy at 47)", None, fixed_le),
+        (f"O-5 at {O5_PROMOTION_SERVICE_YEAR} years + life-table survival", O5_PROMOTION_SERVICE_YEAR, surv),
+    ]
+    rows = [(label, sensitivity(p, f)) for label, p, f in cases]
+    meta = {"life_expectancy_47": le, "factor_30": annuity(PENSION_RATE, PENSION_YEARS),
+            "factor_le": fixed_le, "factor_survival": surv}
+    return rows, meta
+
+
+def sensitivity_markdown(rows, meta):
+    out = ["", "## Reviewer sensitivities: promotion and pension horizon", "",
+           "Each row changes only the stated assumption; all other inputs are the revision-16 model. "
+           "O-5 pay (DFAS 2026a, via `calc-engine.js`) and O-5 San Diego BAH with dependents "
+           "(`data/bah-2026.json`) apply from the promotion year; High-3 becomes O-5 basic pay. "
+           f"Remaining U.S. life expectancy at 47 is {meta['life_expectancy_47']} years "
+           "(`data/us-life-remaining-2024.json`, both sexes). At 3% the pension annuity factor is "
+           f"{meta['factor_30']:.2f} for 30 payments, {meta['factor_le']:.2f} for payments to life expectancy, "
+           f"and {meta['factor_survival']:.2f} when each payment is weighted by the probability of surviving to it. "
+           "The survival-weighted factor is the defensible central case: paying exactly to average life "
+           "expectancy overstates an annuity, and 30 fixed payments understate it.", "",
+           "| Case | Annual pension | Net, gross basis | Net, taxes and benefits | Break-even, gross | Break-even, adjusted |",
+           "|---|---:|---:|---:|---:|---:|"]
+    for label, r in rows:
+        out.append(f"| {label} | {r['annual_pension']:,.0f} | {r['gross']:,.0f} | {r['adjusted']:,.0f} | "
+                   f"{r['be_gross']} | {r['be_adjusted']} |")
+    out += ["", "Promotion is illustrative: selection and timing are not guaranteed, and promotion also raises "
+            "taxable pay, which the adjusted column includes. Positive values favor staying."]
+    return "\n".join(out) + "\n"
+
+
 # ---------------------------------------------------------------- figures printed in the paper
 def cents(x):
     return D(x).quantize(D("0.01"), ROUND_HALF_UP)
@@ -269,9 +395,14 @@ def main(argv=None):
     for label, got, want, ok, _ in rows:
         print(f"{'ok ' if ok else 'BAD'}  {label:42s} computed {got:>16,.2f}   printed {want:>16,.2f}")
     print(f"\n{len(rows) - failures} of {len(rows)} figures match the paper.")
+    sens_rows, meta = reviewer_sensitivities()
+    print("\nReviewer sensitivities (not printed in revision 16):")
+    for label, r in sens_rows:
+        print(f"  {label:52s} gross {r['gross']:>14,.0f}   adjusted {r['adjusted']:>12,.0f}   "
+              f"break-even {r['be_gross']} / {r['be_adjusted']}")
     if args.markdown:
         with open(args.markdown, "w", encoding="utf-8") as fh:
-            fh.write(markdown(rows, failures))
+            fh.write(markdown(rows, failures) + sensitivity_markdown(sens_rows, meta))
     return 1 if failures else 0
 
 
