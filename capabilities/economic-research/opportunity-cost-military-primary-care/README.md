@@ -9,13 +9,13 @@ status: working
 
 # Navy Physician Compensation, Opportunity Cost, and Retention
 
-**Current paper:** [Revision 16 PDF, September 29](../../../analysis/research-paper.pdf). Checked 25-page PDF with four pages of main text, incorporating the Medical Corps Career Development Board proposal and financial-scope limitations. [Revision 10 Word source](paper/navy-physician-retention-revision-10.docx) and [review notes](paper/revision-10-review-2026-09-29.md) are historical development materials; the Word source does not include the later revisions.
+**Current paper:** [Reviewer revision, October 19, 2026](../../../analysis/research-paper.pdf). Checked 25-page PDF with four pages of main text, incorporating the Medical Corps Career Development Board proposal and financial-scope limitations. [Revision 10 Word source](paper/navy-physician-retention-revision-10.docx) and [review notes](paper/revision-10-review-2026-09-29.md) are historical development materials; the Word source does not include the later revisions.
 
 Final course project for BUS 620 — Micro and Macro Economics. Compensation, retention, opportunity-cost analysis, pension sensitivity, staffing alternatives, source reviews, and both labs are components of this one project. The Navy is the modeled case; the project title does not imply validation for every military service.
 
 ## Start here
 
-- **[Current paper — revision 16 PDF](../../../analysis/research-paper.pdf)**: the submitted paper. Earlier drafts below are historical.
+- **[Current paper — reviewer revision, October 19, 2026](../../../analysis/research-paper.pdf)**: revised from the submitted paper, with promotion and approximate survival-weighted pension results, clarified evidence limits, and the updated pilot rationale. No resubmission is implied. Earlier drafts below are historical.
 - Historical: [earlier condensed draft (PDF)](paper/navy-physician-retention-condensed.pdf), received September 19, and its [text extraction](../../../drafts/2026-09-19-condensed-draft.md).
 - Historical: [formatted long working PDF](paper/navy-physician-working-draft.pdf), the September development version that the condensed paper replaced.
 
