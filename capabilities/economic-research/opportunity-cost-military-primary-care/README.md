@@ -9,13 +9,13 @@ status: working
 
 # Navy Physician Compensation, Opportunity Cost, and Retention
 
-**Current paper:** [Reviewer revision, October 19, 2026](../../../analysis/research-paper.pdf). Checked 25-page PDF with four pages of main text, incorporating the Medical Corps Career Development Board proposal and financial-scope limitations. [Revision 10 Word source](paper/navy-physician-retention-revision-10.docx) and [review notes](paper/revision-10-review-2026-09-29.md) are historical development materials; the Word source does not include the later revisions.
+**Current paper:** [Single-base revision, October 19, 2026](../../../analysis/research-paper.pdf). The PDF has 25 pages and four pages of main text. One no-promotion, approximate survival-weighted pension base gives a $39,395 adjusted cost of staying; it is used consistently in the body, both figures, Appendix D, and F1 handout. The 30-payment case is one comparison line in Appendix E; illustrative O-5 promotion is another. The paper reports the FY27 Medical Corps in-zone selection rate (84/115, 73.04%), explains why no promotion is a lower-pay scenario, cites Beyond Basic Pay in the body, and distinguishes command-level pilot timing from higher-level skill-sustainment changes. No current public active-duty internist retention/fill figure was identified. This revision does not imply course resubmission. Earlier Word/PDF drafts remain historical.
 
 Final course project for BUS 620 — Micro and Macro Economics. Compensation, retention, opportunity-cost analysis, pension sensitivity, staffing alternatives, source reviews, and both labs are components of this one project. The Navy is the modeled case; the project title does not imply validation for every military service.
 
 ## Start here
 
-- **[Current paper — reviewer revision, October 19, 2026](../../../analysis/research-paper.pdf)**: revised from the submitted paper, with promotion and approximate survival-weighted pension results, clarified evidence limits, and the updated pilot rationale. No resubmission is implied. Earlier drafts below are historical.
+- **[Current paper — reviewer revision, October 19, 2026](../../../analysis/research-paper.pdf)**: revised from the submitted paper, with one survival-weighted pension base and separately labeled sensitivities. No resubmission is implied. Earlier drafts below are historical.
 - Historical: [earlier condensed draft (PDF)](paper/navy-physician-retention-condensed.pdf), received September 19, and its [text extraction](../../../drafts/2026-09-19-condensed-draft.md).
 - Historical: [formatted long working PDF](paper/navy-physician-working-draft.pdf), the September development version that the condensed paper replaced.
 
