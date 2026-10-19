@@ -6,8 +6,9 @@
 Standard library only. Inputs are the paper's Appendix A-D assumptions, restated below with their
 sources as the paper gives them. Each computed figure is compared with the value printed in the
 paper (to the cent where the paper shows cents, otherwise to the dollar); the script exits non-zero
-if any figure differs. It is a verification of the paper's arithmetic, not a new analysis: it adds no
-assumptions beyond what the appendices state.
+if any figure differs. It verifies the single survival-weighted pension base and Appendix E comparisons. The original
+30-payment assumption appears only as a comparison; retiree health and later earnings scenarios
+retain the stated fixed age-47-to-65 horizon. Survival weights apply to pension payments only.
 """
 import argparse
 import json
@@ -123,7 +124,8 @@ def pension():
 
 
 def pension_pv(years_to_retirement, rate=PENSION_RATE, tax=D("0")):
-    return pension()[1] * (1 - tax) * annuity(rate, PENSION_YEARS) / (1 + rate) ** years_to_retirement
+    # Single paper base: approximate survival-weighted payments from retirement age 47.
+    return pension()[1] * (1 - tax) * survival_annuity(RETIREMENT_AGE, rate) / (1 + rate) ** years_to_retirement
 
 
 def net_at(k, gaps, tax, rate=PENSION_RATE):
@@ -243,7 +245,7 @@ def sensitivity(promote_at=None, pension_factor=None):
         tax = federal_tax(wages) + california_tax(wages) + payroll_tax(wages)
         return gross(y) - tax + BRS_CONTRIBUTION * basic(y)
 
-    factor = pension_factor if pension_factor is not None else annuity(PENSION_RATE, PENSION_YEARS)
+    factor = pension_factor if pension_factor is not None else survival_annuity(RETIREMENT_AGE, PENSION_RATE)
     annual = BRS_MULTIPLIER * 20 * sum(basic(y) for y in (8, 9, 10)) / 3
     civ = civilian_value()[0]
     gaps = {"gross": [CIVILIAN_PAY - gross(y) for y in range(1, YEARS + 1)],
@@ -271,11 +273,9 @@ def reviewer_sensitivities():
     fixed_le = annuity(PENSION_RATE, round(le))
     surv = survival_annuity(RETIREMENT_AGE, PENSION_RATE, life)
     cases = [
-        ("Revision 16: no promotion, 30 payments", None, None),
-        (f"O-5 at {O5_PROMOTION_SERVICE_YEAR} years, 30 payments", O5_PROMOTION_SERVICE_YEAR, None),
-        ("No promotion, life-table survival from age 47", None, surv),
-        (f"No promotion, {round(le)} payments (life expectancy at 47)", None, fixed_le),
-        (f"O-5 at {O5_PROMOTION_SERVICE_YEAR} years + life-table survival", O5_PROMOTION_SERVICE_YEAR, surv),
+        ("Base: no promotion, approximate survival weighting", None, surv),
+        ("Comparison only: no promotion, 30 fixed payments", None, annuity(PENSION_RATE, PENSION_YEARS)),
+        (f"O-5 at {O5_PROMOTION_SERVICE_YEAR} years, approximate survival weighting", O5_PROMOTION_SERVICE_YEAR, surv),
     ]
     rows = [(label, sensitivity(p, f)) for label, p, f in cases]
     meta = {"life_expectancy_47": le, "factor_30": annuity(PENSION_RATE, PENSION_YEARS),
@@ -284,23 +284,24 @@ def reviewer_sensitivities():
 
 
 def sensitivity_markdown(rows, meta):
-    out = ["", "## Reviewer sensitivities: promotion and pension horizon", "",
-           "Each row changes only the stated assumption; all other inputs are the revision-16 model. "
-           "O-5 pay (DFAS 2026a, via `calc-engine.js`) and O-5 San Diego BAH with dependents "
-           "(`data/bah-2026.json`) apply from the promotion year; High-3 becomes O-5 basic pay. "
-           f"Remaining U.S. life expectancy at 47 is {meta['life_expectancy_47']} years "
-           "(`data/us-life-remaining-2024.json`, both sexes). At 3% the pension annuity factor is "
-           f"{meta['factor_30']:.2f} for 30 payments, {meta['factor_le']:.2f} for payments to life expectancy, "
-           f"and {meta['factor_survival']:.2f} when each payment is weighted by the probability of surviving to it. "
-           "The survival-weighted factor is the defensible central case: paying exactly to average life "
-           "expectancy overstates an annuity, and 30 fixed payments understate it.", "",
+    out = ["", "## Appendix E: one base and two comparisons", "",
+           "The base uses no promotion and approximate survival-weighted pension payments from age 47. "
+           "The shared remaining-life-expectancy proxy gives an annuity factor of "
+           f"{meta['factor_survival']:.5f} at 3%. One-year survival is recovered with a curtate approximation; "
+           "this is not a directly observed mortality schedule. Retirement eligibility is still assumed. "
+           "Retiree health and later earnings scenarios retain fixed horizons to age 65; only pension payments "
+           "are survival-weighted. All values are constant 2026 dollars.", "",
            "| Case | Annual pension | Net, gross basis | Net, taxes and benefits | Break-even, gross | Break-even, adjusted |",
-           "|---|---:|---:|---:|---:|---:|"]
+           "|---|---:|---:|---:|---:|---|"]
     for label, r in rows:
         out.append(f"| {label} | {r['annual_pension']:,.0f} | {r['gross']:,.0f} | {r['adjusted']:,.0f} | "
                    f"{r['be_gross']} | {r['be_adjusted']} |")
-    out += ["", "Promotion is illustrative: selection and timing are not guaranteed, and promotion also raises "
-            "taxable pay, which the adjusted column includes. Positive values favor staying."]
+    out += ["", "O-5 at 15 years is a conditional scenario, not a prediction. Pay and BAH are read from "
+            "the shared calc-engine.js and data/bah-2026.json. The FY27 Medical Corps board selected "
+            "84 of 115 in-zone candidates (73.04%); this one-board rate is not an individual promotion probability. "
+            "Source: Navy Personnel Command, FY27_AO5S_STATS, May 7, 2026, p. 1, "
+            "https://mccareer.org/wp-content/uploads/2026/08/FY27_AO5S_STATS.pdf (accessed October 19, 2026). "
+            "Positive net values favor staying. No-promotion is a lower-pay scenario, not a universal financial floor."]
     return "\n".join(out) + "\n"
 
 
@@ -330,24 +331,24 @@ PRINTED = [  # (label, key or lambda, printed value, precision, where)
     ("Year-1 difference", lambda r: r["table_b1"][0][4], "77456.51", cents, "App. C"),
     ("High-3 basic pay", "high3", "125685.60", cents, "App. D"),
     ("Annual BRS pension", "annual_pension", "50274.24", cents, "App. D"),
-    ("Pension PV, untaxed", "pension_pv_gross", "733228.13", cents, "App. D; Results"),
-    ("Pension PV, 32% tax", "pension_pv_taxed", "498595.13", cents, "App. D"),
-    ("Net value, gross basis", "net_gross", "-615967.91", cents, "App. D, D1; Results"),
-    ("Net value, adjusted", "net_adjusted", "-58419.08", cents, "App. D, D1, E; Results"),
+    ("Pension PV, untaxed", "pension_pv_gross", "761204.42", cents, "App. D; Results"),
+    ("Pension PV, 32% tax", "pension_pv_taxed", "517619.01", cents, "App. D"),
+    ("Net value, gross basis", "net_gross", "-587991.62", cents, "App. D, D1; Results"),
+    ("Net value, adjusted", "net_adjusted", "-39395.20", cents, "App. D, D1, E; Results"),
     ("Retiree health PV", "retiree_health_pv", "62273.31", cents, "App. D"),
-    ("D1: add retiree health", "d1_retiree_health", "3854", dollars, "App. D1"),
+    ("D1: add retiree health", "d1_retiree_health", "22878", dollars, "App. D1"),
     ("Navy state income tax PV", "navy_state_tax_pv", "94602.25", cents, "App. D"),
-    ("D1: add no-income-tax domicile", "d1_no_state_tax", "98456", dollars, "App. D1; Results"),
+    ("D1: add no-income-tax domicile", "d1_no_state_tax", "117480", dollars, "App. D1; Results"),
     ("Continuation pay amount", "continuation_pay", "23550", dollars, "App. A"),
     ("Continuation pay PV after tax", "continuation_pay_pv", "16351.50", cents, "App. D"),
-    ("D1: add continuation pay", "d1_continuation", "114808", dollars, "App. D1; Results"),
+    ("D1: add continuation pay", "d1_continuation", "133832", dollars, "App. D1; Results"),
     ("Later civilian pay after penalty", "later_pay_lower", "436104.15", cents, "App. D"),
     ("Later pay penalty PV", "later_pay_penalty_pv", "85736.06", cents, "App. D"),
-    ("D1: add 5% later pay penalty", "d1_later_pay", "29072", dollars, "App. D1; Results"),
-    ("E: pension discount 5%", "e_pension_5pct", "-234384", dollars, "App. E; Policy"),
-    ("E: civilian salary $400,000", "e_salary_400000", "201025", dollars, "App. E"),
-    ("E: civilian salary $350,000", "e_salary_350000", "436422", dollars, "App. E"),
-    ("E: pension tax 41.3%", "e_pension_tax_413", "-126609", dollars, "App. E; Policy"),
+    ("D1: add 5% later pay penalty", "d1_later_pay", "48096", dollars, "App. D1; Results"),
+    ("E: pension discount 5%", "e_pension_5pct", "-233152", dollars, "App. E; Policy"),
+    ("E: civilian salary $400,000", "e_salary_400000", "220049", dollars, "App. E"),
+    ("E: civilian salary $350,000", "e_salary_350000", "455446", dollars, "App. E"),
+    ("E: pension tax 41.3%", "e_pension_tax_413", "-110187", dollars, "App. E; Policy"),
 ]
 B1_PRINTED = [  # year, Navy gross, Navy tax, Navy value, civilian gap (dollars)
     (1, 276966, 55069, 227549, 77457), (3, 282585, 56909, 231609, 73396), (5, 286499, 58191, 234436, 70569),
@@ -367,8 +368,8 @@ def check(r):
             ok = dollars(got) == D(want)
             failures += not ok
             rows.append((f"Table B1 year {y}: {label}", got, D(want), ok, "App. B"))
-    for label, got, want in (("Break-even, gross (years)", r["break_even_gross"], "14.27"),
-                             ("Break-even, adjusted (years)", r["break_even_adjusted"], "10.90")):
+    for label, got, want in (("Break-even, gross (years)", r["break_even_gross"], "14.06"),
+                             ("Break-even, adjusted (years)", r["break_even_adjusted"], "10.60")):
         ok = D(str(round(got, 2))) == D(want)
         failures += not ok
         rows.append((label, D(str(round(got, 4))), D(want), ok, "App. D; Results"))
@@ -379,7 +380,7 @@ def markdown(rows, failures):
     out = ["# Appendix B-E reproduction", "",
            "Generated by `appendix_calculations.py` from the paper's stated assumptions (Appendices A-D). "
            "Each figure is recomputed and compared with the value printed in `analysis/research-paper.pdf` "
-           "(revision 16). Cents are compared where the paper prints cents; otherwise whole dollars.", "",
+           "(October 19, 2026 single-base revision). Cents are compared where the paper prints cents; otherwise whole dollars.", "",
            f"**Result: {len(rows) - failures} of {len(rows)} figures match.**", "",
            "| Figure | Computed | Printed | Match | Where |", "|---|---:|---:|---|---|"]
     for label, got, want, ok, where in rows:
@@ -396,7 +397,7 @@ def main(argv=None):
         print(f"{'ok ' if ok else 'BAD'}  {label:42s} computed {got:>16,.2f}   printed {want:>16,.2f}")
     print(f"\n{len(rows) - failures} of {len(rows)} figures match the paper.")
     sens_rows, meta = reviewer_sensitivities()
-    print("\nReviewer sensitivities (not printed in revision 16):")
+    print("\nAppendix E comparisons:")
     for label, r in sens_rows:
         print(f"  {label:52s} gross {r['gross']:>14,.0f}   adjusted {r['adjusted']:>12,.0f}   "
               f"break-even {r['be_gross']} / {r['be_adjusted']}")
