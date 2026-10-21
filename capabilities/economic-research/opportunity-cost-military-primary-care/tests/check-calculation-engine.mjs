@@ -139,3 +139,17 @@ console.log('Conditional pension career-stage checks passed');
   assert.throws(()=>federalCareerValue({...base,stints:[{start:0,years:5},{start:3,years:2}]}),/overlap/);
 }
 console.log('federal career checks passed');
+
+// Deferred FERS annuity starts at 60, unreduced, with 20+ creditable years.
+{
+  const {federalCareerValue}=await import('../calc-engine.js');
+  const r=federalCareerValue({currentAge:34,militaryYears:15,militaryBasicPaid:1500000,high3:300000,
+    stints:[{start:0,years:5}],paymentYearsFor:a=>85-a});
+  assert.equal(r.creditYears,20);
+  assert.equal(r.pension.startAge,60);
+  assert.equal(r.pension.multiplier,.01);
+  const noBuy=federalCareerValue({currentAge:34,militaryYears:15,militaryBasicPaid:1500000,high3:300000,
+    stints:[{start:0,years:5}],buyback:false,paymentYearsFor:a=>85-a});
+  assert.equal(noBuy.pension.startAge,62);
+}
+console.log('deferred age-60 checks passed');

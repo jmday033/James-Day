@@ -263,7 +263,8 @@ export function stayToTwentyCurve({fromYos=10, annualCashGap, annualPension:annu
 //  - Civilian stints separated by a break combine when contributions are not
 //    refunded (assumed).
 //  - Immediate annuity at 62 (5 years), 60 (20 years) or MRA 57 (30 years);
-//    otherwise deferred to 62. The reduced MRA+10 option is not modeled.
+//    otherwise deferred to 60 (20+ years) or 62. The reduced MRA+10 option
+//    is not modeled.
 //  - 1% × creditable years × High-3, or 1.1% when separating at 62+ with 20+.
 //  - FERS COLAs trail CPI, so the annuity is discounted 0.5% a year faster.
 // annualGiveUp is the after-tax income given up each federal year versus the
@@ -285,7 +286,7 @@ export function federalCareerValue({currentAge, stints, militaryYears, militaryB
   const pensionFor = creditYears => {
     if (!vested) return {annual:0, startAge:null, multiplier:0, payYears:0, value:0};
     const immediate = sepAge >= 62 || (sepAge >= 60 && creditYears >= 20) || (sepAge >= fersRules.mra && creditYears >= 30);
-    const startAge = immediate ? sepAge : 62;
+    const startAge = immediate ? sepAge : creditYears >= 20 ? 60 : 62;          // deferred: 60 with 20+ years
     const multiplier = sepAge >= 62 && creditYears >= 20 ? .011 : .010;
     const annual = multiplier*creditYears*high3;
     const payYears = Math.max(0, paymentYearsFor(startAge));

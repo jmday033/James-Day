@@ -398,7 +398,7 @@ export function stayOrGo(userInput, {stateData=null, lifeTable=null, bah=null} =
     const sepAge = decisionAge + vaYears;
     if (vaYears < 5) return {annual:0, startAge:sepAge, multiplier:0, value:0};   // not vested
     const immediate = (sepAge >= 62) || (sepAge >= 60 && creditYears >= 20) || (sepAge >= fers.mra && creditYears >= 30);
-    const startAge = immediate ? sepAge : 62;                                     // otherwise deferred to 62
+    const startAge = immediate ? sepAge : creditYears >= 20 ? 60 : 62;            // deferred: 60 with 20+ years, else 62
     const multiplier = startAge >= 62 && sepAge >= 62 && creditYears >= 20 ? .011 : .010;
     const annual = multiplier*creditYears*high3;
     const tax = Number.isFinite(x.pensionTax) ? x.pensionTax : marginalFederalRate(annual, withSpouse);

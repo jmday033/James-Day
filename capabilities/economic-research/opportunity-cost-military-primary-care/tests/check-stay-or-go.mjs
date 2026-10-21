@@ -73,9 +73,9 @@ assert.ok(sens.every((s,i)=>i===0||sens[i-1].swing>=s.swing));
   const off=stayOrGo({vaBuyback:false},c).va;
   assert.ok(!off.buyback && off.net<w.net);
   near(off.net,off.salaryGapValue+off.noBuyback.value,.001);
-  // Buyback reaches 30 years at 57, so the pension starts at once; without it, deferred to 62.
+  // Buyback reaches 30 years at 57, so the pension starts at once; without it, 20+ VA years defer it to 60.
   const early=stayOrGo({workUntilAge:57},c).va;
-  assert.equal(early.withBuyback.startAge,57); assert.equal(early.noBuyback.startAge,62);
+  assert.equal(early.withBuyback.startAge,57); assert.equal(early.noBuyback.startAge,60);
   // Fewer than 5 VA years: not vested.
   assert.equal(stayOrGo({yos:19,workUntilAge:49},c).va.pension.annual,0);
   // Higher VA pay raises the VA route.
