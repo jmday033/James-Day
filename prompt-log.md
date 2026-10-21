@@ -511,3 +511,7 @@ Prompted by reader feedback asking how HPSP, a 4-year military residency, and 4-
 ## 2026-10-21 — Deferred FERS annuity at 60 with 20 years
 
 A second reader (forwarded by James) noted that a vested FERS employee can draw the pension at 60. Checked OPM's FERS eligibility page on 2026-10-21: a deferred annuity starts unreduced at 60 when creditable service is 20 years or more; otherwise at 62. Claude (Opus 5.5) changed the deferred start age in both the new full-lab federal path (`calc-engine.js`) and the Stay or go? VA path (`stay-or-go.js`), updated the Stay or go? method text, corrected one Stay or go? test whose expected deferred age changes from 62 to 60 (20+ VA years without the buyback), and added engine checks. All three test files pass.
+
+## 2026-10-21 — Service academy years in the federal path
+
+The same reader noted that service academy time can be bought back cheaply for FERS. Checked on 2026-10-21: Montelongo v. OPM (Fed. Cir. 2019) treats cadet time as creditable military service under 5 U.S.C. 8411(c) that adds to the annuity but does not count toward the 5-year civilian minimum; 37 U.S.C. 203(c) sets cadet pay at 35% of O-1 (<2 years) basic pay. Claude (Opus 5.5) added an optional "service academy years" input to the lab's federal path; the deposit is 3% of cadet pay at about $1,400 a month (overstates earlier years). Added engine checks; all three test files pass, and the lab was checked headlessly at phone width.

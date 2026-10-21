@@ -269,8 +269,13 @@ export function stayToTwentyCurve({fromYos=10, annualCashGap, annualPension:annu
 //  - FERS COLAs trail CPI, so the annuity is discounted 0.5% a year faster.
 // annualGiveUp is the after-tax income given up each federal year versus the
 // private job (caller supplies it), held constant in real terms.
-export const fersRules = {depositRate:.03, employeeRate:.044, tspAgency:.05, mra:57, colaGap:.005, vestYears:5};
-export function federalCareerValue({currentAge, stints, militaryYears, militaryBasicPaid=0, buyback=true,
+// Service academy (cadet/midshipman) years are creditable military service
+// (5 U.S.C. 8401(31), 2008 NDAA sec. 1115) once the deposit is paid; they add
+// to the annuity but not to the 5 civilian years (Montelongo v. OPM, Fed. Cir.
+// 2019). Cadet pay is 35% of O-1 (<2 years) basic pay (37 U.S.C. 203(c)),
+// about $1,400 a month; earlier academy years were paid less.
+export const fersRules = {depositRate:.03, employeeRate:.044, tspAgency:.05, mra:57, colaGap:.005, vestYears:5, cadetMonthlyPay:1400};
+export function federalCareerValue({currentAge, stints, militaryYears, militaryBasicPaid=0, academyYears=0, buyback=true,
   high3, pensionTax=0.22, pensionDiscount=0.03, payDiscount=0.05, paymentYearsFor=()=>25, annualGiveUp=0}) {
   const list = (stints || []).filter(s => s && s.years > 0).map(s => ({start:Math.max(0, Math.round(s.start)), years:Math.round(s.years)}))
     .sort((a,b) => a.start - b.start);
@@ -294,15 +299,17 @@ export function federalCareerValue({currentAge, stints, militaryYears, militaryB
     const value = annual*(1 - pensionTax)*annuityFactor(eroded, payYears)/Math.pow(1 + pensionDiscount, startAge - currentAge);
     return {annual, startAge, multiplier, payYears, value};
   };
-  const useBuyback = buyback && vested && militaryYears > 0;
-  const withBuyback = pensionFor(civilianYears + militaryYears), noBuyback = pensionFor(civilianYears);
-  const deposit = useBuyback ? fersRules.depositRate*militaryBasicPaid : 0;
+  const academy = Math.max(0, Math.round(academyYears || 0)), boughtYears = militaryYears + academy;
+  const useBuyback = buyback && vested && boughtYears > 0;
+  const withBuyback = pensionFor(civilianYears + boughtYears), noBuyback = pensionFor(civilianYears);
+  const academyDeposit = useBuyback ? fersRules.depositRate*12*fersRules.cadetMonthlyPay*academy : 0;
+  const deposit = useBuyback ? fersRules.depositRate*militaryBasicPaid + academyDeposit : 0;
   const depositValue = deposit/Math.pow(1 + payDiscount, list[0].start + 1);
   let giveUpValue = 0;
   for (const s of list) for (let k = 0; k < s.years; k++) giveUpValue += annualGiveUp/Math.pow(1 + payDiscount, s.start + k + 1);
   const pension = useBuyback ? withBuyback : noBuyback;
-  return {stints:list, civilianYears, vested, sepAge, militaryYears, creditYears:civilianYears + (useBuyback ? militaryYears : 0),
-    buyback:useBuyback, deposit, depositValue, giveUpValue, pension, withBuyback, noBuyback,
+  return {stints:list, civilianYears, vested, sepAge, militaryYears, academyYears:academy, creditYears:civilianYears + (useBuyback ? boughtYears : 0),
+    buyback:useBuyback, deposit, academyDeposit, depositValue, giveUpValue, pension, withBuyback, noBuyback,
     buybackGain:useBuyback ? withBuyback.value - noBuyback.value - depositValue : 0,
     net:pension.value - depositValue - giveUpValue};
 }

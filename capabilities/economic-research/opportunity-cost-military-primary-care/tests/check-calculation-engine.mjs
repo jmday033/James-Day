@@ -153,3 +153,15 @@ console.log('federal career checks passed');
   assert.equal(noBuy.pension.startAge,62);
 }
 console.log('deferred age-60 checks passed');
+
+// Service academy years: add to the annuity, not to vesting.
+{
+  const {federalCareerValue,fersRules}=await import('../calc-engine.js');
+  const base={currentAge:34,militaryYears:5,militaryBasicPaid:500000,high3:300000,paymentYearsFor:a=>85-a};
+  const r=federalCareerValue({...base,academyYears:4,stints:[{start:0,years:5}]});
+  assert.equal(r.creditYears,14);
+  assert.ok(Math.abs(r.pension.annual-42000)<.01);   // 1% × 14 × 300k
+  assert.equal(r.academyDeposit,.03*12*fersRules.cadetMonthlyPay*4);
+  assert.equal(federalCareerValue({...base,academyYears:4,stints:[{start:0,years:4}]}).vested,false);
+}
+console.log('academy checks passed');
