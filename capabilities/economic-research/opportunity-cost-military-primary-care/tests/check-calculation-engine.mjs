@@ -108,3 +108,34 @@ console.log('Conditional pension career-stage checks passed');
   assert.equal(gradeForYear({rank:'O6',commissionYear:2000,promotionOn:true,nextPromotionIn:1},3),'O6');
   console.log('years-at-rank checks passed');
 }
+
+// Federal career after leaving: FERS vesting, buyback, split stints.
+{
+  const {federalCareerValue}=await import('../calc-engine.js');
+  const base={currentAge:34,militaryYears:8,militaryBasicPaid:900000,high3:300000,pensionTax:.22,
+    pensionDiscount:.03,payDiscount:.05,paymentYearsFor:a=>85-a,annualGiveUp:60000};
+  const one=federalCareerValue({...base,stints:[{start:0,years:5}]});
+  assert.equal(one.vested,true);
+  assert.equal(one.creditYears,13);
+  assert.equal(one.pension.annual,39000);            // 1% × 13 × 300k
+  assert.equal(one.pension.startAge,62);             // separates at 39, deferred to 62
+  assert.equal(one.deposit,27000);                   // 3% of 900k
+  assert.ok(one.buybackGain>0);
+  const noBuy=federalCareerValue({...base,stints:[{start:0,years:5}],buyback:false});
+  assert.equal(noBuy.creditYears,5);
+  assert.equal(noBuy.deposit,0);
+  const short=federalCareerValue({...base,stints:[{start:0,years:4}]});
+  assert.equal(short.vested,false);
+  assert.equal(short.pension.value,0);
+  assert.equal(short.deposit,0);
+  const split=federalCareerValue({...base,stints:[{start:24,years:3},{start:0,years:2}]});
+  assert.equal(split.civilianYears,5);
+  assert.equal(split.sepAge,61);
+  assert.equal(split.pension.startAge,62);
+  assert.ok(split.giveUpValue<one.giveUpValue);      // later years discount more
+  const late=federalCareerValue({...base,currentAge:40,stints:[{start:22,years:5}]});
+  assert.equal(late.pension.startAge,67);            // immediate annuity when separating at 62+
+  assert.equal(late.pension.multiplier,.01);         // 13 creditable years < 20, so no 1.1%
+  assert.throws(()=>federalCareerValue({...base,stints:[{start:0,years:5},{start:3,years:2}]}),/overlap/);
+}
+console.log('federal career checks passed');

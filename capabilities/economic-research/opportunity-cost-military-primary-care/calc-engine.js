@@ -251,3 +251,57 @@ export function stayToTwentyCurve({fromYos=10, annualCashGap, annualPension:annu
   return {rows, breakEven};
 }
 
+
+// ---- Federal civilian career after leaving (VA staff physician, FERS) ----
+// One or two federal stints after leaving active duty before 20. FERS rules
+// (OPM, FERS eligibility and computation pages; OPM Service Credit):
+//  - 5 years of creditable civilian service are required for any annuity.
+//  - Post-1956 active duty counts as creditable service only after the 3%
+//    military deposit, which must be paid before leaving federal service; it
+//    is assumed paid in the first stint's first year, inside the about-2-year
+//    interest-free window. Not allowed for years drawing Navy retired pay.
+//  - Civilian stints separated by a break combine when contributions are not
+//    refunded (assumed).
+//  - Immediate annuity at 62 (5 years), 60 (20 years) or MRA 57 (30 years);
+//    otherwise deferred to 62. The reduced MRA+10 option is not modeled.
+//  - 1% × creditable years × High-3, or 1.1% when separating at 62+ with 20+.
+//  - FERS COLAs trail CPI, so the annuity is discounted 0.5% a year faster.
+// annualGiveUp is the after-tax income given up each federal year versus the
+// private job (caller supplies it), held constant in real terms.
+export const fersRules = {depositRate:.03, employeeRate:.044, tspAgency:.05, mra:57, colaGap:.005, vestYears:5};
+export function federalCareerValue({currentAge, stints, militaryYears, militaryBasicPaid=0, buyback=true,
+  high3, pensionTax=0.22, pensionDiscount=0.03, payDiscount=0.05, paymentYearsFor=()=>25, annualGiveUp=0}) {
+  const list = (stints || []).filter(s => s && s.years > 0).map(s => ({start:Math.max(0, Math.round(s.start)), years:Math.round(s.years)}))
+    .sort((a,b) => a.start - b.start);
+  if (!list.length) throw new RangeError('At least one federal stint is required');
+  for (let i = 1; i < list.length; i++)
+    if (list[i].start < list[i-1].start + list[i-1].years) throw new RangeError('Federal stints overlap');
+  if (!Number.isFinite(high3) || high3 < 0) throw new RangeError('High-3 must be a non-negative amount');
+  const civilianYears = list.reduce((a,s) => a + s.years, 0);
+  const vested = civilianYears >= fersRules.vestYears;
+  const last = list[list.length - 1];
+  const sepAge = currentAge + last.start + last.years;
+  const annuityFactor = (rate, n) => n <= 0 ? 0 : rate === 0 ? n : (1 - Math.pow(1 + rate, -n))/rate;
+  const pensionFor = creditYears => {
+    if (!vested) return {annual:0, startAge:null, multiplier:0, payYears:0, value:0};
+    const immediate = sepAge >= 62 || (sepAge >= 60 && creditYears >= 20) || (sepAge >= fersRules.mra && creditYears >= 30);
+    const startAge = immediate ? sepAge : 62;
+    const multiplier = sepAge >= 62 && creditYears >= 20 ? .011 : .010;
+    const annual = multiplier*creditYears*high3;
+    const payYears = Math.max(0, paymentYearsFor(startAge));
+    const eroded = (1 + pensionDiscount)*(1 + fersRules.colaGap) - 1;
+    const value = annual*(1 - pensionTax)*annuityFactor(eroded, payYears)/Math.pow(1 + pensionDiscount, startAge - currentAge);
+    return {annual, startAge, multiplier, payYears, value};
+  };
+  const useBuyback = buyback && vested && militaryYears > 0;
+  const withBuyback = pensionFor(civilianYears + militaryYears), noBuyback = pensionFor(civilianYears);
+  const deposit = useBuyback ? fersRules.depositRate*militaryBasicPaid : 0;
+  const depositValue = deposit/Math.pow(1 + payDiscount, list[0].start + 1);
+  let giveUpValue = 0;
+  for (const s of list) for (let k = 0; k < s.years; k++) giveUpValue += annualGiveUp/Math.pow(1 + payDiscount, s.start + k + 1);
+  const pension = useBuyback ? withBuyback : noBuyback;
+  return {stints:list, civilianYears, vested, sepAge, militaryYears, creditYears:civilianYears + (useBuyback ? militaryYears : 0),
+    buyback:useBuyback, deposit, depositValue, giveUpValue, pension, withBuyback, noBuyback,
+    buybackGain:useBuyback ? withBuyback.value - noBuyback.value - depositValue : 0,
+    net:pension.value - depositValue - giveUpValue};
+}
