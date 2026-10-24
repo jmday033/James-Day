@@ -10,7 +10,8 @@
 
 **Department Head, Internal Medicine, Naval Hospital Guam (2024–2025)**
 - Led internal medicine operations and multidisciplinary quality initiatives.
-- Supported virtual cardiology/heart failure access and echocardiography improvement; outcome metrics pending source validation.
+- Co-developed a virtual heart-failure consultation pathway linking Guam with Naval Medical Center San Diego cardiology; a retrospective observational analysis documented median referral-to-first-visit waits of 14 days (18 virtual referrals) versus 81 days (9 traditional referrals). This is an association, not a causal estimate.
+- Echocardiography quality-improvement metrics remain pending validation.
 
 **Chief Medical Information Officer, Naval Hospital Guam (2024–2025)**
 - Chaired informatics governance and supported EHR and digital access improvements.
