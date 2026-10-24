@@ -10,6 +10,7 @@
 
 **Department Head, Internal Medicine, Naval Hospital Guam (2024–2025)**
 - Led internal medicine operations and multidisciplinary quality initiatives.
+- August 2025 FITREP supporting sheet reports supervision of 38 personnel (7 officers, 20 enlisted, 9 civilians and 2 contractors), 36 limited-duty cases initiated and 17 completed; awaiting signed FITREP corroboration.
 - Co-developed a virtual heart-failure consultation pathway linking Guam with Naval Medical Center San Diego cardiology; a retrospective observational analysis documented median referral-to-first-visit waits of 14 days (18 virtual referrals) versus 81 days (9 traditional referrals). This is an association, not a causal estimate.
 - Echocardiography quality-improvement metrics remain pending validation.
 
