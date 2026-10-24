@@ -22,6 +22,8 @@ Board-certified internal medicine physician; Senior Medical Officer, Marine Cent
 - Day JM. When Tuberculosis Bleeds: Intestinal Tuberculosis Presenting With Hematochezia. Cureus. 2026;18(4).
 - Navy ACP Well-Being Champion (2025–2026)
 - Teaching at Tripler Army Medical Center
+- 2025 FITREP supporting sheet reports 90 clinical precepting hours for an adult-gerontology doctoral nursing student (awaiting signed FITREP corroboration).
+- Co-developed virtual heart-failure consultation pathway; observational comparison: median waits 14 days (18 virtual referrals) versus 81 days (9 traditional referrals).
 
 ## Awards
 - Navy ACP Sparks Award (year to confirm)
