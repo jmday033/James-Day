@@ -1,4 +1,4 @@
-# James M. Day, MD — Academic CV (working, October 2026)
+# James M. Day, MD, FACP — Academic CV (working, October 2026)
 
 Board-certified internal medicine physician; Senior Medical Officer, Marine Centered Medical Home, MCBH; Assistant Professor, Uniformed Services University.
 
@@ -26,6 +26,7 @@ Board-certified internal medicine physician; Senior Medical Officer, Marine Cent
 - Co-developed virtual heart-failure consultation pathway; observational comparison: median waits 14 days (18 virtual referrals) versus 81 days (9 traditional referrals).
 
 ## Awards
+- Fellow, American College of Physicians (FACP) (2026)
 - Navy ACP Sparks Award (year to confirm)
 - Guam Commanding Officer Process Improvement Fair Award (2025)
 - USU Internal Medicine Teaching Fellow Award (2022)

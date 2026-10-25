@@ -1,6 +1,6 @@
 
 # RESUME
-# James M. Day, MD
+# James M. Day, MD, FACP
 
 **Email:** [jmday033@gmail.com](mailto:jmday033@gmail.com) 
 **Location:** Marine Corps Base Hawaii
@@ -64,6 +64,10 @@
 ---
 
 ## HONORS AND AWARDS
+
+**American College of Physicians**, *Fellow (FACP)* — 2026
+
+* Elected Fellow of the American College of Physicians; listed among new Fellows, U.S. Navy Chapter (September 2026).
 
 **American College of Physicians, U.S. Navy Chapter**, *Sparks Award* — 2025
 
