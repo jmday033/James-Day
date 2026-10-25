@@ -1,4 +1,4 @@
-# James M. Day, MD — Physician Leadership Résumé (working, October 2026)
+# James M. Day, MD, FACP — Physician Leadership Résumé (working, October 2026)
 
 **Physician executive profile:** Board-certified internist and Navy medical leader with clinical operations, informatics, quality improvement, and graduate medical education experience. Executive MBA candidate.
 
@@ -21,7 +21,7 @@
 - Supported aviation medicine and operational readiness.
 
 ## Education and credentials
-MD, Loyola Stritch; Internal Medicine residency, NMC San Diego; ABIM board certification; Executive MBA in progress, UH Shidler; JPME I; AMIA 10×10.
+MD, Loyola Stritch; Internal Medicine residency, NMC San Diego; ABIM board certification; Fellow, American College of Physicians (FACP, 2026); Executive MBA in progress, UH Shidler; JPME I; AMIA 10×10.
 
 ## Academic and research
 Assistant Professor, USU; clinical study site leader; published Cureus case report (2026); Navy ACP Chapter service.
