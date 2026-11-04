@@ -102,7 +102,7 @@ button.btn{border:0;cursor:pointer;font-family:inherit}.copyrow{display:flex;fle
 <header><div class="wrap">
   <nav class="crumb" aria-label="Lab versions"><a href="stay-or-go.html" aria-current="page">Stay or go?</a><a href="physician-pay-lab.html">Advanced lab</a></nav>
   <div class="header-top"><div><span class="project-label">Navy physician pay and pension</span><h1>Stay or go?</h1><p class="creator-credit">Created by James M. Day for a graduate school economics project.</p><p class="creator-contact">Contact: <span>jday6@hawaii.edu</span></p></div><nav class="creator-links" aria-label="Creator and project links"><a href="mailto:jday6@hawaii.edu">Email</a><a href="https://jmday033.github.io/James-Day/RESUME.html" target="_blank" rel="noopener noreferrer">CV</a><a href="https://www.linkedin.com/in/james-day-21103b169" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://github.com/jmday033/James-Day" target="_blank" rel="noopener noreferrer">Project repository</a></nav></div>
-  <p class="header-version" style="font-size:13px;color:#a9cede;margin-bottom:8px">Version 3.10 · Updated October 12, 2026 · 2026 pay, tax, and benefit data</p><p>Compare staying to 20 with civilian practice, or Navy with civilian residency after a GMO tour.</p>
+  <p class="header-version" style="font-size:13px;color:#a9cede;margin-bottom:8px">Version 3.11 · Updated November 4, 2026 · 2026 pay, tax, and benefit data</p><p>Compare staying to 20 with civilian practice, or Navy with civilian residency after a GMO tour.</p>
   <p class="whats-new" role="status"><strong>New</strong> Now covers all 62 Navy Medical Corps specialties and subspecialties, with <a href="https://www.med.navy.mil/Special-Pays/" target="_blank" rel="noopener noreferrer">FY 2027</a> incentive pay and retention bonus rates and a flight surgeon, undersea medical officer, or aerospace medicine add-on.</p>
   <p class="views-note" role="note">Views are the author’s own and do not represent the U.S. Navy, the Department of Defense, or the U.S. government.</p>
 </div></header>
@@ -118,7 +118,8 @@ button.btn{border:0;cursor:pointer;font-family:inherit}.copyrow{display:flex;fle
     <div class="field"><label for="specialty">Specialty</label><select id="specialty" required></select></div>
   </div>
   <div class="field"><label for="opQual">Operational training</label><select id="opQual"><option value="none" selected>None</option><option value="amp">Navy flight surgeon or undersea medical officer duties</option><option value="ram">Aerospace medicine residency plus another specialty</option></select><small>FY 2027 adds $3,000 a year to incentive pay and the retention bonus for flight surgeon or undersea medical officer work beyond your primary duties, or $5,000 for an aerospace medicine residency on top of another specialty while in a RAM billet.</small></div>
-  <div class="field"><label for="usuYears">USU medical-school years</label><input id="usuYears" type="number" min="0" max="8" step="1" value="0"><small>USU graduates usually enter 4; HPSP or civilian school, 0. Leave school years out of active years served. They don't count toward 20, but once you reach 20 they raise the pension. <a href="https://www.usuhs.edu/sites/default/files/media/documents/ip_-_usuhs_service_credit_for_retirement_pay_acc.pdf" target="_blank" rel="noopener noreferrer">USU guidance</a></small></div>
+  <div class="field"><label for="usuAttended">Did you go to medical school at USU?</label><select id="usuAttended"><option value="no" selected>No (HPSP or civilian school)</option><option value="yes">Yes, USU</option></select><small>USU years don't count toward 20, but once you reach 20 they raise the pension. <a href="https://www.usuhs.edu/sites/default/files/media/documents/ip_-_usuhs_service_credit_for_retirement_pay_acc.pdf" target="_blank" rel="noopener noreferrer">USU guidance</a></small></div>
+  <div class="field" id="usuYearsField" hidden><label for="usuYears">USU medical-school years</label><input id="usuYears" type="number" min="0" max="8" step="1" value="4"><small>Most USU graduates have 4. Leave these out of active years served above.</small></div>
   <div class="chips" aria-label="Common specialties"><button type="button" data-spec="im" aria-pressed="false">Internal med</button><button type="button" data-spec="fm" aria-pressed="false">Family med</button><button type="button" data-spec="peds" aria-pressed="false">Pediatrics</button><button type="button" data-spec="em" aria-pressed="false">Emergency med</button><button type="button" data-spec="gensurg" aria-pressed="false">General surgery</button><button type="button" data-spec="ortho" aria-pressed="false">Orthopedics</button><button type="button" data-spec="anes" aria-pressed="false">Anesthesiology</button><button type="button" data-spec="obgyn" aria-pressed="false">OB/GYN</button><button type="button" data-spec="psych" aria-pressed="false">Psychiatry</button><button type="button" data-spec="rads" aria-pressed="false">Radiology</button></div>
   <div class="row">
     <div class="field"><label for="rank">Current rank</label><select id="rank" required><option value="" selected>Choose rank…</option><option value="O4">O-4</option><option value="O5">O-5</option><option value="O6">O-6</option></select></div>
@@ -277,6 +278,7 @@ button.btn{border:0;cursor:pointer;font-family:inherit}.copyrow{display:flex;fle
     <div class="metric"><span>Extra pay given up by staying</span><b id="mCost">—</b></div>
     <div class="metric"><span>Break-even</span><b id="mBreak">—</b></div>
   </div>
+  <p class="caption" id="usuNote" hidden></p>
   <div class="copyrow"><button type="button" class="btn" id="copyResults">Copy my results</button><span class="caption" id="copyStatus" role="status" style="margin:0"></span><textarea id="copyFallback" readonly hidden aria-label="Results summary to copy"></textarea></div>
 
   <details class="panel fold" open><summary><span class="fold-title">Four paths compared</span><span class="fold-chip" id="chipPaths"></span></summary><div class="fold-body">    <div class="paths" id="paths"></div>
@@ -354,7 +356,7 @@ button.btn{border:0;cursor:pointer;font-family:inherit}.copyrow{display:flex;fle
 <script>
 // One live version: if the server has a newer page than this saved copy,
 // reload it with a version tag so phone and browser caches are bypassed.
-(function(){var PAGE_VERSION="3.10";
+(function(){var PAGE_VERSION="3.11";
   try{fetch("version.json",{cache:"no-store"}).then(function(r){return r.json()}).then(function(d){
     if(!d||!d.version||d.version===PAGE_VERSION)return;
     var u=new URL(location.href);if(u.searchParams.get("v")===d.version)return;   // already tried once
@@ -401,7 +403,7 @@ function readInput(){
     civilianGrowth:num('civilianGrowth',0)/100,transitionCost:num('transitionCost'),insurance:$('insurance').value===''?null:num('insurance'),
     employerRetirement:num('employerRetirement',4.6)/100,malpractice:num('malpractice'),cashRate:num('cashRate',5)/100,
     reservePoints:Math.min(130,Math.max(50,num('reservePoints',77))),reserveStartAge:Math.min(60,Math.max(50,num('reserveStartAge',60))),reserveDaysMissed:Math.max(0,num('reserveDaysMissed',10)),
-    vaSalary:$('vaSalary').value===''?null:num('vaSalary'),vaBuyback:$('vaBuyback').checked,usuYears:Math.min(8,Math.max(0,Math.round(num('usuYears',0))))};
+    vaSalary:$('vaSalary').value===''?null:num('vaSalary'),vaBuyback:$('vaBuyback').checked,usuYears:$('usuAttended').value==='yes'?Math.min(8,Math.max(0,Math.round(num('usuYears',4)))):0};
 }
 
 function renderGmo(){
@@ -458,7 +460,8 @@ function update(){
     +(stay&&pc&&(be===null||be<=r.decisionYos)?' Primary care often shows staying ahead early; the common 15–16-year rule of thumb comes from higher-paid specialties.':'');
   const sens=sensitivity(x,ctx),[lo,hi]=answerRange(r.net,sens),word=v=>(v>=0?'staying +':'leaving +')+short(Math.abs(v));
   $('answerRange').textContent='Sensitivity range when assumptions change: '+word(lo)+' to '+word(hi)+'.';
-  $('mPension').textContent=short(r.pensionValue);$('mCost').textContent=short(r.costOfStaying);
+  $('mPension').textContent=short(r.pensionValue);
+  {const uy=r.input.usuYears,ua=uy?r.parts.pensionBase*(r.input.retirement==='legacy'?.025:.02)*uy:0,un=$('usuNote');un.hidden=!uy;un.textContent=uy?'Includes your '+uy+' USU years: they add about '+money(Math.round(ua/100)*100)+'/yr before tax to the pension at 20 ('+Math.round(100*uy/20)+'% more than 20 years alone).':''}$('mCost').textContent=short(r.costOfStaying);
   $('mBreak').textContent=be===null?'Not before 20':be<=r.decisionYos?'Staying already ahead':be.toFixed(1)+' yrs';
   copyReady=true;
   const f=r.input,sn=c=>stateData.names[c]||c;
@@ -549,6 +552,7 @@ function drawTornado(items){
   $('torScale').innerHTML='<span>'+short(-m)+' (favors leaving)</span><span>0</span><span>'+short(m)+' (favors staying)</span>';
 }
 
+$('usuAttended').addEventListener('change',()=>{$('usuYearsField').hidden=$('usuAttended').value!=='yes'});
 document.querySelectorAll('.inputs input,.inputs select').forEach(el=>el.addEventListener(el.tagName==='SELECT'||el.type==='checkbox'?'change':'input',()=>{
   if(el.id==='civilianSalary')$('salarySource').value='own';
   if(el.id==='specialty'||el.id==='salarySource'||el.id==='opQual')syncSalary();
@@ -572,7 +576,7 @@ function resultsSummary(){
   const opt=id=>{const s=$(id);return s.selectedIndex>=0?s.options[s.selectedIndex].text:''},kids=num('kids',0);
   const paths=[...document.querySelectorAll('#paths .path-row')].map(row=>'  '+row.querySelector('span').textContent+': '+row.querySelector('b').textContent);
   return ['Stay or go? — my results',
-    'Inputs: '+$('yos').value+' active years, '+opt('specialty')+', '+opt('rank')+', '+opt('family')+(kids?', '+kids+(kids===1?' child':' children'):'')+'; duty ZIP '+$('zip').value.trim()+'; civilian job in '+opt('civilianState'),
+    'Inputs: '+$('yos').value+' active years, '+opt('specialty')+', '+opt('rank')+', '+opt('family')+(kids?', '+kids+(kids===1?' child':' children'):'')+'; duty ZIP '+$('zip').value.trim()+'; civilian job in '+opt('civilianState')+($('usuAttended').value==='yes'?'; '+$('usuYears').value+' USU years':''),
     '', $('answerBig').textContent, $('answerText').textContent, $('answerRange').textContent, '',
     'Pension and benefits kept: '+$('mPension').textContent, 'Extra pay given up by staying: '+$('mCost').textContent, 'Break-even: '+$('mBreak').textContent,
     ...(paths.length?['','Four paths compared with leaving for private practice (today\'s dollars, after tax):',...paths]:[]),
