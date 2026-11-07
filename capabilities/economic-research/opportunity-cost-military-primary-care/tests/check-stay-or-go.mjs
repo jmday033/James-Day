@@ -245,3 +245,20 @@ console.log('version-sync checks passed');
   assert.equal(ns.rows[0].navyCash - nsNo.rows[0].navyCash, (102000-75000) + 150000);
   console.log('Pay-plan coverage checks passed');
 }
+
+// Simulation ("How sure is this answer?"): seeded, sorted, and centered near the headline.
+{
+  const {simulate} = await import('../stay-or-go.js');
+  const ctx = {stateData,lifeTable,bah:bahFor('92134','O4','yes')};
+  const a = simulate({}, ctx), b = simulate({}, ctx);
+  assert.equal(a.runs, 400);
+  assert.deepEqual(a.nets, b.nets);
+  assert.ok(a.nets.every((v,i) => i === 0 || a.nets[i-1] <= v));
+  assert.ok(a.p10 <= a.median && a.median <= a.p90);
+  assert.ok(a.stayShare >= 0 && a.stayShare <= 1);
+  const base = stayOrGo({}, ctx).net, sens = sensitivity({}, ctx);
+  assert.ok(Math.abs(a.median - base) < sens[0].swing, 'median stays within the largest single swing of the headline');
+  // A much higher civilian offer moves the whole pile toward leaving.
+  assert.ok(simulate({civilianSalary:650000}, ctx).stayShare <= a.stayShare);
+  console.log('Simulation checks passed');
+}

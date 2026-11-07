@@ -102,7 +102,7 @@ button.btn{border:0;cursor:pointer;font-family:inherit}.copyrow{display:flex;fle
 <header><div class="wrap">
   <nav class="crumb" aria-label="Lab versions"><a href="stay-or-go.html" aria-current="page">Stay or go?</a><a href="physician-pay-lab.html">Advanced lab</a></nav>
   <div class="header-top"><div><span class="project-label">Navy physician pay and pension</span><h1>Stay or go?</h1><p class="creator-credit">Created by James M. Day for a graduate school economics project.</p><p class="creator-contact">Contact: <span>jday6@hawaii.edu</span></p></div><nav class="creator-links" aria-label="Creator and project links"><a href="mailto:jday6@hawaii.edu">Email</a><a href="https://jmday033.github.io/James-Day/RESUME.html" target="_blank" rel="noopener noreferrer">CV</a><a href="https://www.linkedin.com/in/james-day-21103b169" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://github.com/jmday033/James-Day" target="_blank" rel="noopener noreferrer">Project repository</a></nav></div>
-  <p class="header-version" style="font-size:13px;color:#a9cede;margin-bottom:8px">Version 3.11 · Updated November 4, 2026 · 2026 pay, tax, and benefit data</p><p>Compare staying to 20 with civilian practice, or Navy with civilian residency after a GMO tour.</p>
+  <p class="header-version" style="font-size:13px;color:#a9cede;margin-bottom:8px">Version 3.12 · Updated November 6, 2026 · 2026 pay, tax, and benefit data</p><p>Compare staying to 20 with civilian practice, or Navy with civilian residency after a GMO tour.</p>
   <p class="whats-new" role="status"><strong>New</strong> Now covers all 62 Navy Medical Corps specialties and subspecialties, with <a href="https://www.med.navy.mil/Special-Pays/" target="_blank" rel="noopener noreferrer">FY 2027</a> incentive pay and retention bonus rates and a flight surgeon, undersea medical officer, or aerospace medicine add-on.</p>
   <p class="views-note" role="note">Views are the author’s own and do not represent the U.S. Navy, the Department of Defense, or the U.S. government.</p>
 </div></header>
@@ -310,6 +310,11 @@ button.btn{border:0;cursor:pointer;font-family:inherit}.copyrow{display:flex;fle
     <div class="tor-scale" id="torScale"></div>
   </div></details>
 
+  <details class="panel fold chart" id="simPanel"><summary><span class="fold-title">How sure is this answer?</span><span class="fold-chip" id="chipSim"></span></summary><div class="fold-body">    <p class="caption" id="simLead" style="margin:0 0 10px"></p>
+    <div id="simChart"></div>
+    <p class="caption" id="simCaption"></p>
+  </div></details>
+
   <details class="panel fold"><summary><span class="fold-title">Year-by-year detail</span><span class="fold-chip" id="chipRows"></span></summary><div class="fold-body">
     <div class="tablewrap"><table><thead><tr><th>Year</th><th>Service yr</th><th>Grade</th><th>Navy after tax</th><th>Civilian after tax</th><th>Gap</th></tr></thead><tbody id="rows"></tbody></table></div>
     <p class="caption">"After tax" includes BRS matching, employer retirement, health premiums, VA pay, and the costs you entered. The pension is not in these rows; it is counted once in the answer above.</p>
@@ -356,7 +361,7 @@ button.btn{border:0;cursor:pointer;font-family:inherit}.copyrow{display:flex;fle
 <script>
 // One live version: if the server has a newer page than this saved copy,
 // reload it with a version tag so phone and browser caches are bypassed.
-(function(){var PAGE_VERSION="3.11";
+(function(){var PAGE_VERSION="3.12";
   try{fetch("version.json",{cache:"no-store"}).then(function(r){return r.json()}).then(function(d){
     if(!d||!d.version||d.version===PAGE_VERSION)return;
     var u=new URL(location.href);if(u.searchParams.get("v")===d.version)return;   // already tried once
@@ -364,8 +369,8 @@ button.btn{border:0;cursor:pointer;font-family:inherit}.copyrow{display:flex;fle
   }).catch(function(){})}catch(e){}})();
 </script>
 <script type="module">
-import * as sog from './stay-or-go.js?v=20261012-fy27';
-const {answerRange,goalCoverage,exitWindows}=sog;const {stayOrGo, sensitivity, defaultCivilianSalary, loadReferenceData, bahFor, payFor, benchmarks, specialtyTable, specialtyByKey, sanDiegoAvailable}=sog;
+import * as sog from './stay-or-go.js?v=20261106-sim';
+const {answerRange,goalCoverage,exitWindows,simulate}=sog;const {stayOrGo, sensitivity, defaultCivilianSalary, loadReferenceData, bahFor, payFor, benchmarks, specialtyTable, specialtyByKey, sanDiegoAvailable}=sog;
 {const groups=[...new Set(specialtyTable.map(r=>r.group))];
  document.getElementById('specialty').innerHTML='<option value="" selected>Choose specialty…</option>'+groups.map(g=>'<optgroup label="'+g+'">'+specialtyTable.filter(r=>r.group===g).map(r=>'<option value="'+r.key+'">'+r.label+'</option>').join('')+'</optgroup>').join('');}
 import {calculateGmoResidency} from './gmo-residency-model.js?v=20260929-stayorgo';
@@ -477,7 +482,7 @@ function update(){
   $('avg_age').innerHTML='Age: <b>'+f.age+'</b> (about 27 at medical-school graduation plus years served); pension years: <b>'+f.paymentYears+'</b> from the U.S. life table. Blank uses these.<button type="button" class="use" data-use="currentAge,paymentYears" data-val="">Use</button>';
   const mal=window.__malRanges?.[f.civilianState]?.[['peds','im','fm'].indexOf(x.specialty)];
   $('avg_malpractice').innerHTML='Malpractice: <b>$0</b> if the employer pays (most employed jobs).'+(mal?' If you pay your own in '+(stateData.names[f.civilianState]||f.civilianState)+': about <b>'+money(mal[0])+(mal[1]!==mal[0]?'–'+money(mal[1]):'')+'/yr</b> ($1M/$3M mature claims-made, 2026).':'')+'<button type="button" class="use" data-use="malpractice" data-val="0">Use</button>';
-  drawPaths(r,x);drawBreak(r);drawTornado(sens);drawGoals(r);drawExits(x,ctx);
+  drawPaths(r,x);drawBreak(r);drawTornado(sens);drawGoals(r);drawExits(x,ctx);drawSimulation(simulate(x,ctx));
   $('chipBreak').textContent=be===null?'Not before 20':be<=r.decisionYos?'Staying already ahead':'Break-even ≈ '+be.toFixed(1)+' yrs';
   $('chipTornado').textContent='Biggest: '+sens[0].label.split(/[:(]/)[0].trim().toLowerCase();
   $('chipRows').textContent=r.rows.length+' years';
@@ -497,6 +502,22 @@ function drawBreak(r){
   $('breakChart').innerHTML='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Pension kept versus extra civilian pay still to give up, by years of service">'+svg+'</svg>';
   const now=pts[0];
   $('breakCaption').textContent='Each point asks: if you decide at this year of service, what does staying to 20 keep, and what does it still cost (including the pay cut after 20 you entered)? Where the solid line rises above the dashed line, staying wins. At '+now.yos+' years: '+money(now.pension)+' kept versus '+money(now.cost)+' given up.';
+}
+
+function drawSimulation(sim){
+  const v=sim.nets,lo=v[0],hi=v[v.length-1],nb=18,width=Math.max(1,(hi-lo)/nb),bins=new Array(nb).fill(0);
+  v.forEach(n=>bins[Math.min(nb-1,Math.floor((n-lo)/width))]++);
+  const W=Math.max(300,Math.min(760,Math.round($('simChart').clientWidth||640))),H=200,L=14,R=W-14,T=14,B=H-30,bw=(R-L)/nb,top=Math.max(...bins);
+  const X=n=>L+(R-L)*(n-lo)/Math.max(1,hi-lo);
+  let svg=bins.map((c,i)=>{const mid=lo+(i+.5)*width,h=(B-T)*c/top;return '<rect x="'+(L+i*bw+1)+'" y="'+(B-h)+'" width="'+Math.max(1,bw-2)+'" height="'+h+'" rx="2" fill="'+(mid>=0?'#1c6d8b':'#b45d42')+'"><title>'+c+' runs between '+short(lo+i*width)+' and '+short(lo+(i+1)*width)+'</title></rect>'}).join('');
+  svg+='<line x1="'+L+'" x2="'+R+'" y1="'+B+'" y2="'+B+'" stroke="#9aa9b5"/>';
+  if(lo<0&&hi>0)svg+='<line x1="'+X(0)+'" x2="'+X(0)+'" y1="'+T+'" y2="'+B+'" stroke="#173047" stroke-width="2"/><text x="'+X(0)+'" y="'+(T-2)+'" text-anchor="middle" style="font-size:11px">Even</text>';
+  svg+='<text x="'+L+'" y="'+(B+18)+'">'+(lo>=0?'Stay +':'Leave +')+short(Math.abs(lo))+'</text><text x="'+R+'" y="'+(B+18)+'" text-anchor="end">'+(hi>=0?'Stay +':'Leave +')+short(Math.abs(hi))+'</text>';
+  $('simChart').innerHTML='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Spread of '+sim.runs+' simulated outcomes; staying comes out ahead in '+Math.round(100*sim.stayShare)+' percent">'+svg+'</svg>';
+  const pct=Math.round(100*sim.stayShare),word=n=>(n>=0?'staying ahead by ':'leaving ahead by ')+short(Math.abs(n));
+  $('chipSim').textContent='Staying ahead in '+pct+'% of runs';
+  $('simLead').textContent='We reran your answer '+sim.runs+' times, each time guessing the things nobody knows yet: your real civilian pay, making O-5, your first-year ramp-up, any pay cut after 20, and the discount rates. Each bar counts runs; blue bars favor staying, orange favor leaving.';
+  $('simCaption').textContent='Staying won '+pct+'% of runs. Typical run: '+word(sim.median)+'. 8 in 10 runs: '+word(sim.p10)+' to '+word(sim.p90)+'. Guesses use the same ranges as "What moves your answer most," with O-5 as a coin flip, so the typical run can differ from the headline. Home state, bonus plan, and TRICARE stay as you entered them.';
 }
 
 function drawPaths(r,x){
