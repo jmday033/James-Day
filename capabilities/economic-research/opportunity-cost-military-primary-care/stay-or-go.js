@@ -557,6 +557,37 @@ export function sensitivity(input, ctx) {
   }).sort((p,q) => q.swing - p.swing);
 }
 
+// "How sure is this answer?": a Galton-board style simulation. Each run draws the
+// assumptions the reader cannot know yet at random, all at once, and reruns the model;
+// the pile of results shows how often staying comes out ahead. Ranges match the
+// sensitivity rows above (uniform between the low and high values; O-5 promotion is a
+// coin flip). Choices the reader controls (home state, bonus plan, TRICARE value) stay
+// as entered. Seeded so the same inputs always give the same picture.
+export const simulationRuns = 400;
+function seededRandom(seed) {
+  let a = seed >>> 0;
+  return () => { a = (a + 0x6D2B79F5) >>> 0; let t = a; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
+}
+export function simulate(input, ctx, {runs = simulationRuns, seed = 20261106} = {}) {
+  const x = {...defaults, ...input};
+  const civ = Number.isFinite(x.civilianSalary) && x.civilianSalary > 0 ? x.civilianSalary : defaultCivilianSalary(x.specialty, x.salarySource);
+  const rand = seededRandom(seed), between = (lo, hi) => lo + (hi - lo) * rand();
+  const nets = [];
+  for (let i = 0; i < runs; i++) {
+    nets.push(stayOrGo({...input,
+      civilianSalary: civ * between(.85, 1.15),
+      pensionRate: between(.02, .05),
+      cashRate: between(.03, .07),
+      promotion: rand() < .5,
+      firstYearShare: between(.8, 1),
+      postTwentyPenalty: between(0, .15)
+    }, ctx).net);
+  }
+  nets.sort((a, b) => a - b);
+  const q = p => nets[Math.min(runs - 1, Math.floor(p * runs))];
+  return {nets, runs, stayShare: nets.filter(v => v >= 0).length / runs, median: q(.5), p10: q(.1), p90: q(.9)};
+}
+
 // Likely range for the headline: combine the one-at-a-time swings in quadrature
 // (treats them as independent), so it is wider than any single swing but
 // narrower than stacking every worst case.
